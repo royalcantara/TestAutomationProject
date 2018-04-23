@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Payment Gateway Project Test Automation Test Suite for Domainz">
+	<test name="Payment Gateway Test Cases for Domainz">
+		<classes>
+			<class name="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth"></class>
+<!-- 			<class name=""></class> -->
+		</classes>
+	</test>  
+</suite> 

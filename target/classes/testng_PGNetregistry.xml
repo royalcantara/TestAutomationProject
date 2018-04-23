@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Payment Gateway Project Test Automation Test Suite for Netregistry">
+	<test name="Payment Gateway Test Cases for Netregistry">
+		<classes>
+			<class name=""></class>
+			<class name=""></class>
+		</classes>
+	</test>  
+</suite> 

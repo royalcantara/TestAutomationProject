@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Payment Gateway Project Test Automation Test Suite for Domainz" duration-ms="84030" started-at="2018-04-23T04:23:38Z" finished-at="2018-04-23T04:25:02Z">
+    <groups>
+    </groups>
+    <test name="Payment Gateway Test Cases for Domainz" duration-ms="84030" started-at="2018-04-23T04:23:38Z" finished-at="2018-04-23T04:25:02Z">
+      <class name="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth@4dfa3a9d]" name="setUp" is-config="true" duration-ms="7769" started-at="2018-04-23T04:23:39Z" finished-at="2018-04-23T04:23:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="verifyPreAuthorization(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth@4dfa3a9d]" name="verifyPreAuthorization" duration-ms="18760" started-at="2018-04-23T04:23:46Z" data-provider="getPaymentGatewayTestData" finished-at="2018-04-23T04:24:05Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[New/New Customer]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[New]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[n/a]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[n/a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyPreAuthorization -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth@4dfa3a9d]" name="tearDown" is-config="true" duration-ms="781" started-at="2018-04-23T04:24:05Z" finished-at="2018-04-23T04:24:06Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth@4dfa3a9d]" name="setUp" is-config="true" duration-ms="6067" started-at="2018-04-23T04:24:06Z" finished-at="2018-04-23T04:24:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="verifyPreAuthorization(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth@4dfa3a9d]" name="verifyPreAuthorization" duration-ms="21215" started-at="2018-04-23T04:24:12Z" data-provider="getPaymentGatewayTestData" finished-at="2018-04-23T04:24:33Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[New/Returning Customer]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[New]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[PAY-279]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[ggBgtYs85]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyPreAuthorization -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth@4dfa3a9d]" name="tearDown" is-config="true" duration-ms="689" started-at="2018-04-23T04:24:33Z" finished-at="2018-04-23T04:24:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth@4dfa3a9d]" name="setUp" is-config="true" duration-ms="7684" started-at="2018-04-23T04:24:34Z" finished-at="2018-04-23T04:24:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="verifyPreAuthorization(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth@4dfa3a9d]" name="verifyPreAuthorization" duration-ms="19815" started-at="2018-04-23T04:24:42Z" data-provider="getPaymentGatewayTestData" finished-at="2018-04-23T04:25:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Non-Migrated Customer]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[New]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[DOM-1218]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[comein22]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyPreAuthorization -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth@4dfa3a9d]" name="tearDown" is-config="true" duration-ms="719" started-at="2018-04-23T04:25:01Z" finished-at="2018-04-23T04:25:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth -->
+    </test> <!-- Payment Gateway Test Cases for Domainz -->
+  </suite> <!-- Payment Gateway Project Test Automation Test Suite for Domainz -->
+</testng-results>
