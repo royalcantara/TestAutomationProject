@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test thread-count="5" name="Default test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Payment Gateway Project Test Automation Regression Test Suite]">
+  <listeners>
+    <listener class-name="com.reports.extentreportslistener.ExtentReportListener"/>
+  </listeners>
+  <test thread-count="5" name="Payment Gateway Test Cases(failed)">
     <classes>
-      <class name="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth">
+      <class name="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest">
         <methods>
-          <include name="verifyPreAuthorization" invocation-numbers="2"/>
+          <include name="verifyPreAuthorization" invocation-numbers="0"/>
           <include name="tearDown"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth -->
+      </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Payment Gateway Test Cases(failed) -->
+</suite> <!-- Failed suite [Payment Gateway Project Test Automation Regression Test Suite] -->
