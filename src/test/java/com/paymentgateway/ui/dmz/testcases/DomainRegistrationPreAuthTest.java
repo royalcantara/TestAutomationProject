@@ -23,7 +23,7 @@ import com.domainzwebsite.pages.DMZOrderCompletePage;
 import com.domainzwebsite.pages.DMZRegistrantContactPage;
 import com.util.TestUtil;
 
-public class DomainRegistrationPreAuth extends TestBase{
+public class DomainRegistrationPreAuthTest extends TestBase{
 	
 	DMZOnlineOrderPage dmzonlineorderpage;
 	DMZDomainSearchPage dmzdomainsearchpage;
@@ -39,7 +39,7 @@ public class DomainRegistrationPreAuth extends TestBase{
 	String workflowid;
 
 	
-	public DomainRegistrationPreAuth(){
+	public DomainRegistrationPreAuthTest(){
 		super();
 	}
 	

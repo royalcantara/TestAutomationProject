@@ -8,7 +8,7 @@
 	
 	<test name="Payment Gateway Test Cases">
 		<classes>
-			<class name="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth"></class>
+			<class name="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest"></class>
 		</classes>
 	</test>  
 </suite> 

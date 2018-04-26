@@ -3,7 +3,7 @@
 <suite name="Payment Gateway Project Test Automation Test Suite for Domainz">
 	<test name="Payment Gateway Test Cases for Domainz">
 		<classes>
-			<class name="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuth"></class>
+			<class name="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest"></class>
 <!-- 			<class name=""></class> -->
 		</classes>
 	</test>  
