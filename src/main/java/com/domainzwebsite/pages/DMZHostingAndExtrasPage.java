@@ -13,12 +13,26 @@ public class DMZHostingAndExtrasPage extends TestBase{
     @FindBy(how=How.XPATH, using = "//div[@class='next']/form/input")
     WebElement continueButton;
     
+    @FindBy(how=How.XPATH, using = "//div[@class='domainAdd']/form/input[3]")
+    WebElement addExtrasButton;
+    
     //Initializing Page Objects
     public DMZHostingAndExtrasPage(){
         PageFactory.initElements(driver, this);
     }
 
     //Methods
+    public DMZAddExtrasPage clickAddExtrasButton(){
+    	System.out.println("clicking add extras button");
+    	if(addExtrasButton.isDisplayed()||addExtrasButton.isEnabled()) {
+    		addExtrasButton.click();
+    	}
+		else {
+			System.out.println("element not found");
+		}    	
+    	return new DMZAddExtrasPage();
+    }
+    
     public DMZAccountContactPage clickContinueButton(){
     	System.out.println("clicking continue button");
     	if(continueButton.isDisplayed()||continueButton.isEnabled()) {

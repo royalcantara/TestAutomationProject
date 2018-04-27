@@ -2,29 +2,19 @@ package com.braintree.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class BTFoundTransactionPage {
+import com.base.TestBase;
 
-
-	WebDriver driver;
-
-	//Initialize
-	public BTFoundTransactionPage(WebDriver driver) throws InterruptedException {
-
-		this.driver = driver;
-		Thread.sleep(3000);
-		PageFactory.initElements(driver, this);
-
-	}
-
+public class BTFoundTransactionPage extends TestBase{
 
 	//Objects
 
+	//Initializing Page Objects
+	public BTFoundTransactionPage(){
+		PageFactory.initElements(driver, this);
+	}
 
 	//Methods    
     public Boolean isTransactionIDFound() throws InterruptedException {
@@ -36,9 +26,7 @@ public class BTFoundTransactionPage {
     		System.out.println("Transaction ID Found");
     		flag = true;
     	}
-
     	return flag;
-
     }
     
     public BTTransactionDetailForIDPage clickTransactionIDInTable(String transactionid) throws InterruptedException {
@@ -50,8 +38,7 @@ public class BTFoundTransactionPage {
     	Thread.sleep(1000);
     	transactionIDLink.click();
     	
-    	return new BTTransactionDetailForIDPage(driver);
-    	
+    	return new BTTransactionDetailForIDPage();
     }
     
     

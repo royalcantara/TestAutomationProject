@@ -1,38 +1,29 @@
 package com.braintree.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class BTMainTabPage {
+import com.base.TestBase;
 
-	WebDriver driver;
-	
-    //Initialize
-    public BTMainTabPage(WebDriver driver) throws InterruptedException {
+public class BTMainTabPage extends TestBase{
 
-        this.driver = driver;
-        Thread.sleep(3000);
-        PageFactory.initElements(driver, this);
-
-    }
-    
-    
 	//Objects
     @FindBy(how=How.XPATH, using = "//div[@class='nav']/div[2]/ul/li[1]")
     WebElement transactionsLink;
+	
+    //Initializing Page Objects
+    public BTMainTabPage(){
+        PageFactory.initElements(driver, this);
+    }
     
-
     //Methods    
     public BTTransactionsSearchPage clickTransactionsLink() throws InterruptedException {
     	
     	Thread.sleep(3000);
     	transactionsLink.click();
-    	
-    	return new BTTransactionsSearchPage(driver);
-    	
+    	return new BTTransactionsSearchPage();	
     }
 	
 	

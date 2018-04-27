@@ -9,23 +9,15 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class DiscoverTabPage {
+import com.base.TestBase;
+
+public class DiscoverTabPage extends TestBase{
 
 	WebDriver driver;
 	private static String PGLogsAfterRequest;
 	private static String PGLogsBeforeRequest;
-	private static String TraceID;
+	//private static String TraceID;
 	
-    //Initialize
-    public DiscoverTabPage(WebDriver driver) throws InterruptedException {
-
-        this.driver = driver;
-        Thread.sleep(3000);
-        PageFactory.initElements(driver, this);
-
-    }
-
-    
 	//Objects 
     @FindBy(how=How.XPATH, using = "//div[@class='kuiLocalSearch']/input")
     WebElement searchBox;
@@ -35,28 +27,27 @@ public class DiscoverTabPage {
     
     @FindBy(how=How.XPATH, using = "//div[@class='kuiLocalMenu']/div[3]")
     WebElement openTab;
-
+	
+    //Initializing Page Objects
+    public DiscoverTabPage(){
+        PageFactory.initElements(driver, this);
+    }
 
     //Methods
-    public void searchText(String text) throws InterruptedException {
-    
+    public void searchText(String text) throws InterruptedException{
     	Thread.sleep(2000);
     	searchBox.clear();
     	searchBox.sendKeys(text);
     	Thread.sleep(2000);
     	searchButton.click();
-
     }
     
-    public void clickOpenTab() throws InterruptedException {
-        
+    public void clickOpenTab() throws InterruptedException{
     	Thread.sleep(3000);
     	openTab.click();
-
     }
     
-    public void clickSavedSearch(String searchtext) throws InterruptedException {
-        
+    public void clickSavedSearch(String searchtext) throws InterruptedException{
     	Thread.sleep(2000);
     	if (searchtext.equals("PGW")) {
     		driver.findElement(By.xpath("//ul[@class='li-striped list-group list-group-menu']/li[4]")).click();
@@ -64,8 +55,7 @@ public class DiscoverTabPage {
 
     }
     
-    public Boolean isControlTrackingIDRecordCountCorrect() throws InterruptedException {
-    
+    public Boolean isControlTrackingIDRecordCountCorrect() throws InterruptedException{
     	Boolean flag = false;
     	Thread.sleep(2000);
     	List<WebElement> logtablerowcount = driver.findElements(By.xpath("//table[@class='kbn-table table']/tbody/tr"));
@@ -75,13 +65,10 @@ public class DiscoverTabPage {
     		flag = true;
     	}
     	System.out.println("The number of records: " + String.valueOf(rowcount));
-    	
     	return flag;
-
     }
     
-    public Boolean isControlTrackingIDLogExists(String controltrackingid) throws InterruptedException {
-        
+    public Boolean isControlTrackingIDLogExists(String controltrackingid) throws InterruptedException{
     	Boolean flag = false;
     	Thread.sleep(2000);
     	PGLogsAfterRequest = driver.findElement(By.xpath("//table[@class='kbn-table table']/tbody/tr[1]/td[4]/div[contains(text(),'request with URI')]")).getText();
@@ -92,9 +79,7 @@ public class DiscoverTabPage {
     		System.out.println("Control Tracking ID Logged Before Request: " + PGLogsBeforeRequest);
     		flag = true;
     	}
-
     	return flag;
-
     }
     
     
@@ -111,7 +96,7 @@ public class DiscoverTabPage {
 //
 //    }
     
-    public String getTraceIDForPreAuthRequest() throws InterruptedException {
+    public String getTraceIDForPreAuthRequest() throws InterruptedException{
  
     	String request_uri = null;
     	String preauthtraceid = null;
@@ -125,13 +110,10 @@ public class DiscoverTabPage {
 		else {
 			System.out.println("Request_Uri mismatch!");
 		}
-		
-	         
 		return preauthtraceid;
-
     }
     
-    public String getTransactionIDForPreAuthTraceID(String traceid) throws InterruptedException {
+    public String getTransactionIDForPreAuthTraceID(String traceid) throws InterruptedException{
     	 
     	String preauthtraceid = null;
     	String transactionid = null;
@@ -144,15 +126,12 @@ public class DiscoverTabPage {
 		}
 		else {
 			System.out.println("Trace ID mismatch!");
-		}
-		
-	         
+		}     
 		return transactionid;
-
     }
     
     
-    public Boolean isClientTokenLogExists(String clienttoken) throws InterruptedException {
+    public Boolean isClientTokenLogExists(String clienttoken) throws InterruptedException{
         
     	Boolean flag = false;
     	Thread.sleep(2000);
@@ -162,12 +141,10 @@ public class DiscoverTabPage {
     		System.out.println("Client Token Logged After Request: " + PGLogsAfterRequest);
     		flag = true;
     	}
-
     	return flag;
-
     }
     
-    public Boolean isTransactionIDExists(String transactionid) throws InterruptedException {
+    public Boolean isTransactionIDExists(String transactionid) throws InterruptedException{
         
     	Boolean flag = false;
     	Thread.sleep(2000);
@@ -177,9 +154,7 @@ public class DiscoverTabPage {
     		System.out.println("Transaction ID Logged After Request: " + PGLogsAfterRequest);
     		flag = true;
     	}
-
     	return flag;
-
     }
     
     

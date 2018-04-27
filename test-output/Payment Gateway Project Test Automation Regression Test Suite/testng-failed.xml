@@ -8,7 +8,7 @@
     <classes>
       <class name="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest">
         <methods>
-          <include name="verifyPreAuthorization" invocation-numbers="0"/>
+          <include name="verifyPreAuthForNewCustomerSingleDomain"/>
           <include name="tearDown"/>
           <include name="setUp"/>
         </methods>

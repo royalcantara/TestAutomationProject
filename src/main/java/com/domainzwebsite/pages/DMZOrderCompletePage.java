@@ -1,5 +1,6 @@
 package com.domainzwebsite.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -16,9 +17,6 @@ public class DMZOrderCompletePage extends TestBase{
 	@FindBy(how=How.XPATH, using = "//div[@class='inner']/div/div[2]/p")
 	WebElement orderCompleteMessage; 
 	
-	@FindBy(how=How.XPATH, using = "//table[@id='shoppingCart']/tbody/tr[2]/td[1]")
-	WebElement referenceID; 
-
 	//Initializing Page Objects
 	public DMZOrderCompletePage(){
 		
@@ -30,6 +28,7 @@ public class DMZOrderCompletePage extends TestBase{
     public Boolean isOrderComplete() throws InterruptedException{
     	Boolean flag = false;
     	System.out.println("Now in order complete page");
+    	
     	Thread.sleep(5000);
     	if (orderStatus.getText().contentEquals("Order Complete")) {
     		System.out.println("Order Complete Status");
@@ -40,14 +39,33 @@ public class DMZOrderCompletePage extends TestBase{
     	}
     	return flag;
     }
-    
-	public String getReferenceID() throws InterruptedException{
-		String referenceid = null;
+    	
+	public String getSingleReferenceID() throws InterruptedException{
+		String referenceIDNumber = null;
+		
 		Thread.sleep(5000);
-		if (referenceID.isDisplayed()) {
-    		referenceid = referenceID.getText();
-    		System.out.println("Reference ID: "+ referenceid);  
+		
+    	WebElement referenceIdNumberElement = driver.findElement(By.xpath("//table[@id='shoppingCart']/tbody/tr[2]/td[1]"));
+		if (referenceIdNumberElement.isDisplayed()) {
+			referenceIDNumber = referenceIdNumberElement.getText(); 
     	}
-    	return referenceid;
+    	return referenceIDNumber;
+    }
+	
+	public String[] getMultipleReferenceIDs(Integer expectedReferenceIDCount) throws InterruptedException{
+		String[] referenceIDNumber;
+
+		referenceIDNumber = new String[expectedReferenceIDCount];
+		
+		Thread.sleep(5000);
+		int j=2;
+		for (int i=0; i<expectedReferenceIDCount; i++){
+			WebElement referenceIdNumberElement = driver.findElement(By.xpath("//table[@id='shoppingCart']/tbody/tr["+ j +"]/td[1]"));
+			if (referenceIdNumberElement.isDisplayed()) {
+				referenceIDNumber[i] = referenceIdNumberElement.getText(); 
+	    	}
+			j=j+2;
+		}
+    	return referenceIDNumber;
     }
 }

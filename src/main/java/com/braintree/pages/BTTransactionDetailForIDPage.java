@@ -2,49 +2,35 @@ package com.braintree.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class BTTransactionDetailForIDPage {
+import com.base.TestBase;
 
-	WebDriver driver;
+public class BTTransactionDetailForIDPage extends TestBase{
+
+	//Objects
 	
-    //Initialize
-    public BTTransactionDetailForIDPage(WebDriver driver) throws InterruptedException {
-
-        this.driver = driver;
-        Thread.sleep(3000);
+    //Initializing Page Objects
+    public BTTransactionDetailForIDPage(){
         PageFactory.initElements(driver, this);
-
     }
     
-    
-	//Objects
-
-    
     //Methods    
-    public String getCustomerInformation(String parametername) throws InterruptedException {
+    public String getCustomerInformation(String parametername) throws InterruptedException{
     	
     	String parametertextvalue = null;
     	Thread.sleep(1000);
     	
     	if (parametername.contentEquals("Company")) {
-    		
     		WebElement parametervalue = driver.findElement(By.xpath("//div[@class='content_wrap-inner']/div[4]/dl/dd[2]"));
     		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", parametervalue);
-    		parametertextvalue = parametervalue.getText();
-    		
+    		parametertextvalue = parametervalue.getText();	
     	}
-    	
-    	return parametertextvalue;
-    		
-    		
+    	return parametertextvalue;		
     }
     
-    public String getPaymentInformation(String parametername) throws InterruptedException {
+    public String getPaymentInformation(String parametername) throws InterruptedException{
     	
     	String parametertextvalue = null;
     	Thread.sleep(1000);
@@ -71,10 +57,6 @@ public class BTTransactionDetailForIDPage {
     		
     	}
     	
-    	return parametertextvalue;
-    		
-    		
+    	return parametertextvalue;		
     }
-	
-	
 }
