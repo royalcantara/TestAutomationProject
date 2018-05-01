@@ -138,10 +138,18 @@
 		<version>2.41.2</version>
 	</dependency>
 	
+	<!-- 	common io utilities for screenshots -->
 	<dependency>
     	<groupId>commons-io</groupId>
     	<artifactId>commons-io</artifactId>
     	<version>2.5</version>
+	</dependency>
+	
+	<!-- 	accessing environment specific data -->
+	<dependency>
+    	<groupId>org.aeonbits.owner</groupId>
+    	<artifactId>owner</artifactId>
+    	<version>1.0.8</version>
 	</dependency>
 	
   </dependencies>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Payment Gateway Project Test Automation QA UAT Test Suite">
+	<parameter name="environment"  value="uat"/>
+	
+	<listeners>
+		<listener class-name="com.reports.extentreportslistener.ExtentReportListener" />
+	</listeners>
+	
+	<test name="Payment Gateway Test Cases">
+		<classes>
+			<class name="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest"></class>
+		</classes>
+	</test>  
+</suite> 

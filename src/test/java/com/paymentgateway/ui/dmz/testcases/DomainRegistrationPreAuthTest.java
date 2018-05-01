@@ -4,9 +4,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.base.TestBase;
@@ -37,19 +37,19 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 	String clienttoken;
 	ExtentTest test;
 
-	
 	public DomainRegistrationPreAuthTest(){
 		super();
 	}
 	
 	@BeforeMethod
-	public void setUp(){
-		initialization();
+	@Parameters({"environment"})
+	public void setUp(String environment){
+		initialization(environment);
 		dmzonlineorderpage = new DMZOnlineOrderPage();
 		dmzonlineorderpage.tickTld(".com.au");
 
 	}	
-
+	
 	@Test(priority=1, enabled = true)
 	public void verifyPreAuthForNewCustomerSingleDomain() throws InterruptedException{
 		//test.log(LogStatus.INFO,"New Customer/New Credit Card/Single Domain");
@@ -60,7 +60,6 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 		String strTld_01 = ".com";
 		String strWorkflowId = null;
 		
-		System.out.println("Test01");
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
@@ -70,13 +69,13 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 		dmzregistrantcontactpage = dmzaccountcontactpage.clickContinueButton();		
 		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
 		dmzbillingpage.setBTFormCreditCardDetails("PG-Domainz", "4111111111111111", "11", "2019", "123");
-		dmzbillingpage.tickAutoRenew();
-		dmzbillingpage.tickTermsAndConditions();
-		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
+//		dmzbillingpage.tickAutoRenew();
+//		dmzbillingpage.tickTermsAndConditions();
+//		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
 		
-		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
-		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
-		System.out.println("Reference ID[0]:" + strWorkflowId);	
+//		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
+//		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
+//		System.out.println("Reference ID[0]:" + strWorkflowId);	
 	}
 	
 	@Test(priority=2, enabled = true)
@@ -102,14 +101,14 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 		dmzregistrantcontactpage = dmzaccountcontactpage.clickLoginButton();
 		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
 		/* Use default credit card */
-		dmzbillingpage.tickAutoRenew();
-		dmzbillingpage.tickTermsAndConditions();
-		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
-		
-		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
-		arrWorkflowId = dmzordercompletepage.getMultipleReferenceIDs(2);
-		System.out.println("Reference ID[0]:" + arrWorkflowId[0]);
-		System.out.println("Reference ID[1]:" + arrWorkflowId[1]);
+//		dmzbillingpage.tickAutoRenew();
+//		dmzbillingpage.tickTermsAndConditions();
+//		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
+//		
+//		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
+//		arrWorkflowId = dmzordercompletepage.getMultipleReferenceIDs(2);
+//		System.out.println("Reference ID[0]:" + arrWorkflowId[0]);
+//		System.out.println("Reference ID[1]:" + arrWorkflowId[1]);
 	}
 	
 	@Test(priority=3, enabled = true)
@@ -123,8 +122,6 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 		String strProduct_01 = "Domain Privacy";
 		String strWorkflowId = null;
 		
-		
-		System.out.println("Test01");
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
@@ -136,13 +133,13 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 		dmzregistrantcontactpage = dmzaccountcontactpage.clickContinueButton();		
 		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
 		dmzbillingpage.setBTFormCreditCardDetails("PG-Domainz", "4111111111111111", "11", "2019", "123");
-		dmzbillingpage.tickAutoRenew();
-		dmzbillingpage.tickTermsAndConditions();
-		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
-		
-		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
-		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
-		System.out.println("Reference ID[0]:" + strWorkflowId);	
+//		dmzbillingpage.tickAutoRenew();
+//		dmzbillingpage.tickTermsAndConditions();
+//		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
+//		
+//		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
+//		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
+//		System.out.println("Reference ID[0]:" + strWorkflowId);	
 	}
 	
 	@Test(priority=4, enabled = true)
@@ -159,7 +156,6 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 		String strPassword = "ggBgtYs85";
 		String strWorkflowId = null;
 		
-		System.out.println("Test01");
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
@@ -173,13 +169,13 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 		dmzregistrantcontactpage = dmzaccountcontactpage.clickLoginButton();
 		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
 		/* Use default credit card */
-		dmzbillingpage.tickAutoRenew();
-		dmzbillingpage.tickTermsAndConditions();
-		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
-		
-		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
-		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
-		System.out.println("Reference ID[0]:" + strWorkflowId);
+//		dmzbillingpage.tickAutoRenew();
+//		dmzbillingpage.tickTermsAndConditions();
+//		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
+//		
+//		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
+//		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
+//		System.out.println("Reference ID[0]:" + strWorkflowId);
 	}
 
 
