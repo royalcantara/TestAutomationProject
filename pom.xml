@@ -36,8 +36,10 @@
 				<configuration>
 					<suiteXmlFiles>
 						TestNG suite XML files
-						<suiteXmlFile>src\main\resources\testng_PGDomainz.xml</suiteXmlFile>
-						<suiteXmlFile>src\main\resources\testng_PGRegression.xml</suiteXmlFile>
+						<suiteXmlFile>src\main\resources\testng_PGDEV.xml</suiteXmlFile>
+						<suiteXmlFile>src\main\resources\testng_PGQAStaging.xml</suiteXmlFile>
+						<suiteXmlFile>src\main\resources\testng_PGQAUat.xml</suiteXmlFile>
+						<suiteXmlFile>src\main\resources\testng_PGQAProduction.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
