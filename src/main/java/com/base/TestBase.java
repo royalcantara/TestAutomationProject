@@ -29,6 +29,7 @@ public class TestBase{
 		
 		ConfigFactory.setProperty("env", environment);
 		testEnvironment = ConfigFactory.create(Environment.class);
+		System.out.println("Environment: "+ environment);
 		String browserName = testEnvironment.browser();
 		
 		if(browserName.equals("chrome")){
