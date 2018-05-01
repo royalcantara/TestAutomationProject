@@ -60,6 +60,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 		String strTld_01 = ".com";
 		String strWorkflowId = null;
 		
+		System.out.println("Test01");
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
@@ -91,6 +92,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 		String strPassword = "ggBgtYs85";
 		String[] arrWorkflowId;
 		
+		System.out.println("Test02");
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
 		dmzonlineorderpage.tickTld(strTld_02);
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
@@ -100,6 +102,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 		dmzaccountcontactpage.setReturningCustomerContacts(strGreencode, strPassword);
 		dmzregistrantcontactpage = dmzaccountcontactpage.clickLoginButton();
 		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
+		
 		/* Use default credit card */
 //		dmzbillingpage.tickAutoRenew();
 //		dmzbillingpage.tickTermsAndConditions();
@@ -122,6 +125,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 		String strProduct_01 = "Domain Privacy";
 		String strWorkflowId = null;
 		
+		System.out.println("Test03");
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
@@ -156,6 +160,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 		String strPassword = "ggBgtYs85";
 		String strWorkflowId = null;
 		
+		System.out.println("Test04");
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
