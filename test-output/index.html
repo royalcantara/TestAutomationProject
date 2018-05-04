@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">2 methods,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -102,7 +102,12 @@
                     <div class="method-list-content passed suite-Payment_Gateway_Project_Test_Automation_QA_Staging_Test_Suite">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Payment_Gateway_Project_Test_Automation_QA_Staging_Test_Suite" title="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest" hash-for-method="verifyPreAuthForNewCustomerSingleDomain">verifyPreAuthForNewCustomerSingleDomain</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Payment_Gateway_Project_Test_Automation_QA_Staging_Test_Suite" title="com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest" hash-for-method="verifySEOForExistingCustomer">verifySEOForExistingCustomer</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Payment_Gateway_Project_Test_Automation_QA_Staging_Test_Suite" title="com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest" hash-for-method="verifySEOForNewCustomer">verifySEOForNewCustomer</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Payment_Gateway_Project_Test_Automation_QA_Staging_Test_Suite -->
@@ -120,14 +125,21 @@
           <div class="suite-Payment_Gateway_Project_Test_Automation_QA_Staging_Test_Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest</span>
+              <span class="class-name">com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verifyPreAuthForNewCustomerSingleDomain">
-                  </a> <!-- verifyPreAuthForNewCustomerSingleDomain -->
-                  <span class="method-name">verifyPreAuthForNewCustomerSingleDomain</span>
+                  <a name="verifySEOForExistingCustomer">
+                  </a> <!-- verifySEOForExistingCustomer -->
+                  <span class="method-name">verifySEOForExistingCustomer</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifySEOForNewCustomer">
+                  </a> <!-- verifySEOForNewCustomer -->
+                  <span class="method-name">verifySEOForNewCustomer</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -148,7 +160,7 @@
   &lt;/listeners&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Payment Gateway Test Cases&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest&quot;/&gt;
+      &lt;class name=&quot;com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Payment Gateway Test Cases --&gt;
 &lt;/suite&gt; &lt;!-- Payment Gateway Project Test Automation QA Staging Test Suite --&gt;
@@ -188,16 +200,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyPreAuthForNewCustomerSingleDomain')
-data.setCell(0, 2, 'com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest')
-data.setCell(0, 3, 16732);
+data.setCell(0, 1, 'verifySEOForNewCustomer')
+data.setCell(0, 2, 'com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest')
+data.setCell(0, 3, 15842);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'verifySEOForExistingCustomer')
+data.setCell(1, 2, 'com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest')
+data.setCell(1, 3, 14538);
 window.suiteTableData['Payment_Gateway_Project_Test_Automation_QA_Staging_Test_Suite']= { tableData: data, tableDiv: 'times-div-Payment_Gateway_Project_Test_Automation_QA_Staging_Test_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 16 seconds</span>
+              <span class="suite-total-time">Total running time: 30 seconds</span>
               <div id="times-div-Payment_Gateway_Project_Test_Automation_QA_Staging_Test_Suite">
               </div> <!-- times-div-Payment_Gateway_Project_Test_Automation_QA_Staging_Test_Suite -->
             </div> <!-- times-div -->
@@ -212,17 +228,51 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Payment_Gateway_Project_Test_Automation_QA_Staging_Test_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">3 ignored methods</span>
+            <span class="header-content">20 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest</span>
+              <span class="ignored-class-name">com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">verifyPreAuthForExistingCustomerMultipleProducts</span>
+                <span class="ignored-method-name">verifyWebDesignWordpressForExistingCustomer</span>
                 <br/>
-                <span class="ignored-method-name">verifyPreAuthForNewCustomerSingleProduct</span>
+                <span class="ignored-method-name">verifyEmailMarketingForExistingCustomer</span>
                 <br/>
-                <span class="ignored-method-name">verifyPreAuthForExistingCustomerMultipleDomains</span>
+                <span class="ignored-method-name">verifyWebDesignWordpressForNewCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifyHostingAndWebsiteDoneForYouForNewCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifySSLRenewalForExistingCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifyDomainRenewalForExistingCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifySSLForExistingCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifyProductRenewalForExistingCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifySocialMediaAdvertisingForExistingCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifyDomainTransferForExistingCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifyEmailMarketingForNewCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifyHostingAndWebsiteDoneForYouForExistingCustomer</span>
+                <br/>
+                <span class="ignored-method-name">VerifyDomainRegistrationForNewCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifyOutstandingInvoicesForExistingCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifySSLForNewCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifyOffice365ForExistingCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifyHostingSignupForExistingCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifyHostingSignupForNewCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifySocialMediaAdvertisingForNewCustomer</span>
+                <br/>
+                <span class="ignored-method-name">verifyDomainRegistrationForExistingCustomer</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -234,18 +284,30 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">setUp(staging)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">verifyPreAuthForNewCustomerSingleDomain</span>
-                <span class="method-start">6631 ms</span>
+                <span class="method-name">verifySEOForNewCustomer</span>
+                <span class="method-start">7912 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">23365 ms</span>
+                <span class="method-start">23756 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp(staging)</span>
+                <span class="method-start">24475 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">verifySEOForExistingCustomer</span>
+                <span class="method-start">30589 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">45129 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

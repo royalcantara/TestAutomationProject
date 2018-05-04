@@ -13,6 +13,9 @@ public class DMZHostingAndExtrasPage extends TestBase{
     @FindBy(how=How.XPATH, using = "//div[@class='next']/form/input")
     WebElement continueButton;
     
+    @FindBy(how=How.XPATH, using = "//div[@class='domainAdd']/form/input[2]")
+    WebElement addHostingButton;
+    
     @FindBy(how=How.XPATH, using = "//div[@class='domainAdd']/form/input[3]")
     WebElement addExtrasButton;
     
@@ -22,6 +25,17 @@ public class DMZHostingAndExtrasPage extends TestBase{
     }
 
     //Methods
+    public DMZAddHostingPage clickAddHostingButton(){
+    	System.out.println("clicking add hosting button");
+    	if(addHostingButton.isDisplayed()||addHostingButton.isEnabled()) {
+    		addHostingButton.click();
+    	}
+		else {
+			System.out.println("element not found");
+		}    	
+    	return new DMZAddHostingPage();
+    }
+    
     public DMZAddExtrasPage clickAddExtrasButton(){
     	System.out.println("clicking add extras button");
     	if(addExtrasButton.isDisplayed()||addExtrasButton.isEnabled()) {

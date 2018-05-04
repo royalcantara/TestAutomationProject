@@ -13,6 +13,7 @@ import com.base.TestBase;
 import com.domainzwebsite.pages.DMZAccountContactPage;
 import com.domainzwebsite.pages.DMZAddDomainPrivacyPage;
 import com.domainzwebsite.pages.DMZAddExtrasPage;
+import com.domainzwebsite.pages.DMZAddHostingPage;
 import com.domainzwebsite.pages.DMZBillingPage;
 import com.domainzwebsite.pages.DMZDomainSearchPage;
 import com.domainzwebsite.pages.DMZHostingAndExtrasPage;
@@ -20,15 +21,15 @@ import com.domainzwebsite.pages.DMZOnlineOrderPage;
 import com.domainzwebsite.pages.DMZOrderCompletePage;
 import com.domainzwebsite.pages.DMZRegistrantContactPage;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
 import com.util.TestUtil;
 
-public class DomainRegistrationPreAuthTest extends TestBase{
+public class DomainzCustomerCartJourneyTest extends TestBase{
 	
 	DMZOnlineOrderPage dmzonlineorderpage;
 	DMZDomainSearchPage dmzdomainsearchpage;
 	DMZAddDomainPrivacyPage dmzadddomainprivacypage;
 	DMZHostingAndExtrasPage dmzhostingandextraspage;
+	DMZAddHostingPage dmzaddhostingpage;
 	DMZAddExtrasPage dmzaddextraspage;
 	DMZAccountContactPage dmzaccountcontactpage;
 	DMZRegistrantContactPage dmzregistrantcontactpage;
@@ -38,7 +39,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 	String clienttoken;
 	public static ExtentTest logger;
 
-	public DomainRegistrationPreAuthTest(){
+	public DomainzCustomerCartJourneyTest(){
 		super();
 	}
 	
@@ -51,9 +52,9 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 
 	}	
 	
-	@Test(priority=1, enabled = true)
-	public void verifyPreAuthForNewCustomerSingleDomain() throws InterruptedException{
-		//logger.log(LogStatus.INFO,"New Customer/New Credit Card/Single Domain");
+	@Test(priority=1, enabled = false)
+	public void VerifyDomainRegistrationForNewCustomer() throws InterruptedException{
+		//
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
 		Date d = new Date();
@@ -80,8 +81,8 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 //		System.out.println("Reference ID[0]:" + strWorkflowId);	
 	}
 	
-	@Test(priority=2, enabled = true)
-	public void verifyPreAuthForExistingCustomerMultipleDomains() throws InterruptedException{
+	@Test(priority=2, enabled = false)
+	public void verifyDomainRegistrationForExistingCustomer() throws InterruptedException{
 		//test.log(LogStatus.INFO,"Existing Customer/Existing Credit Card/Multiple Domains");
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
@@ -95,7 +96,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 		
 		System.out.println("Test02");
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
-		dmzonlineorderpage.tickTld(strTld_02);
+
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
 		dmzhostingandextraspage= dmzadddomainprivacypage.clickNoThanks();
@@ -115,19 +116,144 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 //		System.out.println("Reference ID[1]:" + arrWorkflowId[1]);
 	}
 	
-	@Test(priority=3, enabled = true)
-	public void verifyPreAuthForNewCustomerSingleProduct() throws InterruptedException{
-		//test.log(LogStatus.INFO,"New Customer/New Credit Card/Single Product");
+	@Test(priority=3, enabled = false)
+	public void verifyHostingSignupForNewCustomer() throws InterruptedException{
+	
+		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
+		Date d = new Date();
+		String strDomainName = "TestPGDomainz" + df.format(d);
+		String strTld_01 = ".com";
+		
+		String strProduct_01 = "Basic cPanel Hosting";
+		String strWorkflowId = null;
+		
+		System.out.println("Test03");
+		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
+		
+		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
+		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
+		dmzhostingandextraspage= dmzadddomainprivacypage.clickNoThanks();
+		dmzaddhostingpage = dmzhostingandextraspage.clickAddHostingButton();
+		dmzhostingandextraspage = dmzaddhostingpage.clickAddProduct(strProduct_01);
+		dmzaccountcontactpage= dmzhostingandextraspage.clickContinueButton();
+		dmzaccountcontactpage.setCustomerDefaultInformation();
+		dmzregistrantcontactpage = dmzaccountcontactpage.clickContinueButton();		
+		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
+		dmzbillingpage.setBTFormCreditCardDetails("PG-Domainz", "4111111111111111", "11", "2019", "123");
+		dmzbillingpage.tickTermsAndConditions();
+//		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
+//		
+//		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
+//		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
+//		System.out.println("Reference ID[0]:" + strWorkflowId);	
+
+	}
+	
+	@Test(priority=4, enabled = false)
+	public void verifyHostingSignupForExistingCustomer() throws InterruptedException{
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
 		Date d = new Date();
 		String strDomainName = "TestPGDomainz" + df.format(d);
 		String strTld_01 = ".com";
-		String strProduct_01 = "Domain Privacy";
+		String strProduct_01 = "Basic Cloud Hosting";
+
+		String strGreencode = "PAY-279";
+		String strPassword = "ggBgtYs85";
+		String strWorkflowId = null;
+		
+		System.out.println("Test04");
+		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
+		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
+		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
+		dmzhostingandextraspage= dmzadddomainprivacypage.clickNoThanks();
+		dmzaddhostingpage = dmzhostingandextraspage.clickAddHostingButton();
+		dmzhostingandextraspage = dmzaddhostingpage.clickAddProduct(strProduct_01);
+
+		dmzaccountcontactpage= dmzhostingandextraspage.clickContinueButton();
+		dmzaccountcontactpage.setReturningCustomerContacts(strGreencode, strPassword);
+		dmzregistrantcontactpage = dmzaccountcontactpage.clickLoginButton();
+		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
+		/* Use default credit card */
+		dmzbillingpage.tickTermsAndConditions();
+//		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
+//		
+//		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
+//		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
+//		System.out.println("Reference ID[0]:" + strWorkflowId);
+		
+	}
+	
+	@Test(priority=5, enabled = false)
+	public void verifyHostingAndWebsiteDoneForYouForNewCustomer() throws InterruptedException{
+	
+		/* Test scripts to be added */
+
+	}
+	
+	@Test(priority=6, enabled = false)
+	public void verifyHostingAndWebsiteDoneForYouForExistingCustomer() throws InterruptedException{
+
+		/* Test scripts to be added */
+
+	}
+	
+	@Test(priority=7, enabled = false)
+	public void verifyWebDesignWordpressForNewCustomer() throws InterruptedException{
+
+		/* Test scripts to be added */
+
+	}
+	
+	@Test(priority=8, enabled = false)
+	public void verifyWebDesignWordpressForExistingCustomer() throws InterruptedException{
+
+		/* Test scripts to be added */
+		
+	}
+	
+	@Test(priority=9, enabled = false)
+	public void verifySSLForNewCustomer() throws InterruptedException{
+
+		/* Test scripts to be added */
+
+	}
+	
+	@Test(priority=10, enabled = false)
+	public void verifySSLForExistingCustomer() throws InterruptedException{
+		
+		/* Test scripts to be added */
+
+	}
+	
+	@Test(priority=11, enabled = false)
+	public void verifySocialMediaAdvertisingForNewCustomer() throws InterruptedException{
+		
+		/* Test scripts to be added */
+
+	}
+	
+	@Test(priority=12, enabled = false)
+	public void verifySocialMediaAdvertisingForExistingCustomer() throws InterruptedException{
+		
+		/* Test scripts to be added */
+
+	}
+	
+	@Test(priority=13, enabled = true)
+	public void verifySEOForNewCustomer() throws InterruptedException{
+		
+		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
+		Date d = new Date();
+		String strDomainName = "TestPGDomainz" + df.format(d);
+		String strTld_01 = ".com";
+		
+		String strProduct_01 = "SEO Assessment";
 		String strWorkflowId = null;
 		
 		System.out.println("Test03");
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
+		
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
 		dmzhostingandextraspage= dmzadddomainprivacypage.clickNoThanks();
@@ -138,25 +264,24 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 		dmzregistrantcontactpage = dmzaccountcontactpage.clickContinueButton();		
 		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
 		dmzbillingpage.setBTFormCreditCardDetails("PG-Domainz", "4111111111111111", "11", "2019", "123");
-//		dmzbillingpage.tickAutoRenew();
-//		dmzbillingpage.tickTermsAndConditions();
+		dmzbillingpage.tickTermsAndConditions();
 //		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
 //		
 //		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
 //		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
 //		System.out.println("Reference ID[0]:" + strWorkflowId);	
+	
 	}
 	
-	@Test(priority=4, enabled = true)
-	public void verifyPreAuthForExistingCustomerMultipleProducts() throws InterruptedException{
-		//test.log(LogStatus.INFO,"Existing Customer/Existing Credit Card/Multiple Products");
+	@Test(priority=14, enabled = true)
+	public void verifySEOForExistingCustomer() throws InterruptedException{
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
 		Date d = new Date();
 		String strDomainName = "TestPGDomainz" + df.format(d);
 		String strTld_01 = ".com";
-		String strProduct_01 = "Domain Privacy";
-		String strProduct_02 = "SEO Assessment";
+		String strProduct_01 = "SEO Assessment";
+
 		String strGreencode = "PAY-279";
 		String strPassword = "ggBgtYs85";
 		String strWorkflowId = null;
@@ -168,23 +293,77 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 		dmzhostingandextraspage= dmzadddomainprivacypage.clickNoThanks();
 		dmzaddextraspage = dmzhostingandextraspage.clickAddExtrasButton();
 		dmzhostingandextraspage = dmzaddextraspage.clickAddProduct(strProduct_01);
-		dmzaddextraspage = dmzhostingandextraspage.clickAddExtrasButton();
-		dmzhostingandextraspage = dmzaddextraspage.clickAddProduct(strProduct_02);
+
 		dmzaccountcontactpage= dmzhostingandextraspage.clickContinueButton();
 		dmzaccountcontactpage.setReturningCustomerContacts(strGreencode, strPassword);
 		dmzregistrantcontactpage = dmzaccountcontactpage.clickLoginButton();
 		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
 		/* Use default credit card */
-//		dmzbillingpage.tickAutoRenew();
-//		dmzbillingpage.tickTermsAndConditions();
+		dmzbillingpage.tickTermsAndConditions();
 //		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
 //		
 //		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
 //		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
 //		System.out.println("Reference ID[0]:" + strWorkflowId);
+
 	}
+	
+	@Test(priority=15, enabled = false)
+	public void verifyEmailMarketingForNewCustomer() throws InterruptedException{
+		
+		/* Test scripts to be added */
+	
+	}
+	
+	@Test(priority=16, enabled = false)
+	public void verifyEmailMarketingForExistingCustomer() throws InterruptedException{
+		
+		/* Test scripts to be added */
 
+	}
+	
+	@Test(priority=17, enabled = false)
+	public void verifyOffice365ForExistingCustomer() throws InterruptedException{
+		
+		/* Test scripts to be added */
 
+	}
+	
+	@Test(priority=18, enabled = false)
+	public void verifyDomainRenewalForExistingCustomer() throws InterruptedException{
+		
+		/* Test scripts to be added */
+
+	}
+	
+	@Test(priority=19, enabled = false)
+	public void verifyDomainTransferForExistingCustomer() throws InterruptedException{
+		
+		/* Test scripts to be added */
+
+	}
+	
+	@Test(priority=20, enabled = false)
+	public void verifyProductRenewalForExistingCustomer() throws InterruptedException{
+		
+		/* Test scripts to be added */
+
+	}
+	
+	@Test(priority=21, enabled = false)
+	public void verifySSLRenewalForExistingCustomer() throws InterruptedException{
+		
+		/* Test scripts to be added */
+
+	}
+	
+	@Test(priority=22, enabled = false)
+	public void verifyOutstandingInvoicesForExistingCustomer() throws InterruptedException{
+		
+		/* Test scripts to be added */
+
+	}
+	
 	@AfterMethod
 	public void tearDown(){
 		driver.quit();
