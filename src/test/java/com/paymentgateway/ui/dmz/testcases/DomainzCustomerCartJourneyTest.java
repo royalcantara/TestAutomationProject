@@ -52,9 +52,8 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 
 	}	
 	
-	@Test(priority=1, enabled = false)
-	public void VerifyDomainRegistrationForNewCustomer() throws InterruptedException{
-		//
+	@Test(priority=1, enabled = true)
+	public void verifyDomainRegistrationForNewCustomer() throws InterruptedException{
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
 		Date d = new Date();
@@ -62,7 +61,7 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 		String strTld_01 = ".com";
 		String strWorkflowId = null;
 		
-		System.out.println("Test01");
+		System.out.println("Test01: verifyDomainRegistrationForNewCustomer");
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
@@ -72,18 +71,16 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 		dmzregistrantcontactpage = dmzaccountcontactpage.clickContinueButton();		
 		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
 		dmzbillingpage.setBTFormCreditCardDetails("PG-Domainz", "4111111111111111", "11", "2019", "123");
-//		dmzbillingpage.tickAutoRenew();
-//		dmzbillingpage.tickTermsAndConditions();
-//		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
+		dmzbillingpage.tickTermsAndConditions();
 		
+//		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();		
 //		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
 //		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
 //		System.out.println("Reference ID[0]:" + strWorkflowId);	
 	}
 	
-	@Test(priority=2, enabled = false)
+	@Test(priority=2, enabled = true)
 	public void verifyDomainRegistrationForExistingCustomer() throws InterruptedException{
-		//test.log(LogStatus.INFO,"Existing Customer/Existing Credit Card/Multiple Domains");
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
 		Date d = new Date();
@@ -94,9 +91,8 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 		String strPassword = "ggBgtYs85";
 		String[] arrWorkflowId;
 		
-		System.out.println("Test02");
+		System.out.println("Test02: verifyDomainRegistrationForExistingCustomer");
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
-
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
 		dmzhostingandextraspage= dmzadddomainprivacypage.clickNoThanks();
@@ -104,32 +100,28 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 		dmzaccountcontactpage.setReturningCustomerContacts(strGreencode, strPassword);
 		dmzregistrantcontactpage = dmzaccountcontactpage.clickLoginButton();
 		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
-		
 		/* Use default credit card */
-//		dmzbillingpage.tickAutoRenew();
-//		dmzbillingpage.tickTermsAndConditions();
+		dmzbillingpage.tickTermsAndConditions();
+		
 //		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
-//		
 //		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
 //		arrWorkflowId = dmzordercompletepage.getMultipleReferenceIDs(2);
 //		System.out.println("Reference ID[0]:" + arrWorkflowId[0]);
 //		System.out.println("Reference ID[1]:" + arrWorkflowId[1]);
 	}
 	
-	@Test(priority=3, enabled = false)
+	@Test(priority=3, enabled = true)
 	public void verifyHostingSignupForNewCustomer() throws InterruptedException{
 	
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
 		Date d = new Date();
 		String strDomainName = "TestPGDomainz" + df.format(d);
 		String strTld_01 = ".com";
-		
 		String strProduct_01 = "Basic cPanel Hosting";
 		String strWorkflowId = null;
-		
-		System.out.println("Test03");
+
+		System.out.println("Test03: verifyHostingSignupForNewCustomer");
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
-		
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
 		dmzhostingandextraspage= dmzadddomainprivacypage.clickNoThanks();
@@ -141,15 +133,14 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
 		dmzbillingpage.setBTFormCreditCardDetails("PG-Domainz", "4111111111111111", "11", "2019", "123");
 		dmzbillingpage.tickTermsAndConditions();
+		
 //		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
-//		
 //		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
 //		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
 //		System.out.println("Reference ID[0]:" + strWorkflowId);	
-
 	}
 	
-	@Test(priority=4, enabled = false)
+	@Test(priority=4, enabled = true)
 	public void verifyHostingSignupForExistingCustomer() throws InterruptedException{
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
@@ -157,12 +148,11 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 		String strDomainName = "TestPGDomainz" + df.format(d);
 		String strTld_01 = ".com";
 		String strProduct_01 = "Basic Cloud Hosting";
-
 		String strGreencode = "PAY-279";
 		String strPassword = "ggBgtYs85";
 		String strWorkflowId = null;
 		
-		System.out.println("Test04");
+		System.out.println("Test04: verifyHostingSignupForExistingCustomer");
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
@@ -176,8 +166,8 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
 		/* Use default credit card */
 		dmzbillingpage.tickTermsAndConditions();
+		
 //		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
-//		
 //		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
 //		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
 //		System.out.println("Reference ID[0]:" + strWorkflowId);
@@ -247,13 +237,11 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 		Date d = new Date();
 		String strDomainName = "TestPGDomainz" + df.format(d);
 		String strTld_01 = ".com";
-		
 		String strProduct_01 = "SEO Assessment";
 		String strWorkflowId = null;
 		
-		System.out.println("Test03");
-		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
-		
+		System.out.println("Test13: verifySEOForNewCustomer");
+		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);		
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
 		dmzhostingandextraspage= dmzadddomainprivacypage.clickNoThanks();
@@ -265,12 +253,11 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
 		dmzbillingpage.setBTFormCreditCardDetails("PG-Domainz", "4111111111111111", "11", "2019", "123");
 		dmzbillingpage.tickTermsAndConditions();
+		
 //		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
-//		
 //		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
 //		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
 //		System.out.println("Reference ID[0]:" + strWorkflowId);	
-	
 	}
 	
 	@Test(priority=14, enabled = true)
@@ -281,12 +268,11 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 		String strDomainName = "TestPGDomainz" + df.format(d);
 		String strTld_01 = ".com";
 		String strProduct_01 = "SEO Assessment";
-
 		String strGreencode = "PAY-279";
 		String strPassword = "ggBgtYs85";
 		String strWorkflowId = null;
-		
-		System.out.println("Test04");
+
+		System.out.println("Test4: verifySEOForExistingCustomer");
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
@@ -300,12 +286,11 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
 		/* Use default credit card */
 		dmzbillingpage.tickTermsAndConditions();
-//		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();
-//		
+		
+//		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();	
 //		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
 //		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
 //		System.out.println("Reference ID[0]:" + strWorkflowId);
-
 	}
 	
 	@Test(priority=15, enabled = false)
