@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Payment Gateway Project Test Automation QA Staging Test Suite">
-	<parameter name="environment"  value="staging"/>
+<suite name="Payment Gateway Project Test Automation QA Staging Domainz Test Suite">
+	<parameter name="environment"  value="stagingdomainz"/>
 	
 	<listeners>
 		<listener class-name="com.reports.extentreportslistener.ExtentReportListener" />
@@ -9,7 +9,7 @@
 	
 	<test name="Payment Gateway Test Cases">
 		<classes>
-			<class name="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest"></class>
+			<class name="com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest"></class>
 		</classes>
 	</test>  
 </suite> 

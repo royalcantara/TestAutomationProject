@@ -272,7 +272,7 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 		String strPassword = "ggBgtYs85";
 		String strWorkflowId = null;
 
-		System.out.println("Test4: verifySEOForExistingCustomer");
+		System.out.println("Test14: verifySEOForExistingCustomer");
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
