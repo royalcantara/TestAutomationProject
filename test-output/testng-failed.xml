@@ -9,11 +9,9 @@
     <classes>
       <class name="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest">
         <methods>
-          <include name="verifyPreAuthForExistingCustomerMultipleProducts"/>
-          <include name="verifyPreAuthForNewCustomerSingleProduct"/>
+          <include name="verifyPreAuthForNewCustomerSingleDomain"/>
           <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="verifyPreAuthForExistingCustomerMultipleDomains"/>
         </methods>
       </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest -->
     </classes>

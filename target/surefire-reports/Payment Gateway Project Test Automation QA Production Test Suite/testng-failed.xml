@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Payment Gateway Project Test Automation QA Production Test Suite]">
+  <parameter name="environment" value="prod"/>
+  <listeners>
+    <listener class-name="com.reports.extentreportslistener.ExtentReportListener"/>
+  </listeners>
+  <test thread-count="5" verbose="0" name="Payment Gateway Test Cases(failed)">
+    <classes>
+      <class name="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest">
+        <methods>
+          <include name="verifyPreAuthForExistingCustomerMultipleProducts"/>
+          <include name="verifyPreAuthForNewCustomerSingleProduct"/>
+          <include name="verifyPreAuthForNewCustomerSingleDomain"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="verifyPreAuthForExistingCustomerMultipleDomains"/>
+        </methods>
+      </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest -->
+    </classes>
+  </test> <!-- Payment Gateway Test Cases(failed) -->
+</suite> <!-- Failed suite [Payment Gateway Project Test Automation QA Production Test Suite] -->

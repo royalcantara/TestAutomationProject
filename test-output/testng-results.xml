@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+<testng-results skipped="0" failed="0" ignored="3" total="4" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Payment Gateway Project Test Automation QA Staging Test Suite" duration-ms="77267" started-at="2018-05-01T04:31:31Z" finished-at="2018-05-01T04:32:48Z">
+  <suite name="Payment Gateway Project Test Automation QA Staging Test Suite" duration-ms="24074" started-at="2018-05-03T00:30:11Z" finished-at="2018-05-03T00:30:35Z">
     <groups>
     </groups>
-    <test name="Payment Gateway Test Cases" duration-ms="77267" started-at="2018-05-01T04:31:31Z" finished-at="2018-05-01T04:32:48Z">
+    <test name="Payment Gateway Test Cases" duration-ms="24074" started-at="2018-05-03T00:30:11Z" finished-at="2018-05-03T00:30:35Z">
       <class name="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest">
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest@4f7d0008]" name="setUp" is-config="true" duration-ms="6767" started-at="2018-05-01T04:31:31Z" finished-at="2018-05-01T04:31:38Z">
+        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest@4f7d0008]" name="setUp" is-config="true" duration-ms="6631" started-at="2018-05-03T00:30:11Z" finished-at="2018-05-03T00:30:17Z">
           <params>
             <param index="0">
               <value>
@@ -18,68 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="verifyPreAuthForNewCustomerSingleDomain()[pri:1, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest@4f7d0008]" name="verifyPreAuthForNewCustomerSingleDomain" duration-ms="10201" started-at="2018-05-01T04:31:38Z" finished-at="2018-05-01T04:31:48Z">
+        <test-method status="PASS" signature="verifyPreAuthForNewCustomerSingleDomain()[pri:1, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest@4f7d0008]" name="verifyPreAuthForNewCustomerSingleDomain" duration-ms="16732" started-at="2018-05-03T00:30:17Z" finished-at="2018-05-03T00:30:34Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyPreAuthForNewCustomerSingleDomain -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest@4f7d0008]" name="tearDown" is-config="true" duration-ms="756" started-at="2018-05-01T04:31:48Z" finished-at="2018-05-01T04:31:49Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest@4f7d0008]" name="setUp" is-config="true" duration-ms="6113" started-at="2018-05-01T04:31:49Z" finished-at="2018-05-01T04:31:55Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[staging]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="verifyPreAuthForExistingCustomerMultipleDomains()[pri:2, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest@4f7d0008]" name="verifyPreAuthForExistingCustomerMultipleDomains" duration-ms="13630" started-at="2018-05-01T04:31:55Z" finished-at="2018-05-01T04:32:08Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyPreAuthForExistingCustomerMultipleDomains -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest@4f7d0008]" name="tearDown" is-config="true" duration-ms="693" started-at="2018-05-01T04:32:08Z" finished-at="2018-05-01T04:32:09Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest@4f7d0008]" name="setUp" is-config="true" duration-ms="5945" started-at="2018-05-01T04:32:09Z" finished-at="2018-05-01T04:32:15Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[staging]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="verifyPreAuthForNewCustomerSingleProduct()[pri:3, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest@4f7d0008]" name="verifyPreAuthForNewCustomerSingleProduct" duration-ms="10771" started-at="2018-05-01T04:32:15Z" finished-at="2018-05-01T04:32:26Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyPreAuthForNewCustomerSingleProduct -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest@4f7d0008]" name="tearDown" is-config="true" duration-ms="693" started-at="2018-05-01T04:32:26Z" finished-at="2018-05-01T04:32:26Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest@4f7d0008]" name="setUp" is-config="true" duration-ms="6136" started-at="2018-05-01T04:32:26Z" finished-at="2018-05-01T04:32:33Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[staging]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="verifyPreAuthForExistingCustomerMultipleProducts()[pri:4, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest@4f7d0008]" name="verifyPreAuthForExistingCustomerMultipleProducts" duration-ms="14808" started-at="2018-05-01T04:32:33Z" finished-at="2018-05-01T04:32:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyPreAuthForExistingCustomerMultipleProducts -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest@4f7d0008]" name="tearDown" is-config="true" duration-ms="733" started-at="2018-05-01T04:32:47Z" finished-at="2018-05-01T04:32:48Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest@4f7d0008]" name="tearDown" is-config="true" duration-ms="678" started-at="2018-05-03T00:30:34Z" finished-at="2018-05-03T00:30:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

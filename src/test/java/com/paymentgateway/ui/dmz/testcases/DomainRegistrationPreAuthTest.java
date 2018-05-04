@@ -20,6 +20,7 @@ import com.domainzwebsite.pages.DMZOnlineOrderPage;
 import com.domainzwebsite.pages.DMZOrderCompletePage;
 import com.domainzwebsite.pages.DMZRegistrantContactPage;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import com.util.TestUtil;
 
 public class DomainRegistrationPreAuthTest extends TestBase{
@@ -35,7 +36,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 	DMZOrderCompletePage dmzordercompletepage;
 	TestUtil testUtil;
 	String clienttoken;
-	ExtentTest test;
+	public static ExtentTest logger;
 
 	public DomainRegistrationPreAuthTest(){
 		super();
@@ -52,7 +53,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 	
 	@Test(priority=1, enabled = true)
 	public void verifyPreAuthForNewCustomerSingleDomain() throws InterruptedException{
-		//test.log(LogStatus.INFO,"New Customer/New Credit Card/Single Domain");
+		//logger.log(LogStatus.INFO,"New Customer/New Credit Card/Single Domain");
 		
 		DateFormat df = new SimpleDateFormat("DDMMYYYYHHMMSS");
 		Date d = new Date();
@@ -79,7 +80,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 //		System.out.println("Reference ID[0]:" + strWorkflowId);	
 	}
 	
-	@Test(priority=2, enabled = true)
+	@Test(priority=2, enabled = false)
 	public void verifyPreAuthForExistingCustomerMultipleDomains() throws InterruptedException{
 		//test.log(LogStatus.INFO,"Existing Customer/Existing Credit Card/Multiple Domains");
 		
@@ -114,7 +115,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 //		System.out.println("Reference ID[1]:" + arrWorkflowId[1]);
 	}
 	
-	@Test(priority=3, enabled = true)
+	@Test(priority=3, enabled = false)
 	public void verifyPreAuthForNewCustomerSingleProduct() throws InterruptedException{
 		//test.log(LogStatus.INFO,"New Customer/New Credit Card/Single Product");
 		
@@ -146,7 +147,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 //		System.out.println("Reference ID[0]:" + strWorkflowId);	
 	}
 	
-	@Test(priority=4, enabled = true)
+	@Test(priority=4, enabled = false)
 	public void verifyPreAuthForExistingCustomerMultipleProducts() throws InterruptedException{
 		//test.log(LogStatus.INFO,"Existing Customer/Existing Credit Card/Multiple Products");
 		
