@@ -38,6 +38,8 @@
 						TestNG suite XML files
 						<suiteXmlFile>src\main\resources\testng_PGDEV.xml</suiteXmlFile>
 						<suiteXmlFile>src\main\resources\testng_PGQAStaging.xml</suiteXmlFile>
+						<suiteXmlFile>src\main\resources\testng_PGQAStagingDomainz.xml</suiteXmlFile>
+						<suiteXmlFile>src\main\resources\testng_PGQAStagingNetregistry.xml</suiteXmlFile>
 						<suiteXmlFile>src\main\resources\testng_PGQAUat.xml</suiteXmlFile>
 						<suiteXmlFile>src\main\resources\testng_PGQAProduction.xml</suiteXmlFile>
 					</suiteXmlFiles>
