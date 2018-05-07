@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -33,6 +34,8 @@ public class TestBase{
 		String browserName = testEnvironment.browser();
 		
 		if(browserName.equals("chrome")){
+			ChromeOptions options = new ChromeOptions(); 
+			options.setBinary("browser/chrome/chrome.exe"); 
 			System.setProperty("webdriver.chrome.driver", "seleniumwebdriver/chromedriver/chromedriver.exe");	
 			driver = new ChromeDriver(); 
 		}

@@ -9,9 +9,14 @@
     <classes>
       <class name="com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest">
         <methods>
+          <include name="verifySEOForExistingCustomer"/>
           <include name="verifyDomainRegistrationForNewCustomer"/>
+          <include name="verifyHostingSignupForExistingCustomer"/>
+          <include name="verifyHostingSignupForNewCustomer"/>
           <include name="setUp"/>
           <include name="tearDown"/>
+          <include name="verifySEOForNewCustomer"/>
+          <include name="verifyDomainRegistrationForExistingCustomer"/>
         </methods>
       </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest -->
     </classes>
