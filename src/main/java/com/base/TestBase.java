@@ -34,8 +34,8 @@ public class TestBase{
 		String browserName = testEnvironment.browser();
 		
 		if(browserName.equals("chrome")){
-			ChromeOptions options = new ChromeOptions(); 
-			options.setBinary("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"); 
+//			ChromeOptions options = new ChromeOptions(); 
+//			options.setBinary("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"); 
 			System.setProperty("webdriver.chrome.driver", "seleniumwebdriver/chromedriver/chromedriver.exe");	
 			driver = new ChromeDriver(); 
 		}
