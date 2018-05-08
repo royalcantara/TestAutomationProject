@@ -35,7 +35,7 @@ public class TestBase{
 		
 		if(browserName.equals("chrome")){
 			ChromeOptions options = new ChromeOptions(); 
-			options.setBinary("browser/chrome/chrome.exe"); 
+			options.setBinary("browser/chrome/GoogleChromePortable.exe"); 
 			System.setProperty("webdriver.chrome.driver", "seleniumwebdriver/chromedriver/chromedriver.exe");	
 			driver = new ChromeDriver(); 
 		}
