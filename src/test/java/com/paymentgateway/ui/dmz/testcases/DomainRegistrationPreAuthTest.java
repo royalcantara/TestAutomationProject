@@ -80,7 +80,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 //		System.out.println("Reference ID[0]:" + strWorkflowId);	
 	}
 	
-	@Test(priority=2, enabled = true)
+	@Test(priority=2, enabled = false)
 	public void verifyPreAuthForExistingCustomerMultipleDomains() throws InterruptedException{
 		//test.log(LogStatus.INFO,"Existing Customer/Existing Credit Card/Multiple Domains");
 		
@@ -115,7 +115,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 //		System.out.println("Reference ID[1]:" + arrWorkflowId[1]);
 	}
 	
-	@Test(priority=3, enabled = true)
+	@Test(priority=3, enabled = false)
 	public void verifyPreAuthForNewCustomerSingleProduct() throws InterruptedException{
 		//test.log(LogStatus.INFO,"New Customer/New Credit Card/Single Product");
 		
@@ -147,7 +147,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 //		System.out.println("Reference ID[0]:" + strWorkflowId);	
 	}
 	
-	@Test(priority=4, enabled = true)
+	@Test(priority=4, enabled = false)
 	public void verifyPreAuthForExistingCustomerMultipleProducts() throws InterruptedException{
 		//test.log(LogStatus.INFO,"Existing Customer/Existing Credit Card/Multiple Products");
 		

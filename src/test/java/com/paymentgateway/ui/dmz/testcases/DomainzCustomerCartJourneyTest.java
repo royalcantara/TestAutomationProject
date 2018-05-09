@@ -62,6 +62,8 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 		String strWorkflowId = null;
 		
 		System.out.println("Test01: verifyDomainRegistrationForNewCustomer");
+		System.out.println("Domain Name: " + strDomainName);
+		System.out.println("TLD: " + strTld_01);
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
@@ -79,7 +81,7 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 //		System.out.println("Reference ID[0]:" + strWorkflowId);	
 	}
 	
-	@Test(priority=2, enabled = true)
+	@Test(priority=2, enabled = false)
 	public void verifyDomainRegistrationForExistingCustomer() throws InterruptedException{
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
@@ -110,7 +112,7 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 //		System.out.println("Reference ID[1]:" + arrWorkflowId[1]);
 	}
 	
-	@Test(priority=3, enabled = true)
+	@Test(priority=3, enabled = false)
 	public void verifyHostingSignupForNewCustomer() throws InterruptedException{
 	
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
@@ -140,7 +142,7 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 //		System.out.println("Reference ID[0]:" + strWorkflowId);	
 	}
 	
-	@Test(priority=4, enabled = true)
+	@Test(priority=4, enabled = false)
 	public void verifyHostingSignupForExistingCustomer() throws InterruptedException{
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
@@ -230,7 +232,7 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 
 	}
 	
-	@Test(priority=13, enabled = true)
+	@Test(priority=13, enabled = false)
 	public void verifySEOForNewCustomer() throws InterruptedException{
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
@@ -260,7 +262,7 @@ public class DomainzCustomerCartJourneyTest extends TestBase{
 //		System.out.println("Reference ID[0]:" + strWorkflowId);	
 	}
 	
-	@Test(priority=14, enabled = true)
+	@Test(priority=14, enabled = false)
 	public void verifySEOForExistingCustomer() throws InterruptedException{
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
