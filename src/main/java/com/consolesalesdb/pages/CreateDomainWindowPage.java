@@ -1,26 +1,15 @@
 package com.consolesalesdb.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class CreateDomainWindowPage {
+import com.base.TestBase;
+
+public class CreateDomainWindowPage extends TestBase{
 	
-	WebDriver driver;
-	
-    //Initialize
-    public CreateDomainWindowPage(WebDriver driver) throws InterruptedException {
-
-        this.driver = driver;
-        Thread.sleep(2000);
-        PageFactory.initElements(driver, this);
-
-    }
-
-  
 	//Objects
     @FindBy(how=How.ID, using = "create-domain-domainName-field-0.2")
     WebElement domainName;
@@ -45,11 +34,14 @@ public class CreateDomainWindowPage {
    
     @FindBy(how=How.ID, using = "ext-gen2311")
     WebElement updateButton;
-    
+	
+    //Initializing Page Objects
+    public CreateDomainWindowPage(){
+        PageFactory.initElements(driver, this);
+    }
     
     //Methods
     public void setDomainDetails(String strdomainame, String strtld, String strperiod, String strpaymentMethod) throws InterruptedException {
-    	
     	domainName.sendKeys(strdomainame);
     	tldDropdownButton.click();
     	Thread.sleep(2000);
@@ -66,7 +58,6 @@ public class CreateDomainWindowPage {
     }
  
     public void setDomainDetailswithoutRegister(String strdomainame, String strtld, String strpaymentMethod) throws InterruptedException {
-    	
     	domainName.sendKeys(strdomainame);
     	tldDropdownButton.click();
     	Thread.sleep(2000);
@@ -79,7 +70,6 @@ public class CreateDomainWindowPage {
     }
     
     public void setDomainandMajorProductDetails(String strdomainame, String strtld, String strperiod, String strmajorproduct, String strproductperiod, String strpaymentMethod) throws InterruptedException {
-    	
     	domainName.sendKeys(strdomainame);
     	tldDropdownButton.click();
     	Thread.sleep(2000);
@@ -102,7 +92,6 @@ public class CreateDomainWindowPage {
     }
     
     public void setDomainandMajorProductwithoutRegistration(String strdomainame, String strtld, String strmajorproduct, String strproductperiod, String strpaymentMethod) throws InterruptedException {
-    	
     	domainName.sendKeys(strdomainame);
     	tldDropdownButton.click();
     	Thread.sleep(2000);
@@ -122,7 +111,6 @@ public class CreateDomainWindowPage {
     }
 
     public NrCRMPage clickCreateDomainButton() throws InterruptedException {
-    	
     	Thread.sleep(2000);
     	System.out.println("clicking new domain (new price system)");
     	if(createDomainButton.isDisplayed()||createDomainButton.isEnabled()) {
@@ -131,9 +119,7 @@ public class CreateDomainWindowPage {
 		else {
 			System.out.println("element not found");
 		}
-	
-    	return new NrCRMPage(driver);
- 
+    	return new NrCRMPage();
     }
 
 }

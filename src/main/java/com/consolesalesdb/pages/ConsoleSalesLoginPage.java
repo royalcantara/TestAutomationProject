@@ -1,14 +1,14 @@
 package com.consolesalesdb.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class ConsoleSalesLoginPage {
+import com.base.TestBase;
 
-	WebDriver driver;
+public class ConsoleSalesLoginPage extends TestBase{
+
 	static String stageUserName = "erwin.sukarna";
 	static String stagePassword = "comein22";
 	static String oteUserName = "roy.alcantara";
@@ -18,16 +18,6 @@ public class ConsoleSalesLoginPage {
 	static String prodUserName = "roy.alcantara";
 	static String prodPassword = "Stocks004";
 	
-    //Initialize
-    public ConsoleSalesLoginPage(WebDriver driver) throws InterruptedException {
-
-        this.driver = driver;
-        Thread.sleep(2000);
-        PageFactory.initElements(driver, this);
-
-    }
-
-    
 	//Objects
     @FindBy(how=How.ID, using = "logon-username-field")
     WebElement userName;
@@ -37,40 +27,33 @@ public class ConsoleSalesLoginPage {
     
     @FindBy(how=How.ID, using = "ext-gen14")
     WebElement loginButton;
+	
+    //Initializing Page Objects
+    public ConsoleSalesLoginPage(){
+    	PageFactory.initElements(driver, this);
+    }
 
-    
     //Methods
-    public void setDefaultLoginDetails(String environment) throws InterruptedException {
-    
+    public void setDefaultLoginDetails(String environment){
 		if(environment.equalsIgnoreCase("stage")) {
-			
 	    	userName.sendKeys(stageUserName);
 	    	password.sendKeys(stagePassword);
-			
 		}
 		else if (environment.equalsIgnoreCase("ote")) {
-			
 	    	userName.sendKeys(oteUserName);
 	    	password.sendKeys(otePassword);
-			
 		}
 		else if (environment.equalsIgnoreCase("uat")) {
-			
 	    	userName.sendKeys(uatUserName);
 	    	password.sendKeys(uatPassword);
-			
 		}
 		else if (environment.equalsIgnoreCase("production")) {
-			
 	    	userName.sendKeys(prodUserName);
 	    	password.sendKeys(prodPassword);
-			
 		}
-
     }
     
-    public NrCRMPage clickLoginButton() throws InterruptedException {
-
+    public NrCRMPage clickLoginButton(){
     	System.out.println("clicking submit button");
     	if(loginButton.isDisplayed()||loginButton.isEnabled()) {
     		loginButton.click();
@@ -78,9 +61,7 @@ public class ConsoleSalesLoginPage {
 		else {
 			System.out.println("element not found");
 		}
-
-    	return new NrCRMPage(driver);
-    	
+    	return new NrCRMPage();
     }
     
 }

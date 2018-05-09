@@ -1,39 +1,28 @@
 package com.consolesalesdb.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class NotificationPage {
+import com.base.TestBase;
 
+public class NotificationPage extends TestBase{
 
-	WebDriver driver;
-	
-    //Initialize
-    public NotificationPage(WebDriver driver) throws InterruptedException {
-
-        this.driver = driver;
-        Thread.sleep(2000);
-        PageFactory.initElements(driver, this);
-
-    }
-
-  
 	//Objects  
     @FindBy(how=How.XPATH, using = "//button[contains(text(),'OK')]")
     WebElement okButton;
-    
-    
+	
+    //Initializing Page Objects
+    public NotificationPage() throws InterruptedException{
+        PageFactory.initElements(driver, this);
+    }
+
     //Methods    
-    public NrCRMPage clickOK() throws InterruptedException {
-        
+    public NrCRMPage clickOK() throws InterruptedException{
     	Thread.sleep(3000);
     	okButton.click();
-  	
-    	return new NrCRMPage(driver);
-
+    	return new NrCRMPage();
     }
 	
 }

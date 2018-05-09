@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Payment Gateway Project Test Automation QA Staging Domainz Test Suite]">
-  <parameter name="environment" value="stagingdomainz"/>
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Payment Gateway Project Test Automation Dev Test Suite]">
+  <parameter name="environment" value="dev"/>
   <listeners>
     <listener class-name="com.reports.extentreportslistener.ExtentReportListener"/>
   </listeners>
   <test thread-count="5" name="Payment Gateway Test Cases(failed)">
     <classes>
-      <class name="com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest">
+      <class name="com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest">
         <methods>
-          <include name="verifySEOForExistingCustomer"/>
-          <include name="verifyDomainRegistrationForNewCustomer"/>
-          <include name="verifyHostingSignupForExistingCustomer"/>
-          <include name="verifyHostingSignupForNewCustomer"/>
+          <include name="verifyDomainRegistrationInSalesDBForExistingCustomer"/>
           <include name="setUp"/>
           <include name="tearDown"/>
-          <include name="verifySEOForNewCustomer"/>
-          <include name="verifyDomainRegistrationForExistingCustomer"/>
+          <include name="verifyDomainRegistrationInSalesDBForNewCustomer"/>
         </methods>
-      </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest -->
+      </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest -->
     </classes>
   </test> <!-- Payment Gateway Test Cases(failed) -->
-</suite> <!-- Failed suite [Payment Gateway Project Test Automation QA Staging Domainz Test Suite] -->
+</suite> <!-- Failed suite [Payment Gateway Project Test Automation Dev Test Suite] -->

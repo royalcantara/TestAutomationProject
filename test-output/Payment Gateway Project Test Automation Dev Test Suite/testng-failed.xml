@@ -7,16 +7,14 @@
   </listeners>
   <test thread-count="5" name="Payment Gateway Test Cases(failed)">
     <classes>
-      <class name="com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest">
+      <class name="com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest">
         <methods>
-          <include name="verifyPreAuthForExistingCustomerMultipleProducts"/>
-          <include name="verifyPreAuthForNewCustomerSingleProduct"/>
-          <include name="verifyPreAuthForNewCustomerSingleDomain"/>
-          <include name="tearDown"/>
+          <include name="verifyDomainRegistrationInSalesDBForExistingCustomer"/>
           <include name="setUp"/>
-          <include name="verifyPreAuthForExistingCustomerMultipleDomains"/>
+          <include name="tearDown"/>
+          <include name="verifyDomainRegistrationInSalesDBForNewCustomer"/>
         </methods>
-      </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainRegistrationPreAuthTest -->
+      </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest -->
     </classes>
   </test> <!-- Payment Gateway Test Cases(failed) -->
 </suite> <!-- Failed suite [Payment Gateway Project Test Automation Dev Test Suite] -->

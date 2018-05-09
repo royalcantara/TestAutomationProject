@@ -3,14 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest">
+      <class name="com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest">
         <methods>
-          <include name="VerifyDomainRegistrationForNewCustomer"/>
+          <include name="verifyDomainRegistrationInSalesDBForExistingCustomer"/>
           <include name="setUp"/>
           <include name="tearDown"/>
-          <include name="verifyDomainRegistrationForExistingCustomer"/>
+          <include name="verifyDomainRegistrationInSalesDBForNewCustomer"/>
         </methods>
-      </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest -->
+      </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

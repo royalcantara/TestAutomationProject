@@ -2,26 +2,15 @@ package com.consolesalesdb.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class ShowDomainServicesPage {
+import com.base.TestBase;
 
-	WebDriver driver;
-	
-    //Initialize
-    public ShowDomainServicesPage(WebDriver driver) throws InterruptedException {
+public class ShowDomainServicesPage extends TestBase {
 
-        this.driver = driver;
-        Thread.sleep(2000);
-        PageFactory.initElements(driver, this);
-
-    }
-
-  
 	//Objects  
     @FindBy(how=How.XPATH, using = "//button[contains(text(),'Confirm All Services')]")
     WebElement confirmAllServices;
@@ -35,10 +24,13 @@ public class ShowDomainServicesPage {
     @FindBy(how=How.XPATH, using = "//button[contains(text(),'OK')]")
     WebElement okButton;
     
-    
+    //Initializing Page Objects
+    public ShowDomainServicesPage() throws InterruptedException {
+        PageFactory.initElements(driver, this);
+    }
+
     //Methods
-    public void setAddOnProduct (String straddonproduct) throws InterruptedException {
-    	
+    public void setAddOnProduct (String straddonproduct) throws InterruptedException {    	
     	Thread.sleep(3000);  	
     	addOnProductDropdownButton.click();
     	Thread.sleep(3000);
@@ -46,28 +38,22 @@ public class ShowDomainServicesPage {
     	Thread.sleep(3000);
     	addOnProductAddButton.click();
     	Thread.sleep(3000);
- 	
     }
     
     public void setAddOnQuantity (String straddonname, String straddonquantity) throws InterruptedException {
-    	
     	Thread.sleep(3000);  	
     	driver.findElement(By.xpath("//div[@class='x-grid3-cell-inner x-grid3-col-6'][text()='"+straddonname+"']/parent::td/parent::tr/td[12]/div[@class='x-grid3-cell-inner x-grid3-col-11']")).click();;
     	Thread.sleep(2000);	
     	driver.findElement(By.xpath("//div[@class='x-layer x-editor x-small-editor x-grid-editor']/input")).clear();
     	driver.findElement(By.xpath("//div[@class='x-layer x-editor x-small-editor x-grid-editor']/input")).sendKeys(straddonquantity);
     	driver.findElement(By.xpath("//div[@class='x-layer x-editor x-small-editor x-grid-editor']/input")).sendKeys(Keys.ENTER);
-    	Thread.sleep(1000);
-  		
+    	Thread.sleep(1000);	
     }
     
     public WorkflowNotificationPage clickConfirmAllServices() throws InterruptedException {
-        
     	Thread.sleep(3000);
     	confirmAllServices.click();
-    	
-    	return new WorkflowNotificationPage(driver);
-
+    	return new WorkflowNotificationPage();
     }
     
 //    public void getAddOnProductList() throws InterruptedException {
@@ -82,7 +68,4 @@ public class ShowDomainServicesPage {
 // 	
 //    }
 
-	
-
-    
 }
