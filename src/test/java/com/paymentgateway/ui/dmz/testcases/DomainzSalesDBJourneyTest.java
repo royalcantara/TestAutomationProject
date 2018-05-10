@@ -4,42 +4,58 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.base.TestBase;
-import com.consolesalesdb.pages.ConsoleSalesLoginPage;
-import com.consolesalesdb.pages.NrCRMPage;
-import com.domainzwebsite.pages.DMZAccountContactPage;
-import com.domainzwebsite.pages.DMZAddDomainPrivacyPage;
-import com.domainzwebsite.pages.DMZAddExtrasPage;
-import com.domainzwebsite.pages.DMZAddHostingPage;
-import com.domainzwebsite.pages.DMZBillingPage;
-import com.domainzwebsite.pages.DMZDomainSearchPage;
-import com.domainzwebsite.pages.DMZHostingAndExtrasPage;
-import com.domainzwebsite.pages.DMZOnlineOrderPage;
-import com.domainzwebsite.pages.DMZOrderCompletePage;
-import com.domainzwebsite.pages.DMZRegistrantContactPage;
+import com.braintree.pages.BTFoundTransactionPage;
+import com.braintree.pages.BTLoginPage;
+import com.braintree.pages.BTMainTabPage;
+import com.braintree.pages.BTTransactionsSearchPage;
+import com.consoleadmin.pages.CAHeaderPage;
+import com.consoleadmin.pages.CALoginPage;
+import com.consoleadmin.pages.CAWorkflowAdminPage;
+import com.consolesalesdb.pages.CSCreateDomainWindowPage;
+import com.consolesalesdb.pages.CSLoginPage;
+import com.consolesalesdb.pages.CSNrCRMPage;
+import com.consolesalesdb.pages.CSRegistrantDetailsPage;
+import com.consolesalesdb.pages.CSShowDomainServicesPage;
+import com.consolesalesdb.pages.CSWorkflowNotificationPage;
+import com.domainzwebsite.pages.DMZAccountPage;
+import com.domainzwebsite.pages.DMZHeaderPage;
+import com.domainzwebsite.pages.DMZLoginPage;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.util.TestUtil;
 
 public class DomainzSalesDBJourneyTest extends TestBase{
-
-	DMZOnlineOrderPage dmzonlineorderpage;
-	DMZDomainSearchPage dmzdomainsearchpage;
-	DMZAddDomainPrivacyPage dmzadddomainprivacypage;
-	DMZHostingAndExtrasPage dmzhostingandextraspage;
-	DMZAddHostingPage dmzaddhostingpage;
-	DMZAddExtrasPage dmzaddextraspage;
-	DMZAccountContactPage dmzaccountcontactpage;
-	DMZRegistrantContactPage dmzregistrantcontactpage;
-	DMZBillingPage dmzbillingpage;
-	DMZOrderCompletePage dmzordercompletepage;
 	
-	ConsoleSalesLoginPage consolesalesloginpage;
-	NrCRMPage nrcrmpage;
+	//Console Sales DB Pages
+	CSLoginPage csloginpage;
+	CSNrCRMPage csnrcrmpage;
+	CSCreateDomainWindowPage cscreatedomainwindowpage;
+	CSRegistrantDetailsPage csregistrantdetailspage;
+	CSShowDomainServicesPage csshowdomainservicespage;
+	CSWorkflowNotificationPage csworkflownotificationpage;
+	
+	//Console Admin Pages
+	CALoginPage caloginpage;
+	CAHeaderPage caheaderpage;
+	CAWorkflowAdminPage caworkflowadminpage;
+	
+	//Braintree Pages
+	BTLoginPage btloginpage;
+	BTMainTabPage btmaintabpage;
+	BTTransactionsSearchPage bttransactionssearchpage;
+	BTFoundTransactionPage btfoundtransactionpage;
+	
+	//Domainz Cart/Portal Pages
+	DMZLoginPage dmzloginpage;
+	DMZHeaderPage dmzheaderpage;
+	DMZAccountPage dmzaccountpage;
+	
+	
+	
 	TestUtil testUtil;
 	String clienttoken;
 	public static ExtentTest logger;
@@ -47,59 +63,86 @@ public class DomainzSalesDBJourneyTest extends TestBase{
 	public DomainzSalesDBJourneyTest() {
 		super();
 	}
-	
-	@BeforeMethod
+			
 	@Parameters({"environment"})
-	public void setUp(String environment){
-		initialization(environment);
-//		driver.manage().window().maximize();
-//		driver.get("https://console-checkout-1.dev.netregistry.net/sales");
-//		consolesalesloginpage = new ConsoleSalesLoginPage();
-//		consolesalesloginpage.setDefaultLoginDetails("stage");
-//		nrcrmpage = consolesalesloginpage.clickLoginButton();
-
-	}	
-	
 	@Test(priority=1, enabled = true)
-	public void verifyDomainRegistrationInSalesDBForNewCustomer() throws InterruptedException{
+	public void verifyDomainRegistrationInSalesDBForExistingCustomerExistingCard(String environment) throws InterruptedException{
 		
+		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
+		Date d = new Date();
+		String strDomainName = "TestPGDomainz" + df.format(d);
+		String strTld = "com";
+		String greenCode = "MUL-487";
+		String paymentMethod = "MasterCard: 555555******4444 12/2032";
+		String registrantDetails = "Netregistry";
+		String workflowid;
+		String transactionid;
+ 
 		System.out.println("Test01: Sales DB");
-//		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
-//		Date d = new Date();
-//		String strDomainName = "TestPGDomainz" + df.format(d);
-//		String strTld_01 = ".com";
-//		String strWorkflowId = null;
-//		
-//		System.out.println("Test01: verifyDomainRegistrationForNewCustomer");
-//		System.out.println("Domain Name: " + strDomainName);
-//		System.out.println("TLD: " + strTld_01);
-//		dmzonlineorderpage.setDomainNameAndTld(strDomainName, strTld_01);
-//		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
-//		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
-//		dmzhostingandextraspage= dmzadddomainprivacypage.clickNoThanks();
-//		dmzaccountcontactpage= dmzhostingandextraspage.clickContinueButton();
-//		dmzaccountcontactpage.setCustomerDefaultInformation();
-//		dmzregistrantcontactpage = dmzaccountcontactpage.clickContinueButton();		
-//		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
-//		dmzbillingpage.setBTFormCreditCardDetails("PG-Domainz", "4111111111111111", "11", "2019", "123");
-//		dmzbillingpage.tickTermsAndConditions();
+		initialization(environment, "salesdb");
+		csloginpage = new CSLoginPage();
+		csloginpage.setDefaultLoginDetails("stage");
+		csnrcrmpage = csloginpage.clickLoginButton();
+		csnrcrmpage.setGreenCode(greenCode);
+		cscreatedomainwindowpage = csnrcrmpage.clickNewDomainNPSButton();
+		cscreatedomainwindowpage.setDomainDetails(strDomainName, strTld, "1", paymentMethod);
+		csregistrantdetailspage = csnrcrmpage.clickRegistrantDetails(strDomainName, "Update Details");
+		csnrcrmpage = csregistrantdetailspage.setRegistrantDetails(registrantDetails);
+		csshowdomainservicespage = csnrcrmpage.clickShowDomainServices(strDomainName);
+		csworkflownotificationpage = csshowdomainservicespage.clickConfirmAllServices();
+		workflowid = csworkflownotificationpage.getWorkflowID();
+		csworkflownotificationpage.clickOKButton();
+		driver.close();
 		
-//		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();		
-//		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
-//		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
-//		System.out.println("Reference ID[0]:" + strWorkflowId);	
+		initialization(environment, "consoleadmin");
+		caloginpage = new CALoginPage();
+		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
+		caworkflowadminpage = caheaderpage.searchWorkflow(workflowid);
+		caworkflowadminpage.processDomainRegistrationWF(workflowid);
+		
+		//Verify if domain registration workflow is completed
+		caworkflowadminpage = caheaderpage.searchWorkflow(workflowid);
+		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
+		
+		//Get transaction id via pre-auth number in workflow
+		caworkflowadminpage = caheaderpage.searchWorkflow(workflowid);
+		Assert.assertTrue(caworkflowadminpage.isWorkflowIDExist(workflowid), "Workflow ID not found");
+		transactionid = caworkflowadminpage.getPreAuthNumber(workflowid);
+		System.out.println("Transaction ID: " + transactionid);
+		driver.close();
+		
+		//Verify if the transaction id status in Braintree is Settling
+		initialization(environment, "braintree");
+		btloginpage = new BTLoginPage();
+		btloginpage.setDefaultLoginDetails("stage");
+		btmaintabpage = btloginpage.clickLoginButton();
+		bttransactionssearchpage = btmaintabpage.clickTransactionsLink();
+		bttransactionssearchpage.searchTransactionID(transactionid);
+		btfoundtransactionpage = bttransactionssearchpage.clickSearchButton();
+		Assert.assertTrue(btfoundtransactionpage.isTransactionIDFound(), "Transaction ID not found");	
+		Assert.assertEquals(btfoundtransactionpage.getTransactionIDStatus(transactionid), "Settling", btfoundtransactionpage.getTransactionIDStatus(transactionid));
+		driver.close();
+		
 	}
 	
+	@Parameters({"environment"})
 	@Test(priority=2, enabled = true)
-	public void verifyDomainRegistrationInSalesDBForExistingCustomer() throws InterruptedException{
+	public void verifyDomainRegistrationInSalesDBForMigratedCustomerNewCard(String environment) throws InterruptedException{
 		
-		/* For creation of test steps */
+		String accountreference = "PG9-00";
+		String password = "rENTON11";
+		
+		initialization(environment, "cartlogin");
+		dmzloginpage = new DMZLoginPage();
+		dmzloginpage.setLoginDetails(accountreference, password);
+		dmzheaderpage = dmzloginpage.clickLoginButton();
+		dmzaccountpage = dmzheaderpage.clickAccountTab();
+		driver.close();
+		
+		
 	}
 	
-	@AfterMethod
-	public void tearDown(){
-//		driver.quit();
-	}
+
 	
 	
 }

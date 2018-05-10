@@ -9,10 +9,14 @@ import org.aeonbits.owner.Config.Sources;
 
 public interface Environment extends Config{
 	
-	String url();
+	String carturl();
+	String cartloginurl();
+	String salesdburl();
+	String consoleadminurl();
 	String username();
 	String password();
 	String browser();
+	String braintreeurl();
 	
 	@Key("db.hostname")
 	String getDBHostname();

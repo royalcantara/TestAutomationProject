@@ -41,6 +41,16 @@ public class BTFoundTransactionPage extends TestBase{
     	return new BTTransactionDetailForIDPage();
     }
     
+    public String getTransactionIDStatus(String transactionid) throws InterruptedException{
+    	
+    	String transactionidstatus = null;
+    	Thread.sleep(1000);
+
+    	transactionidstatus= driver.findElement(By.xpath("//a[text()='"+transactionid+"']/parent::td/parent::tr/td[4]")).getText();
+    	System.out.println("Transaction ID Status: " + transactionidstatus);
+    	return transactionidstatus;		
+    }
+    
     
 
 }

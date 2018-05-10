@@ -26,7 +26,7 @@ public class TestBase{
 
 	}
 	
-	public static void initialization(String environment){
+	public static void initialization(String environment, String entrypoint){
 		
 		ConfigFactory.setProperty("env", environment);
 		testEnvironment = ConfigFactory.create(Environment.class);
@@ -60,8 +60,24 @@ public class TestBase{
 		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
 		
-		driver.get(testEnvironment.url());
-		
+		if(entrypoint.equals("cart")){
+			driver.get(testEnvironment.carturl());
+		}
+		else if(entrypoint.equals("cartlogin")){
+			driver.get(testEnvironment.cartloginurl());
+		}
+		else if(entrypoint.equals("salesdb")){
+			driver.get(testEnvironment.salesdburl());
+		}
+		else if(entrypoint.equals("consoleadmin")){
+			driver.get(testEnvironment.consoleadminurl());
+		}
+		else if(entrypoint.equals("braintree")){
+			driver.get(testEnvironment.braintreeurl());
+		}
+		else{
+			/* for any url */
+		}
 	}
 	
 	

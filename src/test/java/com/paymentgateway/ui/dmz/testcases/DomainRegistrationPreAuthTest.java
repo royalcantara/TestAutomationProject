@@ -45,7 +45,7 @@ public class DomainRegistrationPreAuthTest extends TestBase{
 	@BeforeMethod
 	@Parameters({"environment"})
 	public void setUp(String environment){
-		initialization(environment);
+		initialization(environment, "cart");
 		dmzonlineorderpage = new DMZOnlineOrderPage();
 		dmzonlineorderpage.tickTld(".com.au");
 

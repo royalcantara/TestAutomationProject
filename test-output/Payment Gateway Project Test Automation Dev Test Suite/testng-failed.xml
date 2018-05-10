@@ -9,10 +9,7 @@
     <classes>
       <class name="com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest">
         <methods>
-          <include name="verifyDomainRegistrationInSalesDBForExistingCustomer"/>
-          <include name="setUp"/>
-          <include name="tearDown"/>
-          <include name="verifyDomainRegistrationInSalesDBForNewCustomer"/>
+          <include name="verifyDomainRegistrationInSalesDBForMigratedCustomerNewCard" invocation-numbers="0"/>
         </methods>
       </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest -->
     </classes>
