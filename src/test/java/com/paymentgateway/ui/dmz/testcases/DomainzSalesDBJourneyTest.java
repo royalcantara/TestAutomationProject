@@ -65,7 +65,7 @@ public class DomainzSalesDBJourneyTest extends TestBase{
 	}
 			
 	@Parameters({"environment"})
-	@Test(priority=1, enabled = false)
+	@Test(priority=1, enabled = true)
 	public void verifySingleDomainOrderInSalesDB (String environment) throws InterruptedException{
 		
 		String strDomainName = null;
@@ -151,7 +151,7 @@ public class DomainzSalesDBJourneyTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=2, enabled = false)
+	@Test(priority=2, enabled = true)
 	public void verifySingleDomainandSingleProductOrderInSalesDB (String environment) throws InterruptedException{
 
 		String strDomainName = null;
@@ -251,7 +251,7 @@ public class DomainzSalesDBJourneyTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=3, enabled = false)
+	@Test(priority=3, enabled = true)
 	public void verifySingleDomainandMultipleProductsOrderInSalesDB (String environment) throws InterruptedException{
 
 		String strDomainName = null;
