@@ -76,14 +76,14 @@ public class CSCreateDomainWindowPage extends TestBase{
         driver.findElement(By.xpath("//div[@class='x-combo-list-inner']/div[text()='"+"."+strtld+"']")).click();
         regPeriodDropdownButton.click();
         Thread.sleep(2000);
-        driver.findElement(By.xpath("//div[@class='x-combo-list-inner']/div[contains(text(),'"+strperiod+" x Y AU$')]")).click();
+        driver.findElement(By.xpath("//div[@class='x-combo-list-inner']/div[contains(text(),'"+strperiod+"')]")).click();
         Thread.sleep(2000);
         majorProductButton.click();
         Thread.sleep(2000);
         driver.findElement(By.xpath("//div[@class='x-combo-list-inner']/div[text()='"+strmajorproduct+"']")).click();      
         productPeriodButton.click();
         Thread.sleep(2000);
-        driver.findElement(By.xpath("//div[@class='x-combo-list-inner']/div[contains(text(),'"+strproductperiod+" AU$')]")).click();
+        driver.findElement(By.xpath("//div[@class='x-combo-list-inner']/div[contains(text(),'"+strproductperiod+"')]")).click();
         paymentMethodButton.click();
         Thread.sleep(2000);
         driver.findElement(By.xpath("//div[@class='x-combo-list-inner']/div[contains(text(),'"+strpaymentMethod+"')]")).click();

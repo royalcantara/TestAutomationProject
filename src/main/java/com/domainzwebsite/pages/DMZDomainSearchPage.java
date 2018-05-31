@@ -19,7 +19,8 @@ public class DMZDomainSearchPage extends TestBase{
     }
 
     //Methods
-    public DMZAddDomainPrivacyPage clickContinueToCheckout(){
+    public DMZAddDomainPrivacyPage clickContinueToCheckout() throws InterruptedException{
+    	Thread.sleep(4000);
     	System.out.println("clicking continue to checkout");
     	if(continueToCheckoutButton.isDisplayed()||continueToCheckoutButton.isEnabled()) {
     		continueToCheckoutButton.click();
@@ -28,6 +29,17 @@ public class DMZDomainSearchPage extends TestBase{
 			System.out.println("element not found");
 		}
     	return new DMZAddDomainPrivacyPage();
+    }
+    
+    public DMZHostingAndExtrasPage clickContinueToCheckoutWithoutDomainPrivacy(){
+    	System.out.println("clicking continue to checkout");
+    	if(continueToCheckoutButton.isDisplayed()||continueToCheckoutButton.isEnabled()) {
+    		continueToCheckoutButton.click();
+    	}
+		else {
+			System.out.println("element not found");
+		}
+    	return new DMZHostingAndExtrasPage();
     }
     
 }

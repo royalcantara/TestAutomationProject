@@ -65,50 +65,75 @@ public class DomainzSalesDBJourneyTest extends TestBase{
 	}
 			
 	@Parameters({"environment"})
-	@Test(priority=1, enabled = true)
-	public void verifyDomainRegistrationInSalesDBForExistingCustomerExistingCard(String environment) throws InterruptedException{
+	@Test(priority=1, enabled = false)
+	public void verifySingleDomainOrderInSalesDB (String environment) throws InterruptedException{
+		
+		String strDomainName = null;
+		String strTld = null;
+		String strRegistrationPeriod = null;
+		String strGreenCode = null;
+		String strPaymentMethod = null;
+		String strRegistrantDetails = "Domainz";
+		String strWorkflowId = null;
+		String strTransactionid = null;
+		
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
 		Date d = new Date();
-		String strDomainName = "TestPGDomainz" + df.format(d);
-		String strTld = "com";
-		String greenCode = "MUL-487";
-		String paymentMethod = "MasterCard: 555555******4444 12/2032";
-		String registrantDetails = "Netregistry";
-		String workflowid;
-		String transactionid;
+		strDomainName = "TestPGDomainz" + df.format(d);
+		
+		//Initial test data assignment
+		if (environment.equals("uat")) {
+			strTld = "com";
+			strRegistrationPeriod = "1";
+			strGreenCode = "DOM-1302";
+			strPaymentMethod = "Visa: 411111******1111 12/2020";
+		}
+		else if (environment.equals("stagingdomainz")) {
+			strTld = "com";
+			strRegistrationPeriod = "1";
+			strGreenCode = "PG8-02";
+			strPaymentMethod = "Visa: 401200******7777 02/2020";
+		}
  
 		System.out.println("Test01: Sales DB");
 		initialization(environment, "salesdb");
 		csloginpage = new CSLoginPage();
 		csloginpage.setDefaultLoginDetails("stage");
 		csnrcrmpage = csloginpage.clickLoginButton();
-		csnrcrmpage.setGreenCode(greenCode);
+		csnrcrmpage.setGreenCode(strGreenCode);
 		cscreatedomainwindowpage = csnrcrmpage.clickNewDomainNPSButton();
-		cscreatedomainwindowpage.setDomainDetails(strDomainName, strTld, "1", paymentMethod);
+		cscreatedomainwindowpage.setDomainDetails(strDomainName, strTld, strRegistrationPeriod, strPaymentMethod);
 		csregistrantdetailspage = csnrcrmpage.clickRegistrantDetails(strDomainName, "Update Details");
-		csnrcrmpage = csregistrantdetailspage.setRegistrantDetails(registrantDetails);
+		csnrcrmpage = csregistrantdetailspage.setRegistrantDetails(strRegistrantDetails);
 		csshowdomainservicespage = csnrcrmpage.clickShowDomainServices(strDomainName);
 		csworkflownotificationpage = csshowdomainservicespage.clickConfirmAllServices();
-		workflowid = csworkflownotificationpage.getWorkflowID();
+		strWorkflowId = csworkflownotificationpage.getWorkflowID();
 		csworkflownotificationpage.clickOKButton();
 		driver.close();
 		
 		initialization(environment, "consoleadmin");
 		caloginpage = new CALoginPage();
 		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
-		caworkflowadminpage = caheaderpage.searchWorkflow(workflowid);
-		caworkflowadminpage.processDomainRegistrationWF(workflowid);
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
 		
+		if ((environment.equals("stagingdomainz")) && (strTld.equals("com"))) {
+			caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
+			caworkflowadminpage.processMarkAsRegistered(strWorkflowId);
+		}
+		else {
+			caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
+		}
+
 		//Verify if domain registration workflow is completed
-		caworkflowadminpage = caheaderpage.searchWorkflow(workflowid);
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
 		
 		//Get transaction id via pre-auth number in workflow
-		caworkflowadminpage = caheaderpage.searchWorkflow(workflowid);
-		Assert.assertTrue(caworkflowadminpage.isWorkflowIDExist(workflowid), "Workflow ID not found");
-		transactionid = caworkflowadminpage.getPreAuthNumber(workflowid);
-		System.out.println("Transaction ID: " + transactionid);
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
+		Assert.assertTrue(caworkflowadminpage.isWorkflowIDExist(strWorkflowId), "Workflow ID not found");
+		strTransactionid = caworkflowadminpage.getPreAuthNumber(strWorkflowId);
+		System.out.println("Transaction ID: " + strTransactionid);
 		driver.close();
 		
 		//Verify if the transaction id status in Braintree is Settling
@@ -117,30 +142,336 @@ public class DomainzSalesDBJourneyTest extends TestBase{
 		btloginpage.setDefaultLoginDetails("stage");
 		btmaintabpage = btloginpage.clickLoginButton();
 		bttransactionssearchpage = btmaintabpage.clickTransactionsLink();
-		bttransactionssearchpage.searchTransactionID(transactionid);
+		bttransactionssearchpage.searchTransactionID(strTransactionid);
 		btfoundtransactionpage = bttransactionssearchpage.clickSearchButton();
 		Assert.assertTrue(btfoundtransactionpage.isTransactionIDFound(), "Transaction ID not found");	
-		Assert.assertEquals(btfoundtransactionpage.getTransactionIDStatus(transactionid), "Settling", btfoundtransactionpage.getTransactionIDStatus(transactionid));
+		Assert.assertEquals(btfoundtransactionpage.getTransactionIDStatus(strTransactionid), "Settling", btfoundtransactionpage.getTransactionIDStatus(strTransactionid));
 		driver.close();
 		
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=2, enabled = true)
-	public void verifyDomainRegistrationInSalesDBForMigratedCustomerNewCard(String environment) throws InterruptedException{
+	@Test(priority=2, enabled = false)
+	public void verifySingleDomainandSingleProductOrderInSalesDB (String environment) throws InterruptedException{
+
+		String strDomainName = null;
+		String strTld = null;
+		String strRegistrationPeriod = null;
+		String strMajorProduct = null;
+		String strProductPeriod = null;
+		String strGreenCode = null;
+		String strPaymentMethod = null;
+		String strRegistrantDetails = "Domainz";
+		String strWorkflowId = null;
+		String strTransactionid = null;
 		
-		String accountreference = "PG9-00";
-		String password = "rENTON11";
 		
-		initialization(environment, "cartlogin");
-		dmzloginpage = new DMZLoginPage();
-		dmzloginpage.setLoginDetails(accountreference, password);
-		dmzheaderpage = dmzloginpage.clickLoginButton();
-		dmzaccountpage = dmzheaderpage.clickAccountTab();
+		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
+		Date d = new Date();
+		strDomainName = "TestPGDomainz" + df.format(d);
+		
+		//Initial test data assignment
+		if (environment.equals("uat")) {
+			strTld = "com";
+			strRegistrationPeriod = "1 x Y";
+			strGreenCode = "DOM-1302";
+			strMajorProduct = "Basic Cloud Hosting";
+			strProductPeriod = "1 x M";
+			strPaymentMethod = "Visa: 411111******1111 12/2020";
+		}
+		else if (environment.equals("stagingdomainz")) {
+			strTld = "com";
+			strRegistrationPeriod = "1 x Y";
+			strGreenCode = "PG8-02";
+			strMajorProduct = "Basic Cloud Hosting";
+			strProductPeriod = "1 x M";
+			strPaymentMethod = "Visa: 401200******7777 02/2020";
+		}
+ 
+		System.out.println("Test01: Sales DB");
+		initialization(environment, "salesdb");
+		csloginpage = new CSLoginPage();
+		csloginpage.setDefaultLoginDetails("stage");
+		csnrcrmpage = csloginpage.clickLoginButton();
+		csnrcrmpage.setGreenCode(strGreenCode);
+		cscreatedomainwindowpage = csnrcrmpage.clickNewDomainNPSButton();
+		cscreatedomainwindowpage.setDomainandMajorProductDetails(strDomainName, strTld, strRegistrationPeriod, strMajorProduct, strProductPeriod, strPaymentMethod);
+		csregistrantdetailspage = csnrcrmpage.clickRegistrantDetails(strDomainName, "Update Details");
+		csnrcrmpage = csregistrantdetailspage.setRegistrantDetails(strRegistrantDetails);
+		csshowdomainservicespage = csnrcrmpage.clickShowDomainServices(strDomainName);
+		csworkflownotificationpage = csshowdomainservicespage.clickConfirmAllServices();
+		strWorkflowId = csworkflownotificationpage.getWorkflowID();
+		csworkflownotificationpage.clickOKButton();
 		driver.close();
 		
+		initialization(environment, "consoleadmin");
+		caloginpage = new CALoginPage();
+		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
 		
+		//Process domain registration
+		if ((environment.equals("stagingdomainz")) && (strTld.equals("com"))) {
+			caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
+			caworkflowadminpage.processMarkAsRegistered(strWorkflowId);
+		}
+		else {
+			caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
+		}
+
+		//Verify if domain registration workflow is completed
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
+		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
+				
+		//Process productsetup2
+		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName + "." + strTld);
+		caworkflowadminpage.processProductSetup2();
+		
+		//Verify if productsetup2 workflow is approved
+		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName + "." + strTld);
+		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "approved", caworkflowadminpage.getWorkflowStatus("productsetup2"));
+
+		//Get transaction id via pre-auth number in workflow
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
+		Assert.assertTrue(caworkflowadminpage.isWorkflowIDExist(strWorkflowId), "Workflow ID not found");
+		strTransactionid = caworkflowadminpage.getPreAuthNumber(strWorkflowId);
+		System.out.println("Transaction ID: " + strTransactionid);
+		driver.close();
+		
+		//Verify if the transaction id status in Braintree is Settling
+		initialization(environment, "braintree");
+		btloginpage = new BTLoginPage();
+		btloginpage.setDefaultLoginDetails("stage");
+		btmaintabpage = btloginpage.clickLoginButton();
+		bttransactionssearchpage = btmaintabpage.clickTransactionsLink();
+		bttransactionssearchpage.searchTransactionID(strTransactionid);
+		btfoundtransactionpage = bttransactionssearchpage.clickSearchButton();
+		Assert.assertTrue(btfoundtransactionpage.isTransactionIDFound(), "Transaction ID not found");	
+		Assert.assertEquals(btfoundtransactionpage.getTransactionIDStatus(strTransactionid), "Settling", btfoundtransactionpage.getTransactionIDStatus(strTransactionid));
+		driver.close();
 	}
+	
+	@Parameters({"environment"})
+	@Test(priority=3, enabled = false)
+	public void verifySingleDomainandMultipleProductsOrderInSalesDB (String environment) throws InterruptedException{
+
+		String strDomainName = null;
+		String strTld = null;
+		String strRegistrationPeriod = null;
+		String strMajorProduct = null;
+		String strProductPeriod = null;
+		String strGreenCode = null;
+		String strPaymentMethod = null;
+		String strRegistrantDetails = "Domainz";
+		String strAddOnProduct = null;
+		String strWorkflowId = null;
+		String strTransactionid = null;
+		
+		
+		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
+		Date d = new Date();
+		strDomainName = "TestPGDomainz" + df.format(d);
+		
+		//Initial test data assignment
+		if (environment.equals("uat")) {
+			strTld = "com";
+			strRegistrationPeriod = "1 x Y";
+			strGreenCode = "DOM-1302";
+			strMajorProduct = "Basic Cloud Hosting";
+			strProductPeriod = "1 x M";
+			strPaymentMethod = "Visa: 411111******1111 12/2020";
+		}
+		else if (environment.equals("stagingdomainz")) {
+			strTld = "com";
+			strRegistrationPeriod = "1 x Y";
+			strGreenCode = "PG8-02";
+			strMajorProduct = "Basic Cloud Hosting";
+			strProductPeriod = "1 x M";
+			strPaymentMethod = "Visa: 401200******7777 02/2020";
+			strAddOnProduct = "SEO-ASSESSMENT";
+		}
+ 
+		System.out.println("Test01: Sales DB");
+		initialization(environment, "salesdb");
+		csloginpage = new CSLoginPage();
+		csloginpage.setDefaultLoginDetails("stage");
+		csnrcrmpage = csloginpage.clickLoginButton();
+		csnrcrmpage.setGreenCode(strGreenCode);
+		cscreatedomainwindowpage = csnrcrmpage.clickNewDomainNPSButton();
+		cscreatedomainwindowpage.setDomainandMajorProductDetails(strDomainName, strTld, strRegistrationPeriod, strMajorProduct, strProductPeriod, strPaymentMethod);
+		csregistrantdetailspage = csnrcrmpage.clickRegistrantDetails(strDomainName, "Update Details");
+		csnrcrmpage = csregistrantdetailspage.setRegistrantDetails(strRegistrantDetails);
+		
+		if (environment.equals("stagingdomainz")) {
+			csshowdomainservicespage = csnrcrmpage.clickShowDomainServices(strDomainName);
+			csshowdomainservicespage.setAddOnProduct(strAddOnProduct);
+		}
+		else {
+			csshowdomainservicespage = csnrcrmpage.clickShowDomainServices(strDomainName);
+		}
+		
+		csworkflownotificationpage = csshowdomainservicespage.clickConfirmAllServices();
+		strWorkflowId = csworkflownotificationpage.getWorkflowID();
+		csworkflownotificationpage.clickOKButton();
+		driver.close();
+		
+		initialization(environment, "consoleadmin");
+		caloginpage = new CALoginPage();
+		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
+		
+		//Process domain registration
+		if ((environment.equals("stagingdomainz")) && (strTld.equals("com"))) {
+			caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
+			caworkflowadminpage.processMarkAsRegistered(strWorkflowId);
+		}
+		else {
+			caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
+		}
+
+		//Verify if domain registration workflow is completed
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
+		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
+				
+		//Process productsetup2
+		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName + "." + strTld);
+		caworkflowadminpage.processProductSetup2();
+		
+		//Verify if productsetup2 workflow is approved
+		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName + "." + strTld);
+		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "approved", caworkflowadminpage.getWorkflowStatus("productsetup2"));
+
+		//Get transaction id via pre-auth number in workflow
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
+		Assert.assertTrue(caworkflowadminpage.isWorkflowIDExist(strWorkflowId), "Workflow ID not found");
+		strTransactionid = caworkflowadminpage.getPreAuthNumber(strWorkflowId);
+		System.out.println("Transaction ID: " + strTransactionid);
+		driver.close();
+		
+		//Verify if the transaction id status in Braintree is Settling
+		initialization(environment, "braintree");
+		btloginpage = new BTLoginPage();
+		btloginpage.setDefaultLoginDetails("stage");
+		btmaintabpage = btloginpage.clickLoginButton();
+		bttransactionssearchpage = btmaintabpage.clickTransactionsLink();
+		bttransactionssearchpage.searchTransactionID(strTransactionid);
+		btfoundtransactionpage = bttransactionssearchpage.clickSearchButton();
+		Assert.assertTrue(btfoundtransactionpage.isTransactionIDFound(), "Transaction ID not found");	
+		Assert.assertEquals(btfoundtransactionpage.getTransactionIDStatus(strTransactionid), "Settling", btfoundtransactionpage.getTransactionIDStatus(strTransactionid));
+		driver.close();
+	}
+	
+	@Parameters({"environment"})
+	@Test(priority=4, enabled = true)
+	public void verifyMultipleProductsOrderInSalesDB (String environment) throws InterruptedException{
+
+		String strDomainName = null;
+		String strTld = null;
+		String strRegistrationPeriod = null;
+		String strMajorProduct = null;
+		String strProductPeriod = null;
+		String strGreenCode = null;
+		String strPaymentMethod = null;
+		String strRegistrantDetails = "Domainz";
+		String strAddOnProduct = null;
+		String strWorkflowId = null;
+		String strTransactionid = null;
+		
+		
+		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
+		Date d = new Date();
+		strDomainName = "TestPGDomainz" + df.format(d);
+		
+		//Initial test data assignment
+		if (environment.equals("uat")) {
+			strTld = "com";
+			strRegistrationPeriod = "Do Not Register";
+			strGreenCode = "DOM-1302";
+			strMajorProduct = "Basic Cloud Hosting";
+			strProductPeriod = "1 x M";
+			strPaymentMethod = "Visa: 411111******1111 12/2020";
+		}
+		else if (environment.equals("stagingdomainz")) {
+			strTld = "com";
+			strRegistrationPeriod = "Do Not Register";
+			strGreenCode = "PG8-02";
+			strMajorProduct = "Basic Cloud Hosting";
+			strProductPeriod = "1 x M";
+			strPaymentMethod = "Visa: 401200******7777 02/2020";
+			strAddOnProduct = "SEO-ASSESSMENT";
+		}
+ 
+		System.out.println("Test01: Sales DB");
+		initialization(environment, "salesdb");
+		csloginpage = new CSLoginPage();
+		csloginpage.setDefaultLoginDetails("stage");
+		csnrcrmpage = csloginpage.clickLoginButton();
+		csnrcrmpage.setGreenCode(strGreenCode);
+		cscreatedomainwindowpage = csnrcrmpage.clickNewDomainNPSButton();
+		cscreatedomainwindowpage.setDomainandMajorProductDetails(strDomainName, strTld, strRegistrationPeriod, strMajorProduct, strProductPeriod, strPaymentMethod);
+		csregistrantdetailspage = csnrcrmpage.clickRegistrantDetails(strDomainName, "Update Details");
+		csnrcrmpage = csregistrantdetailspage.setRegistrantDetails(strRegistrantDetails);
+		
+		if (environment.equals("stagingdomainz")) {
+			csshowdomainservicespage = csnrcrmpage.clickShowDomainServices(strDomainName);
+			csshowdomainservicespage.setAddOnProduct(strAddOnProduct);
+		}
+		else {
+			csshowdomainservicespage = csnrcrmpage.clickShowDomainServices(strDomainName);
+		}
+		
+		csworkflownotificationpage = csshowdomainservicespage.clickConfirmAllServices();
+		strWorkflowId = csworkflownotificationpage.getWorkflowID();
+		csworkflownotificationpage.clickOKButton();
+		driver.close();
+		
+		initialization(environment, "consoleadmin");
+		caloginpage = new CALoginPage();
+		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
+				
+		//Process productsetup2
+		caworkflowadminpage.processProductSetup2ByWFID(strWorkflowId);
+		
+		//Verify if productsetup2 workflow is approved
+		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName + "." + strTld);
+		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "approved", caworkflowadminpage.getWorkflowStatus("productsetup2"));
+
+		//Get transaction id via pre-auth number in workflow
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
+		Assert.assertTrue(caworkflowadminpage.isWorkflowIDExist(strWorkflowId), "Workflow ID not found");
+		strTransactionid = caworkflowadminpage.getPreAuthNumber(strWorkflowId);
+		System.out.println("Transaction ID: " + strTransactionid);
+		driver.close();
+		
+		//Verify if the transaction id status in Braintree is Settling
+		initialization(environment, "braintree");
+		btloginpage = new BTLoginPage();
+		btloginpage.setDefaultLoginDetails("stage");
+		btmaintabpage = btloginpage.clickLoginButton();
+		bttransactionssearchpage = btmaintabpage.clickTransactionsLink();
+		bttransactionssearchpage.searchTransactionID(strTransactionid);
+		btfoundtransactionpage = bttransactionssearchpage.clickSearchButton();
+		Assert.assertTrue(btfoundtransactionpage.isTransactionIDFound(), "Transaction ID not found");	
+		Assert.assertEquals(btfoundtransactionpage.getTransactionIDStatus(strTransactionid), "Settling", btfoundtransactionpage.getTransactionIDStatus(strTransactionid));
+		driver.close();
+	}
+	
+//	@Parameters({"environment"})
+//	@Test(priority=2, enabled = false)
+//	public void verifyDomainRegistrationInSalesDBForMigratedCustomerNewCard(String environment) throws InterruptedException{
+//		
+//		String accountreference = "PG9-00";
+//		String password = "rENTON11";
+//		
+//		initialization(environment, "cartlogin");
+//		dmzloginpage = new DMZLoginPage();
+//		dmzloginpage.setLoginDetails(accountreference, password);
+//		dmzheaderpage = dmzloginpage.clickLoginButton();
+//		dmzaccountpage = dmzheaderpage.clickAccountTab();
+//		driver.close();
+//		
+//		
+//	}
 	
 
 	

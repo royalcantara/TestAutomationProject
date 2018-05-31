@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Payment Gateway Project Test Automation QA Staging Netregistry Test Suite]">
+  <parameter name="environment" value="stagingnetregistryold"/>
+  <listeners>
+    <listener class-name="com.reports.extentreportslistener.ExtentReportListener"/>
+  </listeners>
+  <test thread-count="5" name="Payment Gateway Test Cases(failed)">
+    <classes>
+      <class name="com.paymentgateway.ui.nrg.testcases.NetregistryOldCustomerCartJourneyTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="verifyHostingSignupForNewCustomer"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.paymentgateway.ui.nrg.testcases.NetregistryOldCustomerCartJourneyTest -->
+    </classes>
+  </test> <!-- Payment Gateway Test Cases(failed) -->
+</suite> <!-- Failed suite [Payment Gateway Project Test Automation QA Staging Netregistry Test Suite] -->

@@ -9,7 +9,8 @@
 	
 	<test name="Payment Gateway Test Cases">
 		<classes>
-			<class name="com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest"></class>
+			<!-- <class name="com.paymentgateway.ui.dmz.testcases.DomainzCustomerCartJourneyTest"></class> -->
+			<class name="com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest"></class>
 		</classes>
 	</test>  
 </suite> 

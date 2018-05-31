@@ -10,6 +10,8 @@
 	<test name="Payment Gateway Test Cases">
 		<classes>
 			<class name="com.paymentgateway.ui.nrg.testcases.NetregistryOldCustomerCartJourneyTest"></class>
+		
+<!-- 			<class name="com.paymentgateway.ui.nrg.testcases.NetregistrySalesDBJourneyTest"></class> -->
 		</classes>
 	</test>  
 </suite> 

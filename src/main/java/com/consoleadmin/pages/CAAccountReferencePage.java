@@ -9,7 +9,7 @@ public class CAAccountReferencePage extends TestBase{
 	//Objects
 		
 	//Initializing Page Objects
-    public CAAccountReferencePage(){
+	public CAAccountReferencePage(){
     	PageFactory.initElements(driver, this);
     }
 }

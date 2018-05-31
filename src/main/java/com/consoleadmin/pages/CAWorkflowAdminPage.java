@@ -39,6 +39,10 @@ public class CAWorkflowAdminPage extends TestBase{
     	executeActionButton.click();
     	Thread.sleep(6000);
 
+    }
+
+    public void processMarkAsRegistered(String strworkflowid) throws InterruptedException {
+    	
     	//Click Execute for Mark as Registered
     	driver.findElement(By.xpath("//a[@href='/admin/execute/workflow/getActionForm?action_id=7014&workflow_id="+strworkflowid+"']")).click();
     	Thread.sleep(5000);
@@ -46,68 +50,67 @@ public class CAWorkflowAdminPage extends TestBase{
     	//Click Execute Action
     	executeActionButton.click();
     	Thread.sleep(5000);
+    }
+    
+    public void processDelegateDomain() throws InterruptedException {
+
+    	//Click Execute for Delegate Domain
+    	driver.findElement(By.xpath("//tbody/tr[4]/td[contains(text(),'I have manually delegated this domain')]/parent::tr/td[3]/a[text()='Execute']")).click();
+    	Thread.sleep(3000);
+    		
+    	//Click Execute Action
+    	executeActionButton.click();
+    	Thread.sleep(6000);
 
     }
     	
-    	public void processDelegateDomain() throws InterruptedException {
+    public void processProductSetup2DIFM() throws InterruptedException {
     		
-    		//Click Execute for Delegate Domain
-    		driver.findElement(By.xpath("//tbody/tr[4]/td[contains(text(),'I have manually delegated this domain')]/parent::tr/td[3]/a[text()='Execute']")).click();
-    		Thread.sleep(3000);
+    	//Click DIFM workflowid
+    	driver.findElement(By.xpath("//table/tbody/tr/td/table[3]/tbody/tr[3]/td[1]/a")).click();
+    	Thread.sleep(3000);
     		
-    		//Click Execute Action
-    		executeActionButton.click();
-    		Thread.sleep(6000);
-
-    	}
-    	
-    	public void processProductSetup2DIFM() throws InterruptedException {
+    	//Click Execute for Run Setup
+    	driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'run setup')]/parent::tr/td[3]/a[text()='Execute']")).click();
+    	Thread.sleep(3000);
     		
-    		//Click DIFM workflowid
-    		driver.findElement(By.xpath("//table/tbody/tr/td/table[3]/tbody/tr[3]/td[1]/a")).click();
-    		Thread.sleep(3000);
-    		
-    		//Click Execute for Run Setup
-    		driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'run setup')]/parent::tr/td[3]/a[text()='Execute']")).click();
-    		Thread.sleep(3000);
-    		
-    		//Click Execute Action
-    		executeActionButton.click();
-    		Thread.sleep(3000);
+    	//Click Execute Action
+    	executeActionButton.click();
+    	Thread.sleep(3000);
     			
-    	}
+    }
     	
-    	public void processProductSetup2() throws InterruptedException {
+    public void processProductSetup2() throws InterruptedException {
     		
-    		//Click DIFM workflowid
-    		driver.findElement(By.xpath("//table/tbody/tr/td/table[3]/tbody/tr[3]/td[1]/a")).click();
-    		Thread.sleep(3000);
+    	//Click workflowid
+    	driver.findElement(By.xpath("//table/tbody/tr/td/table[3]/tbody/tr[3]/td[1]/a")).click();
+    	Thread.sleep(3000);
     		
-    		//Click Execute for Run Setup
-    		driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'run setup')]/parent::tr/td[3]/a[text()='Execute']")).click();
-    		Thread.sleep(3000);
+    	//Click Execute for Run Setup
+    	driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'run setup')]/parent::tr/td[3]/a[text()='Execute']")).click();
+    	Thread.sleep(3000);
     		
-    		//Click Execute Action
-    		executeActionButton.click();
-    		Thread.sleep(3000);
+    	//Click Execute Action
+    	executeActionButton.click();
+    	Thread.sleep(3000);
     			
-    	}
+    }
     	
-    	public void processProductSetup2ByWFID(String strworkflowid) throws InterruptedException {
+    public void processProductSetup2ByWFID(String strworkflowid) throws InterruptedException {
     		
-    		//Click ProductSetup2 by Workflow ID
-    		driver.findElement(By.linkText(strworkflowid)).click();			
-    		Thread.sleep(3000);
+    	//Click ProductSetup2 by Workflow ID
+    	driver.findElement(By.linkText(strworkflowid)).click();			
+    	Thread.sleep(3000);
     		
-    		//Click Execute for Run Setup
-    		driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'run setup')]/parent::tr/td[3]/a[text()='Execute']")).click();
-    		Thread.sleep(3000);
+    	//Click Execute for Run Setup
+    	driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'run setup')]/parent::tr/td[3]/a[text()='Execute']")).click();
+    	Thread.sleep(3000);
     		
-    		//Click Execute Action
-    		executeActionButton.click();
-    		Thread.sleep(3000);
+    	//Click Execute Action
+    	executeActionButton.click();
+    	Thread.sleep(3000);
     			
-    	}
+    }
     	
     	public void processProductSetup2O365() throws InterruptedException {
     		
@@ -177,35 +180,35 @@ public class CAWorkflowAdminPage extends TestBase{
 
         }
     	
-    	public String getWorkflowStatus(String strworkflowtype) throws InterruptedException {
+    public String getWorkflowStatus(String strworkflowtype) throws InterruptedException {
         	
-        	String count;
-        	String workflowtypetext;
-        	String workflowsteptext = strworkflowtype + " status: ";
+        String count;
+        String workflowtypetext;
+        String workflowsteptext = strworkflowtype + " status: ";
         	
-         	Thread.sleep(3000);
-         	List<WebElement> workflowtablerows = driver.findElements(By.xpath("//table/tbody/tr/td/table[3]/tbody/tr"));
-         	int rowcount = workflowtablerows.size();
-
-        	for (int i=2; i<=rowcount; i++) {
+        Thread.sleep(3000);
+        List<WebElement> workflowtablerows = driver.findElements(By.xpath("//table/tbody/tr/td/table[3]/tbody/tr"));
+        int rowcount = workflowtablerows.size();
+         	
+        for (int i=2; i<=rowcount; i++) {
         		
-        		count = String.valueOf(i);
-        		Thread.sleep(1000);
-        		workflowtypetext = driver.findElement(By.xpath("//table/tbody/tr/td/table[3]/tbody/tr[" + count + "]/td[2]")).getText();		
-        		System.out.println("Workflow Type Text: " + workflowtypetext); 
+        count = String.valueOf(i);
+        Thread.sleep(1000);
+        workflowtypetext = driver.findElement(By.xpath("//table/tbody/tr/td/table[3]/tbody/tr[" + count + "]/td[2]")).getText();		
+        System.out.println("Workflow Type Text: " + workflowtypetext); 
         		
-        		if (workflowtypetext.equals(strworkflowtype)) {
-        			System.out.println("Workflow Type Found");
+        if (workflowtypetext.equals(strworkflowtype)) {
+        		System.out.println("Workflow Type Found");
         			
-        			workflowsteptext = driver.findElement(By.xpath("//table/tbody/tr/td/table[3]/tbody/tr[" + count + "]/td[5]")).getText();
-        			System.out.println("Workflow Step Text: " + workflowsteptext); 
+        		workflowsteptext = driver.findElement(By.xpath("//table/tbody/tr/td/table[3]/tbody/tr[" + count + "]/td[5]")).getText();
+        		System.out.println("Workflow Step Text: " + workflowsteptext); 
         					
-        		}
-    		}
+        	}
+    	}
         	
-        	return workflowsteptext;
+        return workflowsteptext;
 
-        }
+    }
     	
     	
     	public boolean verifyWorflowStatusViaID(String strworkflowid, String strworkflowstep) throws InterruptedException {
