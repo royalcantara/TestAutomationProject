@@ -91,7 +91,7 @@ public class NRGHostingAndExtrasPage extends TestBase{
  //   	new Select(productDropdown).selectByVisibleText("1 Month");
     	productDropdown.click(); 	
     	
-    	driver.findElement(By.xpath("//div[@class='x-combo-list-item']/*[contains(text(),'"+straddonproduct+"')]")).click();
+    	//driver.findElement(By.xpath("//div[@class='x-combo-list-item']/*[contains(text(),'"+straddonproduct+"')]")).click();
     }
        
     public NRGAccountContactPage clickContinueButton() {
