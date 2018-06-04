@@ -7,11 +7,14 @@
   </listeners>
   <test thread-count="5" name="Payment Gateway Test Cases(failed)">
     <classes>
-      <class name="com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest">
+      <class name="com.paymentgateway.ui.dmz.testcases.DomainzPG69CartTest">
         <methods>
-          <include name="verifySingleDomainandSingleProductOrderInSalesDB" invocation-numbers="0"/>
+          <include name="PG69_verifyBTCardNumberFieldUsingMoreThan16Digits" invocation-numbers="0"/>
+          <include name="PG69_verifyBTCardNumberFieldUsingLessThan16Digits" invocation-numbers="0"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
         </methods>
-      </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest -->
+      </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainzPG69CartTest -->
     </classes>
   </test> <!-- Payment Gateway Test Cases(failed) -->
 </suite> <!-- Failed suite [Payment Gateway Project Test Automation QA Staging Domainz Test Suite] -->

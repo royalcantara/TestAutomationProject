@@ -7,13 +7,11 @@
   </listeners>
   <test thread-count="5" name="Payment Gateway Test Cases(failed)">
     <classes>
-      <class name="com.paymentgateway.ui.nrg.testcases.NetregistryOldCustomerCartJourneyTest">
+      <class name="com.paymentgateway.ui.nrg.testcases.NetregistrySalesDBJourneyTest">
         <methods>
-          <include name="tearDown"/>
-          <include name="verifyHostingSignupForNewCustomer"/>
-          <include name="setUp"/>
+          <include name="verifySingleDomainOrderInSalesDB03" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.paymentgateway.ui.nrg.testcases.NetregistryOldCustomerCartJourneyTest -->
+      </class> <!-- com.paymentgateway.ui.nrg.testcases.NetregistrySalesDBJourneyTest -->
     </classes>
   </test> <!-- Payment Gateway Test Cases(failed) -->
 </suite> <!-- Failed suite [Payment Gateway Project Test Automation QA Staging Netregistry Test Suite] -->

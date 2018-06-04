@@ -96,7 +96,7 @@ public class DomainzSalesDBJourneyTest extends TestBase{
 			strPaymentMethod = "Visa: 401200******7777 02/2020";
 		}
  
-		System.out.println("Test01: Sales DB");
+		System.out.println("Test: verifySingleDomainOrderInSalesDB");
 		initialization(environment, "salesdb");
 		csloginpage = new CSLoginPage();
 		csloginpage.setDefaultLoginDetails("stage");
@@ -188,7 +188,7 @@ public class DomainzSalesDBJourneyTest extends TestBase{
 			strPaymentMethod = "Visa: 401200******7777 02/2020";
 		}
  
-		System.out.println("Test01: Sales DB");
+		System.out.println("Test: verifySingleDomainandSingleProductOrderInSalesDB");
 		initialization(environment, "salesdb");
 		csloginpage = new CSLoginPage();
 		csloginpage.setDefaultLoginDetails("stage");
@@ -290,7 +290,7 @@ public class DomainzSalesDBJourneyTest extends TestBase{
 			strAddOnProduct = "SEO-ASSESSMENT";
 		}
  
-		System.out.println("Test01: Sales DB");
+		System.out.println("Test: verifySingleDomainandMultipleProductsOrderInSalesDB");
 		initialization(environment, "salesdb");
 		csloginpage = new CSLoginPage();
 		csloginpage.setDefaultLoginDetails("stage");
@@ -400,7 +400,7 @@ public class DomainzSalesDBJourneyTest extends TestBase{
 			strAddOnProduct = "SEO-ASSESSMENT";
 		}
  
-		System.out.println("Test01: Sales DB");
+		System.out.println("Test: verifyMultipleProductsOrderInSalesDB");
 		initialization(environment, "salesdb");
 		csloginpage = new CSLoginPage();
 		csloginpage.setDefaultLoginDetails("stage");

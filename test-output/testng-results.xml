@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="3" total="4" passed="1">
+<testng-results skipped="0" failed="0" ignored="1" total="4" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Payment Gateway Project Test Automation QA Staging Domainz Test Suite" duration-ms="169560" started-at="2018-05-31T05:29:06Z" finished-at="2018-05-31T05:31:56Z">
+  <suite name="Payment Gateway Project Test Automation QA UAT Test Suite" duration-ms="661142" started-at="2018-06-03T23:56:58Z" finished-at="2018-06-04T00:07:59Z">
     <groups>
     </groups>
-    <test name="Payment Gateway Test Cases" duration-ms="169560" started-at="2018-05-31T05:29:06Z" finished-at="2018-05-31T05:31:56Z">
+    <test name="Payment Gateway Test Cases" duration-ms="661142" started-at="2018-06-03T23:56:58Z" finished-at="2018-06-04T00:07:59Z">
       <class name="com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest">
-        <test-method status="PASS" signature="verifyMultipleProductsOrderInSalesDB(java.lang.String)[pri:4, instance:com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest@4dfa3a9d]" name="verifyMultipleProductsOrderInSalesDB" duration-ms="169544" started-at="2018-05-31T05:29:06Z" finished-at="2018-05-31T05:31:56Z">
+        <test-method status="PASS" signature="verifySingleDomainandSingleProductOrderInSalesDB(java.lang.String)[pri:2, instance:com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest@4dfa3a9d]" name="verifySingleDomainandSingleProductOrderInSalesDB" duration-ms="267034" started-at="2018-06-03T23:56:58Z" finished-at="2018-06-04T00:01:25Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[stagingdomainz]]>
+                <![CDATA[uat]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySingleDomainandSingleProductOrderInSalesDB -->
+        <test-method status="PASS" signature="verifySingleDomainandMultipleProductsOrderInSalesDB(java.lang.String)[pri:3, instance:com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest@4dfa3a9d]" name="verifySingleDomainandMultipleProductsOrderInSalesDB" duration-ms="223661" started-at="2018-06-04T00:01:25Z" finished-at="2018-06-04T00:05:08Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySingleDomainandMultipleProductsOrderInSalesDB -->
+        <test-method status="PASS" signature="verifyMultipleProductsOrderInSalesDB(java.lang.String)[pri:4, instance:com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest@4dfa3a9d]" name="verifyMultipleProductsOrderInSalesDB" duration-ms="170418" started-at="2018-06-04T00:05:08Z" finished-at="2018-06-04T00:07:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat]]>
               </value>
             </param>
           </params>
@@ -20,5 +42,5 @@
         </test-method> <!-- verifyMultipleProductsOrderInSalesDB -->
       </class> <!-- com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest -->
     </test> <!-- Payment Gateway Test Cases -->
-  </suite> <!-- Payment Gateway Project Test Automation QA Staging Domainz Test Suite -->
+  </suite> <!-- Payment Gateway Project Test Automation QA UAT Test Suite -->
 </testng-results>
