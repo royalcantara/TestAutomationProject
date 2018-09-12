@@ -66,6 +66,9 @@ public class TestBase{
 		else if(entrypoint.equals("cartlogin")){
 			driver.get(testEnvironment.cartloginurl());
 		}
+		else if(entrypoint.equals("customerportalurl_netregistry")){
+			driver.get(testEnvironment.customerportalurl_netregistry());
+		}
 		else if(entrypoint.equals("salesdb")){
 			driver.get(testEnvironment.salesdburl());
 		}

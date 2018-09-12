@@ -32,6 +32,12 @@ public class NRGOnlineOrderPage extends TestBase{
     	tickTld(tldname);
     }
     
+    public void clearDefaultTldSelections(){
+    	tickTld(".com");
+    	tickTld(".com.au");
+    	tickTld(".net.au");
+    }
+    
     public void tickTld(String tldname){
     	WebElement tldUL = driver.findElement(By.xpath("//ul[@id='search-tlds']"));
     	List<WebElement> tldList = tldUL.findElements(By.tagName("li"));

@@ -144,7 +144,7 @@ public class NetregistrySalesDBJourneyTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=1, enabled = true)
+	@Test(priority=2, enabled = false)
 	public void verifySingleDomainOrderInSalesDB02 (String environment) throws InterruptedException{
 		
 		String strDomainName = null;
@@ -232,7 +232,7 @@ public class NetregistrySalesDBJourneyTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=1, enabled = true)
+	@Test(priority=3, enabled = false)
 	public void verifySingleDomainOrderInSalesDB03 (String environment) throws InterruptedException{
 		
 		String strDomainName = null;

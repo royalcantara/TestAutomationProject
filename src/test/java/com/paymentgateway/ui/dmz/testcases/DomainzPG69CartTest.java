@@ -524,7 +524,7 @@ public class DomainzPG69CartTest extends TestBase{
 		Assert.assertTrue(dmzbillingpage.isCardDetailHighlightedInRed("Card Number"));
 		
 		//Verify if error message is displayed for the following credit card field
-		Assert.assertTrue(dmzbillingpage.isErroMessageCorrect("Card Number", "Card Number is a required field"));
+		Assert.assertTrue(dmzbillingpage.isErroMessageCorrect("Card Number", "Card Number is invalid"));
 
 	}
 	
@@ -555,7 +555,7 @@ public class DomainzPG69CartTest extends TestBase{
 		dmzhostingandextraspage= dmzadddomainprivacypage.clickNoThanks();
 		dmzaccountcontactpage= dmzhostingandextraspage.clickContinueButton();
 		dmzaccountcontactpage.setCustomerDefaultInformation();
-		dmzregistrantcontactpage = dmzaccountcontactpage.clickContinueButton();		
+		dmzregistrantcontactpage = dmzaccountcontactpage.clickContinueButton();		 
 		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
 		dmzbillingpage.setBTFormCreditCardDetails(strCardOwner, strCardNumber, strCardMonthExpiry, strCardYearExpiry, strCardSecurityCode);
 		dmzbillingpage.tickAutoRenew();
@@ -565,7 +565,7 @@ public class DomainzPG69CartTest extends TestBase{
 		Assert.assertTrue(dmzbillingpage.isCardDetailHighlightedInRed("Card Number"));
 		
 		//Verify if error message is displayed for the following credit card field
-		Assert.assertTrue(dmzbillingpage.isErroMessageCorrect("Card Number", "Card Number is a required field"));
+		Assert.assertTrue(dmzbillingpage.isErroMessageCorrect("Card Number", "Card Number is invalid"));
 	}
 	
 	@AfterMethod

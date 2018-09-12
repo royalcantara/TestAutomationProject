@@ -9,7 +9,7 @@
     <classes>
       <class name="com.paymentgateway.ui.nrg.testcases.NetregistrySalesDBJourneyTest">
         <methods>
-          <include name="verifySingleDomainOrderInSalesDB03" invocation-numbers="0"/>
+          <include name="verifySingleDomainOrderInSalesDB" invocation-numbers="0"/>
         </methods>
       </class> <!-- com.paymentgateway.ui.nrg.testcases.NetregistrySalesDBJourneyTest -->
     </classes>

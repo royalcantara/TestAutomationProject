@@ -13,6 +13,9 @@ public class NRGAddDomainPrivacyPage extends TestBase{
     @FindBy(how=How.XPATH, using = "//div[@class='buttonRow']/input[@value='No thanks']")
     WebElement noThanksButton;
     
+    @FindBy(how=How.XPATH, using = "//div[@class='buttonRow']/input[@value='Add to cart']")
+    WebElement addToCartButton;
+    
 	//Initializing Page Objects
     public NRGAddDomainPrivacyPage(){
         PageFactory.initElements(driver, this);
@@ -23,6 +26,17 @@ public class NRGAddDomainPrivacyPage extends TestBase{
     	System.out.println("clicking No Thanks");
     	if(noThanksButton.isDisplayed()||noThanksButton.isEnabled()) {
     		noThanksButton.click();
+    	}
+		else {
+			System.out.println("element not found");
+		}
+    	return new NRGHostingAndExtrasPage();
+    }
+    
+    public NRGHostingAndExtrasPage clickAddToCart(){
+    	System.out.println("clicking Add to Cart");
+    	if(addToCartButton.isDisplayed()||addToCartButton.isEnabled()) {
+    		addToCartButton.click();
     	}
 		else {
 			System.out.println("element not found");

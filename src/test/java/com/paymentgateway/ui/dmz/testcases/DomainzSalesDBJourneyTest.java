@@ -80,20 +80,26 @@ public class DomainzSalesDBJourneyTest extends TestBase{
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
 		Date d = new Date();
-		strDomainName = "TestPGDomainz" + df.format(d);
+//		strDomainName = "TestPGDomainz" + df.format(d);
+		/* For PG-423 testing */
+		strDomainName = "TestPG-243-" + df.format(d);
 		
 		//Initial test data assignment
 		if (environment.equals("uat")) {
 			strTld = "com";
 			strRegistrationPeriod = "1";
 			strGreenCode = "DOM-1302";
-			strPaymentMethod = "Visa: 411111******1111 12/2020";
+//			strPaymentMethod = "Visa: 411111******1111 12/2020";
+			strPaymentMethod = "Invoice";
 		}
 		else if (environment.equals("stagingdomainz")) {
 			strTld = "com";
 			strRegistrationPeriod = "1";
-			strGreenCode = "PG8-02";
-			strPaymentMethod = "Visa: 401200******7777 02/2020";
+//			strGreenCode = "PG8-02";
+//			strPaymentMethod = "Visa: 401200******7777 02/2020";
+			/* For PG-423 testing */
+			strGreenCode = "101-28";
+			strPaymentMethod = "Visa: 401200******7777 03/2019";
 		}
  
 		System.out.println("Test: verifySingleDomainOrderInSalesDB");
@@ -112,46 +118,46 @@ public class DomainzSalesDBJourneyTest extends TestBase{
 		csworkflownotificationpage.clickOKButton();
 		driver.close();
 		
-		initialization(environment, "consoleadmin");
-		caloginpage = new CALoginPage();
-		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
-		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
-		
-		if ((environment.equals("stagingdomainz")) && (strTld.equals("com"))) {
-			caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
-			caworkflowadminpage.processMarkAsRegistered(strWorkflowId);
-		}
-		else {
-			caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
-		}
-
-		//Verify if domain registration workflow is completed
-		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
-		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
-		
-		//Get transaction id via pre-auth number in workflow
-		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
-		Assert.assertTrue(caworkflowadminpage.isWorkflowIDExist(strWorkflowId), "Workflow ID not found");
-		strTransactionid = caworkflowadminpage.getPreAuthNumber(strWorkflowId);
-		System.out.println("Transaction ID: " + strTransactionid);
-		driver.close();
-		
-		//Verify if the transaction id status in Braintree is Settling
-		initialization(environment, "braintree");
-		btloginpage = new BTLoginPage();
-		btloginpage.setDefaultLoginDetails("stage");
-		btmaintabpage = btloginpage.clickLoginButton();
-		bttransactionssearchpage = btmaintabpage.clickTransactionsLink();
-		bttransactionssearchpage.searchTransactionID(strTransactionid);
-		btfoundtransactionpage = bttransactionssearchpage.clickSearchButton();
-		Assert.assertTrue(btfoundtransactionpage.isTransactionIDFound(), "Transaction ID not found");	
-		Assert.assertEquals(btfoundtransactionpage.getTransactionIDStatus(strTransactionid), "Settling", btfoundtransactionpage.getTransactionIDStatus(strTransactionid));
-		driver.close();
+//		initialization(environment, "consoleadmin");
+//		caloginpage = new CALoginPage();
+//		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
+//		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
+//		
+//		if ((environment.equals("stagingdomainz")) && (strTld.equals("com"))) {
+//			caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
+//			caworkflowadminpage.processMarkAsRegistered(strWorkflowId);
+//		}
+//		else {
+//			caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
+//		}
+//
+//		//Verify if domain registration workflow is completed
+//		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
+//		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
+//		
+//		//Get transaction id via pre-auth number in workflow
+//		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
+//		Assert.assertTrue(caworkflowadminpage.isWorkflowIDExist(strWorkflowId), "Workflow ID not found");
+//		strTransactionid = caworkflowadminpage.getPreAuthNumber(strWorkflowId);
+//		System.out.println("Transaction ID: " + strTransactionid);
+//		driver.close();
+//		
+//		//Verify if the transaction id status in Braintree is Settling
+//		initialization(environment, "braintree");
+//		btloginpage = new BTLoginPage();
+//		btloginpage.setDefaultLoginDetails("stage");
+//		btmaintabpage = btloginpage.clickLoginButton();
+//		bttransactionssearchpage = btmaintabpage.clickTransactionsLink();
+//		bttransactionssearchpage.searchTransactionID(strTransactionid);
+//		btfoundtransactionpage = bttransactionssearchpage.clickSearchButton();
+//		Assert.assertTrue(btfoundtransactionpage.isTransactionIDFound(), "Transaction ID not found");	
+//		Assert.assertEquals(btfoundtransactionpage.getTransactionIDStatus(strTransactionid), "Settling", btfoundtransactionpage.getTransactionIDStatus(strTransactionid));
+//		driver.close();
 		
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=2, enabled = true)
+	@Test(priority=2, enabled = false)
 	public void verifySingleDomainandSingleProductOrderInSalesDB (String environment) throws InterruptedException{
 
 		String strDomainName = null;
@@ -251,7 +257,7 @@ public class DomainzSalesDBJourneyTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=3, enabled = true)
+	@Test(priority=3, enabled = false)
 	public void verifySingleDomainandMultipleProductsOrderInSalesDB (String environment) throws InterruptedException{
 
 		String strDomainName = null;
@@ -361,7 +367,7 @@ public class DomainzSalesDBJourneyTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=4, enabled = true)
+	@Test(priority=4, enabled = false)
 	public void verifyMultipleProductsOrderInSalesDB (String environment) throws InterruptedException{
 
 		String strDomainName = null;

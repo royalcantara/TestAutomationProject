@@ -69,7 +69,7 @@ public class NetregistryOldCustomerCartJourneyTest extends TestBase{
 		nrgbillingpage = nrgregistrantcontactpage.clickContinueButton();
 		nrgbillingpage.setBTFormCreditCardDetails("PG-Domainz", "4111111111111111", "11", "2019", "123");
 		nrgbillingpage.tickTermsAndConditions();
-		nrgordercompletepage = nrgbillingpage.clickPlaceYourOrder();		
+		nrgordercompletepage = nrgbillingpage.clickContinueButton();		
 //		Assert.assertTrue(nrgordercompletepage.isOrderComplete(), "Order is not completed");
 //		strWorkflowId = nrgordercompletepage.getSingleReferenceID();
 //		System.out.println("Reference ID[0]:" + strWorkflowId);	
@@ -98,7 +98,7 @@ public class NetregistryOldCustomerCartJourneyTest extends TestBase{
 		nrgbillingpage = nrgregistrantcontactpage.clickContinueButton();
 		/* Use default credit card */
 		nrgbillingpage.tickTermsAndConditions();
-		nrgordercompletepage = nrgbillingpage.clickPlaceYourOrder();
+		nrgordercompletepage = nrgbillingpage.clickContinueButton();
 //		Assert.assertTrue(nrgordercompletepage.isOrderComplete(), "Order is not completed");
 //		arrWorkflowId = nrgordercompletepage.getMultipleReferenceIDs(2);
 //		System.out.println("Reference ID[0]:" + arrWorkflowId[0]);

@@ -99,17 +99,17 @@ public class NRGAccountContactPage extends TestBase{
     }
     
     public void setCustomerDefaultInformation(){
-    	organisation.sendKeys("Payment Gateway Test");
+    	organisation.sendKeys("Test Console Regression");
     	firstName.sendKeys("QA");
     	lastName.sendKeys("Team");
-    	address.sendKeys("2/469 La Trobe Street");
-    	city.sendKeys("Auckland");
-    	country.sendKeys("NEW ZEALAND");
-    	driver.findElement(By.xpath("//tr[@class='other-state']/td[2]/input")).sendKeys("North Island");
+    	address.sendKeys("505 Lt Collins Street");
+    	city.sendKeys("Melbourne");
+    	country.sendKeys("AUSTRALIA");
+    	state.sendKeys("VIC");
     	postcode.sendKeys("0626");
     	phoneNumber.sendKeys("064411111111");
-    	email.sendKeys("testing@melbourneit.com.au");
-    	emailConfirmation.sendKeys("testing@melbourneit.com.au");
+    	email.sendKeys("_qa-development@arq.group");
+    	emailConfirmation.sendKeys("_qa-development@arq.group");
     }
    
     public void setReturningCustomerContacts(String customeraccountreference, String customerpassword){

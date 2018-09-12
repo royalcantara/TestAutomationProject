@@ -8,13 +8,36 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="7">Payment Gateway Project Test Automation QA UAT Test Suite</th></tr>
-<tr><td><a href="#t0">Payment Gateway Test Cases</a></td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">661,142</td><td></td><td></td></tr>
+<tr><th colspan="7">Console Regression Test Automation - UAT Test Suite</th></tr>
+<tr><td><a href="#t0">Regression Test Cases</a></td><td class="num">1</td><td class="num">0</td><td class="num attn">1</td><td class="num">69,179</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Payment Gateway Project Test Automation QA UAT Test Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Payment Gateway Test Cases &#8212; passed</th></tr><tr class="passedeven"><td rowspan="3">com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest</td><td><a href="#m0">verifyMultipleProductsOrderInSalesDB</a></td><td rowspan="1">1528070708882</td><td rowspan="1">170418</td></tr><tr class="passedeven"><td><a href="#m1">verifySingleDomainandMultipleProductsOrderInSalesDB</a></td><td rowspan="1">1528070485219</td><td rowspan="1">223661</td></tr><tr class="passedeven"><td><a href="#m2">verifySingleDomainandSingleProductOrderInSalesDB</a></td><td rowspan="1">1528070218181</td><td rowspan="1">267034</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Console Regression Test Automation - UAT Test Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Regression Test Cases &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.consoleregression.testcases.CustomerPortalJourneyTest</td><td><a href="#m0">verifyDomainandMultipleProductOrderInCustomerPortal</a></td><td rowspan="1">1536650575083</td><td rowspan="1">39975</td></tr><tr><th colspan="4">Regression Test Cases &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">com.consoleregression.testcases.CustomerPortalJourneyTest</td><td><a href="#m1">verifyDomainRegistrationSingleOrderInCustomerPortal</a></td><td rowspan="1">1536650545914</td><td rowspan="1">29154</td></tr></tbody>
 </table>
-<h2>Payment Gateway Test Cases</h2><h3 id="m0">com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest#verifyMultipleProductsOrderInSalesDB</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>uat</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest#verifySingleDomainandMultipleProductsOrderInSalesDB</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>uat</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">com.paymentgateway.ui.dmz.testcases.DomainzSalesDBJourneyTest#verifySingleDomainandSingleProductOrderInSalesDB</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>uat</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Regression Test Cases</h2><h3 id="m0">com.consoleregression.testcases.CustomerPortalJourneyTest#verifyDomainandMultipleProductOrderInCustomerPortal</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>uat1</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.ElementNotVisibleException: element not visible
+  (Session info: chrome=67.0.3396.99)
+  (Driver info: chromedriver=2.37.544315 (730aa6a5fdba159ac9f4c1e8cbc59bf1b5ce12b7),platform=Windows NT 10.0.14393 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.11.0&apos;, revision: &apos;e59cfb3&apos;, time: &apos;2018-03-11T20:26:55.152Z&apos;
+System info: host: &apos;MIT01524&apos;, ip: &apos;10.40.0.240&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_172&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.37.544315 (730aa6a5fdba15..., userDataDir: C:\Users\ROY~1.ALC\AppData\...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 67.0.3396.99, webStorageEnabled: true}
+Session ID: ad2dff38550279445383f986bb73c49c
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)
+	at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:100)
+	at org.openqa.selenium.support.events.EventFiringWebDriver$EventFiringWebElement.lambda$new$0(EventFiringWebDriver.java:368)
+	at com.sun.proxy.$Proxy15.sendKeys(Unknown Source)
+	at org.openqa.selenium.support.events.EventFiringWebDriver$EventFiringWebElement.sendKeys(EventFiringWebDriver.java:390)
+	at com.netregistryoldwebsite.pages.NRGBillingPage.setQuestFormCreditCardDetails(NRGBillingPage.java:62)
+	at com.consoleregression.testcases.CustomerPortalJourneyTest.verifyDomainandMultipleProductOrderInCustomerPortal(CustomerPortalJourneyTest.java:114)
+... Removed 32 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">com.consoleregression.testcases.CustomerPortalJourneyTest#verifyDomainRegistrationSingleOrderInCustomerPortal</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>uat1</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

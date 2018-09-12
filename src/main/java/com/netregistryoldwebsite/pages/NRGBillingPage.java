@@ -6,9 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-
 import com.base.TestBase;
-import com.domainzwebsite.pages.DMZOrderCompletePage;
+
 
 public class NRGBillingPage extends TestBase{
 
@@ -18,8 +17,8 @@ public class NRGBillingPage extends TestBase{
     @FindBy(how=How.XPATH, using = "//div[@class='orderBox']/input")
     WebElement BTClientToken; 
     
-    @FindBy(how=How.XPATH, using = "//div[@class='next']/input[2]")
-    WebElement placeYourOrderButton;
+    @FindBy(how=How.ID, using = "processOrderSubmit")
+    WebElement continueButton;
     
     @FindBy(how=How.XPATH, using = "//div[@class='auto-check']/input")
     WebElement autoRenew;
@@ -92,11 +91,11 @@ public class NRGBillingPage extends TestBase{
     	return flag;
     }
     
-    public NRGOrderCompletePage clickPlaceYourOrder(){
-       	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", placeYourOrderButton);
+    public NRGOrderCompletePage clickContinueButton(){
+       	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", continueButton);
        	System.out.println("clicking place your order button");
-       	if(placeYourOrderButton.isDisplayed()||placeYourOrderButton.isEnabled()) {
-       		placeYourOrderButton.click();
+       	if(continueButton.isDisplayed()||continueButton.isEnabled()) {
+       		continueButton.click();
        	}
     	else {
     		System.out.println("element not found");
