@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -17,25 +16,16 @@ import com.braintree.pages.BTTransactionsSearchPage;
 import com.consoleadmin.pages.CAHeaderPage;
 import com.consoleadmin.pages.CALoginPage;
 import com.consoleadmin.pages.CAWorkflowAdminPage;
+import com.consolesalesdb.pages.CSAUEligibilityPage;
 import com.consolesalesdb.pages.CSCreateDomainWindowPage;
 import com.consolesalesdb.pages.CSLoginPage;
 import com.consolesalesdb.pages.CSNrCRMPage;
 import com.consolesalesdb.pages.CSRegistrantDetailsPage;
 import com.consolesalesdb.pages.CSShowDomainServicesPage;
 import com.consolesalesdb.pages.CSWorkflowNotificationPage;
-import com.domainzwebsite.pages.DMZAccountContactPage;
 import com.domainzwebsite.pages.DMZAccountPage;
-import com.domainzwebsite.pages.DMZAddDomainPrivacyPage;
-import com.domainzwebsite.pages.DMZAddExtrasPage;
-import com.domainzwebsite.pages.DMZAddHostingPage;
-import com.domainzwebsite.pages.DMZBillingPage;
-import com.domainzwebsite.pages.DMZDomainSearchPage;
 import com.domainzwebsite.pages.DMZHeaderPage;
-import com.domainzwebsite.pages.DMZHostingAndExtrasPage;
 import com.domainzwebsite.pages.DMZLoginPage;
-import com.domainzwebsite.pages.DMZOnlineOrderPage;
-import com.domainzwebsite.pages.DMZOrderCompletePage;
-import com.domainzwebsite.pages.DMZRegistrantContactPage;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.util.TestUtil;
 
@@ -49,6 +39,7 @@ public class SalesDBJourneyTest extends TestBase{
 	CSRegistrantDetailsPage csregistrantdetailspage;
 	CSShowDomainServicesPage csshowdomainservicespage;
 	CSWorkflowNotificationPage csworkflownotificationpage;
+	CSAUEligibilityPage csaueligibilitypage;
 	
 	//Console Admin Pages
 	CALoginPage caloginpage;
@@ -89,17 +80,21 @@ public class SalesDBJourneyTest extends TestBase{
 		String strRegistrantDetails = null;
 		String strWorkflowId = null;
 		String strTransactionid = null;
+		String strRegistrantType = null;
+		String strRegistrantNumber = null;
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
 		Date d = new Date();
 		strDomainName = "TestConsoleRegression" + df.format(d);
 		
 		if (environment.equals("uat1")) {
-			strTld = "com";
-			strRegistrationPeriod = "1";
+			strTld = "com.au";
+			strRegistrationPeriod = "2";
 			strGreenCode = "MEL-6007";
 			strPaymentMethod = "Invoice";
 			strRegistrantDetails = "Netregistry";
+			strRegistrantType = "ABN";
+			strRegistrantNumber = "13080859721";
 		}
 		
 		//Test Step 1: Login to sales db and place an order for domain registration
@@ -111,8 +106,10 @@ public class SalesDBJourneyTest extends TestBase{
 		csnrcrmpage.setGreenCode(strGreenCode);
 		cscreatedomainwindowpage = csnrcrmpage.clickNewDomainNPSButton();
 		cscreatedomainwindowpage.setDomainDetails(strDomainName, strTld, strRegistrationPeriod, strPaymentMethod);
-		csregistrantdetailspage = csnrcrmpage.clickRegistrantDetails(strDomainName, "Update Details");
-		csnrcrmpage = csregistrantdetailspage.setRegistrantDetails(strRegistrantDetails);
+		
+		System.out.println("Method: assign values to aueligibilitypage");
+		csaueligibilitypage = csnrcrmpage.clickUpdateDetails(strDomainName, "Update Details");
+		csnrcrmpage = csaueligibilitypage.setContactAndEligibilityDetails(strRegistrantDetails, strRegistrantType, strRegistrantNumber);
 		csshowdomainservicespage = csnrcrmpage.clickShowDomainServices(strDomainName);
 		csworkflownotificationpage = csshowdomainservicespage.clickConfirmAllServices();
 		strWorkflowId = csworkflownotificationpage.getWorkflowID();

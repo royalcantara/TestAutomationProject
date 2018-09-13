@@ -72,6 +72,17 @@ public class CSNrCRMPage extends TestBase{
 		Thread.sleep(2000);
     	return new CSRegistrantDetailsPage();
     }
+    
+    public CSAUEligibilityPage clickUpdateDetails(String strdomainname, String strregistrantdetails) throws InterruptedException {
+    	String strdomainnamelowercase = strdomainname.toLowerCase();
+    	
+    	Thread.sleep(10000);
+		driver.findElement(By.xpath("//div[@class='x-grid3-cell-inner x-grid3-col-1'][text()='"+strdomainnamelowercase+"']/parent::td/parent::tr/td[11]/div/a/b[text()='"+strregistrantdetails+"']")).click();
+		Thread.sleep(2000);
+		
+    	return new CSAUEligibilityPage();
+
+    }
       
     public CSCreateDomainWindowPage clickNewDomainNPSButton() throws InterruptedException {
     	Thread.sleep(3000);

@@ -28,6 +28,9 @@ public class NRGBillingPage extends TestBase{
     
     @FindBy(how=How.XPATH, using = "//table[@class='form']/tbody/tr[4]/td[3]/input[@name='btbilling.nonce']")
     WebElement paymentMethodNonce;
+    
+    @FindBy(how=How.NAME, using = "billing.id")
+    WebElement existingCardSelection;
 
     //Initializing Page Objects
     public NRGBillingPage(){
@@ -174,4 +177,15 @@ public class NRGBillingPage extends TestBase{
     	}
     	return flag;
     }
+    
+    public void selectExistingCreditCard(String cardnumber){
+       	System.out.println("select existing credit card");
+       	if(existingCardSelection.isDisplayed()||existingCardSelection.isEnabled()) {
+       		existingCardSelection.sendKeys(cardnumber);
+       	}
+    	else {
+    		System.out.println("element not found");
+    	}
+    }
+    
 }
