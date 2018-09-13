@@ -9,7 +9,7 @@
     <classes>
       <class name="com.consoleregression.testcases.SalesDBJourneyTest">
         <methods>
-          <include name="verifyDomainRegistrationSingleOrderInSalesDB" invocation-numbers="0"/>
+          <include name="verify_ComDomain_and_Office365_Order_InSalesDB" invocation-numbers="0"/>
         </methods>
       </class> <!-- com.consoleregression.testcases.SalesDBJourneyTest -->
     </classes>

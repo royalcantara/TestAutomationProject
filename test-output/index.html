@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-Console_Regression_Test_Automation_-_UAT_Test_Suite">
-              <span class="suite-name border-passed">Console Regression Test Automation - UAT Test Suite</span>
+              <span class="suite-name border-failed">Console Regression Test Automation - UAT Test Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -91,36 +91,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">4 methods,   4 passed</span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Console_Regression_Test_Automation_-_UAT_Test_Suite" class="hide-methods passed suite-Console_Regression_Test_Automation_-_UAT_Test_Suite"> (hide)</a> <!-- hide-methods passed suite-Console_Regression_Test_Automation_-_UAT_Test_Suite -->
-                      <a href="#" panel-name="suite-Console_Regression_Test_Automation_-_UAT_Test_Suite" class="show-methods passed suite-Console_Regression_Test_Automation_-_UAT_Test_Suite"> (show)</a> <!-- show-methods passed suite-Console_Regression_Test_Automation_-_UAT_Test_Suite -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Console_Regression_Test_Automation_-_UAT_Test_Suite" class="hide-methods failed suite-Console_Regression_Test_Automation_-_UAT_Test_Suite"> (hide)</a> <!-- hide-methods failed suite-Console_Regression_Test_Automation_-_UAT_Test_Suite -->
+                      <a href="#" panel-name="suite-Console_Regression_Test_Automation_-_UAT_Test_Suite" class="show-methods failed suite-Console_Regression_Test_Automation_-_UAT_Test_Suite"> (show)</a> <!-- show-methods failed suite-Console_Regression_Test_Automation_-_UAT_Test_Suite -->
                     </span>
-                    <div class="method-list-content passed suite-Console_Regression_Test_Automation_-_UAT_Test_Suite">
+                    <div class="method-list-content failed suite-Console_Regression_Test_Automation_-_UAT_Test_Suite">
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Console_Regression_Test_Automation_-_UAT_Test_Suite" title="com.consoleregression.testcases.CustomerPortalJourneyTest" hash-for-method="verifyDomainRegistrationSingleOrderInCustomerPortal(uat1)">verifyDomainRegistrationSingleOrderInCustomerPortal(uat1)</a> <!-- method navigator-link -->
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Console_Regression_Test_Automation_-_UAT_Test_Suite" title="com.consoleregression.testcases.SalesDBJourneyTest" hash-for-method="verify_ComDomain_and_Office365_Order_InSalesDB(uat1)">verify_ComDomain_and_Office365_Order_InSalesDB(uat1)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Console_Regression_Test_Automation_-_UAT_Test_Suite" title="com.consoleregression.testcases.SalesDBJourneyTest" hash-for-method="verifyDomainRegistrationSingleOrderInSalesDB(uat1)">verifyDomainRegistrationSingleOrderInSalesDB(uat1)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Console_Regression_Test_Automation_-_UAT_Test_Suite" title="com.consoleregression.testcases.CustomerPortalJourneyTest" hash-for-method="verifyDomainandMultipleProductOrderInCustomerPortal(uat1)">verifyDomainandMultipleProductOrderInCustomerPortal(uat1)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Console_Regression_Test_Automation_-_UAT_Test_Suite" title="com.consoleregression.testcases.SalesDBJourneyTest" hash-for-method="verifyDomainandSingleProductOrderInSalesDB(uat1)">verifyDomainandSingleProductOrderInSalesDB(uat1)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content passed suite-Console_Regression_Test_Automation_-_UAT_Test_Suite -->
+                    </div> <!-- method-list-content failed suite-Console_Regression_Test_Automation_-_UAT_Test_Suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -132,54 +117,26 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Console_Regression_Test_Automation_-_UAT_Test_Suite" class="panel Console_Regression_Test_Automation_-_UAT_Test_Suite">
-          <div class="suite-Console_Regression_Test_Automation_-_UAT_Test_Suite-class-passed">
+          <div class="suite-Console_Regression_Test_Automation_-_UAT_Test_Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">com.consoleregression.testcases.SalesDBJourneyTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verifyDomainRegistrationSingleOrderInSalesDB(uat1)">
-                  </a> <!-- verifyDomainRegistrationSingleOrderInSalesDB(uat1) -->
-                  <span class="method-name">verifyDomainRegistrationSingleOrderInSalesDB</span>
+                  <a name="verify_ComDomain_and_Office365_Order_InSalesDB(uat1)">
+                  </a> <!-- verify_ComDomain_and_Office365_Order_InSalesDB(uat1) -->
+                  <span class="method-name">verify_ComDomain_and_Office365_Order_InSalesDB</span>
                   <span class="parameters">(uat1)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifyDomainandSingleProductOrderInSalesDB(uat1)">
-                  </a> <!-- verifyDomainandSingleProductOrderInSalesDB(uat1) -->
-                  <span class="method-name">verifyDomainandSingleProductOrderInSalesDB</span>
-                  <span class="parameters">(uat1)</span>
+                  <div class="stack-trace">java.lang.AssertionError: productsetup2 status:  expected [approved] but found [setup hosting package failed]
+	at com.consoleregression.testcases.SalesDBJourneyTest.verify_ComDomain_and_Office365_Order_InSalesDB(SalesDBJourneyTest.java:291)
+... Removed 30 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Console_Regression_Test_Automation_-_UAT_Test_Suite-class-passed -->
-          <div class="suite-Console_Regression_Test_Automation_-_UAT_Test_Suite-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">com.consoleregression.testcases.CustomerPortalJourneyTest</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifyDomainRegistrationSingleOrderInCustomerPortal(uat1)">
-                  </a> <!-- verifyDomainRegistrationSingleOrderInCustomerPortal(uat1) -->
-                  <span class="method-name">verifyDomainRegistrationSingleOrderInCustomerPortal</span>
-                  <span class="parameters">(uat1)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifyDomainandMultipleProductOrderInCustomerPortal(uat1)">
-                  </a> <!-- verifyDomainandMultipleProductOrderInCustomerPortal(uat1) -->
-                  <span class="method-name">verifyDomainandMultipleProductOrderInCustomerPortal</span>
-                  <span class="parameters">(uat1)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Console_Regression_Test_Automation_-_UAT_Test_Suite-class-passed -->
+          </div> <!-- suite-Console_Regression_Test_Automation_-_UAT_Test_Suite-class-failed -->
         </div> <!-- panel Console_Regression_Test_Automation_-_UAT_Test_Suite -->
         <div panel-name="test-xml-Console_Regression_Test_Automation_-_UAT_Test_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -197,7 +154,6 @@
   &lt;test thread-count=&quot;5&quot; name=&quot;Regression Test Cases&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;com.consoleregression.testcases.SalesDBJourneyTest&quot;/&gt;
-      &lt;class name=&quot;com.consoleregression.testcases.CustomerPortalJourneyTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Regression Test Cases --&gt;
 &lt;/suite&gt; &lt;!-- Console Regression Test Automation - UAT Test Suite --&gt;
@@ -211,7 +167,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Regression Test Cases (2 classes)</span>
+                <span class="test-name">Regression Test Cases (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -237,28 +193,16 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(4);
+data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyDomainandSingleProductOrderInSalesDB')
+data.setCell(0, 1, 'verify_ComDomain_and_Office365_Order_InSalesDB')
 data.setCell(0, 2, 'com.consoleregression.testcases.SalesDBJourneyTest')
-data.setCell(0, 3, 131338);
-data.setCell(1, 0, 1)
-data.setCell(1, 1, 'verifyDomainRegistrationSingleOrderInSalesDB')
-data.setCell(1, 2, 'com.consoleregression.testcases.SalesDBJourneyTest')
-data.setCell(1, 3, 110311);
-data.setCell(2, 0, 2)
-data.setCell(2, 1, 'verifyDomainRegistrationSingleOrderInCustomerPortal')
-data.setCell(2, 2, 'com.consoleregression.testcases.CustomerPortalJourneyTest')
-data.setCell(2, 3, 34208);
-data.setCell(3, 0, 3)
-data.setCell(3, 1, 'verifyDomainandMultipleProductOrderInCustomerPortal')
-data.setCell(3, 2, 'com.consoleregression.testcases.CustomerPortalJourneyTest')
-data.setCell(3, 3, 33591);
+data.setCell(0, 3, 161439);
 window.suiteTableData['Console_Regression_Test_Automation_-_UAT_Test_Suite']= { tableData: data, tableDiv: 'times-div-Console_Regression_Test_Automation_-_UAT_Test_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 5 minutes</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-Console_Regression_Test_Automation_-_UAT_Test_Suite">
               </div> <!-- times-div-Console_Regression_Test_Automation_-_UAT_Test_Suite -->
             </div> <!-- times-div -->
@@ -273,9 +217,18 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Console_Regression_Test_Automation_-_UAT_Test_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">0 ignored methods</span>
+            <span class="header-content">2 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">com.consoleregression.testcases.SalesDBJourneyTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">verifyDomainandSingleProductOrderInSalesDB</span>
+                <br/>
+                <span class="ignored-method-name">verifyDomainRegistrationSingleOrderInSalesDB</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Console_Regression_Test_Automation_-_UAT_Test_Suite" class="panel">
@@ -286,29 +239,10 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.consoleregression.testcases.SalesDBJourneyTest</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <span class="method-name">verifyDomainRegistrationSingleOrderInSalesDB(uat1)</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">verify_ComDomain_and_Office365_Order_InSalesDB(uat1)</span>
                 <span class="method-start">0 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">com.consoleregression.testcases.CustomerPortalJourneyTest</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">verifyDomainRegistrationSingleOrderInCustomerPortal(uat1)</span>
-                <span class="method-start">110317 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">com.consoleregression.testcases.SalesDBJourneyTest</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">verifyDomainandSingleProductOrderInSalesDB(uat1)</span>
-                <span class="method-start">144531 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">com.consoleregression.testcases.CustomerPortalJourneyTest</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">verifyDomainandMultipleProductOrderInCustomerPortal(uat1)</span>
-                <span class="method-start">275874 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

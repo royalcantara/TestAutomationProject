@@ -41,7 +41,7 @@ public class CustomerPortalJourneyTest extends TestBase{
 
 	@Parameters({"environment"})
 	@Test(priority=1, enabled = true)
-	public void verifyDomainRegistrationSingleOrderInCustomerPortal(String environment) throws InterruptedException{
+	public void verifyDomainRegistrationOrderForNewCustomerInCustomerPortal(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
 		String strDomainName = null;
@@ -58,7 +58,7 @@ public class CustomerPortalJourneyTest extends TestBase{
 		}
 			
 		//Test Step 1: Login to customer portal and place an order for domain registration 
-		System.out.println("Start Test: verifyDomainRegistrationSingleOrderInCustomerPortal");
+		System.out.println("Start Test: verifyDomainRegistrationOrderForNewCustomerInCustomerPortal");
 		initialization(environment, "customerportalurl_netregistry");
 		nrgonlineorderpage = new NRGOnlineOrderPage();
 		nrgonlineorderpage.clearDefaultTldSelections();
@@ -80,7 +80,7 @@ public class CustomerPortalJourneyTest extends TestBase{
 	
 	@Parameters({"environment"})
 	@Test(priority=2, enabled = true)
-	public void verifyDomainandMultipleProductOrderInCustomerPortal(String environment) throws InterruptedException{
+	public void verifyDomainandMultipleProductOrderForReturningCustomerInCustomerPortal(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
 		String strDomainName = null;
@@ -97,7 +97,7 @@ public class CustomerPortalJourneyTest extends TestBase{
 		}
 			
 		//Test Step 1: Login to customer portal and place an order for domain registration and domain privacy
-		System.out.println("Start Test: verifyDomainandMultipleProductOrderInCustomerPortal");
+		System.out.println("Start Test: verifyDomainandMultipleProductOrderForReturningCustomerInCustomerPortal");
 		initialization(environment, "customerportalurl_netregistry");
 		nrgonlineorderpage = new NRGOnlineOrderPage();
 		nrgonlineorderpage.clearDefaultTldSelections();
