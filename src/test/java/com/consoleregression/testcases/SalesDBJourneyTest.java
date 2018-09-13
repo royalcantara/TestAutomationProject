@@ -152,7 +152,7 @@ public class SalesDBJourneyTest extends TestBase{
 		strDomainName = "TestConsoleRegression" + df.format(d);
 
 		if (environment.equals("uat1")) {
-			strTld = ".net";
+			strTld = "net";
 			strRegistrationPeriod = "1 x Y";
 			strGreenCode = "MEL-6007";
 			strMajorProduct = "Done For You Website";
@@ -289,7 +289,6 @@ public class SalesDBJourneyTest extends TestBase{
 		//Test Step 5: Verify if productsetup2 workflow status is approved
 		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName + "." + strTld);
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "approved", caworkflowadminpage.getWorkflowStatus("productsetup2"));
-		driver.close();
 		
 		//Test Step 5: Verify if o365provisioning workflow status is check o365 order status
 		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName + "." + strTld);
