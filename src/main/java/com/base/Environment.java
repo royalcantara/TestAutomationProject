@@ -12,6 +12,8 @@ public interface Environment extends Config{
 	String carturl();
 	String cartloginurl();
 	String customerportalurl_netregistry();
+	String customerportalurl_domainz();
+	String carturl_domainz();
 	String salesdburl();
 	String consoleadminurl();
 	String username();
