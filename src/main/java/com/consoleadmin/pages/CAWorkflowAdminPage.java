@@ -65,6 +65,18 @@ public class CAWorkflowAdminPage extends TestBase{
     	Thread.sleep(6000);
 
     }
+    
+    public void processSkipDelegation() throws InterruptedException {
+
+    	//Click Execute for Delegate Domain
+    	driver.findElement(By.xpath("//tbody/tr[4]/td[contains(text(),'skip delegation')]/parent::tr/td[3]/a[text()='Execute']")).click();
+    	Thread.sleep(3000);
+    		
+    	//Click Execute Action
+    	executeActionButton.click();
+    	Thread.sleep(6000);
+
+    }
 
 
     public void processMarkAsRegistered(String strworkflowid) throws InterruptedException {
