@@ -4,7 +4,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -20,6 +19,8 @@ import com.netregistryoldwebsite.pages.NRGOnlineOrderPage;
 import com.netregistryoldwebsite.pages.NRGOrderCompletePage;
 import com.netregistryoldwebsite.pages.NRGRegistrantContactPage;
 import com.netregistryoldwebsite.pages.NRGWebHostingPage;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.util.TestUtil;
 
 public class CustomerPortalJourneyTest extends TestBase{
 
@@ -34,6 +35,10 @@ public class CustomerPortalJourneyTest extends TestBase{
 	NRGRegistrantContactPage nrgregistrantcontactpage;
 	NRGBillingPage nrgbillingpage;
 	NRGOrderCompletePage nrgordercompletepage;
+	
+	TestUtil testUtil;
+	String clienttoken;
+	public static ExtentTest logger;
 
 	public CustomerPortalJourneyTest() {
 		super();

@@ -40,17 +40,19 @@ public class CAWorkflowAdminPage extends TestBase{
     	Thread.sleep(6000);
 
     }
-
-    public void processMarkAsRegistered(String strworkflowid) throws InterruptedException {
+    
+    public void processFraudCheck() throws InterruptedException {
     	
-    	//Click Execute for Mark as Registered
-    	driver.findElement(By.xpath("//a[@href='/admin/execute/workflow/getActionForm?action_id=7014&workflow_id="+strworkflowid+"']")).click();
-    	Thread.sleep(5000);
+    	//Click Ok for Fraud Check
+    	driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'ok')]/parent::tr/td[3]/a[text()='Execute']")).click();
+    	Thread.sleep(3000);
     	
     	//Click Execute Action
     	executeActionButton.click();
-    	Thread.sleep(5000);
+    	Thread.sleep(6000);
+    		
     }
+    
     
     public void processDelegateDomain() throws InterruptedException {
 
@@ -63,6 +65,19 @@ public class CAWorkflowAdminPage extends TestBase{
     	Thread.sleep(6000);
 
     }
+
+
+    public void processMarkAsRegistered(String strworkflowid) throws InterruptedException {
+    	
+    	//Click Execute for Mark as Registered
+    	driver.findElement(By.xpath("//a[@href='/admin/execute/workflow/getActionForm?action_id=7014&workflow_id="+strworkflowid+"']")).click();
+    	Thread.sleep(5000);
+    	
+    	//Click Execute Action
+    	executeActionButton.click();
+    	Thread.sleep(5000);
+    }
+    
     	
     public void processProductSetup2DIFM() throws InterruptedException {
     		

@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.consoleregression.testcases.SalesDBJourneyTest">
+      <class name="com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest">
         <methods>
-          <include name="verifyDomainRegistrationSingleOrderInSalesDB"/>
+          <include name="generateDomainRegistrationOrderInCustomerPortal"/>
         </methods>
-      </class> <!-- com.consoleregression.testcases.SalesDBJourneyTest -->
+      </class> <!-- com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

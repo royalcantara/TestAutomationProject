@@ -174,4 +174,9 @@ public class DMZBillingPage extends TestBase{
     	}
     	return flag;
     }
+    
+    public void selectNewCreditCardOption(){
+       	System.out.println("select new credit card option");
+       	driver.findElement(By.xpath("//div[@class='orderBox']/div[2]/input")).click();
+    }
 }

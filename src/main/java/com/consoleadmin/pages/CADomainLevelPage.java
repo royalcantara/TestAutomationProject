@@ -1,5 +1,6 @@
 package com.consoleadmin.pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -25,9 +26,18 @@ public class CADomainLevelPage extends TestBase{
     
     @FindBy(how=How.XPATH, using = "/html/body/table/tbody/tr[2]/td/table/tbody/tr/td/div[@id='domain-level']/a[@class='cp'][2]")
     WebElement loginAsClientLink;
+    
+    @FindBy(how=How.LINK_TEXT, using = "Account Interface")
+    WebElement accountInterfaceLink;
 	
 	//Initializing Page Objects
     public CADomainLevelPage(){
     	PageFactory.initElements(driver, this);
     }
+    
+    public CAAccountReferencePage clickAccountInterfaceLink(){
+    	accountInterfaceLink.click();
+    	return new CAAccountReferencePage();
+    }
+    
 }

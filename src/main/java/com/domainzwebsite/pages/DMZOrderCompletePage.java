@@ -39,6 +39,18 @@ public class DMZOrderCompletePage extends TestBase{
     	}
     	return flag;
     }
+    
+    public String getAccountReferenceID() throws InterruptedException{
+		String accountReference = null;
+		
+		Thread.sleep(5000);
+		
+    	WebElement accountReferenceElement = driver.findElement(By.xpath("//div[@id='completeOrder']/p[2]"));
+		if (accountReferenceElement.isDisplayed()) {
+			accountReference = accountReferenceElement.getText().substring(27);
+    	}
+    	return accountReference;
+    }
     	
 	public String getSingleReferenceID() throws InterruptedException{
 		String referenceIDNumber = null;

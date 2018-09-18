@@ -1,35 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="1" total="3" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Console Regression Test Automation - UAT Test Suite" duration-ms="293624" started-at="2018-09-13T06:49:23Z" finished-at="2018-09-13T06:54:16Z">
+  <suite name="Payment Gateway Project Test Data Creation Suite" duration-ms="417314" started-at="2018-09-18T03:52:52Z" finished-at="2018-09-18T03:59:49Z">
     <groups>
     </groups>
-    <test name="Regression Test Cases" duration-ms="293624" started-at="2018-09-13T06:49:23Z" finished-at="2018-09-13T06:54:16Z">
-      <class name="com.consoleregression.testcases.SalesDBJourneyTest">
-        <test-method status="PASS" signature="verify_NetDomain_and_DIFM_Order_InSalesDB(java.lang.String)[pri:2, instance:com.consoleregression.testcases.SalesDBJourneyTest@146ba0ac]" name="verify_NetDomain_and_DIFM_Order_InSalesDB" duration-ms="133845" started-at="2018-09-13T06:49:23Z" finished-at="2018-09-13T06:51:36Z">
+    <test name="Payment Gateway Data Creation Test Cases" duration-ms="417314" started-at="2018-09-18T03:52:52Z" finished-at="2018-09-18T03:59:49Z">
+      <class name="com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest">
+        <test-method status="PASS" signature="generateDomainRegistrationOrderInCustomerPortal(java.lang.String)[pri:1, instance:com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest@146ba0ac]" name="generateDomainRegistrationOrderInCustomerPortal" duration-ms="417275" started-at="2018-09-18T03:52:52Z" finished-at="2018-09-18T03:59:49Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[uat1]]>
+                <![CDATA[stagingdev-5]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verify_NetDomain_and_DIFM_Order_InSalesDB -->
-        <test-method status="PASS" signature="verify_ComDomain_and_Office365_Order_InSalesDB(java.lang.String)[pri:3, instance:com.consoleregression.testcases.SalesDBJourneyTest@146ba0ac]" name="verify_ComDomain_and_Office365_Order_InSalesDB" duration-ms="159733" started-at="2018-09-13T06:51:36Z" finished-at="2018-09-13T06:54:16Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[uat1]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verify_ComDomain_and_Office365_Order_InSalesDB -->
-      </class> <!-- com.consoleregression.testcases.SalesDBJourneyTest -->
-    </test> <!-- Regression Test Cases -->
-  </suite> <!-- Console Regression Test Automation - UAT Test Suite -->
+        </test-method> <!-- generateDomainRegistrationOrderInCustomerPortal -->
+      </class> <!-- com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest -->
+    </test> <!-- Payment Gateway Data Creation Test Cases -->
+  </suite> <!-- Payment Gateway Project Test Data Creation Suite -->
 </testng-results>
