@@ -65,6 +65,7 @@ public class DomainzDataCreationTest extends TestBase{
 		super();
 	}
 
+	//For Payment Gateway Test Data Creation - Domainz
 	@Parameters({"environment"})
 	@Test(priority=1, enabled = true)
 	public void generateCustomerDataWithDomainRegistrationAndEnableAutoRenew(String environment) throws InterruptedException{
