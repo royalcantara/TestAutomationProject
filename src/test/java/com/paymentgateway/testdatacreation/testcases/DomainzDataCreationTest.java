@@ -77,7 +77,7 @@ public class DomainzDataCreationTest extends TestBase{
 		String strAccountReference = null;
 		String strAccountReferenceNewPassword = "comein22";
 		
-		Integer intMaxCount = 1;
+		Integer intMaxCount = 50;
 		Integer intMinCount = null;
 		for(intMinCount = 1; intMinCount<=intMaxCount; intMinCount++) {
 
@@ -192,7 +192,7 @@ public class DomainzDataCreationTest extends TestBase{
 		String strAccountReferenceNewPassword = "comein22";
 		String strProduct = "Basic cPanel Hosting";
 		
-		Integer intMaxCount = 1;
+		Integer intMaxCount = 50;
 		Integer intMinCount = null;
 		for(intMinCount = 1; intMinCount<=intMaxCount; intMinCount++) {
 
@@ -318,7 +318,7 @@ public class DomainzDataCreationTest extends TestBase{
 		String strAccountReferenceNewPassword = "comein22";
 		String strProduct = "Business Cloud Hosting";
 		
-		Integer intMaxCount = 1;
+		Integer intMaxCount = 50;
 		Integer intMinCount = null;
 		for(intMinCount = 1; intMinCount<=intMaxCount; intMinCount++) {
 
