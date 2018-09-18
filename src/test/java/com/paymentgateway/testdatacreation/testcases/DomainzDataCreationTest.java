@@ -173,6 +173,8 @@ public class DomainzDataCreationTest extends TestBase{
 		caworkflowadminpage.processDelegateDomain();
 		driver.close();
 		
+		System.out.println("Domainz Test Account Reference [New Customer with domain registration (enable auto-renew)]:" + strAccountReference);
+		
 		}
 	}
 }
