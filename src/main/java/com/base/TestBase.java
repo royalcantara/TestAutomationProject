@@ -72,7 +72,7 @@ public class TestBase{
 		else if(entrypoint.equals("cart_domainsearchurl_domainz")){
 			driver.get(testEnvironment.cart_domainsearchurl_domainz());
 		}
-		else if(entrypoint.equals("salesdb")){
+		else if(entrypoint.equals("salesdburl")){
 			driver.get(testEnvironment.salesdburl());
 		}
 		else if(entrypoint.equals("consoleadmin")){
