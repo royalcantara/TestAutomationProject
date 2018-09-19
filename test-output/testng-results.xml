@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="3" total="4" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Payment Gateway Project Test Data Creation Suite" duration-ms="123691" started-at="2018-09-19T03:14:09Z" finished-at="2018-09-19T03:16:12Z">
+  <suite name="Payment Gateway Project Test Data Creation Suite" duration-ms="275413" started-at="2018-09-19T05:45:06Z" finished-at="2018-09-19T05:49:41Z">
     <groups>
     </groups>
-    <test name="Payment Gateway Data Creation Test Cases" duration-ms="123691" started-at="2018-09-19T03:14:09Z" finished-at="2018-09-19T03:16:12Z">
+    <test name="Payment Gateway Data Creation Test Cases" duration-ms="275413" started-at="2018-09-19T05:45:06Z" finished-at="2018-09-19T05:49:41Z">
       <class name="com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest">
-        <test-method status="PASS" signature="generateCustomerDataWithOutstandingInvoice(java.lang.String)[pri:4, instance:com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest@146ba0ac]" name="generateCustomerDataWithOutstandingInvoice" duration-ms="123653" started-at="2018-09-19T03:14:09Z" finished-at="2018-09-19T03:16:12Z">
+        <test-method status="PASS" signature="generateCustomerDataWithMonthlyBillingProduct(java.lang.String)[pri:2, instance:com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest@146ba0ac]" name="generateCustomerDataWithMonthlyBillingProduct" duration-ms="275373" started-at="2018-09-19T05:45:06Z" finished-at="2018-09-19T05:49:41Z">
           <params>
             <param index="0">
               <value>
@@ -17,7 +17,7 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- generateCustomerDataWithOutstandingInvoice -->
+        </test-method> <!-- generateCustomerDataWithMonthlyBillingProduct -->
       </class> <!-- com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest -->
     </test> <!-- Payment Gateway Data Creation Test Cases -->
   </suite> <!-- Payment Gateway Project Test Data Creation Suite -->

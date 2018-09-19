@@ -172,6 +172,18 @@ public class CAWorkflowAdminPage extends TestBase{
     	}
     	
     	
+    	public String getProductSetup2WorkflowID() throws InterruptedException {
+    		
+    		String workflowid;
+    		
+    		//Get workflow id for productsetup2 after processing domainregistration2 workflow
+    		workflowid = driver.findElement(By.xpath("//tbody/tr/td/font[@class='cp'][3]/a[@class='cp']")).getText();	
+    		Thread.sleep(3000);
+    		    			
+    		return workflowid;
+    	}
+    	
+    	
     	public boolean verifyWorflowStatus(String strworkflowtype, String strworkflowstep) throws InterruptedException {
         	
         	String count;
