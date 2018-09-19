@@ -65,7 +65,6 @@ public class DomainzDataCreationTest extends TestBase{
 		super();
 	}
 
-	//For Payment Gateway Test Data Creation - Domainz
 	@Parameters({"environment"})
 	@Test(priority=1, enabled = true)
 	public void generateCustomerDataWithDomainRegistrationAndEnableAutoRenew(String environment) throws InterruptedException{
@@ -109,7 +108,13 @@ public class DomainzDataCreationTest extends TestBase{
 		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
 		
 		//Test Step 2: Input credit card details and submit the order 
-		dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test Data Creation - Domain Reg", "Visa", "4111111111111111", "12", "2020", "123");
+		if ((intMinCount % 2)==0) {
+			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer - Domain Reg", "Visa", "4111111111111111", "01", "2021", "123");
+		}
+		else {
+			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer - Domain Reg", "Visa", "4005519200000004", "02", "2022", "456");
+		}
+		
 		dmzbillingpage.tickTermsAndConditions();
 		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();		
 		
@@ -152,7 +157,14 @@ public class DomainzDataCreationTest extends TestBase{
 		
 		//Test Step 7: Input credit card details and submit the order 
 		dmzbillingpage.selectNewCreditCardOption();
-		dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test Data Creation - Domain Reg", "MasterCard", "5454545454545454", "12", "2020", "123");
+		
+		if ((intMinCount % 2)==0) {
+			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test Returning Customer - Domain Reg", "MasterCard", "2223000048400011", "11", "2023", "678");
+		}
+		else {
+			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test Returning Customer - Domain Reg", "MasterCard", "5555555555554444", "12", "2024", "990");
+		}
+		
 		dmzbillingpage.tickTermsAndConditions();
 		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();		
 		
@@ -181,7 +193,7 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=2, enabled = true)
+	@Test(priority=2, enabled = false)
 	public void generateCustomerDataWithMonthlyBillingProduct(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
@@ -307,7 +319,7 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=3, enabled = true)
+	@Test(priority=3, enabled = false)
 	public void generateCustomerDataWithYearlyBillingProduct(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
