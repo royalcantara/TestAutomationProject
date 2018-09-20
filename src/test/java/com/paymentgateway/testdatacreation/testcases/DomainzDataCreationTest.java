@@ -210,7 +210,7 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=2, enabled = true)
+	@Test(priority=2, enabled = false)
 	public void generateCustomerDataWithMonthlyBillingProduct(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
@@ -353,14 +353,17 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=3, enabled = false)
+	@Test(priority=3, enabled = true)
 	public void generateCustomerDataWithYearlyBillingProduct(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
 		String strDomainName_01 = null;
 		String strDomainName_02 = null;
 		String strTld = null;
-		String strWorkflowId = null;
+		String strWorkflowId_01 = null;
+		String strWorkflowId_02 = null;
+		String strWorkflowId_03 = null;
+		String strWorkflowId_04 = null;
 		String strAccountReference = null;
 		String strAccountReferenceNewPassword = "comein22";
 		String strProduct = "Business Cloud Hosting";
@@ -388,7 +391,6 @@ public class DomainzDataCreationTest extends TestBase{
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName_01, strTld);
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
-		
 		dmzhostingandextraspage= dmzadddomainprivacypage.clickNoThanks();
 		dmzaddhostingpage = dmzhostingandextraspage.clickAddHostingButton();
 		dmzhostingandextraspage = dmzaddhostingpage.clickAddProduct(strProduct);
@@ -410,23 +412,24 @@ public class DomainzDataCreationTest extends TestBase{
 		
 		//Test Step 3: Verify if order is completed and get reference id (workflow id) details
 		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
-		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
+		strWorkflowId_01  = dmzordercompletepage.getSingleReferenceID();
 		strAccountReference = dmzordercompletepage.getAccountReferenceID();
 		System.out.println("Account Reference:" + strAccountReference);	
-		System.out.println("Reference ID[0]:" + strWorkflowId);	
+		System.out.println("Reference ID[0]:" + strWorkflowId_01);	
 		driver.close();
 		
 		//Test Step 4: Login to console admin, then process domainregistration2 and productsetup2 workflows
 		initialization(environment, "consoleadmin");
 		caloginpage = new CALoginPage();
 		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
-		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
-		caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId_01);
+		caworkflowadminpage.processDomainRegistrationWF(strWorkflowId_01);
 		caworkflowadminpage.processFraudCheck();
 		caworkflowadminpage.processDelegateDomain();
 		
-		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName_01 + strTld);
-		caworkflowadminpage.processProductSetup2();
+		strWorkflowId_02 = caworkflowadminpage.getProductSetup2WorkflowID();
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId_02);
+		caworkflowadminpage.processProductSetup2ByWFID(strWorkflowId_02);
 
 		//Test Step 5: Set the new password for the account reference
 		caheaderpage = new CAHeaderPage();
@@ -441,7 +444,6 @@ public class DomainzDataCreationTest extends TestBase{
 		dmzonlineorderpage.setDomainNameAndTld(strDomainName_02, strTld);
 		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
 		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
-		
 		dmzhostingandextraspage= dmzadddomainprivacypage.clickNoThanks();
 		dmzaddhostingpage = dmzhostingandextraspage.clickAddHostingButton();
 		dmzhostingandextraspage = dmzaddhostingpage.clickAddProduct(strProduct);
@@ -465,23 +467,24 @@ public class DomainzDataCreationTest extends TestBase{
 		
 		//Test Step 8: Verify if order is completed and get reference id (workflow id) details
 		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
-		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
+		strWorkflowId_03 = dmzordercompletepage.getSingleReferenceID();
 		strAccountReference = dmzordercompletepage.getAccountReferenceID();
 		System.out.println("Account Reference:" + strAccountReference);	
-		System.out.println("Reference ID[0]:" + strWorkflowId);	
+		System.out.println("Reference ID[0]:" + strWorkflowId_03);	
 		driver.close();
 		
 		//Test Step 9: Login to console admin, then process domainregistration2 and productsetup2 workflows
 		initialization(environment, "consoleadmin");
 		caloginpage = new CALoginPage();
 		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
-		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
-		caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId_03);
+		caworkflowadminpage.processDomainRegistrationWF(strWorkflowId_03);
 		caworkflowadminpage.processFraudCheck();
 		caworkflowadminpage.processDelegateDomain();
 		
-		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName_02 + strTld);
-		caworkflowadminpage.processProductSetup2();
+		strWorkflowId_04 = caworkflowadminpage.getProductSetup2WorkflowID();
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId_04);
+		caworkflowadminpage.processProductSetup2ByWFID(strWorkflowId_04);
 		driver.close();
 		
 		System.out.println("Domainz Test Account Reference [Customer with yearly billing product]:" + strAccountReference);
@@ -612,6 +615,137 @@ public class DomainzDataCreationTest extends TestBase{
 	
 		System.out.println("Domainz Test Account Reference [Customer with outstanding invoice]:" + strAccountReference);
 		System.out.println("End Test: generateCustomerDataWithOutstandingInvoice");
+		
+		}
+	}
+	
+	@Parameters({"environment"})
+	@Test(priority=5, enabled = false)
+	public void generateCustomerDataWithDefaultCreditCard(String environment) throws InterruptedException{
+	
+		// Initialization (Test Data Creation and Assignment)
+		String strDomainName_01 = null;
+		String strDomainName_02 = null;
+		String strTld = null;
+		String strWorkflowId = null;
+		String strAccountReference = null;
+		String strAccountReferenceNewPassword = "comein22";
+		
+		Integer intMaxCount = 1;
+		Integer intMinCount = null;
+		for(intMinCount = 1; intMinCount<=intMaxCount; intMinCount++) {
+
+		// Generate name for first and second domain
+		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
+		Date d1 = new Date();
+		strDomainName_01 = "TestDomainzNewCustomer" + df.format(d1);
+		strDomainName_02 = "TestDomainzReturningCustomer" + df.format(d1);
+					
+		if (environment.equals("stagingdev-5")) {
+			strTld = ".com";
+		}
+			
+//		//Test Step 1: Navigate to Domainz search page and purchase domain name for new customer
+//		System.out.println("Start Test: generateCustomerDataWithDefaultCreditCard");
+//		initialization(environment, "cart_domainsearchurl_domainz");
+//		
+//		dmzonlineorderpage = new DMZOnlineOrderPage();
+//		dmzonlineorderpage.tickTld(".com.au");		
+//		dmzonlineorderpage.setDomainNameAndTld(strDomainName_01, strTld);
+//		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
+//		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
+//		
+//		dmzhostingandextraspage= dmzadddomainprivacypage.clickNoThanks();
+//		dmzaccountcontactpage= dmzhostingandextraspage.clickContinueButton();
+//		dmzaccountcontactpage.setCustomerDefaultInformation();
+//		dmzregistrantcontactpage = dmzaccountcontactpage.clickContinueButton();		
+//		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
+//		
+//		//Test Step 2: Input credit card details and submit the order 
+//		if ((intMinCount % 2)==0) {
+//			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer - Domain Reg", "Visa", "4111111111111111", "01", "2021", "123");
+//		}
+//		else {
+//			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer - Domain Reg", "Visa", "4005519200000004", "02", "2022", "456");
+//		}
+//		
+//		dmzbillingpage.tickTermsAndConditions();
+//		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();		
+//		
+//		//Test Step 3: Verify if order is completed and get reference id (workflow id) details
+//		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
+//		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
+//		strAccountReference = dmzordercompletepage.getAccountReferenceID();
+//		System.out.println("Account Reference:" + strAccountReference);	
+//		System.out.println("Reference ID[0]:" + strWorkflowId);	
+//		driver.close();
+//		
+//		//Test Step 4: Login to console admin and process domain registration workflow
+//		initialization(environment, "consoleadmin");
+//		caloginpage = new CALoginPage();
+//		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
+//		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
+//		caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
+//		caworkflowadminpage.processFraudCheck();
+//		caworkflowadminpage.processDelegateDomain();
+//		
+//		//Test Step 5: Set the new password for the account reference
+//		caheaderpage = new CAHeaderPage();
+//		caaccountreferencepage = caheaderpage.searchAccountReference(strAccountReference);
+//		caaccountreferencepage.updatePassword(strAccountReferenceNewPassword);
+//		driver.close();
+//		
+//		//Test Step 6: Navigate again to Domainz search page and purchase new domain name for returning customer
+//		initialization(environment, "cart_domainsearchurl_domainz");
+//		dmzonlineorderpage = new DMZOnlineOrderPage();
+//		dmzonlineorderpage.tickTld(".com.au");		
+//		dmzonlineorderpage.setDomainNameAndTld(strDomainName_02, strTld);
+//		dmzdomainsearchpage = dmzonlineorderpage.clickNewDomainSearchButton();
+//		dmzadddomainprivacypage = dmzdomainsearchpage.clickContinueToCheckout();
+//		
+//		dmzhostingandextraspage= dmzadddomainprivacypage.clickNoThanks();
+//		dmzaccountcontactpage= dmzhostingandextraspage.clickContinueButton();
+//		dmzaccountcontactpage.setReturningCustomerContacts(strAccountReference, strAccountReferenceNewPassword);
+//		dmzregistrantcontactpage = dmzaccountcontactpage.clickLoginButton();
+//		dmzbillingpage = dmzregistrantcontactpage.clickContinueButton();
+//		
+//		//Test Step 7: Input credit card details and submit the order 
+//		dmzbillingpage.selectNewCreditCardOption();
+//		
+//		if ((intMinCount % 2)==0) {
+//			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test Returning Customer - Domain Reg", "MasterCard", "2223000048400011", "11", "2023", "678");
+//		}
+//		else {
+//			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test Returning Customer - Domain Reg", "MasterCard", "5555555555554444", "12", "2024", "990");
+//		}
+//		
+//		dmzbillingpage.tickTermsAndConditions();
+//		dmzordercompletepage = dmzbillingpage.clickPlaceYourOrder();		
+//		
+//		//Test Step 8: Verify if order is completed and get reference id (workflow id) details
+//		Assert.assertTrue(dmzordercompletepage.isOrderComplete(), "Order is not completed");
+//		strWorkflowId = dmzordercompletepage.getSingleReferenceID();
+//		strAccountReference = dmzordercompletepage.getAccountReferenceID();
+//		System.out.println("Account Reference:" + strAccountReference);	
+//		System.out.println("Reference ID[0]:" + strWorkflowId);	
+//		driver.close();
+//		
+//		//Test Step 9: Login to console admin and process domain registration workflow
+//		initialization(environment, "consoleadmin");
+//		caloginpage = new CALoginPage();
+//		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
+//		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
+//		caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
+//		caworkflowadminpage.processFraudCheck();
+//		caworkflowadminpage.processDelegateDomain();
+//		driver.close();
+		
+		//Test Step 6: Navigate again to Domainz search page and purchase new domain name for returning customer
+		initialization(environment, "customerportalurl_domainz");
+		
+		
+		System.out.println("Domainz Test Account Reference [Customer with default credit card (testing domain auto renewals)]:" + strAccountReference);
+		System.out.println("End Test: generateCustomerDataWithDefaultCreditCard");
 		
 		}
 	}
