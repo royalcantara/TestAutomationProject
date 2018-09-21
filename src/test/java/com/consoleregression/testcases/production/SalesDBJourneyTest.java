@@ -68,7 +68,7 @@ public class SalesDBJourneyTest extends TestBase{
 	}
 			
 	@Parameters({"environment"})
-	@Test(priority=1, enabled = false)
+	@Test(priority=1, enabled = true)
 	public void verify_ComAuDomain_Order_InSalesDB (String environment) throws InterruptedException{
 		
 		// Initialization (Test Data Creation and Assignment)
@@ -128,7 +128,7 @@ public class SalesDBJourneyTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=2, enabled = false)
+	@Test(priority=2, enabled = true)
 	public void verify_NetDomain_and_DIFM_Order_InSalesDB (String environment) throws InterruptedException{
 
 		// Initialization (Test Data Creation and Assignment)

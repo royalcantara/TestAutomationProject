@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="2" total="3" passed="1">
+<testng-results skipped="0" failed="0" ignored="4" total="5" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Console Regression Test Automation - PROD Test Suite" duration-ms="40331" started-at="2018-09-20T00:51:34Z" finished-at="2018-09-20T00:52:14Z">
+  <suite name="Payment Gateway Project Test Data Creation Suite" duration-ms="513427" started-at="2018-09-21T00:20:09Z" finished-at="2018-09-21T00:28:43Z">
     <groups>
     </groups>
-    <test name="Regression Test Cases" duration-ms="40331" started-at="2018-09-20T00:51:34Z" finished-at="2018-09-20T00:52:14Z">
-      <class name="com.consoleregression.testcases.production.SalesDBJourneyTest">
-        <test-method status="PASS" signature="verify_ComDomain_and_Office365_Order_InSalesDB(java.lang.String)[pri:3, instance:com.consoleregression.testcases.production.SalesDBJourneyTest@146ba0ac]" name="verify_ComDomain_and_Office365_Order_InSalesDB" duration-ms="40301" started-at="2018-09-20T00:51:34Z" finished-at="2018-09-20T00:52:14Z">
+    <test name="Payment Gateway Data Creation Test Cases" duration-ms="513427" started-at="2018-09-21T00:20:09Z" finished-at="2018-09-21T00:28:43Z">
+      <class name="com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest">
+        <test-method status="PASS" signature="generateCustomerDataWithOutstandingInvoice(java.lang.String)[pri:4, instance:com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest@146ba0ac]" name="generateCustomerDataWithOutstandingInvoice" duration-ms="513360" started-at="2018-09-21T00:20:09Z" finished-at="2018-09-21T00:28:43Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[prod]]>
+                <![CDATA[stagingdev-5]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verify_ComDomain_and_Office365_Order_InSalesDB -->
-      </class> <!-- com.consoleregression.testcases.production.SalesDBJourneyTest -->
-    </test> <!-- Regression Test Cases -->
-  </suite> <!-- Console Regression Test Automation - PROD Test Suite -->
+        </test-method> <!-- generateCustomerDataWithOutstandingInvoice -->
+      </class> <!-- com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest -->
+    </test> <!-- Payment Gateway Data Creation Test Cases -->
+  </suite> <!-- Payment Gateway Project Test Data Creation Suite -->
 </testng-results>

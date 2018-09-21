@@ -10,7 +10,7 @@
 	<test name="Regression Test Cases">
 		<classes>
 			<class name="com.consoleregression.testcases.production.SalesDBJourneyTest"></class>
-<!-- 			<class name="com.consoleregression.testcases.production.CustomerPortalJourneyTest"></class> -->
+			<class name="com.consoleregression.testcases.production.CustomerPortalJourneyTest"></class>
 		</classes>
 	</test>  
 </suite> 

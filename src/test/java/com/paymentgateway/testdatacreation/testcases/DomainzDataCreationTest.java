@@ -353,7 +353,7 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=3, enabled = true)
+	@Test(priority=3, enabled = false)
 	public void generateCustomerDataWithYearlyBillingProduct(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
@@ -493,7 +493,7 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=4, enabled = false)
+	@Test(priority=4, enabled = true)
 	public void generateCustomerDataWithOutstandingInvoice(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
@@ -513,7 +513,7 @@ public class DomainzDataCreationTest extends TestBase{
 		String strWorkflowId_02 = null;
 		String strWorkflowId_03 = null;
 		
-		Integer intMaxCount = 1;
+		Integer intMaxCount = 50;
 		Integer intMinCount = null;
 		for(intMinCount = 1; intMinCount<=intMaxCount; intMinCount++) {
 
@@ -528,9 +528,16 @@ public class DomainzDataCreationTest extends TestBase{
 			
 			//For Sales DB
 			strTld_02 = "nz";
-			strRegistrationPeriod = "1 x Y";
-			strMajorProduct = "Basic cPanel Hosting";
-			strProductPeriod = "1 x M";
+			strRegistrationPeriod = "1 x Y NZ$74.95[ NZ$0 setup]";
+			
+			if ((intMinCount % 2)==0) {
+				strMajorProduct = "Basic cPanel Hosting";
+				strProductPeriod = "1 x M NZ$12.95[ NZ$0 setup]";
+			}
+			else {
+				strMajorProduct = "Business Cloud Hosting";
+				strProductPeriod = "1 x Y NZ$329.45[ NZ$0 setup]";
+			}
 			strPaymentMethod = "Invoice";
 			strRegistrantDetails = "Payment Gateway Test";			
 		}

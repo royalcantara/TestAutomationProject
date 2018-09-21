@@ -58,7 +58,7 @@ public class CustomerPortalJourneyTest extends TestBase{
 		strDomainName = "TestConsoleRegression" + df.format(d);
 		
 		
-		if (environment.equals("uat1")) {
+		if (environment.equals("prod")) {
 			strTld = ".com";
 		}
 			
@@ -80,7 +80,7 @@ public class CustomerPortalJourneyTest extends TestBase{
         nrgbillingpage.setQuestFormCreditCardDetails("Test Console Regression", "Visa", "4111111111111111", "11", "2019", "123");
         nrgbillingpage.tickTermsAndConditions();
         nrgordercompletepage = nrgbillingpage.clickContinueButton();
-        driver.close();
+//        driver.close();
 	}
 	
 	@Parameters({"environment"})
@@ -97,7 +97,7 @@ public class CustomerPortalJourneyTest extends TestBase{
 		strDomainName = "TestConsoleRegression" + df.format(d);
 		
 		
-		if (environment.equals("uat1")) {
+		if (environment.equals("prod")) {
 			strTld = ".com";
 		}
 			
@@ -111,7 +111,7 @@ public class CustomerPortalJourneyTest extends TestBase{
 		nrgadddomainprivacypage = nrgdomainsearchpage.clickContinueToCheckout();
 		nrghostingandextraspage= nrgadddomainprivacypage.clickAddToCart();
 		nrgaccountcontactpage= nrghostingandextraspage.clickContinueButton();
-		nrgaccountcontactpage.setReturningCustomerContacts("MEL-6007", "comein22");
+		nrgaccountcontactpage.setReturningCustomerContacts("MEL-6007", "Comein22");
 		nrgregistrantcontactpage = nrgaccountcontactpage.clickLoginButton();
 		nrgbillingpage = nrgregistrantcontactpage.clickContinueButton();
 		
@@ -119,7 +119,7 @@ public class CustomerPortalJourneyTest extends TestBase{
 		nrgbillingpage.selectExistingCreditCard("Prepaid credit: Current Balance: AU$19222.10 Available Balance: AU$19222.10");
 		nrgbillingpage.tickTermsAndConditions();
 		nrgordercompletepage = nrgbillingpage.clickContinueButton();
-		driver.close();
+//		driver.close();
 	}
 	
 }
