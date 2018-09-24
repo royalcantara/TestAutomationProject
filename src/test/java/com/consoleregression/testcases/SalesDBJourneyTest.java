@@ -99,7 +99,7 @@ public class SalesDBJourneyTest extends TestBase{
 		
 		//Test Step 1: Login to sales db and place an order for domain registration
 		System.out.println("Start Test: verify_ComAuDomain_Order_InSalesDB");
-		initialization(environment, "salesdb");
+		initialization(environment, "salesdburl");
 		csloginpage = new CSLoginPage();
 		csloginpage.setDefaultLoginDetails("uat");
 		csnrcrmpage = csloginpage.clickLoginButton();
@@ -163,7 +163,7 @@ public class SalesDBJourneyTest extends TestBase{
 	
 		//Test Step 1: Login to sales db and place an order for domain registration and a single product (e.g. Done For You Website)
 		System.out.println("Start Test: verify_NetDomain_and_DIFM_Order_InSalesDB");
-		initialization(environment, "salesdb");
+		initialization(environment, "salesdburl");
 		csloginpage = new CSLoginPage();
 		csloginpage.setDefaultLoginDetails("uat");
 		csnrcrmpage = csloginpage.clickLoginButton();
@@ -251,7 +251,7 @@ public class SalesDBJourneyTest extends TestBase{
 	
 		//Test Step 1: Login to sales db and place an order for domain registration and a single product (e.g. Done For You Website)
 		System.out.println("Start Test: verify_ComDomain_and_Office365_Order_InSalesDB");
-		initialization(environment, "salesdb");
+		initialization(environment, "salesdburl");
 		csloginpage = new CSLoginPage();
 		csloginpage.setDefaultLoginDetails("uat");
 		csnrcrmpage = csloginpage.clickLoginButton();
