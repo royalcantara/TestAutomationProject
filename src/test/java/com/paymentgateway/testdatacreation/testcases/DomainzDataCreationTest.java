@@ -730,6 +730,7 @@ public class DomainzDataCreationTest extends TestBase{
 		
 		//Test Step 7: Verify if adding new card is successful
 		Assert.assertTrue(dmzcreditcardsdetailspage.isNewCreditCardAdded(), "New Credit Card is not added");
+		driver.close();
 		
 		
 		System.out.println("Domainz Test Account Reference [Customer with default credit card (testing domain auto renewals)]:" + strAccountReference);
