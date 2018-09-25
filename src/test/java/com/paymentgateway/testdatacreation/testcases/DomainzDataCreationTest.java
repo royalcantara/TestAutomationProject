@@ -679,9 +679,11 @@ public class DomainzDataCreationTest extends TestBase{
 		//Test Step 2: Input credit card details and submit the order 
 		if ((intMinCount % 2)==0) {
 			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer", "Visa", "4111111111111111", "10", "2020", "715");
+			System.out.println("Domainz Test Credit Card Details: Visa, 4111111111111111, 10, 2020, 715");
 		}
 		else {
 			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer", "MasterCard", "2223000048400011", "11", "2019", "994");
+			System.out.println("Domainz Test Credit Card Details: MasterCard, 2223000048400011, 11, 2019, 994");
 		}
 		
 		dmzbillingpage.tickTermsAndConditions();
@@ -720,9 +722,11 @@ public class DomainzDataCreationTest extends TestBase{
 		
 		if ((intMinCount % 2)==0) {
 			dmzcreditcardsdetailspage.setQuestFormCreditCardDetails("Domainz Test Returning Customer - Default Credit Card", "MasterCard", "5555555555554444", "05", "2026", "121");
+			System.out.println("Domainz Test Credit Card Details: MasterCard, 5555555555554444, 05, 2026, 121");
 		}
 		else {	
 			dmzcreditcardsdetailspage.setQuestFormCreditCardDetails("Domainz Test Returning Customer - Default Credit Card", "Visa", "4005519200000004", "06", "2025", "836");
+			System.out.println("Domainz Test Credit Card Details: Visa, 4005519200000004, 06, 2025, 836");
 		}
 		
 		dmzcreditcardsdetailspage.tickMakeCreditCardAsDefaultPayment();

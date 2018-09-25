@@ -45,7 +45,7 @@ public class CustomerPortalJourneyTest extends TestBase{
 	}
 
 	@Parameters({"environment"})
-	@Test(priority=1, enabled = true)
+	@Test(priority=4, enabled = true)
 	public void verifyDomainRegistrationOrderForNewCustomerInCustomerPortal(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
@@ -84,7 +84,7 @@ public class CustomerPortalJourneyTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=2, enabled = true)
+	@Test(priority=5, enabled = true)
 	public void verifyDomainandMultipleProductOrderForReturningCustomerInCustomerPortal(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
