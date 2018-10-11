@@ -91,7 +91,7 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 
 	@Parameters({"environment"})
-	@Test(priority=1, enabled = true)
+	@Test(priority=1, enabled = false)
 	public void generateCustomerDataWithDomainRegistrationAndEnableAutoRenew(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
@@ -101,6 +101,13 @@ public class DomainzDataCreationTest extends TestBase{
 		String strWorkflowId = null;
 		String strAccountReference = null;
 		String strAccountReferenceNewPassword = "comein22";
+		
+		String strCardOwnerName = null;
+		String strCardType = null;
+		String strCardNumber = null;
+	    String strCardExpiryMonth = null;
+	    String strCardExpiryYear = null;
+	    String strCardSecurityCode = null;
 		
 		Integer intMaxCount = 2;
 		Integer intMinCount = null;
@@ -134,12 +141,23 @@ public class DomainzDataCreationTest extends TestBase{
 		
 		//Test Step 2: Input credit card details and submit the order 
 		if ((intMinCount % 2)==0) {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer - Domain Reg", "Visa", "4111111111111111", "01", "2021", "123");
-			System.out.println("Domainz Test Credit Card Details(New Customer - Domain Reg): Visa, 4111111111111111, 01, 2021, 123");
+			strCardOwnerName = "Domainz Test New Customer - Domain Reg";
+			strCardType = "Visa";
+			strCardNumber = "4111111111111111";
+		    strCardExpiryMonth = "01";
+		    strCardExpiryYear = "2021";
+		    strCardSecurityCode = "123";
+			dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
+		
 		}
 		else {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer - Domain Reg", "Visa", "4005519200000004", "02", "2022", "456");
-			System.out.println("Domainz Test Credit Card Details(New Customer - Domain Reg): Visa, 4005519200000004, 02, 2022, 456");
+			strCardOwnerName = "Domainz Test New Customer - Domain Reg";
+			strCardType = "Visa";
+			strCardNumber = "4005519200000004";
+		    strCardExpiryMonth = "02";
+		    strCardExpiryYear = "2022";
+		    strCardSecurityCode = "456";
+			dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
 		}
 		
 		dmzbillingpage.tickTermsAndConditions();
@@ -151,7 +169,7 @@ public class DomainzDataCreationTest extends TestBase{
 		strAccountReference = dmzordercompletepage.getAccountReferenceID();
 		System.out.println("Account Reference:" + strAccountReference);	
 		System.out.println("Reference ID[0]:" + strWorkflowId);	
-		System.out.println("Domainz Test Account Reference [Customer with domain registration (enable auto-renew)]:" + strAccountReference);
+		System.out.println("Domainz Test Migration Data [Customer with domain registration (enable auto-renew)]:" + strAccountReference + "," + strCardNumber + "," + strCardExpiryMonth + "," + strCardExpiryYear);
 		driver.close();
 		
 		//Test Step 4: Login to console admin and process domain registration workflow
@@ -187,12 +205,23 @@ public class DomainzDataCreationTest extends TestBase{
 		dmzbillingpage.selectNewCreditCardOption();
 		
 		if ((intMinCount % 2)==0) {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test Returning Customer - Domain Reg", "MasterCard", "2223000048400011", "11", "2023", "678");
-			System.out.println("Domainz Test Credit Card Details(Returning Customer - Domain Reg): MasterCard, 2223000048400011, 11, 2023, 678");
+			strCardOwnerName = "Domainz Test Returning Customer - Domain Reg";
+			strCardType = "MasterCard";
+			strCardNumber = "2223000048400011";
+		    strCardExpiryMonth = "11";
+		    strCardExpiryYear = "2023";
+		    strCardSecurityCode = "678";
+			dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
+
 		}
 		else {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test Returning Customer - Domain Reg", "MasterCard", "5555555555554444", "12", "2024", "990");
-			System.out.println("Domainz Test Credit Card Details(Returning Customer - Domain Reg): MasterCard, 5555555555554444, 12, 2024, 990");
+			strCardOwnerName = "Domainz Test Returning Customer - Domain Reg";
+			strCardType = "MasterCard";
+			strCardNumber = "5555555555554444";
+		    strCardExpiryMonth = "12";
+		    strCardExpiryYear = "2024";
+		    strCardSecurityCode = "990";
+			dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
 		}
 		
 		dmzbillingpage.tickTermsAndConditions();
@@ -204,7 +233,7 @@ public class DomainzDataCreationTest extends TestBase{
 		strAccountReference = dmzordercompletepage.getAccountReferenceID();
 		System.out.println("Account Reference:" + strAccountReference);	
 		System.out.println("Reference ID[0]:" + strWorkflowId);	
-		System.out.println("Domainz Test Account Reference [Customer with domain registration (enable auto-renew)]:" + strAccountReference);
+		System.out.println("Domainz Test Migration Data [Customer with domain registration (enable auto-renew)]:" + strAccountReference + "," + strCardNumber + "," + strCardExpiryMonth + "," + strCardExpiryYear);
 		driver.close();
 		
 		//Test Step 9: Login to console admin and process domain registration workflow
@@ -223,7 +252,7 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=2, enabled = true)
+	@Test(priority=2, enabled = false)
 	public void generateCustomerDataWithMonthlyBillingProduct(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
@@ -372,7 +401,7 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=3, enabled = true)
+	@Test(priority=3, enabled = false)
 	public void generateCustomerDataWithYearlyBillingProduct(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
@@ -517,7 +546,7 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=4, enabled = true)
+	@Test(priority=4, enabled = false)
 	public void generateCustomerDataWithOutstandingInvoice(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
