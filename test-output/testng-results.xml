@@ -1,13 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="4" total="5" passed="1">
+<testng-results skipped="0" failed="0" ignored="2" total="7" passed="5">
   <reporter-output>
   </reporter-output>
-  <suite name="Payment Gateway Project Test Data Creation Suite" duration-ms="7096435" started-at="2018-09-25T00:01:33Z" finished-at="2018-09-25T01:59:49Z">
+  <suite name="Payment Gateway Project Test Data Creation Suite" duration-ms="2583167" started-at="2018-10-11T00:07:54Z" finished-at="2018-10-11T00:50:57Z">
     <groups>
     </groups>
-    <test name="Payment Gateway Data Creation Test Cases" duration-ms="7096435" started-at="2018-09-25T00:01:33Z" finished-at="2018-09-25T01:59:49Z">
+    <test name="Payment Gateway Data Creation Test Cases" duration-ms="2583167" started-at="2018-10-11T00:07:54Z" finished-at="2018-10-11T00:50:57Z">
       <class name="com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest">
-        <test-method status="PASS" signature="generateCustomerDataWithDefaultCreditCard(java.lang.String)[pri:5, instance:com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest@146ba0ac]" name="generateCustomerDataWithDefaultCreditCard" duration-ms="7096400" started-at="2018-09-25T00:01:33Z" finished-at="2018-09-25T01:59:49Z">
+        <test-method status="PASS" signature="generateCustomerDataWithDomainRegistrationAndEnableAutoRenew(java.lang.String)[pri:1, instance:com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest@146ba0ac]" name="generateCustomerDataWithDomainRegistrationAndEnableAutoRenew" duration-ms="473027" started-at="2018-10-11T00:07:54Z" finished-at="2018-10-11T00:15:47Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[stagingdev-5]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- generateCustomerDataWithDomainRegistrationAndEnableAutoRenew -->
+        <test-method status="PASS" signature="generateCustomerDataWithMonthlyBillingProduct(java.lang.String)[pri:2, instance:com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest@146ba0ac]" name="generateCustomerDataWithMonthlyBillingProduct" duration-ms="659160" started-at="2018-10-11T00:15:47Z" finished-at="2018-10-11T00:26:46Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[stagingdev-5]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- generateCustomerDataWithMonthlyBillingProduct -->
+        <test-method status="PASS" signature="generateCustomerDataWithYearlyBillingProduct(java.lang.String)[pri:3, instance:com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest@146ba0ac]" name="generateCustomerDataWithYearlyBillingProduct" duration-ms="588665" started-at="2018-10-11T00:26:46Z" finished-at="2018-10-11T00:36:35Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[stagingdev-5]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- generateCustomerDataWithYearlyBillingProduct -->
+        <test-method status="PASS" signature="generateCustomerDataWithOutstandingInvoice(java.lang.String)[pri:4, instance:com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest@146ba0ac]" name="generateCustomerDataWithOutstandingInvoice" duration-ms="533115" started-at="2018-10-11T00:36:35Z" finished-at="2018-10-11T00:45:28Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[stagingdev-5]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- generateCustomerDataWithOutstandingInvoice -->
+        <test-method status="PASS" signature="generateCustomerDataWithDefaultCreditCard(java.lang.String)[pri:5, instance:com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest@146ba0ac]" name="generateCustomerDataWithDefaultCreditCard" duration-ms="329156" started-at="2018-10-11T00:45:28Z" finished-at="2018-10-11T00:50:57Z">
           <params>
             <param index="0">
               <value>

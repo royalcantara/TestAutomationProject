@@ -9,7 +9,7 @@
     <classes>
       <class name="com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest">
         <methods>
-          <include name="generateCustomerDataWithDefaultCreditCard" invocation-numbers="0"/>
+          <include name="getCustomerDefaultCreditCard" invocation-numbers="0"/>
         </methods>
       </class> <!-- com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest -->
     </classes>

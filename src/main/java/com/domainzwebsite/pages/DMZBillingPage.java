@@ -58,13 +58,20 @@ public class DMZBillingPage extends TestBase{
     	driver.switchTo().defaultContent();
     }
     
-    public void setQuestFormCreditCardDetails(String cardowner, String cardtype, String cardnumber, String cardexpirymonth, String cardexpiryyear, String cardsecuritycode){
+    public void setQuestFormCreditCardDetails(String cardowner, String cardtype, String cardnumber, String cardexpirymonth, String cardexpiryyear, String cardsecuritycode) throws InterruptedException {
+    	Thread.sleep(1000);
     	driver.findElement(By.xpath("//div[@id='creditCardForm']/table/tbody/tr[1]/td[2]/input[@name='billing.owner']")).sendKeys(cardowner);
+    	Thread.sleep(1000);
     	driver.findElement(By.xpath("//div[@id='creditCardForm']/table/tbody/tr[2]/td[2]/select[@name='billing.type']")).sendKeys(cardtype);
+    	Thread.sleep(1000);
     	driver.findElement(By.xpath("//div[@id='creditCardForm']/table/tbody/tr[3]/td[2]/input[@name='billing.digits']")).sendKeys(cardnumber);
+    	Thread.sleep(1000);
     	driver.findElement(By.xpath("//div[@id='creditCardForm']/table/tbody/tr[4]/td[2]/select[@name='billing.expiryMonth']")).sendKeys(cardexpirymonth);
+    	Thread.sleep(1000);
     	driver.findElement(By.xpath("//div[@id='creditCardForm']/table/tbody/tr[4]/td[2]/select[@name='billing.expiryYear']")).sendKeys(cardexpiryyear);
+    	Thread.sleep(1000);
     	driver.findElement(By.xpath("//div[@id='creditCardForm']/table/tbody/tr[5]/td[2]/input[@name='billing.cvv']")).sendKeys(cardsecuritycode);   
+    	Thread.sleep(1000);
     }
     
     public String getBTClientToken(){

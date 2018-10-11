@@ -98,18 +98,30 @@ public class DMZAccountContactPage extends TestBase{
     	emailConfirmation.sendKeys(emailaddressconfirmation);
     }
     
-    public void setCustomerDefaultInformation(){
+    public void setCustomerDefaultInformation() throws InterruptedException {
+    	Thread.sleep(1000);
     	organisation.sendKeys("Payment Gateway Test");
+    	Thread.sleep(1000);
     	firstName.sendKeys("QA");
+    	Thread.sleep(1000);
     	lastName.sendKeys("Team");
+    	Thread.sleep(1000);
     	address.sendKeys("2/469 La Trobe Street");
+    	Thread.sleep(1000);
     	city.sendKeys("Auckland");
+    	Thread.sleep(1000);
     	country.sendKeys("NEW ZEALAND");
+    	Thread.sleep(1000);
     	driver.findElement(By.xpath("//tr[@class='other-state']/td[2]/input")).sendKeys("North Island");
+    	Thread.sleep(1000);
     	postcode.sendKeys("0626");
+    	Thread.sleep(1000);
     	phoneNumber.sendKeys("064411111111");
+    	Thread.sleep(1000);
     	email.sendKeys("testing@melbourneit.com.au");
+    	Thread.sleep(1000);
     	emailConfirmation.sendKeys("testing@melbourneit.com.au");
+    	Thread.sleep(1000);
     }
    
     public void setReturningCustomerContacts(String customeraccountreference, String customerpassword){

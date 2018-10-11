@@ -96,6 +96,17 @@ public class CSNrCRMPage extends TestBase{
     	Thread.sleep(2000);
     	return new CSCreateDomainWindowPage();
     }
+    
+    public String getBillingAccount() throws InterruptedException {
+ 
+    	String billingaccountdetails;
+    	Thread.sleep(10000);
+    	billingaccountdetails = driver.findElement(By.xpath("//table[@class='x-grid3-row-table']/tbody/tr/td[10]/div")).getText();
+    	
+    	return billingaccountdetails;
+    }
+    
+    
 
 
 }

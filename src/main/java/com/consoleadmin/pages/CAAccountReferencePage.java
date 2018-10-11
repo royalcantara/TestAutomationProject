@@ -11,11 +11,8 @@ import com.base.TestBase;
 public class CAAccountReferencePage extends TestBase{
 
 	//Objects
-
-	
-    
-    @FindBy(how=How.XPATH, using = "//div[@id='Domain Details']/div/div[1]/div/table/tbody/tr/td[3]/table/tbody/tr/td[2]/em/button")
-    WebElement newDomainNPS;
+    @FindBy(how=How.LINK_TEXT, using = "View Billing Accounts")
+    WebElement viewBillingAccountsLink;
 		
 	//Initializing Page Objects
 	public CAAccountReferencePage(){
@@ -38,5 +35,12 @@ public class CAAccountReferencePage extends TestBase{
     	Thread.sleep(3000);
 
    	
+    }
+    
+    public CAViewCreditCardsPage clickViewBillingAccounts() {
+    	
+    	viewBillingAccountsLink.click();
+    	return new CAViewCreditCardsPage();
+    	
     }
 }
