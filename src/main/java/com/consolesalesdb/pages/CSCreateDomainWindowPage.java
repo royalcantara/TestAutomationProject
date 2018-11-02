@@ -49,7 +49,10 @@ public class CSCreateDomainWindowPage extends TestBase{
         regPeriodDropdownButton.click();
         Thread.sleep(2000);
 //      driver.findElement(By.xpath("//div[@class='x-combo-list-inner']/div[contains(text(),'"+strperiod+" x Y NZ$')]")).click(); 
-        driver.findElement(By.xpath("//div[@class='x-combo-list-inner']/div[contains(text(),'"+strperiod+" x Y ')]")).click();
+//        driver.findElement(By.xpath("//div[@class='x-combo-list-inner']/div[contains(text(),'"+strperiod+" x Y ')]")).click();
+//        driver.findElement(By.xpath("//div[@class='x-combo-list-inner']/div[contains(text(),'"+strperiod+"')]")).click();
+        driver.findElement(By.xpath("//div[@class='x-combo-list-inner']/div[contains(text(),'"+strperiod+"')]")).click();
+        
         paymentMethodButton.click();
         Thread.sleep(2000);
         driver.findElement(By.xpath("//div[@class='x-combo-list-inner']/div[contains(text(),'"+strpaymentMethod+"')]")).click();

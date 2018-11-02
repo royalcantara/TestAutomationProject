@@ -12,11 +12,11 @@ public class CSLoginPage extends TestBase{
 	static String stageUserName = "erwin.sukarna";
 	static String stagePassword = "comein22";
 	static String oteUserName = "roy.alcantara";
-	static String otePassword = "Stocks004";
+	static String otePassword = "";
 	static String uatUserName = "erwin.sukarna";
 	static String uatPassword = "comein22";
 	static String prodUserName = "roy.alcantara";
-	static String prodPassword = "Stocks005";
+	static String prodPassword = "";
 	
 	//Objects
     @FindBy(how=How.ID, using = "logon-username-field")

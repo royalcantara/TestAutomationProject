@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Payment Gateway Project Test Data Creation Suite]">
-  <parameter name="environment" value="stagingdev-5"/>
+  <parameter name="environment" value="uat1"/>
   <listeners>
     <listener class-name="com.reports.extentreportslistener.ExtentReportListener"/>
   </listeners>
@@ -9,7 +9,7 @@
     <classes>
       <class name="com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest">
         <methods>
-          <include name="getCustomerDefaultCreditCard" invocation-numbers="0"/>
+          <include name="generateCustomerDataWithDomainRegistrationAndEnableAutoRenew" invocation-numbers="0"/>
         </methods>
       </class> <!-- com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest -->
     </classes>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Console Regression Test Automation - UAT Test Suite">
-	<parameter name="environment"  value="uat1"/>
+	<parameter name="environment"  value="uat2"/>
 	
 	<listeners>
 		<listener class-name="com.reports.extentreportslistener.ExtentReportListener" />
@@ -10,7 +10,7 @@
 	<test name="Regression Test Cases">
 		<classes>
 			<class name="com.consoleregression.testcases.SalesDBJourneyTest"></class>
-			<class name="com.consoleregression.testcases.CustomerPortalJourneyTest"></class>
+<!-- 			<class name="com.consoleregression.testcases.CustomerPortalJourneyTest"></class> -->
 		</classes>
 	</test>  
 </suite> 

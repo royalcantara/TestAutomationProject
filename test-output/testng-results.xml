@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="6" total="7" passed="1">
+<testng-results skipped="0" failed="0" ignored="1" total="2" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Payment Gateway Project Test Data Creation Suite" duration-ms="338143" started-at="2018-10-11T21:45:17Z" finished-at="2018-10-11T21:50:56Z">
+  <suite name="Payment Gateway Test Automation - UAT Quest Test Suite" duration-ms="121588" started-at="2018-11-02T05:11:34Z" finished-at="2018-11-02T05:13:36Z">
     <groups>
     </groups>
-    <test name="Payment Gateway Data Creation Test Cases" duration-ms="338143" started-at="2018-10-11T21:45:17Z" finished-at="2018-10-11T21:50:56Z">
-      <class name="com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest">
-        <test-method status="PASS" signature="generateCustomerDataWithDefaultCreditCard(java.lang.String)[pri:5, instance:com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest@146ba0ac]" name="generateCustomerDataWithDefaultCreditCard" duration-ms="338103" started-at="2018-10-11T21:45:17Z" finished-at="2018-10-11T21:50:56Z">
+    <test name="Regression Test Cases" duration-ms="121588" started-at="2018-11-02T05:11:34Z" finished-at="2018-11-02T05:13:36Z">
+      <class name="com.paymentgateway.uat.quest.domainz.testcases.SalesDBJourneyTest">
+        <test-method status="PASS" signature="QuestDomainz_VerifyCreateOrderPaidViaInvoiceInSalesDB(java.lang.String)[pri:2, instance:com.paymentgateway.uat.quest.domainz.testcases.SalesDBJourneyTest@42e26948]" name="QuestDomainz_VerifyCreateOrderPaidViaInvoiceInSalesDB" duration-ms="121555" started-at="2018-11-02T05:11:34Z" finished-at="2018-11-02T05:13:36Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[stagingdev-5]]>
+                <![CDATA[uat2]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- generateCustomerDataWithDefaultCreditCard -->
-      </class> <!-- com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest -->
-    </test> <!-- Payment Gateway Data Creation Test Cases -->
-  </suite> <!-- Payment Gateway Project Test Data Creation Suite -->
+        </test-method> <!-- QuestDomainz_VerifyCreateOrderPaidViaInvoiceInSalesDB -->
+      </class> <!-- com.paymentgateway.uat.quest.domainz.testcases.SalesDBJourneyTest -->
+    </test> <!-- Regression Test Cases -->
+  </suite> <!-- Payment Gateway Test Automation - UAT Quest Test Suite -->
 </testng-results>

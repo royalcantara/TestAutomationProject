@@ -17,7 +17,7 @@ public class NRGBillingPage extends TestBase{
     @FindBy(how=How.XPATH, using = "//div[@class='orderBox']/input")
     WebElement BTClientToken; 
     
-    @FindBy(how=How.ID, using = "processOrderSubmit")
+    @FindBy(how=How.ID, using = "processOrderButton")
     WebElement continueButton;
     
     @FindBy(how=How.XPATH, using = "//div[@class='auto-check']/input")

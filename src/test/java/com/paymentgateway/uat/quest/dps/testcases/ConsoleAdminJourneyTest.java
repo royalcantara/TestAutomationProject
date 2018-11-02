@@ -47,7 +47,7 @@ public class ConsoleAdminJourneyTest extends TestBase{
 		caaccountreferencepage = caheaderpage.searchAccountReference(strAccountReference);
 		caviewcreditcardspage = caaccountreferencepage.clickViewBillingAccounts();
 		Assert.assertTrue(caviewcreditcardspage.isViewCreditcardsPageDisplayed(), "View Creditcards Page is not displayed");
-		driver.close();		
+//		driver.close();		
 		}
 
 }

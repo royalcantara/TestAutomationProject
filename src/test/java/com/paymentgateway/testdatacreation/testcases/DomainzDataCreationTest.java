@@ -1,8 +1,15 @@
 package com.paymentgateway.testdatacreation.testcases;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Properties;
 
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
@@ -85,11 +92,27 @@ public class DomainzDataCreationTest extends TestBase{
 	TestUtil testUtil;
 	String clienttoken;
 	public static ExtentTest logger;
-
+	public Integer countDataMigrationGC = 0;
+	public List<String> arrDataMigrationGC = new ArrayList<String>();
+	public List<String> arrDataMigrationGCAndCCDetails = new ArrayList<String>();
+	
+	
 	public DomainzDataCreationTest() {
 		super();
 	}
 
+	public void saveGreenCode(String strgreencode) {
+		System.out.println("preparing to save greencode");
+		arrDataMigrationGC.add(strgreencode) ;
+		System.out.println("done saving greencode");
+	}
+	
+	public void saveGreenCodeAndCreditCardDetails(String strgreencode, String strcardnumber, String strcardowner, String strcardexpirymonth, String strcardexpiryyear) {
+		System.out.println("preparing to save greencode and card details");
+		arrDataMigrationGCAndCCDetails.add(strgreencode+","+strcardnumber+","+'"'+strcardowner+'"'+","+strcardexpirymonth+","+strcardexpiryyear);
+		System.out.println("done saving greencode and card details");
+	}
+	
 	@Parameters({"environment"})
 	@Test(priority=1, enabled = false)
 	public void generateCustomerDataWithDomainRegistrationAndEnableAutoRenew(String environment) throws InterruptedException{
@@ -109,7 +132,7 @@ public class DomainzDataCreationTest extends TestBase{
 	    String strCardExpiryYear = null;
 	    String strCardSecurityCode = null;
 		
-		Integer intMaxCount = 2;
+		Integer intMaxCount = 1;
 		Integer intMinCount = null;
 		for(intMinCount = 1; intMinCount<=intMaxCount; intMinCount++) {
 
@@ -170,6 +193,8 @@ public class DomainzDataCreationTest extends TestBase{
 		System.out.println("Account Reference:" + strAccountReference);	
 		System.out.println("Reference ID[0]:" + strWorkflowId);	
 		System.out.println("Domainz Test Migration Data [Customer with domain registration (enable auto-renew)]:" + strAccountReference + "," + strCardNumber + "," + strCardExpiryMonth + "," + strCardExpiryYear);
+		saveGreenCode(strAccountReference);
+		saveGreenCodeAndCreditCardDetails(strAccountReference, strCardNumber, strCardOwnerName, strCardExpiryMonth, strCardExpiryYear);
 		driver.close();
 		
 		//Test Step 4: Login to console admin and process domain registration workflow
@@ -234,6 +259,7 @@ public class DomainzDataCreationTest extends TestBase{
 		System.out.println("Account Reference:" + strAccountReference);	
 		System.out.println("Reference ID[0]:" + strWorkflowId);	
 		System.out.println("Domainz Test Migration Data [Customer with domain registration (enable auto-renew)]:" + strAccountReference + "," + strCardNumber + "," + strCardExpiryMonth + "," + strCardExpiryYear);
+		saveGreenCodeAndCreditCardDetails(strAccountReference, strCardNumber, strCardOwnerName, strCardExpiryMonth, strCardExpiryYear);
 		driver.close();
 		
 		//Test Step 9: Login to console admin and process domain registration workflow
@@ -266,6 +292,13 @@ public class DomainzDataCreationTest extends TestBase{
 		String strAccountReference = null;
 		String strAccountReferenceNewPassword = "comein22";
 		String strProduct = "Basic cPanel Hosting";
+		
+		String strCardOwnerName = null;
+		String strCardType = null;
+		String strCardNumber = null;
+	    String strCardExpiryMonth = null;
+	    String strCardExpiryYear = null;
+	    String strCardSecurityCode = null;
 		
 		Integer intMaxCount = 2;
 		Integer intMinCount = null;
@@ -300,12 +333,22 @@ public class DomainzDataCreationTest extends TestBase{
 		
 		//Test Step 2: Input credit card details and submit the order 
 		if ((intMinCount % 2)==0) {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer - Monthly Product", "Visa", "4009348888881881", "03", "2025", "777");
-			System.out.println("Domainz Test Credit Card Details(New Customer - Monthly Product): Visa, 4009348888881881, 03, 2025, 777");
+			strCardOwnerName = "Domainz Test New Customer - Monthly Product";
+			strCardType = "Visa";
+			strCardNumber = "4009348888881881";
+		    strCardExpiryMonth = "03";
+		    strCardExpiryYear = "2025";
+		    strCardSecurityCode = "777";
+		    dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
 		}
 		else {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer - Monthly Product", "Visa", "4012000033330026", "04", "2026", "234");
-			System.out.println("Domainz Test Credit Card Details(New Customer - Monthly Product): Visa, 4012000033330026, 04, 2026, 234");
+			strCardOwnerName = "Domainz Test New Customer - Monthly Product";
+			strCardType = "Visa";
+			strCardNumber = "4012000033330026";
+		    strCardExpiryMonth = "04";
+		    strCardExpiryYear = "2026";
+		    strCardSecurityCode = "234";
+		    dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
 		}
 			
 		dmzbillingpage.tickTermsAndConditions();
@@ -318,6 +361,8 @@ public class DomainzDataCreationTest extends TestBase{
 		System.out.println("Account Reference:" + strAccountReference);	
 		System.out.println("Reference ID[0]:" + strWorkflowId_01);	
 		System.out.println("Domainz Test Account Reference [Customer with monthly billing product]:" + strAccountReference);
+		saveGreenCode(strAccountReference);
+		saveGreenCodeAndCreditCardDetails(strAccountReference, strCardNumber, strCardOwnerName, strCardExpiryMonth, strCardExpiryYear);
 		driver.close();
 		
 		//Test Step 4: Login to console admin, then process domainregistration2 and productsetup2 workflows
@@ -360,13 +405,22 @@ public class DomainzDataCreationTest extends TestBase{
 		dmzbillingpage.selectNewCreditCardOption();
 		
 		if ((intMinCount % 2)==0) {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test Returning Customer - Monthly Product", "MasterCard", "5555555555554444", "09", "2019", "543");
-			System.out.println("Domainz Test Credit Card Details(Returning Customer - Monthly Product): MasterCard, 5555555555554444, 09, 2019, 543");
-			
+			strCardOwnerName = "Domainz Test Returning Customer - Monthly Product";
+			strCardType = "MasterCard";
+			strCardNumber = "5555555555554444";
+		    strCardExpiryMonth = "09";
+		    strCardExpiryYear = "2019";
+		    strCardSecurityCode = "543";
+		    dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
 		}
 		else {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test Returning Customer - Monthly Product", "MasterCard", "2223000048400011", "12", "2018", "102");
-			System.out.println("Domainz Test Credit Card Details(Returning Customer - Monthly Product): MasterCard, 2223000048400011, 12, 2018, 102");
+			strCardOwnerName = "Domainz Test Returning Customer - Monthly Product";
+			strCardType = "MasterCard";
+			strCardNumber = "2223000048400011";
+		    strCardExpiryMonth = "12";
+		    strCardExpiryYear = "2018";
+		    strCardSecurityCode = "102";
+		    dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
 		}
 		
 		dmzbillingpage.tickTermsAndConditions();
@@ -379,6 +433,7 @@ public class DomainzDataCreationTest extends TestBase{
 		System.out.println("Account Reference:" + strAccountReference);	
 		System.out.println("Reference ID[0]:" + strWorkflowId_03);
 		System.out.println("Domainz Test Account Reference [Customer with monthly billing product]:" + strAccountReference);
+		saveGreenCodeAndCreditCardDetails(strAccountReference, strCardNumber, strCardOwnerName, strCardExpiryMonth, strCardExpiryYear);
 		driver.close();
 		
 		//Test Step 9: Login to console admin, then process domainregistration2 and productsetup2 workflows
@@ -416,6 +471,13 @@ public class DomainzDataCreationTest extends TestBase{
 		String strAccountReferenceNewPassword = "comein22";
 		String strProduct = "Business Cloud Hosting";
 		
+		String strCardOwnerName = null;
+		String strCardType = null;
+		String strCardNumber = null;
+	    String strCardExpiryMonth = null;
+	    String strCardExpiryYear = null;
+	    String strCardSecurityCode = null;
+		
 		Integer intMaxCount = 2;
 		Integer intMinCount = null;
 		for(intMinCount = 1; intMinCount<=intMaxCount; intMinCount++) {
@@ -449,12 +511,22 @@ public class DomainzDataCreationTest extends TestBase{
 		
 		//Test Step 2: Input credit card details and submit the order 
 		if ((intMinCount % 2)==0) {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer - Yearly Product", "Visa", "4012000077777777", "05", "2020", "945");
-			System.out.println("Domainz Test Credit Card Details(New Customer - Yearly Product): Visa, 4012000077777777, 05, 2020, 945");
+			strCardOwnerName = "Domainz Test New Customer - Yearly Product";
+			strCardType = "Visa";
+			strCardNumber = "4012000077777777";
+		    strCardExpiryMonth = "05";
+		    strCardExpiryYear = "2020";
+		    strCardSecurityCode = "945";
+		    dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
 		}
 		else {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer - Yearly Product", "Visa", "4012888888881881", "06", "2021", "186");
-			System.out.println("Domainz Test Credit Card Details(New Customer - Yearly Product): Visa, 4012888888881881, 06, 2021, 186");
+			strCardOwnerName = "Domainz Test New Customer - Yearly Product";
+			strCardType = "Visa";
+			strCardNumber = "4012888888881881";
+		    strCardExpiryMonth = "06";
+		    strCardExpiryYear = "2021";
+		    strCardSecurityCode = "186";
+		    dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
 		}
 		
 		dmzbillingpage.tickTermsAndConditions();
@@ -467,6 +539,8 @@ public class DomainzDataCreationTest extends TestBase{
 		System.out.println("Account Reference:" + strAccountReference);	
 		System.out.println("Reference ID[0]:" + strWorkflowId_01);	
 		System.out.println("Domainz Test Account Reference [Customer with yearly billing product]:" + strAccountReference);
+		saveGreenCode(strAccountReference);
+		saveGreenCodeAndCreditCardDetails(strAccountReference, strCardNumber, strCardOwnerName, strCardExpiryMonth, strCardExpiryYear);
 		driver.close();
 		
 		//Test Step 4: Login to console admin, then process domainregistration2 and productsetup2 workflows
@@ -507,12 +581,22 @@ public class DomainzDataCreationTest extends TestBase{
 		dmzbillingpage.selectNewCreditCardOption();
 		
 		if ((intMinCount % 2)==0) {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test Returning Customer - Yearly Product", "MasterCard", "2223000048400011", "07", "2019", "448");
-			System.out.println("Domainz Test Credit Card Details(Returning Customer - Yearly Product): MasterCard, 2223000048400011, 07, 2019, 448");
+			strCardOwnerName = "Domainz Test Returning Customer - Yearly Product";
+			strCardType = "MasterCard";
+			strCardNumber = "2223000048400011";
+		    strCardExpiryMonth = "07";
+		    strCardExpiryYear = "2019";
+		    strCardSecurityCode = "448";
+		    dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
 		}
 		else {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test Returning Customer - Yearly Product", "MasterCard", "5454545454545454", "08", "2027", "763");
-			System.out.println("Domainz Test Credit Card Details(Returning Customer - Yearly Product): MasterCard, 5454545454545454, 08, 2027, 763");
+			strCardOwnerName = "Domainz Test Returning Customer - Yearly Product";
+			strCardType = "MasterCard";
+			strCardNumber = "5454545454545454";
+		    strCardExpiryMonth = "08";
+		    strCardExpiryYear = "2027";
+		    strCardSecurityCode = "763";
+		    dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
 		}
 
 		dmzbillingpage.tickTermsAndConditions();
@@ -525,6 +609,7 @@ public class DomainzDataCreationTest extends TestBase{
 		System.out.println("Account Reference:" + strAccountReference);	
 		System.out.println("Reference ID[0]:" + strWorkflowId_03);	
 		System.out.println("Domainz Test Account Reference [Customer with yearly billing product]:" + strAccountReference);
+		saveGreenCodeAndCreditCardDetails(strAccountReference, strCardNumber, strCardOwnerName, strCardExpiryMonth, strCardExpiryYear);
 		driver.close();
 		
 		//Test Step 9: Login to console admin, then process domainregistration2 and productsetup2 workflows
@@ -556,7 +641,7 @@ public class DomainzDataCreationTest extends TestBase{
 		String strWorkflowId_01 = null;
 		String strAccountReference = null;
 		String strAccountReferenceNewPassword = "comein22";
-
+		
 		String strTld_02 = null;
 		String strRegistrationPeriod = null;
 		String strPaymentMethod = null;
@@ -565,6 +650,13 @@ public class DomainzDataCreationTest extends TestBase{
 		String strProductPeriod = null;
 		String strWorkflowId_02 = null;
 		String strWorkflowId_03 = null;
+		
+		String strCardOwnerName = null;
+		String strCardType = null;
+		String strCardNumber = null;
+	    String strCardExpiryMonth = null;
+	    String strCardExpiryYear = null;
+	    String strCardSecurityCode = null;
 		
 		Integer intMaxCount = 2;
 		Integer intMinCount = null;
@@ -613,12 +705,22 @@ public class DomainzDataCreationTest extends TestBase{
 		
 		//Test Step 2: Input credit card details and submit the order 
 		if ((intMinCount % 2)==0) {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer", "Visa", "4217651111111119", "09", "2022", "480");
-			System.out.println("Domainz Test Credit Card Details: Visa, 4217651111111119, 09, 2022, 480");
+			strCardOwnerName = "Domainz Test New Customer";
+			strCardType = "Visa";
+			strCardNumber = "4217651111111119";
+		    strCardExpiryMonth = "09";
+		    strCardExpiryYear = "2022";
+		    strCardSecurityCode = "480";
+		    dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);	
 		}
 		else {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer", "Visa", "4500600000000061", "10", "2023", "739");
-			System.out.println("Domainz Test Credit Card Details: Visa, 4500600000000061, 10, 2023, 739");
+			strCardOwnerName = "Domainz Test New Customer";
+			strCardType = "Visa";
+			strCardNumber = "4500600000000061";
+		    strCardExpiryMonth = "10";
+		    strCardExpiryYear = "2023";
+		    strCardSecurityCode = "739";
+		    dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
 		}
 		
 		dmzbillingpage.tickTermsAndConditions();
@@ -631,6 +733,8 @@ public class DomainzDataCreationTest extends TestBase{
 		System.out.println("Account Reference:" + strAccountReference);	
 		System.out.println("Reference ID[0]:" + strWorkflowId_01);	
 		System.out.println("Domainz Test Account Reference [Customer with outstanding invoice]:" + strAccountReference);
+		saveGreenCode(strAccountReference);
+		saveGreenCodeAndCreditCardDetails(strAccountReference, strCardNumber, strCardOwnerName, strCardExpiryMonth, strCardExpiryYear);
 		driver.close();
 		
 		//Test Step 4: Login to console admin and process domain registration workflow
@@ -691,13 +795,20 @@ public class DomainzDataCreationTest extends TestBase{
 	
 		// Initialization (Test Data Creation and Assignment)
 		String strDomainName_01 = null;
-		String strDomainName_02 = null;
 		String strTld = null;
 		String strWorkflowId = null;
 		String strAccountReference = null;
 		String strAccountReferenceNewPassword = "comein22";
 		
-		Integer intMaxCount = 2;
+		String strCardOwnerName = null;
+		String strCardType = null;
+		String strCardNumber = null;
+	    String strCardExpiryMonth = null;
+	    String strCardExpiryYear = null;
+	    String strCardSecurityCode = null;
+		
+		
+		Integer intMaxCount = 1;
 		Integer intMinCount = null;
 		for(intMinCount = 1; intMinCount<=intMaxCount; intMinCount++) {
 
@@ -705,7 +816,6 @@ public class DomainzDataCreationTest extends TestBase{
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
 		Date d1 = new Date();
 		strDomainName_01 = "TestDomainzNewCustomer" + df.format(d1);
-		strDomainName_02 = "TestDomainzReturningCustomer" + df.format(d1);
 					
 		if (environment.equals("stagingdev-5")) {
 			strTld = ".com";
@@ -729,12 +839,22 @@ public class DomainzDataCreationTest extends TestBase{
 		
 		//Test Step 2: Input credit card details and submit the order 
 		if ((intMinCount % 2)==0) {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer", "Visa", "4111111111111111", "10", "2020", "715");
-			System.out.println("Domainz Test Credit Card Details: Visa, 4111111111111111, 10, 2020, 715");
+			strCardOwnerName = "Domainz Test New Customer";
+			strCardType = "Visa";
+			strCardNumber = "4111111111111111";
+		    strCardExpiryMonth = "10";
+		    strCardExpiryYear = "2020";
+		    strCardSecurityCode = "715";
+		    dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
 		}
 		else {
-			dmzbillingpage.setQuestFormCreditCardDetails("Domainz Test New Customer", "MasterCard", "2223000048400011", "11", "2019", "994");
-			System.out.println("Domainz Test Credit Card Details: MasterCard, 2223000048400011, 11, 2019, 994");
+			strCardOwnerName = "Domainz Test New Customer";
+			strCardType = "MasterCard";
+			strCardNumber = "2223000048400011";
+		    strCardExpiryMonth = "11";
+		    strCardExpiryYear = "2019";
+		    strCardSecurityCode = "994";
+		    dmzbillingpage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
 		}
 		
 		dmzbillingpage.tickTermsAndConditions();
@@ -747,6 +867,8 @@ public class DomainzDataCreationTest extends TestBase{
 		System.out.println("Account Reference:" + strAccountReference);	
 		System.out.println("Reference ID[0]:" + strWorkflowId);	
 		System.out.println("Domainz Test Account Reference [Customer with default credit card (testing domain auto renewals)]:" + strAccountReference);
+		saveGreenCode(strAccountReference);
+		saveGreenCodeAndCreditCardDetails(strAccountReference, strCardNumber, strCardOwnerName, strCardExpiryMonth, strCardExpiryYear);
 		driver.close();
 		
 		//Test Step 4: Login to console admin and process domain registration workflow
@@ -758,127 +880,191 @@ public class DomainzDataCreationTest extends TestBase{
 		caworkflowadminpage.processFraudCheck();
 		caworkflowadminpage.processDelegateDomain();
 		
-		//Test Step 5: Set the new password for the account reference
-		caheaderpage = new CAHeaderPage();
-		caaccountreferencepage = caheaderpage.searchAccountReference(strAccountReference);
-		caaccountreferencepage.updatePassword(strAccountReferenceNewPassword);
-		driver.close();
-		
-		//Test Step 6: Navigate again to Domainz search page and purchase new domain name for returning customer
-		initialization(environment, "customerportalurl_domainz");
-		dmzloginpage = new DMZLoginPage();
-		dmzloginpage.setLoginDetails(strAccountReference, strAccountReferenceNewPassword);
-		dmzheaderpage = dmzloginpage.clickLoginButton();
-		dmzaccountpage = dmzheaderpage.clickAccountTab();
-		dmzcreditcardsdetailspage = dmzaccountpage.clickEditCreditCardsOnFile();
-		
-		if ((intMinCount % 2)==0) {
-			dmzcreditcardsdetailspage.setQuestFormCreditCardDetails("Domainz Test Returning Customer - Default Credit Card", "MasterCard", "5555555555554444", "05", "2026", "121");
-			System.out.println("Domainz Test Credit Card Details: MasterCard, 5555555555554444, 05, 2026, 121");
-		}
-		else {	
-			dmzcreditcardsdetailspage.setQuestFormCreditCardDetails("Domainz Test Returning Customer - Default Credit Card", "Visa", "4005519200000004", "06", "2025", "836");
-			System.out.println("Domainz Test Credit Card Details: Visa, 4005519200000004, 06, 2025, 836");
-		}
-		
-		System.out.println("Domainz Test Account Reference [Customer with default credit card (testing domain auto renewals)]:" + strAccountReference);
-		dmzcreditcardsdetailspage.tickMakeCreditCardAsDefaultPayment();
-		dmzcreditcardsdetailspage.clickAddCreditCard();
-		
-		//Test Step 7: Verify if adding new card is successful
-		Assert.assertTrue(dmzcreditcardsdetailspage.isNewCreditCardAdded(), "New Credit Card is not added");
-		driver.close();
+//		//Test Step 5: Set the new password for the account reference
+//		caheaderpage = new CAHeaderPage();
+//		caaccountreferencepage = caheaderpage.searchAccountReference(strAccountReference);
+//		caaccountreferencepage.updatePassword(strAccountReferenceNewPassword);
+//		driver.close();
+//		
+//		//Test Step 6: Navigate again to Domainz search page and purchase new domain name for returning customer
+//		initialization(environment, "customerportalurl_domainz");
+//		dmzloginpage = new DMZLoginPage();
+//		dmzloginpage.setLoginDetails(strAccountReference, strAccountReferenceNewPassword);
+//		dmzheaderpage = dmzloginpage.clickLoginButton();
+//		dmzaccountpage = dmzheaderpage.clickAccountTab();
+//		dmzcreditcardsdetailspage = dmzaccountpage.clickEditCreditCardsOnFile();
+//		
+//		if ((intMinCount % 2)==0) {
+//			strCardOwnerName = "Domainz Test Returning Customer - Default Credit Card";
+//			strCardType = "MasterCard";
+//			strCardNumber = "5555555555554444";
+//		    strCardExpiryMonth = "05";
+//		    strCardExpiryYear = "2026";
+//		    strCardSecurityCode = "121";	
+//			dmzcreditcardsdetailspage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
+//		
+//		}
+//		else {	
+//			strCardOwnerName = "Domainz Test Returning Customer - Default Credit Card";
+//			strCardType = "Visa";
+//			strCardNumber = "4005519200000004";
+//		    strCardExpiryMonth = "06";
+//		    strCardExpiryYear = "2025";
+//		    strCardSecurityCode = "836";	
+//		    dmzcreditcardsdetailspage.setQuestFormCreditCardDetails(strCardOwnerName, strCardType, strCardNumber, strCardExpiryMonth, strCardExpiryYear, strCardSecurityCode);
+//		}
+//		
+//		System.out.println("Domainz Test Account Reference [Customer with default credit card (testing domain auto renewals)]:" + strAccountReference);
+//		dmzcreditcardsdetailspage.tickMakeCreditCardAsDefaultPayment();
+//		dmzcreditcardsdetailspage.clickAddCreditCard();
+//		
+//		//Test Step 7: Verify if adding new card is successful
+//		Assert.assertTrue(dmzcreditcardsdetailspage.isNewCreditCardAdded(), "New Credit Card is not added");
+//		saveGreenCodeAndCreditCardDetails(strAccountReference, strCardNumber, strCardOwnerName, strCardExpiryMonth, strCardExpiryYear);
+//		driver.close();
 		
 		System.out.println("End Test: generateCustomerDataWithDefaultCreditCard");
 		
 		}
 	}
 	
-	
 	@Parameters({"environment"})
 	@Test(priority=6, enabled = false)
-	public void getDetailsForCustomerWithDefaultCreditCard(String environment) throws InterruptedException{
-	
-		// Initialization (Test Data Creation and Assignment)
-		String strAccountReference = null;
-		String strbillingaccountdetails = null;
-		//[] arrAccountReference = {"PAY-501", "PAY-502"};
+	public void createTextFileForGreencodeAndCreditCardDetails (String environment) throws InterruptedException, IOException{
 		
-		//Integer intMaxCount = arrAccountReference.length;
-		Integer intMaxCount = 502;
+		Integer intMaxCount = arrDataMigrationGCAndCCDetails.size();
 		Integer intMinCount = null;
-		for(intMinCount = 501; intMinCount<=intMaxCount; intMinCount++) {
-			
-		strAccountReference = "PAY-"+intMinCount.toString();
-			
-		//Test Step 6: Login to Sales DB page, then purchase a domain with monthly or yearly product and pay through invoice
-		initialization(environment, "salesdburl");
-		csloginpage = new CSLoginPage();
-		csloginpage.setDefaultLoginDetails("stage");
-		csnrcrmpage = csloginpage.clickLoginButton();
+		PrintWriter writer = new PrintWriter("GreencodeAndCreditCardDetails.txt", "UTF-8");
+		writer.println("green_code,card_digits,card_owner,card_expire_month,card_expire_year");
 		
-		System.out.println("Domainz Test Account Reference [Customer with default credit card (testing domain auto renewals)]:" + strAccountReference);
 		
-		csnrcrmpage.setGreenCode(strAccountReference);
-		strbillingaccountdetails = csnrcrmpage.getBillingAccount();
-		System.out.println("Billing Account Details: " + strbillingaccountdetails);
-		
-		if (strbillingaccountdetails.equals("Visa: 4005xxxxxxxx0004 06/25")) {
-			System.out.println("Domainz Test Credit Card Details: Visa, 4005519200000004, 06, 2025, 836");
-			
-		}
-		else if (strbillingaccountdetails.equals("MasterCard: 5555xxxxxxxx4444 05/26")) {
-			System.out.println("Domainz Test Credit Card Details: MasterCard, 5555555555554444, 05, 2026, 121");
-		}
-		
-		driver.close();
+		for(intMinCount = 0; intMinCount<intMaxCount; intMinCount++) {
+			writer.println(arrDataMigrationGCAndCCDetails.get(intMinCount));
+		}	
+		writer.close();
+		System.out.println("Done with Text File Creation");
 		
 		}
-	}
 	
 	@Parameters({"environment"})
 	@Test(priority=7, enabled = false)
-	public void getDetailsForCustomerWithOutstandingInvoice (String environment) throws InterruptedException{
-	
-		// Initialization (Test Data Creation and Assignment)
-		String strAccountReference = null;
-		String strbillingaccountdetails = null;
-		//[] arrAccountReference = {"PAY-501", "PAY-502"};
+	public void createPropertyFileForDecryptedDataVerification (String environment) throws InterruptedException, IOException{
 		
-		//Integer intMaxCount = arrAccountReference.length;
-		Integer intMaxCount = 502;
+		Integer intMaxCount = arrDataMigrationGC.size();
 		Integer intMinCount = null;
-		for(intMinCount = 501; intMinCount<=intMaxCount; intMinCount++) {
+
+		StringBuffer strDataMigrationGC = new StringBuffer("'"+arrDataMigrationGC.get(0)+"'");
+		
+		for(intMinCount = 1; intMinCount<intMaxCount; intMinCount++) {
+		
+		
 			
-		strAccountReference = "PAY-"+intMinCount.toString();
+			strDataMigrationGC.append(","+"'"+ arrDataMigrationGC.get(intMinCount)+"'"); 
 			
-		//Test Step 6: Login to Sales DB page, then purchase a domain with monthly or yearly product and pay through invoice
-		initialization(environment, "salesdburl");
-		csloginpage = new CSLoginPage();
-		csloginpage.setDefaultLoginDetails("stage");
-		csnrcrmpage = csloginpage.clickLoginButton();
+		}		
+		System.out.println(strDataMigrationGC);
 		
-		System.out.println("Domainz Test Account Reference [Customer with default credit card (testing domain auto renewals)]:" + strAccountReference);
-		
-		csnrcrmpage.setGreenCode(strAccountReference);
-		strbillingaccountdetails = csnrcrmpage.getBillingAccount();
-		System.out.println("Billing Account Details: " + strbillingaccountdetails);
-		
-		if (strbillingaccountdetails.equals("Visa: 4005xxxxxxxx0004 06/25")) {
-			System.out.println("Domainz Test Credit Card Details: Visa, 4005519200000004, 06, 2025, 836");
-			
-		}
-		else if (strbillingaccountdetails.equals("MasterCard: 5555xxxxxxxx4444 05/26")) {
-			System.out.println("Domainz Test Credit Card Details: MasterCard, 5555555555554444, 05, 2026, 121");
-		}
-		
-		driver.close();
+		Properties properties = new Properties();
+		properties.setProperty("db.server.name", "console-db-1.staging.netregistry.net");
+		properties.setProperty("db.port.number", "20005");
+		properties.setProperty("db.database.name", "automation");
+		properties.setProperty("db.user", "automation");
+		properties.setProperty("db.password", "{n0P41nN0G41n}");
+		properties.setProperty("sql", "SELECT * FROM public.v_companybilling_bt WHERE cm_greencode IN ("+ strDataMigrationGC +") AND card_digits IS NOT NULL AND braintree_migrated = false;");
+		properties.setProperty("output.file", "output.csv");	
+	
+		File file = new File("migration.properties");
+		FileOutputStream fileOut = new FileOutputStream(file);
+		properties.store(fileOut, "DB");
+		fileOut.close();
+		System.out.println("Done File Creation");
 		
 		}
-	}
 	
 	
+//	@Parameters({"environment"})
+//	@Test(priority=8, enabled = false)
+//	public void getDetailsForCustomerWithDefaultCreditCard(String environment) throws InterruptedException{
+//	
+//		// Initialization (Test Data Creation and Assignment)
+//		String strAccountReference = null;
+//		String strbillingaccountdetails = null;
+//		//[] arrAccountReference = {"PAY-501", "PAY-502"};
+//		
+//		//Integer intMaxCount = arrAccountReference.length;
+//		Integer intMaxCount = 502;
+//		Integer intMinCount = null;
+//		for(intMinCount = 501; intMinCount<=intMaxCount; intMinCount++) {
+//			
+//		strAccountReference = "PAY-"+intMinCount.toString();
+//			
+//		//Test Step 6: Login to Sales DB page, then purchase a domain with monthly or yearly product and pay through invoice
+//		initialization(environment, "salesdburl");
+//		csloginpage = new CSLoginPage();
+//		csloginpage.setDefaultLoginDetails("stage");
+//		csnrcrmpage = csloginpage.clickLoginButton();
+//		
+//		System.out.println("Domainz Test Account Reference [Customer with default credit card (testing domain auto renewals)]:" + strAccountReference);
+//		
+//		csnrcrmpage.setGreenCode(strAccountReference);
+//		strbillingaccountdetails = csnrcrmpage.getBillingAccount();
+//		System.out.println("Billing Account Details: " + strbillingaccountdetails);
+//		
+//		if (strbillingaccountdetails.equals("Visa: 4005xxxxxxxx0004 06/25")) {
+//			System.out.println("Domainz Test Credit Card Details: Visa, 4005519200000004, 06, 2025, 836");
+//			
+//		}
+//		else if (strbillingaccountdetails.equals("MasterCard: 5555xxxxxxxx4444 05/26")) {
+//			System.out.println("Domainz Test Credit Card Details: MasterCard, 5555555555554444, 05, 2026, 121");
+//		}
+//		
+//		driver.close();
+//		
+//		}
+//	}
+//	
+//	@Parameters({"environment"})
+//	@Test(priority=9, enabled = false)
+//	public void getDetailsForCustomerWithOutstandingInvoice (String environment) throws InterruptedException{
+//	
+//		// Initialization (Test Data Creation and Assignment)
+//		String strAccountReference = null;
+//		String strbillingaccountdetails = null;
+//		//[] arrAccountReference = {"PAY-501", "PAY-502"};
+//		
+//		//Integer intMaxCount = arrAccountReference.length;
+//		Integer intMaxCount = 502;
+//		Integer intMinCount = null;
+//		for(intMinCount = 501; intMinCount<=intMaxCount; intMinCount++) {
+//			
+//		strAccountReference = "PAY-"+intMinCount.toString();
+//			
+//		//Test Step 6: Login to Sales DB page, then purchase a domain with monthly or yearly product and pay through invoice
+//		initialization(environment, "salesdburl");
+//		csloginpage = new CSLoginPage();
+//		csloginpage.setDefaultLoginDetails("stage");
+//		csnrcrmpage = csloginpage.clickLoginButton();
+//		
+//		System.out.println("Domainz Test Account Reference [Customer with default credit card (testing domain auto renewals)]:" + strAccountReference);
+//		
+//		csnrcrmpage.setGreenCode(strAccountReference);
+//		strbillingaccountdetails = csnrcrmpage.getBillingAccount();
+//		System.out.println("Billing Account Details: " + strbillingaccountdetails);
+//		
+//		if (strbillingaccountdetails.equals("Visa: 4005xxxxxxxx0004 06/25")) {
+//			System.out.println("Domainz Test Credit Card Details: Visa, 4005519200000004, 06, 2025, 836");
+//			
+//		}
+//		else if (strbillingaccountdetails.equals("MasterCard: 5555xxxxxxxx4444 05/26")) {
+//			System.out.println("Domainz Test Credit Card Details: MasterCard, 5555555555554444, 05, 2026, 121");
+//		}
+//		
+//		driver.close();
+//		
+//		}
+//	}
 	
+
 }
 
 
