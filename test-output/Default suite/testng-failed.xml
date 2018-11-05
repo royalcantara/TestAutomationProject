@@ -3,11 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.paymentgateway.uat.quest.domainz.testcases.ConsoleAdminJourneyTest">
+      <class name="com.paymentgateway.uat.domainz.testcases.RegressionTest">
         <methods>
-          <include name="QuestDomainz_VerifyViewBillingInConsoleAdmin"/>
+          <include name="testCreateDomainAndMajorProductOrderInSalesDB"/>
+          <include name="testDomainRegistration2WorkflowInConsoleAdmin"/>
         </methods>
-      </class> <!-- com.paymentgateway.uat.quest.domainz.testcases.ConsoleAdminJourneyTest -->
+      </class> <!-- com.paymentgateway.uat.domainz.testcases.RegressionTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -7,11 +7,11 @@
   </listeners>
   <test thread-count="5" name="Regression Test Cases(failed)">
     <classes>
-      <class name="com.paymentgateway.uat.quest.dps.testcases.SalesDBJourneyTest">
+      <class name="com.paymentgateway.uat.quest.domainz.testcases.SalesDBJourneyTest">
         <methods>
-          <include name="QuestDPS_VerifyCreateOrderPaidViaPrepaidCardInSalesDB" invocation-numbers="0"/>
+          <include name="QuestDomainz_VerifyCreateOrderPaidViaInvoiceInSalesDB" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.paymentgateway.uat.quest.dps.testcases.SalesDBJourneyTest -->
+      </class> <!-- com.paymentgateway.uat.quest.domainz.testcases.SalesDBJourneyTest -->
     </classes>
   </test> <!-- Regression Test Cases(failed) -->
 </suite> <!-- Failed suite [Payment Gateway Test Automation - UAT Quest Test Suite] -->

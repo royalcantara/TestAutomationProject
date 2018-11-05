@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Payment Gateway UAT Regression Test Suite">
+	<parameter name="environment"     value="uat1"/>
+	<parameter name="paymentgateway"  value="quest"/>
+	
+	<listeners>
+		<listener class-name="com.reports.extentreportslistener.ExtentReportListener" />
+	</listeners>
+	
+	<test name="Regression Test Cases">
+		<classes>
+		
+			<class name="com.paymentgateway.uat.domainz.testcases.RegressionTest"></class>
+	
+<!-- 			<class name="com.paymentgateway.uat.netregistry.testcases.RegressionTest"></class>	 -->
+<!-- 			<class name="com.paymentgateway.uat.melbourneit.testcases.RegressionTest"></class>	 -->
+<!-- 			<class name="com.paymentgateway.uat.tpp.testcases.RegressionTest"></class>	 -->
+<!-- 			<class name="com.paymentgateway.uat.webcentral.testcases.RegressionTest"></class>	 -->
+<!-- 			<class name="com.paymentgateway.uat.dps.testcases.RegressionTest"></class>	 -->
+	
+		</classes>
+	</test>  
+</suite> 
