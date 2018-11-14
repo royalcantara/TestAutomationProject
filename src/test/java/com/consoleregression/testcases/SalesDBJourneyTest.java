@@ -132,7 +132,7 @@ public class SalesDBJourneyTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=2, enabled = false)
+	@Test(priority=2, enabled = true)
 	public void verify_NetDomain_and_DIFM_Order_InSalesDB (String environment) throws InterruptedException{
 
 		// Initialization (Test Data Creation and Assignment)
@@ -151,7 +151,7 @@ public class SalesDBJourneyTest extends TestBase{
 		Date d = new Date();
 		strDomainName = "TestConsoleRegression" + df.format(d);
 
-		if (environment.equals("uat1")) {
+		if (environment.equals("uat1")||environment.equals("uat2")) {
 			strTld = "net";
 			strRegistrationPeriod = "1 x Y";
 			strGreenCode = "MEL-6007";
@@ -174,29 +174,31 @@ public class SalesDBJourneyTest extends TestBase{
 		csnrcrmpage = csregistrantdetailspage.setRegistrantDetails(strRegistrantDetails);
 		csshowdomainservicespage = csnrcrmpage.clickShowDomainServices(strDomainName);
 		csworkflownotificationpage = csshowdomainservicespage.clickConfirmAllServices();
+		
+		Assert.assertEquals(csworkflownotificationpage.getNotificationMessage(), "Services are successfully confirmed");
 		strWorkflowId = csworkflownotificationpage.getWorkflowID();
 		csworkflownotificationpage.clickOKButton();
 		driver.close();
 		
-		//Test Step 2: Process the domain registration workflow in console admin
-		initialization(environment, "consoleadmin");
-		caloginpage = new CALoginPage();
-		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
-		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);		
-		caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
-		
-		//Test Step 3: Verify if domain registration workflow is completed
-		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
-		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
-		
-		//Test Step 4: Process the productsetup2 workflow in console admin
-		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName + "." + strTld);
-		caworkflowadminpage.processProductSetup2();
-		
-		//Test Step 5: Verify if productsetup2 workflow is approved
-		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName + "." + strTld);
-		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "halting current workflow", caworkflowadminpage.getWorkflowStatus("productsetup2"));
-		driver.close();
+//		//Test Step 2: Process the domain registration workflow in console admin
+//		initialization(environment, "consoleadmin");
+//		caloginpage = new CALoginPage();
+//		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
+//		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);		
+//		caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
+//		
+//		//Test Step 3: Verify if domain registration workflow is completed
+//		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
+//		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
+//		
+//		//Test Step 4: Process the productsetup2 workflow in console admin
+//		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName + "." + strTld);
+//		caworkflowadminpage.processProductSetup2();
+//		
+//		//Test Step 5: Verify if productsetup2 workflow is approved
+//		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName + "." + strTld);
+//		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "halting current workflow", caworkflowadminpage.getWorkflowStatus("productsetup2"));
+//		driver.close();
 		
 		System.out.println("End Test: verify_NetDomain_and_DIFM_Order_InSalesDB");
 	}
@@ -300,7 +302,7 @@ public class SalesDBJourneyTest extends TestBase{
 	
 	
 	@Parameters({"environment"})
-	@Test(priority=4, enabled = true)
+	@Test(priority=4, enabled = false)
 	public void createDomainNameOrders (String environment) throws InterruptedException{
 
 		// Initialization (Test Data Creation and Assignment)

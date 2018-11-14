@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="2" total="3" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Payment Gateway UAT Regression Test Suite" duration-ms="87007" started-at="2018-11-05T03:40:47Z" finished-at="2018-11-05T03:42:14Z">
+  <suite name="Payment Gateway UAT Regression Test Suite" duration-ms="82804" started-at="2018-11-14T06:27:31Z" finished-at="2018-11-14T06:28:54Z">
     <groups>
     </groups>
-    <test name="Regression Test Cases" duration-ms="87007" started-at="2018-11-05T03:40:47Z" finished-at="2018-11-05T03:42:14Z">
+    <test name="Regression Test Cases" duration-ms="82804" started-at="2018-11-14T06:27:31Z" finished-at="2018-11-14T06:28:54Z">
       <class name="com.paymentgateway.uat.domainz.testcases.RegressionTest">
-        <test-method status="PASS" signature="testCreateDomainAndMajorProductOrderInSalesDB(java.lang.String, java.lang.String)[pri:1, instance:com.paymentgateway.uat.domainz.testcases.RegressionTest@42e26948]" name="testCreateDomainAndMajorProductOrderInSalesDB" duration-ms="86967" started-at="2018-11-05T03:40:47Z" finished-at="2018-11-05T03:42:14Z">
+        <test-method status="PASS" signature="testCreateDomainAndMajorProductOrderInSalesDB(java.lang.String, java.lang.String)[pri:1, instance:com.paymentgateway.uat.domainz.testcases.RegressionTest@42e26948]" name="testCreateDomainAndMajorProductOrderInSalesDB" duration-ms="82766" started-at="2018-11-14T06:27:31Z" finished-at="2018-11-14T06:28:54Z">
           <params>
             <param index="0">
               <value>
@@ -23,22 +23,6 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreateDomainAndMajorProductOrderInSalesDB -->
-        <test-method status="PASS" signature="testDomainRegistration2WorkflowInConsoleAdmin(java.lang.String, java.lang.String)[pri:2, instance:com.paymentgateway.uat.domainz.testcases.RegressionTest@42e26948]" name="testDomainRegistration2WorkflowInConsoleAdmin" duration-ms="5" started-at="2018-11-05T03:42:14Z" finished-at="2018-11-05T03:42:14Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[uat1]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[quest]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testDomainRegistration2WorkflowInConsoleAdmin -->
       </class> <!-- com.paymentgateway.uat.domainz.testcases.RegressionTest -->
     </test> <!-- Regression Test Cases -->
   </suite> <!-- Payment Gateway UAT Regression Test Suite -->

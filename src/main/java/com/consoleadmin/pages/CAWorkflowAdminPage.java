@@ -41,6 +41,40 @@ public class CAWorkflowAdminPage extends TestBase{
 
     }
     
+    
+    public void processDomainRegistration2Workflow (String strworkflowid, String strtld) throws InterruptedException {
+
+    	driver.findElement(By.linkText(strworkflowid)).click();			
+    	Thread.sleep(3000);
+    		
+    	if (strtld.equals("com")||strtld.equals("net")){
+    		this.processCheckASIC();
+    	}
+    	else if (strtld.equals("com.au")) {
+    		this.processCheckASIC();
+    	}
+    	else if (strtld.equals("org")||strtld.equals("info")){
+    		this.processCheckASIC();
+    		this.processDelegateDomain();
+    	}
+
+    }
+    
+    
+    
+    public void processCheckASIC() throws InterruptedException {
+    	
+    	//Click Execute for Check ASIC
+    	driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'check asic')]/parent::tr/td[3]/a[text()='Execute']")).click();
+    	Thread.sleep(3000);
+    		
+    	//Click Execute Action
+    	executeActionButton.click();
+    	Thread.sleep(6000);
+    		
+    }
+    
+    
     public void processFraudCheck() throws InterruptedException {
     	
     	//Click Ok for Fraud Check
@@ -119,7 +153,7 @@ public class CAWorkflowAdminPage extends TestBase{
     		
     	//Click Execute Action
     	executeActionButton.click();
-    	Thread.sleep(6000);
+    	Thread.sleep(3000);
     			
     }
     	
@@ -337,6 +371,17 @@ public class CAWorkflowAdminPage extends TestBase{
 //        	return preauthnumber;
 //
 //        }
+    	
+    	public String getProductSetup2WorkflowTouchPoints() throws InterruptedException {
+    		
+    		String workflowid;
+    		
+    		//Get workflow id for productsetup2 after processing domainregistration2 workflow
+    		workflowid = driver.findElement(By.xpath("//tbody/tr/td/font[@class='cp'][3]/a[@class='cp']")).getText();	
+    		Thread.sleep(3000);
+    		    			
+    		return workflowid;
+    	}
     	
     	
     		

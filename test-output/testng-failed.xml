@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Payment Gateway UAT Regression Test Suite]">
-  <parameter name="environment" value="uat1"/>
-  <parameter name="paymentgateway" value="quest"/>
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Console Regression Test Automation - UAT Test Suite]">
+  <parameter name="environment" value="uat2"/>
   <listeners>
     <listener class-name="com.reports.extentreportslistener.ExtentReportListener"/>
   </listeners>
   <test thread-count="5" name="Regression Test Cases(failed)">
     <classes>
-      <class name="com.paymentgateway.uat.domainz.testcases.RegressionTest">
+      <class name="com.consoleregression.testcases.SalesDBJourneyTest">
         <methods>
-          <include name="testCreateDomainAndMajorProductOrderInSalesDB" invocation-numbers="0"/>
+          <include name="verify_NetDomain_and_DIFM_Order_InSalesDB" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.paymentgateway.uat.domainz.testcases.RegressionTest -->
+      </class> <!-- com.consoleregression.testcases.SalesDBJourneyTest -->
     </classes>
   </test> <!-- Regression Test Cases(failed) -->
-</suite> <!-- Failed suite [Payment Gateway UAT Regression Test Suite] -->
+</suite> <!-- Failed suite [Console Regression Test Automation - UAT Test Suite] -->

@@ -28,7 +28,14 @@ public class CSWorkflowNotificationPage extends TestBase{
 		System.out.println("Workflow Id = "+workid[1]);
 		return (workid[1]);
 	}
-            
+    
+    public String getNotificationMessage() throws InterruptedException {
+  		Thread.sleep(5000);
+  		String strPopUpMessage = driver.findElement(By.xpath("//*[@class='ext-mb-text']")).getText();
+		String strMessage = strPopUpMessage.substring(0, 35);
+  		return strMessage;
+  	}
+    
     public void clickOKButton() throws InterruptedException {
     	Thread.sleep(2000);
 		okButton.click();

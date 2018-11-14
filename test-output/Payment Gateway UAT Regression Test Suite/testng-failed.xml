@@ -10,7 +10,7 @@
     <classes>
       <class name="com.paymentgateway.uat.domainz.testcases.RegressionTest">
         <methods>
-          <include name="testCreateDomainAndMajorProductOrderInSalesDB" invocation-numbers="0"/>
+          <include name="testProductSetup2WorkflowInConsoleAdmin" invocation-numbers="0"/>
         </methods>
       </class> <!-- com.paymentgateway.uat.domainz.testcases.RegressionTest -->
     </classes>
