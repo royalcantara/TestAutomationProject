@@ -372,15 +372,18 @@ public class CAWorkflowAdminPage extends TestBase{
 //
 //        }
     	
-    	public String getProductSetup2WorkflowTouchPoints() throws InterruptedException {
+    	public String getDomainRegistration2WorkflowParameterValue(String workflowparametername) throws InterruptedException {  
     		
-    		String workflowid;
+    		String workflowparametervalue;
     		
-    		//Get workflow id for productsetup2 after processing domainregistration2 workflow
-    		workflowid = driver.findElement(By.xpath("//tbody/tr/td/font[@class='cp'][3]/a[@class='cp']")).getText();	
-    		Thread.sleep(3000);
-    		    			
-    		return workflowid;
+        	Thread.sleep(3000);
+        	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//th[exact(text(),'"+workflowparametername+"')]")));
+        	
+    		workflowparametervalue = driver.findElement(By.xpath("//th[exact(text(), '"+workflowparametername+"')]/parent::tr/td")).getText();
+    		System.out.println(workflowparametername+": "+ workflowparametervalue);
+    		//System.out.println("parameter name: " + driver.findElement(By.xpath("//th[contains(text(), '"+workflowparametername+"')]")).getText());
+    		   		    			
+    		return workflowparametervalue;
     	}
     	
     	

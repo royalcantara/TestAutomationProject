@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -65,7 +66,7 @@ public class RegressionTest extends TestBase{
 
 
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=1, enabled = true)
+		@Test(priority=1, enabled = false)
 		public void testCreateDomainAndMajorProductOrderInSalesDB(String environment, String paymentgateway) throws InterruptedException{
 
 		// Generate test name for domain
@@ -79,7 +80,7 @@ public class RegressionTest extends TestBase{
 			strRegistrationPeriod = "2 x Y";
 			strMajorProduct = "Basic cPanel Hosting";
 			strProductPeriod = "1 x M";
-			strPaymentMethod = "Invoice";
+			strPaymentMethod = "Visa: 4111xxxxxxxx1111";
 			strRegistrantDetails = "Payment Gateway Test";	
 			strRegistrantType = "ABN";
 			strRegistrantNumber = "13080859721";
@@ -112,7 +113,7 @@ public class RegressionTest extends TestBase{
 		csshowdomainservicespage = csnrcrmpage.clickShowDomainServices(strDomainName_01);
 		csworkflownotificationpage = csshowdomainservicespage.clickConfirmAllServices();
 		
-		//Test Step 2: Verify if the services are succesfully confirmed
+		//Test Step 2: Verify if the services are successfully confirmed
 		Assert.assertEquals(csworkflownotificationpage.getNotificationMessage(), "Services are successfully confirmed", "Domain purchased successfully");
 		strWorkflowId_01 = csworkflownotificationpage.getWorkflowID();
 		csworkflownotificationpage.clickOKButton();
@@ -122,21 +123,41 @@ public class RegressionTest extends TestBase{
 		}
 		
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=2, enabled = false)
+		@Test(priority=2, enabled = true)
 		public void testDomainRegistration2WorkflowInConsoleAdmin(String environment, String paymentgateway) throws InterruptedException{
 
 		//Test Step 1: Login to console admin, then process domainregistration2 workflow
+	
+		strWorkflowId_01 = "12779617";
+		
 		initialization(environment, "consoleadmin");
 		caloginpage = new CALoginPage();
 		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
 		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId_01);
-		caworkflowadminpage.processDomainRegistration2Workflow(strWorkflowId_01, strTld_01);
+		driver.findElement(By.linkText(strWorkflowId_01)).click();
 		
-		//Test Step 2: Verify if domain registration workflow status is completed
+		//caworkflowadminpage.processDomainRegistration2Workflow(strWorkflowId_01, strTld_01);
+		
+		//Test Step 2: Verify if domainregistration2 workflow touchpoints are correct	
+		
+		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("PreAuthNumber"), "none");
+		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("Billing"), "cannot be displayed");
+		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.accounting.productCode"), "PAYMT-CC");
+		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.preauth.txnref"), "11111111");
+		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.completion.rrn"), "999999");
+		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.accounting.description"), "Online Credit Card Payment Amex Card# 4111xxxxxxxx1111");
+		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.preauth.response"), "approved");
+		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.preauth.preauth"), "11111111");
+		
+		//Test Step 3: Verify if domain registration workflow status is completed
 		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId_01);
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));		
 		
-		//Test Step 3: Verify if domainregistration2 workflow touchpoints are correct		
+		driver.close();
+
+		
+		
+		
 		}
 		
 		@Parameters({"environment", "paymentgateway"})
