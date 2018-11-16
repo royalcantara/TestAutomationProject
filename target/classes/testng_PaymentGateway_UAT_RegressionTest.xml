@@ -12,7 +12,6 @@
 		<classes>
 		
 			<class name="com.paymentgateway.uat.domainz.testcases.RegressionTest"></class>
-	
 <!-- 			<class name="com.paymentgateway.uat.netregistry.testcases.RegressionTest"></class>	 -->
 <!-- 			<class name="com.paymentgateway.uat.melbourneit.testcases.RegressionTest"></class>	 -->
 <!-- 			<class name="com.paymentgateway.uat.tpp.testcases.RegressionTest"></class>	 -->

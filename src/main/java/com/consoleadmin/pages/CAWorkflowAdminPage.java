@@ -173,52 +173,52 @@ public class CAWorkflowAdminPage extends TestBase{
     			
     }
     	
-    	public void processProductSetup2O365() throws InterruptedException {
+    public void processProductSetup2O365() throws InterruptedException {
     		
-    		//Click Office365 workflowid
-    		driver.findElement(By.xpath("//table/tbody/tr/td/table[3]/tbody/tr[3]/td[1]/a")).click();
-    		Thread.sleep(3000);
+    	//Click Office365 workflowid
+    	driver.findElement(By.xpath("//table/tbody/tr/td/table[3]/tbody/tr[3]/td[1]/a")).click();
+    	Thread.sleep(3000);
     		
-    		//Click Execute for Run Setup
-    		driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'run setup')]/parent::tr/td[3]/a[text()='Execute']")).click();
-    		Thread.sleep(3000);
+    	//Click Execute for Run Setup
+    	driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'run setup')]/parent::tr/td[3]/a[text()='Execute']")).click();
+    	Thread.sleep(3000);
     		
-    		//Click Execute Action
-    		executeActionButton.click();
-    		Thread.sleep(3000);
+    	//Click Execute Action
+    	executeActionButton.click();
+    	Thread.sleep(3000);
     			
-    	}
+    }
     	
-    	public void processProductSetup2DIFMUpgrade(String strworkflowid) throws InterruptedException {
+    public void processProductSetup2DIFMUpgrade(String strworkflowid) throws InterruptedException {
     		
-    		//Click DIFM Upgrade workflowid
-    		driver.findElement(By.linkText(strworkflowid)).click();	
-    		Thread.sleep(3000);
+    	//Click DIFM Upgrade workflowid
+    	driver.findElement(By.linkText(strworkflowid)).click();	
+    	Thread.sleep(3000);
     		
-    		//Click Execute for Run Setup
-    		driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'run setup')]/parent::tr/td[3]/a[text()='Execute']")).click();
-    		Thread.sleep(3000);
+    	//Click Execute for Run Setup
+    	driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'run setup')]/parent::tr/td[3]/a[text()='Execute']")).click();
+    	Thread.sleep(3000);
     		
-    		//Click Execute Action
-    		executeActionButton.click();
-    		Thread.sleep(3000);
+    	//Click Execute Action
+    	executeActionButton.click();
+    	Thread.sleep(3000);
     			
-    	}
+    }
     	
     	
-    	public String getProductSetup2WorkflowID() throws InterruptedException {
+    public String getProductSetup2WorkflowID() throws InterruptedException {
     		
-    		String workflowid;
+    	String workflowid;
     		
-    		//Get workflow id for productsetup2 after processing domainregistration2 workflow
-    		workflowid = driver.findElement(By.xpath("//tbody/tr/td/font[@class='cp'][3]/a[@class='cp']")).getText();	
-    		Thread.sleep(3000);
+    	//Get workflow id for productsetup2 after processing domainregistration2 workflow
+    	workflowid = driver.findElement(By.xpath("//tbody/tr/td/font[@class='cp'][3]/a[@class='cp']")).getText();	
+    	Thread.sleep(3000);
     		    			
-    		return workflowid;
-    	}
+    	return workflowid;
+    }
     	
     	
-    	public boolean verifyWorflowStatus(String strworkflowtype, String strworkflowstep) throws InterruptedException {
+    public boolean verifyWorflowStatus(String strworkflowtype, String strworkflowstep) throws InterruptedException {
         	
         	String count;
         	String workflowtypetext;
@@ -251,7 +251,7 @@ public class CAWorkflowAdminPage extends TestBase{
         	
         	return workflowstepcheck;
 
-        }
+    }
     	
     public String getWorkflowStatus(String strworkflowtype) throws InterruptedException {
         	
@@ -284,7 +284,7 @@ public class CAWorkflowAdminPage extends TestBase{
     }
     	
     	
-    	public boolean verifyWorflowStatusViaID(String strworkflowid, String strworkflowstep) throws InterruptedException {
+    public boolean verifyWorflowStatusViaID(String strworkflowid, String strworkflowstep) throws InterruptedException {
         	
         	String count;
         	String workflowidnumber;
@@ -316,9 +316,9 @@ public class CAWorkflowAdminPage extends TestBase{
         	
         	return workflowstepcheck;
 
-        }
+    }
     	
-    	public Boolean isWorkflowIDExist(String strworkflowid) throws InterruptedException {
+    public Boolean isWorkflowIDExist(String strworkflowid) throws InterruptedException {
             
         	Boolean flag = false;
         	Thread.sleep(2000);
@@ -330,9 +330,9 @@ public class CAWorkflowAdminPage extends TestBase{
 
         	return flag;
 
-        }
+    }
     	
-    	public String getPreAuthNumber(String strworkflowid) throws InterruptedException {
+    public String getPreAuthNumber(String strworkflowid) throws InterruptedException {
             
     		String preauthnumber = null;
     		
@@ -350,7 +350,7 @@ public class CAWorkflowAdminPage extends TestBase{
 
         	return preauthnumber;
 
-        }
+    }
     	
 //    	public String getWorkflowParameterValues(String workflowparamname) throws InterruptedException {
 //            
@@ -372,22 +372,21 @@ public class CAWorkflowAdminPage extends TestBase{
 //
 //        }
     	
-    	public String getDomainRegistration2WorkflowParameterValue(String workflowparametername) throws InterruptedException {  
+    public String getDomainRegistration2WorkflowParameterValue(String workflowparametername) throws InterruptedException {  
     		
     		String workflowparametervalue;
     		
         	Thread.sleep(3000);
-        	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//th[exact(text(),'"+workflowparametername+"')]")));
+        	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//th[contains(text(),'"+workflowparametername+"')]")));
         	
-    		workflowparametervalue = driver.findElement(By.xpath("//th[exact(text(), '"+workflowparametername+"')]/parent::tr/td")).getText();
+    		workflowparametervalue = driver.findElement(By.xpath("//th[contains(text(), '"+workflowparametername+"')]/parent::tr/td")).getText();
     		System.out.println(workflowparametername+": "+ workflowparametervalue);
-    		//System.out.println("parameter name: " + driver.findElement(By.xpath("//th[contains(text(), '"+workflowparametername+"')]")).getText());
-    		   		    			
+  	  
     		return workflowparametervalue;
-    	}
+    }
     	
     	
     		
-    }
+}
 
 

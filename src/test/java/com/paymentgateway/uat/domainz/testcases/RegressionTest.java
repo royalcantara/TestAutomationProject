@@ -1,10 +1,10 @@
 package com.paymentgateway.uat.domainz.testcases;
 
+import java.awt.AWTException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -14,11 +14,14 @@ import com.consoleadmin.pages.CAAccountReferencePage;
 import com.consoleadmin.pages.CADomainLevelPage;
 import com.consoleadmin.pages.CAHeaderPage;
 import com.consoleadmin.pages.CALoginPage;
+import com.consoleadmin.pages.CAViewCreditCardsPage;
 import com.consoleadmin.pages.CAWorkflowAdminPage;
 import com.consolesalesdb.pages.CSAUEligibilityPage;
+import com.consolesalesdb.pages.CSAccountPage;
 import com.consolesalesdb.pages.CSCreateDomainWindowPage;
 import com.consolesalesdb.pages.CSLoginPage;
 import com.consolesalesdb.pages.CSNrCRMPage;
+import com.consolesalesdb.pages.CSProcessTransactionPage;
 import com.consolesalesdb.pages.CSRegistrantDetailsPage;
 import com.consolesalesdb.pages.CSShowDomainServicesPage;
 import com.consolesalesdb.pages.CSWorkflowNotificationPage;
@@ -35,6 +38,8 @@ public class RegressionTest extends TestBase{
 		CSShowDomainServicesPage csshowdomainservicespage;
 		CSWorkflowNotificationPage csworkflownotificationpage;
 		CSAUEligibilityPage csaueligibilitypage;
+		CSAccountPage csaccountpage;
+		CSProcessTransactionPage csprocesstransactionpage;
 		
 		//Console Admin Pages
 		CALoginPage caloginpage;
@@ -42,6 +47,7 @@ public class RegressionTest extends TestBase{
 		CAWorkflowAdminPage caworkflowadminpage;
 		CAAccountReferencePage caaccountreferencepage;
 		CADomainLevelPage cadomainlevelpage;
+		CAViewCreditCardsPage caviewcreditcardspage;
 		
 		TestUtil testUtil;
 		public static ExtentTest logger;
@@ -66,7 +72,7 @@ public class RegressionTest extends TestBase{
 
 
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=1, enabled = false)
+		@Test(priority=1, enabled = true)
 		public void testCreateDomainAndMajorProductOrderInSalesDB(String environment, String paymentgateway) throws InterruptedException{
 
 		// Generate test name for domain
@@ -76,7 +82,7 @@ public class RegressionTest extends TestBase{
 
 		if ((environment.equals("uat1"))&&(paymentgateway.equals("quest"))) {
 			strAccountReference = "DOM-1218";
-			strTld_01 = "com.au";
+			strTld_01 = "org";
 			strRegistrationPeriod = "2 x Y";
 			strMajorProduct = "Basic cPanel Hosting";
 			strProductPeriod = "1 x M";
@@ -123,41 +129,37 @@ public class RegressionTest extends TestBase{
 		}
 		
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=2, enabled = true)
+		@Test(priority=2, enabled = false)
 		public void testDomainRegistration2WorkflowInConsoleAdmin(String environment, String paymentgateway) throws InterruptedException{
 
-		//Test Step 1: Login to console admin, then process domainregistration2 workflow
-	
-		strWorkflowId_01 = "12779617";
-		
+		//Test Step 1: Login to console admin, then process domainregistration2 workflow		
 		initialization(environment, "consoleadmin");
 		caloginpage = new CALoginPage();
 		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
 		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId_01);
-		driver.findElement(By.linkText(strWorkflowId_01)).click();
-		
-		//caworkflowadminpage.processDomainRegistration2Workflow(strWorkflowId_01, strTld_01);
+		caworkflowadminpage.processDomainRegistration2Workflow(strWorkflowId_01, strTld_01);
 		
 		//Test Step 2: Verify if domainregistration2 workflow touchpoints are correct	
+		if (paymentgateway.equals("quest")) {
+
+			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.accounting.productCode"), "PAYMT-CC");
+			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.preauth.txnref"), "11111111");
+			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.completion.rrn"), "999999");
+			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.accounting.description"), "Online Credit Card Payment Amex Card# 4111xxxxxxxx1111");
+			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.preauth.response"), "approved");
+			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.preauth.preauth"), "11111111");
 		
-		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("PreAuthNumber"), "none");
-		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("Billing"), "cannot be displayed");
-		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.accounting.productCode"), "PAYMT-CC");
-		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.preauth.txnref"), "11111111");
-		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.completion.rrn"), "999999");
-		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.accounting.description"), "Online Credit Card Payment Amex Card# 4111xxxxxxxx1111");
-		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.preauth.response"), "approved");
-		Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.preauth.preauth"), "11111111");
+		}
+		else if (paymentgateway.equals("braintree")) {
+			
+			/* will include assertion */
+		}
 		
 		//Test Step 3: Verify if domain registration workflow status is completed
 		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId_01);
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));		
-		
 		driver.close();
 
-		
-		
-		
 		}
 		
 		@Parameters({"environment", "paymentgateway"})
@@ -175,5 +177,71 @@ public class RegressionTest extends TestBase{
 		driver.close();
 		
 				
+		}
+		
+		
+		@Parameters({"environment", "paymentgateway"})
+		@Test(priority=4, enabled = false)
+		public void testPayInvoiceUsingExistingCardFromSalesDB(String environment, String paymentgateway) throws InterruptedException, AWTException{
+		
+		// Initialization (Test Data Creation and Assignment)
+		String setGreencode = "DOM-1218";
+		String domainAmount = "50.00";
+		
+		//Test Step 1: Login to Sales DB page, then pay for an existing invoice for domain and product via existing credit card
+		initialization(environment, "salesdburl");
+		csloginpage = new CSLoginPage();
+		csloginpage.setDefaultLoginDetails("uat");
+		csnrcrmpage = csloginpage.clickLoginButton();
+		
+		csaccountpage = new CSAccountPage();
+		csaccountpage.clickAccountTab();
+		
+		csprocesstransactionpage = new CSProcessTransactionPage();
+		csprocesstransactionpage.setProcessTransactionDetails(setGreencode, domainAmount);
+		
+		driver.close();
+		}
+		
+		
+		@Parameters({"environment", "paymentgateway"})
+		@Test(priority=5, enabled = false)
+		public void testRefundPaymentInSalesDB(String environment, String paymentgateway) throws InterruptedException, AWTException{
+		
+		// Initialization (Test Data Creation and Assignment)
+		String setGreencode = "DOM-1218";
+		String domainAmount = "50.00";
+		
+		//Test Step 1: Login to Sales DB page, then pay for an existing invoice for domain and product via existing credit card
+		initialization(environment, "salesdburl");
+		csloginpage = new CSLoginPage();
+		csloginpage.setDefaultLoginDetails("uat");
+		csnrcrmpage = csloginpage.clickLoginButton();
+		
+		csaccountpage = new CSAccountPage();
+		csaccountpage.clickAccountTab();
+		
+		csprocesstransactionpage = new CSProcessTransactionPage();
+		//csprocesstransactionpage.setProcessTransactionDetailsForRefund(setGreencode, domainAmount);
+		
+		driver.close();
+		}
+		
+		
+		@Parameters({"environment", "paymentgateway"})
+		@Test(priority=6, enabled = false)
+		public void testViewBillingInConsoleAdmin(String environment, String paymentgateway) throws InterruptedException{
+		
+		strAccountReference = "DOM-1218"; 
+
+		//Test Step 1: Login to console admin, then verify if user can view billing in console admin
+		initialization(environment, "consoleadmin");
+		caloginpage = new CALoginPage();
+		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
+		caaccountreferencepage = caheaderpage.searchAccountReference(strAccountReference);
+		caviewcreditcardspage = caaccountreferencepage.clickViewBillingAccounts();
+		Assert.assertTrue(caviewcreditcardspage.isViewCreditcardsPageDisplayed(), "View Creditcards Page is not displayed");
+		
+		driver.close();	
 		}
 }
