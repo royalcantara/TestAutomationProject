@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">2 methods,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -102,7 +102,12 @@
                     <div class="method-list-content passed suite-Payment_Gateway_UAT_Regression_Test_Suite">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Payment_Gateway_UAT_Regression_Test_Suite" title="com.paymentgateway.uat.domainz.testcases.RegressionTest" hash-for-method="testCreateDomainAndMajorProductOrderInSalesDB(uat1, quest)">testCreateDomainAndMajorProductOrderInSalesDB(uat1, quest)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Payment_Gateway_UAT_Regression_Test_Suite" title="com.paymentgateway.uat.domainz.testcases.RegressionTest" hash-for-method="testPayInvoiceUsingExistingCardFromSalesDB(uat1, quest)">testPayInvoiceUsingExistingCardFromSalesDB(uat1, quest)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Payment_Gateway_UAT_Regression_Test_Suite" title="com.paymentgateway.uat.domainz.testcases.RegressionTest" hash-for-method="testRefundPaymentInSalesDB(uat1, quest)">testRefundPaymentInSalesDB(uat1, quest)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Payment_Gateway_UAT_Regression_Test_Suite -->
@@ -125,9 +130,17 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="testCreateDomainAndMajorProductOrderInSalesDB(uat1, quest)">
-                  </a> <!-- testCreateDomainAndMajorProductOrderInSalesDB(uat1, quest) -->
-                  <span class="method-name">testCreateDomainAndMajorProductOrderInSalesDB</span>
+                  <a name="testPayInvoiceUsingExistingCardFromSalesDB(uat1, quest)">
+                  </a> <!-- testPayInvoiceUsingExistingCardFromSalesDB(uat1, quest) -->
+                  <span class="method-name">testPayInvoiceUsingExistingCardFromSalesDB</span>
+                  <span class="parameters">(uat1, quest)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testRefundPaymentInSalesDB(uat1, quest)">
+                  </a> <!-- testRefundPaymentInSalesDB(uat1, quest) -->
+                  <span class="method-name">testRefundPaymentInSalesDB</span>
                   <span class="parameters">(uat1, quest)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
@@ -190,11 +203,15 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'testCreateDomainAndMajorProductOrderInSalesDB')
+data.setCell(0, 1, 'testRefundPaymentInSalesDB')
 data.setCell(0, 2, 'com.paymentgateway.uat.domainz.testcases.RegressionTest')
-data.setCell(0, 3, 76510);
+data.setCell(0, 3, 42164);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'testPayInvoiceUsingExistingCardFromSalesDB')
+data.setCell(1, 2, 'com.paymentgateway.uat.domainz.testcases.RegressionTest')
+data.setCell(1, 3, 41356);
 window.suiteTableData['Payment_Gateway_UAT_Regression_Test_Suite']= { tableData: data, tableDiv: 'times-div-Payment_Gateway_UAT_Regression_Test_Suite'}
 return data;
 }
@@ -214,17 +231,19 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Payment_Gateway_UAT_Regression_Test_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">5 ignored methods</span>
+            <span class="header-content">6 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
               <span class="ignored-class-name">com.paymentgateway.uat.domainz.testcases.RegressionTest</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">testPayInvoiceUsingExistingCardFromSalesDB</span>
-                <br/>
-                <span class="ignored-method-name">testRefundPaymentInSalesDB</span>
+                <span class="ignored-method-name">testCreateDomainAndMajorProductOrderInSalesDB</span>
                 <br/>
                 <span class="ignored-method-name">testViewBillingInConsoleAdmin</span>
+                <br/>
+                <span class="ignored-method-name">testPayingSingleInvoiceInConsoleAdmin</span>
+                <br/>
+                <span class="ignored-method-name">testUpdateExpiryInConsoleAdmin</span>
                 <br/>
                 <span class="ignored-method-name">testDomainRegistration2WorkflowInConsoleAdmin</span>
                 <br/>
@@ -242,8 +261,12 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.paymentgateway.uat.domainz.testcases.RegressionTest</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <span class="method-name">testCreateDomainAndMajorProductOrderInSalesDB(uat1, quest)</span>
+                <span class="method-name">testPayInvoiceUsingExistingCardFromSalesDB(uat1, quest)</span>
                 <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testRefundPaymentInSalesDB(uat1, quest)</span>
+                <span class="method-start">41359 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

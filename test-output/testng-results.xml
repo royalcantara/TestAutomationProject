@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="5" total="6" passed="1">
+<testng-results skipped="0" failed="0" ignored="6" total="8" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Payment Gateway UAT Regression Test Suite" duration-ms="76564" started-at="2018-11-16T06:04:33Z" finished-at="2018-11-16T06:05:50Z">
+  <suite name="Payment Gateway UAT Regression Test Suite" duration-ms="83549" started-at="2018-11-21T05:58:12Z" finished-at="2018-11-21T05:59:35Z">
     <groups>
     </groups>
-    <test name="Regression Test Cases" duration-ms="76564" started-at="2018-11-16T06:04:33Z" finished-at="2018-11-16T06:05:50Z">
+    <test name="Regression Test Cases" duration-ms="83549" started-at="2018-11-21T05:58:12Z" finished-at="2018-11-21T05:59:35Z">
       <class name="com.paymentgateway.uat.domainz.testcases.RegressionTest">
-        <test-method status="PASS" signature="testCreateDomainAndMajorProductOrderInSalesDB(java.lang.String, java.lang.String)[pri:1, instance:com.paymentgateway.uat.domainz.testcases.RegressionTest@42e26948]" name="testCreateDomainAndMajorProductOrderInSalesDB" duration-ms="76510" started-at="2018-11-16T06:04:33Z" finished-at="2018-11-16T06:05:50Z">
+        <test-method status="PASS" signature="testPayInvoiceUsingExistingCardFromSalesDB(java.lang.String, java.lang.String)[pri:4, instance:com.paymentgateway.uat.domainz.testcases.RegressionTest@343f4d3d]" name="testPayInvoiceUsingExistingCardFromSalesDB" duration-ms="41356" started-at="2018-11-21T05:58:12Z" finished-at="2018-11-21T05:58:53Z">
           <params>
             <param index="0">
               <value>
@@ -22,7 +22,23 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testCreateDomainAndMajorProductOrderInSalesDB -->
+        </test-method> <!-- testPayInvoiceUsingExistingCardFromSalesDB -->
+        <test-method status="PASS" signature="testRefundPaymentInSalesDB(java.lang.String, java.lang.String)[pri:5, instance:com.paymentgateway.uat.domainz.testcases.RegressionTest@343f4d3d]" name="testRefundPaymentInSalesDB" duration-ms="42164" started-at="2018-11-21T05:58:53Z" finished-at="2018-11-21T05:59:35Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testRefundPaymentInSalesDB -->
       </class> <!-- com.paymentgateway.uat.domainz.testcases.RegressionTest -->
     </test> <!-- Regression Test Cases -->
   </suite> <!-- Payment Gateway UAT Regression Test Suite -->

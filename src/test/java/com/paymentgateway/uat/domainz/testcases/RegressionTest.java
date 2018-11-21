@@ -13,7 +13,9 @@ import com.base.TestBase;
 import com.consoleadmin.pages.CAAccountReferencePage;
 import com.consoleadmin.pages.CADomainLevelPage;
 import com.consoleadmin.pages.CAHeaderPage;
+import com.consoleadmin.pages.CAInvoicesPage;
 import com.consoleadmin.pages.CALoginPage;
+import com.consoleadmin.pages.CATaxInvoicePage;
 import com.consoleadmin.pages.CAViewCreditCardsPage;
 import com.consoleadmin.pages.CAWorkflowAdminPage;
 import com.consolesalesdb.pages.CSAUEligibilityPage;
@@ -48,6 +50,8 @@ public class RegressionTest extends TestBase{
 		CAAccountReferencePage caaccountreferencepage;
 		CADomainLevelPage cadomainlevelpage;
 		CAViewCreditCardsPage caviewcreditcardspage;
+		CAInvoicesPage cainvoicespage;
+		CATaxInvoicePage cataxinvoicepage;
 		
 		TestUtil testUtil;
 		public static ExtentTest logger;
@@ -72,7 +76,7 @@ public class RegressionTest extends TestBase{
 
 
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=1, enabled = true)
+		@Test(priority=1, enabled = false)
 		public void testCreateDomainAndMajorProductOrderInSalesDB(String environment, String paymentgateway) throws InterruptedException{
 
 		// Generate test name for domain
@@ -82,8 +86,19 @@ public class RegressionTest extends TestBase{
 
 		if ((environment.equals("uat1"))&&(paymentgateway.equals("quest"))) {
 			strAccountReference = "DOM-1218";
-			strTld_01 = "org";
+			strTld_01 = "com";
 			strRegistrationPeriod = "2 x Y";
+			strMajorProduct = "Basic cPanel Hosting";
+			strProductPeriod = "1 x M";
+			strPaymentMethod = "Invoice";
+			strRegistrantDetails = "Payment Gateway Test";	
+			strRegistrantType = "ABN";
+			strRegistrantNumber = "13080859721";
+		}
+		else if ((environment.equals("uat1"))&&(paymentgateway.equals("braintree"))) {
+			strAccountReference = "DOM-1310";
+			strTld_01 = "com";
+			strRegistrationPeriod = "1 x Y";
 			strMajorProduct = "Basic cPanel Hosting";
 			strProductPeriod = "1 x M";
 			strPaymentMethod = "Visa: 4111xxxxxxxx1111";
@@ -142,12 +157,12 @@ public class RegressionTest extends TestBase{
 		//Test Step 2: Verify if domainregistration2 workflow touchpoints are correct	
 		if (paymentgateway.equals("quest")) {
 
-			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.accounting.productCode"), "PAYMT-CC");
-			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.preauth.txnref"), "11111111");
-			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.completion.rrn"), "999999");
-			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.accounting.description"), "Online Credit Card Payment Amex Card# 4111xxxxxxxx1111");
-			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.preauth.response"), "approved");
-			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.preauth.preauth"), "11111111");
+//			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.accounting.productCode"), "PAYMT-CC");
+//			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.preauth.txnref"), "11111111");
+//			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.completion.rrn"), "999999");
+//			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.accounting.description"), "Online Credit Card Payment Amex Card# 4111xxxxxxxx1111");
+//			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.preauth.response"), "approved");
+//			Assert.assertEquals(caworkflowadminpage.getDomainRegistration2WorkflowParameterValue("payment.preauth.preauth"), "11111111");
 		
 		}
 		else if (paymentgateway.equals("braintree")) {
@@ -158,7 +173,7 @@ public class RegressionTest extends TestBase{
 		//Test Step 3: Verify if domain registration workflow status is completed
 		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId_01);
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));		
-		driver.close();
+		
 
 		}
 		
@@ -169,24 +184,26 @@ public class RegressionTest extends TestBase{
 		//Test Step 1: Process the productsetup2 workflow in console admin
 		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName_01 + "." + strTld_01);
 		caworkflowadminpage.processProductSetup2();
-		caworkflowadminpage.processSkipDelegation();
+		//caworkflowadminpage.processSkipDelegation();
 				
 		//Test Step 2: Verify if productsetup2 workflow is approved
 		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName_01 + "." + strTld_01);
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "approved", caworkflowadminpage.getWorkflowStatus("productsetup2"));
-		driver.close();
+		
 		
 				
 		}
 		
 		
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=4, enabled = false)
+		@Test(priority=4, enabled = true)
 		public void testPayInvoiceUsingExistingCardFromSalesDB(String environment, String paymentgateway) throws InterruptedException, AWTException{
 		
 		// Initialization (Test Data Creation and Assignment)
-		String setGreencode = "DOM-1218";
-		String domainAmount = "50.00";
+		strAccountReference = "DOM-1218";
+		String strInvoiceNumber = "11489233";
+		String strAmount = "118.73";
+		String strTransactionType= "PAYMENT";
 		
 		//Test Step 1: Login to Sales DB page, then pay for an existing invoice for domain and product via existing credit card
 		initialization(environment, "salesdburl");
@@ -196,23 +213,24 @@ public class RegressionTest extends TestBase{
 		
 		csaccountpage = new CSAccountPage();
 		csaccountpage.clickAccountTab();
-		
 		csprocesstransactionpage = new CSProcessTransactionPage();
-		csprocesstransactionpage.setProcessTransactionDetails(setGreencode, domainAmount);
-		
-		driver.close();
+		csprocesstransactionpage.setProcessTransactionDetails(strAccountReference, strInvoiceNumber, strTransactionType,  strAmount);
+		//driver.close();
 		}
 		
 		
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=5, enabled = false)
+		@Test(priority=5, enabled = true)
 		public void testRefundPaymentInSalesDB(String environment, String paymentgateway) throws InterruptedException, AWTException{
 		
 		// Initialization (Test Data Creation and Assignment)
-		String setGreencode = "DOM-1218";
-		String domainAmount = "50.00";
+		strAccountReference = "DOM-1218";
+		String strInvoiceNumber = "11489233";
+		String strAmount = "118.73";
+		String strTransactionType= "REFUND";
 		
-		//Test Step 1: Login to Sales DB page, then pay for an existing invoice for domain and product via existing credit card
+		
+		//Test Step 1: Login to Sales DB page, then refund an invoice
 		initialization(environment, "salesdburl");
 		csloginpage = new CSLoginPage();
 		csloginpage.setDefaultLoginDetails("uat");
@@ -222,8 +240,8 @@ public class RegressionTest extends TestBase{
 		csaccountpage.clickAccountTab();
 		
 		csprocesstransactionpage = new CSProcessTransactionPage();
-		//csprocesstransactionpage.setProcessTransactionDetailsForRefund(setGreencode, domainAmount);
-		
+		csprocesstransactionpage.setProcessTransactionDetails(strAccountReference, strInvoiceNumber, strTransactionType,  strAmount);
+			
 		driver.close();
 		}
 		
@@ -242,6 +260,63 @@ public class RegressionTest extends TestBase{
 		caviewcreditcardspage = caaccountreferencepage.clickViewBillingAccounts();
 		Assert.assertTrue(caviewcreditcardspage.isViewCreditcardsPageDisplayed(), "View Creditcards Page is not displayed");
 		
+		}
+		
+		@Parameters({"environment", "paymentgateway"})
+		@Test(priority=7, enabled = false)
+		public void testUpdateExpiryInConsoleAdmin(String environment, String paymentgateway) throws InterruptedException{
+		
+		String strExpiryMonth = "01";
+		String strExpiryYear =  "32";
+
+		//Test Step 1: Update expiry date and verify if a successful confirmation message will be shown.
+		caviewcreditcardspage.updateExpiryDate(strExpiryMonth, strExpiryYear);
+		Assert.assertEquals(caviewcreditcardspage.getUpdateExpiryConfirmation(), "Credit card: Visa: 4111xxxxxxxx1111 "+strExpiryMonth+"/"+strExpiryYear+" expiry date updated.", "Updated Expiry Sucessfully");
+		
 		driver.close();	
 		}
+		
+		@Parameters({"environment", "paymentgateway"})
+		@Test(priority=8, enabled = false)
+		public void testPayingSingleInvoiceInConsoleAdmin(String environment, String paymentgateway) throws InterruptedException{
+		
+		strAccountReference = "DOM-1218";
+		String strinvoicenumber = "11489218";
+		
+		String strCardOwner = "Test Master";
+		String strCardNumber = "5454545454545454";
+		String strCardExpiryMonth = "02";
+		String strCardExpiryYear = "20";
+
+		// Test Step 1: Login to console admin and pay an existing invoice using a new card
+		initialization(environment, "consoleadmin");
+		caloginpage = new CALoginPage();
+		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
+		caaccountreferencepage = caheaderpage.searchAccountReference(strAccountReference);
+		cainvoicespage = caaccountreferencepage.clickPayOutstandingInvoices();
+		cataxinvoicepage = cainvoicespage.selectInvoiceNumber(strinvoicenumber);
+		cataxinvoicepage.setCreditCardDetails(strCardOwner, strCardNumber, strCardExpiryMonth, strCardExpiryYear);
+		cataxinvoicepage.payInvoice();
+		Assert.assertEquals(cataxinvoicepage.getInvoicePaymentConfirmation(), "The payment of NZ$100.00 for invoice 11489218 has been accepted");
+		Thread.sleep(1000);
+//
+//			cainvoicespage.setCreditCardDetails();
+//
+//			cainvoicespage.payInvoice();
+//
+//			driver.findElement(By.linkText("Invoices")).click();
+//			Thread.sleep(2000);
+//
+//			String strOutstanding = driver
+//					.findElement(By.xpath("//*[@class='cp'][text()='11489218']/parent::td/parent::tr/td[7]")).getText();
+//			String strOutstandingAmount = strOutstanding.trim();
+//			System.out.println(strOutstandingAmount);
+//
+//			Assert.assertEquals(strOutstandingAmount, "NZ$0.00");
+//
+//			driver.close();
+		}
+		
+		
+		
 }

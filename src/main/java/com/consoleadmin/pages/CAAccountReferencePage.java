@@ -13,6 +13,9 @@ public class CAAccountReferencePage extends TestBase{
 	//Objects
     @FindBy(how=How.LINK_TEXT, using = "View Billing Accounts")
     WebElement viewBillingAccountsLink;
+    
+    @FindBy(how=How.LINK_TEXT, using = "Pay outstanding invoices")
+    WebElement payOutstandingInvoicesLink;
 		
 	//Initializing Page Objects
 	public CAAccountReferencePage(){
@@ -41,6 +44,13 @@ public class CAAccountReferencePage extends TestBase{
     	
     	viewBillingAccountsLink.click();
     	return new CAViewCreditCardsPage();
+    	
+    }
+    
+    public CAInvoicesPage clickPayOutstandingInvoices() {
+    	
+    	payOutstandingInvoicesLink.click();
+    	return new CAInvoicesPage();
     	
     }
 }
