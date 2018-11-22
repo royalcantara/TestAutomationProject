@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -60,10 +63,17 @@ public class TestUtil extends TestBase{
 		return data;
 	}
 	
-	public static void takeScreenshotAtEndOfTest() throws IOException {
+	public static void takeScreenshotAtEndOfTest(String screenshotname) throws IOException {
+		
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		String currentDir = System.getProperty("user.dir");
-		FileUtils.copyFile(scrFile, new File(currentDir + "/screenshots/" + System.currentTimeMillis() + ".png"));
+		
+		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
+		Date d1 = new Date();
+
+		FileUtils.copyFile(scrFile, new File(currentDir + "/screenshots/" + screenshotname + "_" +df.format(d1) +".png"));
+		//FileUtils.copyFile(scrFile, new File(currentDir + "/screenshots/" + screenshotname + System.currentTimeMillis() + ".png"));
+
 	}
 
 	

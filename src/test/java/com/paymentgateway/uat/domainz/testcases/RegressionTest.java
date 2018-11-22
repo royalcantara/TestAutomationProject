@@ -1,6 +1,7 @@
 package com.paymentgateway.uat.domainz.testcases;
 
 import java.awt.AWTException;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -67,6 +68,7 @@ public class RegressionTest extends TestBase{
 		public String strRegistrantNumber = null;
 		public String strMajorProduct = null;
 		public String strProductPeriod = null;
+		public String strVirtualization = "DMZ";
 		
 		
 	
@@ -76,8 +78,8 @@ public class RegressionTest extends TestBase{
 
 
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=1, enabled = false)
-		public void testCreateDomainAndMajorProductOrderInSalesDB(String environment, String paymentgateway) throws InterruptedException{
+		@Test(priority=1, enabled = true)
+		public void testCreateDomainAndMajorProductOrderInSalesDB(String environment, String paymentgateway) throws InterruptedException, IOException{
 
 		// Generate test name for domain
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
@@ -85,19 +87,8 @@ public class RegressionTest extends TestBase{
 		strDomainName_01 = "testpgregression" + df.format(d1);
 
 		if ((environment.equals("uat1"))&&(paymentgateway.equals("quest"))) {
-			strAccountReference = "DOM-1218";
-			strTld_01 = "com";
-			strRegistrationPeriod = "2 x Y";
-			strMajorProduct = "Basic cPanel Hosting";
-			strProductPeriod = "1 x M";
-			strPaymentMethod = "Invoice";
-			strRegistrantDetails = "Payment Gateway Test";	
-			strRegistrantType = "ABN";
-			strRegistrantNumber = "13080859721";
-		}
-		else if ((environment.equals("uat1"))&&(paymentgateway.equals("braintree"))) {
-			strAccountReference = "DOM-1310";
-			strTld_01 = "com";
+			strAccountReference = "MEL-6021";
+			strTld_01 = "nz";
 			strRegistrationPeriod = "1 x Y";
 			strMajorProduct = "Basic cPanel Hosting";
 			strProductPeriod = "1 x M";
@@ -105,6 +96,10 @@ public class RegressionTest extends TestBase{
 			strRegistrantDetails = "Payment Gateway Test";	
 			strRegistrantType = "ABN";
 			strRegistrantNumber = "13080859721";
+		}
+		else if ((environment.equals("uat1"))&&(paymentgateway.equals("braintree"))) {
+			
+			//param values to be defined 
 		}
 			
 		//Test Step 1: Login to Sales DB page, then create an order for domain and product 
@@ -115,37 +110,37 @@ public class RegressionTest extends TestBase{
 		csnrcrmpage.setGreenCode(strAccountReference);
 		cscreatedomainwindowpage = csnrcrmpage.clickNewDomainNPSButton();
 		cscreatedomainwindowpage.setDomainandMajorProductDetails(strDomainName_01, strTld_01, strRegistrationPeriod, strMajorProduct, strProductPeriod, strPaymentMethod);
+			
+        if (strTld_01=="com.au") {
 		
-		if(strTld_01=="com"||strTld_01=="org") {
-			
-			csregistrantdetailspage = csnrcrmpage.clickRegistrantDetails(strDomainName_01, "Update Details");
-			csnrcrmpage = csregistrantdetailspage.setRegistrantDetails(strRegistrantDetails);
-			
-		}
-		else if(strTld_01=="com.au") {
-			
 			// AU Eligibility code-  Added on: 13-11-2018
 			System.out.println("Method: setContactAndEligibilityDetails");
 			csaueligibilitypage = csnrcrmpage.clickUpdateDetails(strDomainName_01, "Update Details");
 			csnrcrmpage = csaueligibilitypage.setContactAndEligibilityDetails(strRegistrantDetails, strRegistrantType, strRegistrantNumber);
-			
 		}
-		
+        else {
+        	
+			//For com, net, nz, org, info tlds
+			csregistrantdetailspage = csnrcrmpage.clickRegistrantDetails(strDomainName_01, "Update Details");
+			csnrcrmpage = csregistrantdetailspage.setRegistrantDetails(strRegistrantDetails);
+        }	
+	 
 		csshowdomainservicespage = csnrcrmpage.clickShowDomainServices(strDomainName_01);
 		csworkflownotificationpage = csshowdomainservicespage.clickConfirmAllServices();
 		
 		//Test Step 2: Verify if the services are successfully confirmed
 		Assert.assertEquals(csworkflownotificationpage.getNotificationMessage(), "Services are successfully confirmed", "Domain purchased successfully");
 		strWorkflowId_01 = csworkflownotificationpage.getWorkflowID();
-		csworkflownotificationpage.clickOKButton();
 		
+		TestUtil.takeScreenshotAtEndOfTest(paymentgateway + strVirtualization + "PGTest01");
+		csworkflownotificationpage.clickOKButton();
 		driver.close();
 			
 		}
 		
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=2, enabled = false)
-		public void testDomainRegistration2WorkflowInConsoleAdmin(String environment, String paymentgateway) throws InterruptedException{
+		@Test(priority=2, enabled = true)
+		public void testDomainRegistration2WorkflowInConsoleAdmin(String environment, String paymentgateway) throws InterruptedException, IOException{
 
 		//Test Step 1: Login to console admin, then process domainregistration2 workflow		
 		initialization(environment, "consoleadmin");
@@ -174,12 +169,12 @@ public class RegressionTest extends TestBase{
 		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId_01);
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));		
 		
-
+		TestUtil.takeScreenshotAtEndOfTest(paymentgateway + strVirtualization + "PGTest02");
 		}
 		
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=3, enabled = false)
-		public void testProductSetup2WorkflowInConsoleAdmin(String environment, String paymentgateway) throws InterruptedException{
+		@Test(priority=3, enabled = true)
+		public void testProductSetup2WorkflowInConsoleAdmin(String environment, String paymentgateway) throws InterruptedException, IOException{
 
 		//Test Step 1: Process the productsetup2 workflow in console admin
 		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName_01 + "." + strTld_01);
@@ -190,13 +185,13 @@ public class RegressionTest extends TestBase{
 		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName_01 + "." + strTld_01);
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "approved", caworkflowadminpage.getWorkflowStatus("productsetup2"));
 		
-		
-				
+		TestUtil.takeScreenshotAtEndOfTest(paymentgateway + strVirtualization + "PGTest03");
+		driver.close();
 		}
 		
 		
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=4, enabled = true)
+		@Test(priority=4, enabled = false)
 		public void testPayInvoiceUsingExistingCardFromSalesDB(String environment, String paymentgateway) throws InterruptedException, AWTException{
 		
 		// Initialization (Test Data Creation and Assignment)
@@ -220,7 +215,7 @@ public class RegressionTest extends TestBase{
 		
 		
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=5, enabled = true)
+		@Test(priority=5, enabled = false)
 		public void testRefundPaymentInSalesDB(String environment, String paymentgateway) throws InterruptedException, AWTException{
 		
 		// Initialization (Test Data Creation and Assignment)

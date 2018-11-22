@@ -47,7 +47,7 @@ public class CAWorkflowAdminPage extends TestBase{
     	driver.findElement(By.linkText(strworkflowid)).click();			
     	Thread.sleep(3000);
     		
-    	if (strtld.equals("com")||strtld.equals("net")){
+    	if (strtld.equals("com")||strtld.equals("net")||strtld.equals("nz")){
     		this.processCheckASIC();
     	}
     	else if (strtld.equals("com.au")) {
