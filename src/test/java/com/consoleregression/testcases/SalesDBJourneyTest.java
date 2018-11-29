@@ -68,7 +68,7 @@ public class SalesDBJourneyTest extends TestBase{
 	}
 			
 	@Parameters({"environment"})
-	@Test(priority=1, enabled = false)
+	@Test(priority=1, enabled = true)
 	public void verify_ComAuDomain_Order_InSalesDB (String environment) throws InterruptedException{
 		
 		// Initialization (Test Data Creation and Assignment)
@@ -180,32 +180,32 @@ public class SalesDBJourneyTest extends TestBase{
 		csworkflownotificationpage.clickOKButton();
 		driver.close();
 		
-//		//Test Step 2: Process the domain registration workflow in console admin
-//		initialization(environment, "consoleadmin");
-//		caloginpage = new CALoginPage();
-//		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
-//		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);		
-//		caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
-//		
-//		//Test Step 3: Verify if domain registration workflow is completed
-//		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
-//		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
-//		
-//		//Test Step 4: Process the productsetup2 workflow in console admin
-//		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName + "." + strTld);
-//		caworkflowadminpage.processProductSetup2();
-//		
-//		//Test Step 5: Verify if productsetup2 workflow is approved
-//		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName + "." + strTld);
-//		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "halting current workflow", caworkflowadminpage.getWorkflowStatus("productsetup2"));
-//		driver.close();
+		//Test Step 2: Process the domain registration workflow in console admin
+		initialization(environment, "consoleadmin");
+		caloginpage = new CALoginPage();
+		caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);		
+		caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
+		
+		//Test Step 3: Verify if domain registration workflow is completed
+		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
+		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
+		
+		//Test Step 4: Process the productsetup2 workflow in console admin
+		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName + "." + strTld);
+		caworkflowadminpage.processProductSetup2();
+		
+		//Test Step 5: Verify if productsetup2 workflow is approved
+		caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName + "." + strTld);
+		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "halting current workflow", caworkflowadminpage.getWorkflowStatus("productsetup2"));
+		driver.close();
 		
 		System.out.println("End Test: verify_NetDomain_and_DIFM_Order_InSalesDB");
 	}
 	
 	
 	@Parameters({"environment"})
-	@Test(priority=3, enabled = false)
+	@Test(priority=3, enabled = true)
 	public void verify_ComDomain_and_Office365_Order_InSalesDB (String environment) throws InterruptedException{
 
 		// Initialization (Test Data Creation and Assignment)
@@ -244,11 +244,7 @@ public class SalesDBJourneyTest extends TestBase{
 			strOffice365Product = "O365-EESEN-QTY";
 			strOffice365ProductName = "Office 365 - Email Essentials 1 x Month";
 			strOffice365Quantity = "1";
-			
-//			strSkykickProduct = "O365-EML-MIGRATION";
-//			strSkykickProductName = "Office365 - Email Migration 0 x One Off";
-//			strSkykickQuantity  = "1";
-			
+						
 		}
 	
 		//Test Step 1: Login to sales db and place an order for domain registration and a single product (e.g. Done For You Website)
@@ -264,9 +260,6 @@ public class SalesDBJourneyTest extends TestBase{
 		csnrcrmpage = csregistrantdetailspage.setRegistrantDetails(strRegistrantDetails);
 		csshowdomainservicespage = csnrcrmpage.clickShowDomainServices(strDomainName);
 		csshowdomainservicespage.setAddOnProduct(strOffice365Product);
-//		csshowdomainservicespage.setAddOnProduct(strSkykickProduct);
-//		csshowdomainservicespage.setAddOnQuantity(strOffice365ProductName, strOffice365Quantity);
-//		csshowdomainservicespage.setAddOnQuantity(strSkykickProductName, strSkykickQuantity);
 		csworkflownotificationpage = csshowdomainservicespage.clickConfirmAllServices();
 		strWorkflowId = csworkflownotificationpage.getWorkflowID();
 		csworkflownotificationpage.clickOKButton();	
@@ -300,83 +293,6 @@ public class SalesDBJourneyTest extends TestBase{
 		System.out.println("End Test: verify_ComDomain_and_Office365_Order_InSalesDB");
 	}
 	
-	
-	@Parameters({"environment"})
-	@Test(priority=4, enabled = false)
-	public void createDomainNameOrders (String environment) throws InterruptedException{
-
-		// Initialization (Test Data Creation and Assignment)
-		String strDomainName = null;
-		String [] arrTld = {"com", "net", "nz", "org", "melbourne", "club", "info", "biz"};
-		String strRegistrationPeriod = null;
-		String strGreenCode = null;
-		String strPaymentMethod = null;
-		String strRegistrantDetails = null;
-		String strWorkflowId = null;
-		String strRegistrantType = null;
-		String strRegistrantNumber = null;
-		
-		Integer intMaxCount = arrTld.length;
-		Integer intMinCount = null;
-		for(intMinCount = 0; intMinCount<intMaxCount; intMinCount++) {
-						
-			DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
-			Date d = new Date();
-			strDomainName = "TestConsoleRegression" + df.format(d);
-
-			if (environment.equals("uat2")) {
-				strRegistrationPeriod = "1";
-				strGreenCode = "MEL-6007";
-				strPaymentMethod = "Invoice";
-				strRegistrantDetails = "Netregistry";
-				strRegistrantType = "ABN";
-				strRegistrantNumber = "13080859721";
-			
-			}
-	
-			//Test Step 1: Login to sales db and place an order for domain registration
-			initialization(environment, "salesdburl");
-			csloginpage = new CSLoginPage();
-			csloginpage.setDefaultLoginDetails("uat");
-			csnrcrmpage = csloginpage.clickLoginButton();
-			csnrcrmpage.setGreenCode(strGreenCode);
-			cscreatedomainwindowpage = csnrcrmpage.clickNewDomainNPSButton();
-			cscreatedomainwindowpage.setDomainDetails(strDomainName, arrTld[intMinCount], strRegistrationPeriod, strPaymentMethod);
-			
-			if (arrTld[intMinCount].equals("com.au")) {
-				strRegistrationPeriod = "2";
-				csaueligibilitypage = csnrcrmpage.clickUpdateDetails(strDomainName, "Update Details");
-				csnrcrmpage = csaueligibilitypage.setContactAndEligibilityDetails(strRegistrantDetails, strRegistrantType, strRegistrantNumber);
-			}
-			else {
-//				strRegistrationPeriod = "1";
-				csregistrantdetailspage = csnrcrmpage.clickRegistrantDetails(strDomainName, "Update Details");
-				csnrcrmpage = csregistrantdetailspage.setRegistrantDetails(strRegistrantDetails);
-			}
-			
-			csshowdomainservicespage = csnrcrmpage.clickShowDomainServices(strDomainName);
-			csworkflownotificationpage = csshowdomainservicespage.clickConfirmAllServices();
-			strWorkflowId = csworkflownotificationpage.getWorkflowID();
-			csworkflownotificationpage.clickOKButton();	
-			System.out.println("Domain Name: "+ strDomainName +"."+ arrTld[intMinCount]);
-			driver.close();
-			
-//			//Test Step 2: Process the domain registration order in console admin
-//			initialization(environment, "consoleadmin");
-//			caloginpage = new CALoginPage();
-//			caheaderpage = caloginpage.login("erwin.sukarna", "comein22");
-//			caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
-//			caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
-//			
-//			//Test Step 3: Verify if domain registration workflow is completed
-//			caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
-//			Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
-//			driver.close();
-			
-		}
-		
-		
-	}
 }
 	
 

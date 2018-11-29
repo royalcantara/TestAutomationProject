@@ -32,6 +32,9 @@ public class CATaxInvoicePage extends TestBase{
 
 	@FindBy(how = How.XPATH, using = "//*[@type='submit'][@value='Pay Invoice']")
 	WebElement btnPayInvoice;
+	
+    @FindBy(how=How.LINK_TEXT, using = "Invoices")
+    WebElement invoicesLink;
 
 
 
@@ -74,6 +77,13 @@ public class CATaxInvoicePage extends TestBase{
 		
 		return confirmationmessage;
 	}
+	
+    public CAInvoicesPage clickInvoicesLink() {
+    	
+    	invoicesLink.click();
+    	return new CAInvoicesPage();
+    	
+    }
 	
 	
 

@@ -8,12 +8,12 @@
   </listeners>
   <test thread-count="5" name="Regression Test Cases(failed)">
     <classes>
-      <class name="com.paymentgateway.uat.tpp.testcases.RegressionTest">
+      <class name="com.paymentgateway.uat.domainz.testcases.RegressionSalesDB">
         <methods>
-          <include name="testProductSetup2WorkflowInConsoleAdmin" invocation-numbers="0"/>
-          <include name="testDomainRegistration2WorkflowInConsoleAdmin" invocation-numbers="0"/>
+          <include name="testRefundPaymentFromSalesDB" invocation-numbers="0"/>
+          <include name="testPayInvoiceUsingExistingCardFromSalesDB" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.paymentgateway.uat.tpp.testcases.RegressionTest -->
+      </class> <!-- com.paymentgateway.uat.domainz.testcases.RegressionSalesDB -->
     </classes>
   </test> <!-- Regression Test Cases(failed) -->
 </suite> <!-- Failed suite [Payment Gateway UAT Regression Test Suite] -->

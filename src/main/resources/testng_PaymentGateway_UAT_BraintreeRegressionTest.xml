@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Payment Gateway UAT Braintree Regression Test Suite">
+	<parameter name="environment"     value="uat1"/>
+	<parameter name="paymentgateway"  value="braintree"/>
+	
+	<listeners>
+		<listener class-name="com.reports.extentreportslistener.ExtentReportListener" />
+	</listeners>
+	
+	<test name="Regression Test Cases">
+		<classes>
+		
+		
+<!-- 		Domainz Virtualization -->
+			<class name="com.paymentgateway.uat.domainz.testcases.RegressionSalesDB"></class>
+			<class name="com.paymentgateway.uat.domainz.testcases.RegressionConsoleAdmin"></class>
+<!-- 			<class name="com.paymentgateway.uat.domainz.testcases.RegressionSMUI"></class> -->
+		
+
+		</classes>
+	</test>  
+</suite> 

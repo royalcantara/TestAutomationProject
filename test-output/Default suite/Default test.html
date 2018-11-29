@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/2/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/3/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Nov 20 15:48:37 AEDT 2018</td>
+<td>Started on:</td><td>Tue Nov 27 13:47:20 AEDT 2018</td>
 </tr>
-<tr><td>Total time:</td><td>0 seconds (40 ms)</td>
+<tr><td>Total time:</td><td>0 seconds (35 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,10 +75,10 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.paymentgateway.uat.domainz.testcases.RegressionTest.testPayInvoiceUsingExistingCardFromSalesDB()'><b>testPayInvoiceUsingExistingCardFromSalesDB</b><br>Test class: com.paymentgateway.uat.domainz.testcases.RegressionTest</td>
+<td title='com.consoleregression.testcases.SalesDBJourneyTest.verify_ComAuDomain_Order_InSalesDB()'><b>verify_ComAuDomain_Order_InSalesDB</b><br>Test class: com.consoleregression.testcases.SalesDBJourneyTest</td>
 <td><div><pre>org.testng.TestNGException: 
-Parameter &apos;environment&apos; is required by @Test on method testPayInvoiceUsingExistingCardFromSalesDB but has not been marked @Optional or defined
-in C:\Users\roy.alcantara\AppData\Local\Temp\testng-eclipse--1734264036\testng-customsuite.xml
+Parameter &apos;environment&apos; is required by @Test on method verify_ComAuDomain_Order_InSalesDB but has not been marked @Optional or defined
+in C:\Users\roy.alcantara\AppData\Local\Temp\testng-eclipse--1634260327\testng-customsuite.xml
 	at org.testng.internal.Parameters.createParams(Parameters.java:290)
 	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
 	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
@@ -105,8 +105,8 @@ in C:\Users\roy.alcantara\AppData\Local\Temp\testng-eclipse--1734264036\testng-c
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:76)
 </pre></div><a href='#' onClick='toggleBox("stack-trace1604125387", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
 <div class='stack-trace' id='stack-trace1604125387'><pre>org.testng.TestNGException: 
-Parameter &apos;environment&apos; is required by @Test on method testPayInvoiceUsingExistingCardFromSalesDB but has not been marked @Optional or defined
-in C:\Users\roy.alcantara\AppData\Local\Temp\testng-eclipse--1734264036\testng-customsuite.xml
+Parameter &apos;environment&apos; is required by @Test on method verify_ComAuDomain_Order_InSalesDB but has not been marked @Optional or defined
+in C:\Users\roy.alcantara\AppData\Local\Temp\testng-eclipse--1634260327\testng-customsuite.xml
 	at org.testng.internal.Parameters.createParams(Parameters.java:290)
 	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
 	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
@@ -133,12 +133,72 @@ in C:\Users\roy.alcantara\AppData\Local\Temp\testng-eclipse--1734264036\testng-c
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:76)
 </pre></div></td>
 <td>0</td>
-<td>com.paymentgateway.uat.domainz.testcases.RegressionTest@7d9d1a19</td></tr>
+<td>com.consoleregression.testcases.SalesDBJourneyTest@7d9d1a19</td></tr>
 <tr>
-<td title='com.paymentgateway.uat.domainz.testcases.RegressionTest.testRefundPaymentInSalesDB()'><b>testRefundPaymentInSalesDB</b><br>Test class: com.paymentgateway.uat.domainz.testcases.RegressionTest</td>
+<td title='com.consoleregression.testcases.SalesDBJourneyTest.verify_ComDomain_and_Office365_Order_InSalesDB()'><b>verify_ComDomain_and_Office365_Order_InSalesDB</b><br>Test class: com.consoleregression.testcases.SalesDBJourneyTest</td>
 <td><div><pre>org.testng.TestNGException: 
-Parameter &apos;environment&apos; is required by @Test on method testRefundPaymentInSalesDB but has not been marked @Optional or defined
-in C:\Users\roy.alcantara\AppData\Local\Temp\testng-eclipse--1734264036\testng-customsuite.xml
+Parameter &apos;environment&apos; is required by @Test on method verify_ComDomain_and_Office365_Order_InSalesDB but has not been marked @Optional or defined
+in C:\Users\roy.alcantara\AppData\Local\Temp\testng-eclipse--1634260327\testng-customsuite.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:769)
+	at org.testng.internal.ParameterHandler.handleParameters(ParameterHandler.java:49)
+	at org.testng.internal.ParameterHandler.createParameters(ParameterHandler.java:37)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:924)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:230)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:76)
+</pre></div><a href='#' onClick='toggleBox("stack-trace989938643", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace989938643'><pre>org.testng.TestNGException: 
+Parameter &apos;environment&apos; is required by @Test on method verify_ComDomain_and_Office365_Order_InSalesDB but has not been marked @Optional or defined
+in C:\Users\roy.alcantara\AppData\Local\Temp\testng-eclipse--1634260327\testng-customsuite.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:769)
+	at org.testng.internal.ParameterHandler.handleParameters(ParameterHandler.java:49)
+	at org.testng.internal.ParameterHandler.createParameters(ParameterHandler.java:37)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:924)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:230)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:76)
+</pre></div></td>
+<td>0</td>
+<td>com.consoleregression.testcases.SalesDBJourneyTest@7d9d1a19</td></tr>
+<tr>
+<td title='com.consoleregression.testcases.SalesDBJourneyTest.verify_NetDomain_and_DIFM_Order_InSalesDB()'><b>verify_NetDomain_and_DIFM_Order_InSalesDB</b><br>Test class: com.consoleregression.testcases.SalesDBJourneyTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;environment&apos; is required by @Test on method verify_NetDomain_and_DIFM_Order_InSalesDB but has not been marked @Optional or defined
+in C:\Users\roy.alcantara\AppData\Local\Temp\testng-eclipse--1634260327\testng-customsuite.xml
 	at org.testng.internal.Parameters.createParams(Parameters.java:290)
 	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
 	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
@@ -165,8 +225,8 @@ in C:\Users\roy.alcantara\AppData\Local\Temp\testng-eclipse--1734264036\testng-c
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:76)
 </pre></div><a href='#' onClick='toggleBox("stack-trace1843368112", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
 <div class='stack-trace' id='stack-trace1843368112'><pre>org.testng.TestNGException: 
-Parameter &apos;environment&apos; is required by @Test on method testRefundPaymentInSalesDB but has not been marked @Optional or defined
-in C:\Users\roy.alcantara\AppData\Local\Temp\testng-eclipse--1734264036\testng-customsuite.xml
+Parameter &apos;environment&apos; is required by @Test on method verify_NetDomain_and_DIFM_Order_InSalesDB but has not been marked @Optional or defined
+in C:\Users\roy.alcantara\AppData\Local\Temp\testng-eclipse--1634260327\testng-customsuite.xml
 	at org.testng.internal.Parameters.createParams(Parameters.java:290)
 	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
 	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
@@ -193,7 +253,7 @@ in C:\Users\roy.alcantara\AppData\Local\Temp\testng-eclipse--1734264036\testng-c
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:76)
 </pre></div></td>
 <td>0</td>
-<td>com.paymentgateway.uat.domainz.testcases.RegressionTest@7d9d1a19</td></tr>
+<td>com.consoleregression.testcases.SalesDBJourneyTest@7d9d1a19</td></tr>
 </table><p>
 </body>
 </html>

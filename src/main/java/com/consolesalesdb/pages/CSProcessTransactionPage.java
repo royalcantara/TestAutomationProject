@@ -67,6 +67,9 @@ public class CSProcessTransactionPage extends TestBase {
 	 @FindBy(how= How.XPATH,using ="//*[contains(text(),'NZ$-185.45')]")
 	 WebElement selectrefundCardTransaction;
 	 
+	 @FindBy(how=How.XPATH, using = "//button[contains(text(),'OK')]")
+	 WebElement okButton;
+	 
 	
 	
 	// Initializing Page Objects
@@ -78,7 +81,7 @@ public class CSProcessTransactionPage extends TestBase {
 		tabProcessTransaction.click();
 	}
 	
-	public void setProcessTransactionDetails(String strgreencode, String strinvoicenumber, String strtransactiontype, String stramount) throws InterruptedException, AWTException {
+	public void setProcessTransactionDetails(String strgreencode, String strinvoicenumber, String strtransactiontype, String stramount, String strcardnumber) throws InterruptedException, AWTException {
 		
 		// Enter details on process transaction page
 		System.out.println("Navigating to process transaction page");
@@ -107,7 +110,7 @@ public class CSProcessTransactionPage extends TestBase {
 			Thread.sleep(2000);
 			existingCreditCard.click();
 			Thread.sleep(2000);
-			SelectExistingCreditCard.click();
+			driver.findElement(By.xpath("//*[contains(text(),'"+strcardnumber+"')]")).click(); 
 			Thread.sleep(2000);
 
 		}
@@ -119,7 +122,7 @@ public class CSProcessTransactionPage extends TestBase {
 			Thread.sleep(2000);
 			Amount.sendKeys(stramount);
 			Thread.sleep(2000);
-			refundCard.click();
+			driver.findElement(By.xpath("//*[@name='txnRef']")).click();
 			robot.keyPress(KeyEvent.VK_DOWN);
 			Thread.sleep(2000);
 			robot.keyPress(KeyEvent.VK_ENTER);
@@ -130,18 +133,19 @@ public class CSProcessTransactionPage extends TestBase {
 		CreateTransactionButton.click();
 		Thread.sleep(2000);
 		
-		String confirmationMessage = driver.findElement(By.xpath("//*[@class='ext-mb-text']")).getText();
-
-		Assert.assertEquals(confirmationMessage, "Item Successfully Added", "Domain paid sucessfully");
-		Thread.sleep(2000);
-
-		driver.findElement(By.xpath("//button[contains(text(),'OK')]")).click();
-		Thread.sleep(2000);
-
 	}
 	
+    public void clickOKButton() throws InterruptedException {
+    	
+    	Thread.sleep(2000);
+		okButton.click();
+	}
 	
-	
+    public String getConfirmationMessage() throws InterruptedException {
+    	
+    	String confirmationMessage = driver.findElement(By.xpath("//*[@class='ext-mb-text']")).getText();
+		return confirmationMessage;
+  	}
 	
 	
 //	

@@ -78,7 +78,7 @@ public class SalesDBJourneyTest extends TestBase{
 		String strGreenCode = null;
 		String strPaymentMethod = null;
 		String strRegistrantDetails = null;
-		String strWorkflowId = "13411977";
+		String strWorkflowId = "13599039";
 		String strTransactionid = null;
 		String strRegistrantType = null;
 		String strRegistrantNumber = null;
@@ -143,7 +143,7 @@ public class SalesDBJourneyTest extends TestBase{
 		String strGreenCode = null;
 		String strPaymentMethod = null;
 		String strRegistrantDetails = null;
-		String strWorkflowId = "13411985";
+		String strWorkflowId = "13599041";
 		String strTransactionid = null;
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
@@ -187,7 +187,7 @@ public class SalesDBJourneyTest extends TestBase{
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
 				
 		//Test Step 3: Verify if productsetup2 workflow is approved
-		caworkflowadminpage = caheaderpage.searchWorkflow("testconsoleautomation18102018012310.net");
+		caworkflowadminpage = caheaderpage.searchWorkflow("testconsoleautomation29112018092524.net");
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "approved", caworkflowadminpage.getWorkflowStatus("productsetup2"));
 		driver.close();
 		
@@ -208,7 +208,7 @@ public class SalesDBJourneyTest extends TestBase{
 		String strGreenCode = null;
 		String strPaymentMethod = null;
 		String strRegistrantDetails = null;
-		String strWorkflowId = "13411999";
+		String strWorkflowId = "13599047";
 		String strTransactionid = null;
 		String strOffice365Product = null;
 		
@@ -251,7 +251,6 @@ public class SalesDBJourneyTest extends TestBase{
 //		csnrcrmpage = csregistrantdetailspage.setRegistrantDetails(strRegistrantDetails);
 //		csshowdomainservicespage = csnrcrmpage.clickShowDomainServices(strDomainName);
 //		csshowdomainservicespage.setAddOnProduct(strOffice365Product);
-////		csshowdomainservicespage.setAddOnQuantity(strOffice365ProductName, strOffice365Quantity);
 //		csworkflownotificationpage = csshowdomainservicespage.clickConfirmAllServices();
 //		strWorkflowId = csworkflownotificationpage.getWorkflowID();
 //		csworkflownotificationpage.clickOKButton();	
@@ -267,11 +266,11 @@ public class SalesDBJourneyTest extends TestBase{
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
 		
 		//Test Step 3: Verify if productsetup2 workflow status is approved
-		caworkflowadminpage = caheaderpage.searchWorkflow("testconsoleautomation18102018012420.com");
+		caworkflowadminpage = caheaderpage.searchWorkflow("testconsoleautomation29112018092633.com");
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "approved", caworkflowadminpage.getWorkflowStatus("productsetup2"));
 		
 		//Test Step 4: Verify if o365provisioning workflow status is automatically completed
-		caworkflowadminpage = caheaderpage.searchWorkflow("testconsoleautomation18102018012420.com");
+		caworkflowadminpage = caheaderpage.searchWorkflow("testconsoleautomation29112018092633.com");
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("o365Provisioning"), "automatically completed", caworkflowadminpage.getWorkflowStatus("o365Provisioning"));
 		driver.close();
 	

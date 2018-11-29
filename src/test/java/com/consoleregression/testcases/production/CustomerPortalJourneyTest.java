@@ -51,7 +51,7 @@ public class CustomerPortalJourneyTest extends TestBase{
 		// Initialization (Test Data Creation and Assignment)
 		String strDomainName = null;
 		String strTld = null;
-		String strWorkflowId = null;
+
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
 		Date d = new Date();
@@ -77,10 +77,10 @@ public class CustomerPortalJourneyTest extends TestBase{
 		nrgbillingpage = nrgregistrantcontactpage.clickContinueButton();
 		
 		//Test Step 2: Input credit card details and submit the order 
-        nrgbillingpage.setQuestFormCreditCardDetails("Test Console Regression", "Visa", "4111111111111111", "11", "2019", "123");
+        nrgbillingpage.setQuestFormCreditCardDetails("Test Console Regression", "Visa", "4715276659101053", "08", "2020", "390");
         nrgbillingpage.tickTermsAndConditions();
         nrgordercompletepage = nrgbillingpage.clickContinueButton();
-        driver.close();
+       // driver.close();
 	}
 	
 	@Parameters({"environment"})
@@ -90,7 +90,7 @@ public class CustomerPortalJourneyTest extends TestBase{
 		// Initialization (Test Data Creation and Assignment)
 		String strDomainName = null;
 		String strTld = null;
-		String strWorkflowId = null;
+
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
 		Date d = new Date();
@@ -118,8 +118,8 @@ public class CustomerPortalJourneyTest extends TestBase{
 		//Test Step 2: Select existing credit card details and submit the order 
 		nrgbillingpage.selectExistingCreditCard("Prepaid credit: Current Balance: AU$19222.10 Available Balance: AU$19222.10");
 		nrgbillingpage.tickTermsAndConditions();
-		nrgordercompletepage = nrgbillingpage.clickContinueButton();
-		driver.close();
+		//nrgordercompletepage = nrgbillingpage.clickContinueButton();
+		//driver.close();
 	}
 	
 }

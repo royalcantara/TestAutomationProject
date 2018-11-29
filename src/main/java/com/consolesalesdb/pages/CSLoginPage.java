@@ -16,7 +16,7 @@ public class CSLoginPage extends TestBase{
 	static String uatUserName = "erwin.sukarna";
 	static String uatPassword = "comein22";
 	static String prodUserName = "roy.alcantara";
-	static String prodPassword = "";
+	static String prodPassword = "Stocks006";
 	
 	//Objects
     @FindBy(how=How.ID, using = "logon-username-field")
