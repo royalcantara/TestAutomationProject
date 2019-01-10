@@ -94,7 +94,7 @@ public class RegressionSalesDB extends TestBase{
 		
 				if ((environment.equals("uat1"))&&(paymentgateway.equals("quest"))) {
 					strAccountReference = "MEL-6021";
-					strTld_01 = "nz";
+					strTld_01 = "com";
 					strRegistrationPeriod = "1 x Y";
 					strMajorProduct = "Basic cPanel Hosting";
 					strProductPeriod = "1 x M";
@@ -235,7 +235,7 @@ public class RegressionSalesDB extends TestBase{
 				cataxinvoicepage.payInvoice();
 				
 				// Test Step 2: Verify if the payment for invoice is successful.
-				Assert.assertEquals(cataxinvoicepage.getInvoicePaymentConfirmation(), "The payment of NZ$87.90 for invoice "+strInvoiceNumber+" has been accepted");
+				Assert.assertEquals(cataxinvoicepage.getInvoicePaymentConfirmation(), "The payment of NZ$65.84 for invoice "+strInvoiceNumber+" has been accepted");
 				
 				TestUtil.takeScreenshotAtEndOfTest(paymentgateway + strVirtualization + "PGTest04");
 				// Test Step 3: Verify if there is no outstanding amount for the invoice
@@ -262,13 +262,13 @@ public class RegressionSalesDB extends TestBase{
 				// Initialization (Test Data Creation and Assignment)
 				if ((environment.equals("uat1"))&&(paymentgateway.equals("quest"))) {
 					strAccountReference = "MEL-6021";
-					strAmount = "87.90";
+					strAmount = "65.84";
 					strTransactionType= "REFUND";
 		
 				}
 				else if ((environment.equals("uat1"))&&(paymentgateway.equals("braintree"))) {
 					strAccountReference = "DOM-1305";
-					strAmount = "87.90";
+					strAmount = "65.84";
 					strTransactionType= "REFUND";
 				}
 	
@@ -301,13 +301,13 @@ public class RegressionSalesDB extends TestBase{
 				// Initialization (Test Data Creation and Assignment)
 				if ((environment.equals("uat1"))&&(paymentgateway.equals("quest"))) {
 					strAccountReference = "MEL-6021";
-					strAmount = "87.90";
+					strAmount = "65.84";
 					strTransactionType= "PAYMENT";
 					strPaymentMethod = "Visa: 4111xxxxxxxx1111";
 				}
 				else if ((environment.equals("uat1"))&&(paymentgateway.equals("braintree"))) {
 					strAccountReference = "DOM-1305";
-					strAmount = "87.90";
+					strAmount = "65.84";
 					strTransactionType= "PAYMENT";
 					strPaymentMethod = "MasterCard: 545454******5454";
 					

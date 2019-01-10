@@ -1,19 +1,9 @@
 green_code,card_digits,card_owner,card_expire_month,card_expire_year
-PAY-624,4005519200000004,"Domainz Test New Customer - Domain Reg",02,2022
-PAY-624,5555555555554444,"Domainz Test Returning Customer - Domain Reg",12,2024
-PAY-625,4111111111111111,"Domainz Test New Customer - Domain Reg",01,2021
-PAY-625,2223000048400011,"Domainz Test Returning Customer - Domain Reg",11,2023
-PAY-626,4012000033330026,"Domainz Test New Customer - Monthly Product",04,2026
-PAY-626,2223000048400011,"Domainz Test Returning Customer - Monthly Product",12,2018
-PAY-627,4009348888881881,"Domainz Test New Customer - Monthly Product",03,2025
-PAY-627,5555555555554444,"Domainz Test Returning Customer - Monthly Product",09,2019
-PAY-628,4012888888881881,"Domainz Test New Customer - Yearly Product",06,2021
-PAY-628,5454545454545454,"Domainz Test Returning Customer - Yearly Product",08,2027
-PAY-629,4012000077777777,"Domainz Test New Customer - Yearly Product",05,2020
-PAY-629,2223000048400011,"Domainz Test Returning Customer - Yearly Product",07,2019
-PAY-630,4500600000000061,"Domainz Test New Customer",10,2023
-PAY-631,4217651111111119,"Domainz Test New Customer",09,2022
-PAY-632,2223000048400011,"Domainz Test New Customer",11,2019
-PAY-632,4005519200000004,"Domainz Test Returning Customer - Default Credit Card",06,2025
-PAY-633,4111111111111111,"Domainz Test New Customer",10,2020
-PAY-633,5555555555554444,"Domainz Test Returning Customer - Default Credit Card",05,2026
+PAY-725,2223000048400011,"Domainz Test New Customer",11,2020
+PAY-725,4005519200000004,"Domainz Test Returning Customer - Default Credit Card",05,2019
+PAY-726,5454545454545454,"Domainz Test New Customer",01,2022
+PAY-726,4012000077777777,"Domainz Test Returning Customer - Default Credit Card",05,2024
+PAY-727,4009348888881881,"Domainz Test New Customer",05,2026
+PAY-727,2223520043560014,"Domainz Test Returning Customer - Default Credit Card",05,2021
+PAY-728,4111111111111111,"Domainz Test New Customer",10,2019
+PAY-728,5555555555554444,"Domainz Test Returning Customer - Default Credit Card",05,2022

@@ -13,9 +13,26 @@
 		
 		
 <!-- 		Domainz Virtualization -->
-			<class name="com.paymentgateway.uat.domainz.testcases.RegressionSalesDB"></class>
-			<class name="com.paymentgateway.uat.domainz.testcases.RegressionConsoleAdmin"></class>
+<!-- 			<class name="com.paymentgateway.uat.domainz.testcases.RegressionSalesDB"></class> -->
+<!-- 			<class name="com.paymentgateway.uat.domainz.testcases.RegressionConsoleAdmin"></class> -->
 <!-- 			<class name="com.paymentgateway.uat.domainz.testcases.RegressionSMUI"></class> -->
+
+		
+<!-- 		Netregistry Virtualization -->
+<!-- 			<class name="com.paymentgateway.uat.netregistry.testcases.RegressionSalesDB"></class> -->
+			
+<!-- 		MelbourneIT Virtualization -->
+<!-- 			<class name="com.paymentgateway.uat.melbourneit.testcases.RegressionSalesDB"></class> -->
+			
+<!-- 		TPP Virtualization -->
+<!-- 			<class name="com.paymentgateway.uat.tpp.testcases.RegressionSalesDB"></class>	 -->
+
+<!-- 		WebCentral Virtualization -->
+<!-- 			<class name="com.paymentgateway.uat.webcentral.testcases.RegressionSalesDB"></class>	 -->
+			
+<!-- 		DPS Virtualization -->
+			<class name="com.paymentgateway.uat.dps.testcases.RegressionSalesDB"></class>		
+
 
 		</classes>
 	</test>  

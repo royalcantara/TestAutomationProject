@@ -1,5 +1,9 @@
 package com.domainzwebsite.pages;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -99,10 +103,14 @@ public class DMZAccountContactPage extends TestBase{
     }
     
     public void setCustomerDefaultInformation() throws InterruptedException {
+    	
+		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
+		Date d1 = new Date();
+
     	Thread.sleep(1000);
-    	organisation.sendKeys("Payment Gateway Test");
+    	organisation.sendKeys("Payment Gateway Test "+ df.format(d1));
     	Thread.sleep(1000);
-    	firstName.sendKeys("QA");
+    	firstName.sendKeys("QA "+ df.format(d1));
     	Thread.sleep(1000);
     	lastName.sendKeys("Team");
     	Thread.sleep(1000);
@@ -118,9 +126,9 @@ public class DMZAccountContactPage extends TestBase{
     	Thread.sleep(1000);
     	phoneNumber.sendKeys("064411111111");
     	Thread.sleep(1000);
-    	email.sendKeys("testing@melbourneit.com.au");
+    	email.sendKeys("_qa-development@arq.group");
     	Thread.sleep(1000);
-    	emailConfirmation.sendKeys("testing@melbourneit.com.au");
+    	emailConfirmation.sendKeys("_qa-development@arq.group");
     	Thread.sleep(1000);
     }
    
