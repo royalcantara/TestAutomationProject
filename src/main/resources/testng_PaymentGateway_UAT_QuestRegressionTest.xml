@@ -19,7 +19,7 @@
 
 		
 <!-- 		Netregistry Virtualization -->
-<!-- 			<class name="com.paymentgateway.uat.netregistry.testcases.RegressionSalesDB"></class> -->
+			<class name="com.paymentgateway.uat.netregistry.testcases.RegressionSalesDB"></class>
 			
 <!-- 		MelbourneIT Virtualization -->
 <!-- 			<class name="com.paymentgateway.uat.melbourneit.testcases.RegressionSalesDB"></class> -->
@@ -31,7 +31,7 @@
 <!-- 			<class name="com.paymentgateway.uat.webcentral.testcases.RegressionSalesDB"></class>	 -->
 			
 <!-- 		DPS Virtualization -->
-			<class name="com.paymentgateway.uat.dps.testcases.RegressionSalesDB"></class>		
+<!-- 			<class name="com.paymentgateway.uat.dps.testcases.RegressionSalesDB"></class>		 -->
 
 
 		</classes>
