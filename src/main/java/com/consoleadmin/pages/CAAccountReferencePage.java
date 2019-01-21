@@ -31,7 +31,7 @@ public class CAAccountReferencePage extends TestBase{
     	
     	//Reenter to Verify
     	driver.findElement(By.xpath("//div[@id='clientContactDetails']/table/tbody/tr[16]/td[2]/form/table/tbody/tr[2]/td[2]/input")).sendKeys(strnewpassword);
-    	Thread.sleep(3000);
+    	Thread.sleep(5000);
     		
     	//Click update password 
        	driver.findElement(By.xpath("//div[@id='clientContactDetails']/table/tbody/tr[16]/td[2]/form/input[1]")).click();

@@ -1,1 +1,4 @@
 green_code,card_digits,card_owner,card_expire_month,card_expire_year
+PAY-732,4005519200000004,"Domainz Test New Customer - Domain Reg",04,2024
+PAY-732,5555555555554444,"Domainz Test Returning Customer - Domain Reg",12,2024
+PAY-733,4012000033330026,"Domainz Test New Customer - Domain Reg",03,2023

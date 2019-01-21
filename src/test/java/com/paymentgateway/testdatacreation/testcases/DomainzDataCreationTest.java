@@ -114,7 +114,7 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=1, enabled = false)
+	@Test(priority=1, enabled = true)
 	public void generateCustomerDataWithDomainRegistrationAndEnableAutoRenew(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
@@ -224,7 +224,6 @@ public class DomainzDataCreationTest extends TestBase{
 		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
 		caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
 		caworkflowadminpage.processFraudCheck();
-		caworkflowadminpage.processDelegateDomain();
 		
 		//Test Step 5: Set the new password for the account reference
 		caheaderpage = new CAHeaderPage();
@@ -309,7 +308,6 @@ public class DomainzDataCreationTest extends TestBase{
 		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
 		caworkflowadminpage.processDomainRegistrationWF(strWorkflowId);
 		caworkflowadminpage.processFraudCheck();
-		caworkflowadminpage.processDelegateDomain();
 		driver.close();
 		
 		System.out.println("End Test: generateCustomerDataWithDomainRegistrationAndEnableAutoRenew");
@@ -920,7 +918,7 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=5, enabled = true)
+	@Test(priority=5, enabled = false)
 	public void generateCustomerDataWithDefaultCreditCard(String environment) throws InterruptedException{
 	
 		// Initialization (Test Data Creation and Assignment)
