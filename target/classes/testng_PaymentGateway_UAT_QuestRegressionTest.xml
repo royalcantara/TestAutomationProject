@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Payment Gateway UAT Quest Regression Test Suite">
+<suite name="Payment Gateway UAT Quest Regression Test Suite" verbose="2" thread-count="10" parallel="tests">
 	<parameter name="environment"     value="uat1"/>
 	<parameter name="paymentgateway"  value="quest"/>
 	
@@ -8,18 +8,20 @@
 		<listener class-name="com.reports.extentreportslistener.ExtentReportListener" />
 	</listeners>
 	
-	<test name="Regression Test Cases">
+	<test name="Regression Test Cases" parallel = "none">
+    
 		<classes>
 		
 		
+			
 <!-- 		Domainz Virtualization -->
-<!-- 			<class name="com.paymentgateway.uat.domainz.testcases.RegressionSalesDB"></class> -->
+			<class name="com.paymentgateway.uat.domainz.testcases.RegressionSalesDB" priority="1" />
 <!-- 			<class name="com.paymentgateway.uat.domainz.testcases.RegressionConsoleAdmin"></class> -->
 <!-- 			<class name="com.paymentgateway.uat.domainz.testcases.RegressionSMUI"></class> -->
 
-		
+
 <!-- 		Netregistry Virtualization -->
-			<class name="com.paymentgateway.uat.netregistry.testcases.RegressionSalesDB"></class>
+			<class name="com.paymentgateway.uat.netregistry.testcases.RegressionSalesDB" priority="2" />
 			
 <!-- 		MelbourneIT Virtualization -->
 <!-- 			<class name="com.paymentgateway.uat.melbourneit.testcases.RegressionSalesDB"></class> -->

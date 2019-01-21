@@ -83,7 +83,7 @@ public class RegressionSalesDB extends TestBase{
 
 
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=1, enabled = true)
+		@Test//(priority=1, enabled = true)
 		public void testCreateDomainAndMajorProductOrderInSalesDB(String environment, String paymentgateway) 
 				throws InterruptedException, IOException{
 
@@ -156,7 +156,7 @@ public class RegressionSalesDB extends TestBase{
 		
 		
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=2, enabled = true)
+		@Test//(priority=2, enabled = true)
 		public void testDomainRegistration2WorkflowInConsoleAdmin(String environment, String paymentgateway)
 				throws InterruptedException, IOException{
 
@@ -176,159 +176,159 @@ public class RegressionSalesDB extends TestBase{
 				}
 		
 		
-		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=3, enabled = true)
-		public void testProductSetup2WorkflowInConsoleAdmin(String environment, String paymentgateway) 
-				throws InterruptedException, IOException{
-		
-				//Test Step 1: Process the productsetup2 workflow in console admin
-				caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName_01 + "." + strTld_01);
-				caworkflowadminpage.processProductSetup2();
-				//caworkflowadminpage.processSkipDelegation();
-						
-				//Test Step 2: Verify if productsetup2 workflow is approved
-				caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName_01 + "." + strTld_01);
-				Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "approved", 
-						caworkflowadminpage.getWorkflowStatus("productsetup2"));
-				
-				TestUtil.takeScreenshotAtEndOfTest(paymentgateway + strVirtualization + "PGTest03");
-				driver.close();
-		}
-		
-		
-		@Parameters({ "environment", "paymentgateway" })
-		@Test(priority = 4, enabled = true)
-		public void testPaySingleInvoiceInConsoleAdmin(String environment, String paymentgateway)
-				throws InterruptedException, IOException {
-			
-				String strCardOwner = null;
-				String strCardNumber = null;
-				String strCardExpiryMonth = null;			
-				String strCardExpiryYear = null;
-			
-				// Test Step 1: Login to console admin and pay an existing invoice using a new card
-				if ((environment.equals("uat1"))&&(paymentgateway.equals("quest"))) {
-					strAccountReference = "MEL-6021";
-					strCardOwner = "Test Master";
-					strCardNumber = "5454545454545454";
-					strCardExpiryMonth = "02";
-					strCardExpiryYear = "20";
-	
-				}
-				else if ((environment.equals("uat1"))&&(paymentgateway.equals("braintree"))) {
-					strAccountReference = "DOM-1305";
-					strCardOwner = "Test Master";
-					strCardNumber = "5454545454545454";
-					strCardExpiryMonth = "02";
-					strCardExpiryYear = "20";
-	
-				}
-				
-				initialization(environment, "consoleadmin");
-				caloginpage = new CALoginPage();
-				caheaderpage = caloginpage.login("erwin.sukarna", "comein22");			
-				caaccountreferencepage = caheaderpage.searchAccountReference(strAccountReference);
-				cainvoicespage = caaccountreferencepage.clickPayOutstandingInvoices();
-				strInvoiceNumber = cainvoicespage.getInvoiceNumber();
-				cataxinvoicepage = cainvoicespage.selectInvoiceNumber(strInvoiceNumber);
-				cataxinvoicepage.setCreditCardDetails(strCardOwner, strCardNumber, strCardExpiryMonth, strCardExpiryYear);
-				cataxinvoicepage.payInvoice();
-				
-				// Test Step 2: Verify if the payment for invoice is successful.
-				Assert.assertEquals(cataxinvoicepage.getInvoicePaymentConfirmation(), "The payment of NZ$65.84 for invoice "+strInvoiceNumber+" has been accepted");
-				
-				TestUtil.takeScreenshotAtEndOfTest(paymentgateway + strVirtualization + "PGTest04");
-				// Test Step 3: Verify if there is no outstanding amount for the invoice
-//				cainvoicespage = cataxinvoicepage.clickInvoicesLink();
-//				driver.findElement(By.linkText("Invoices")).click();
-//				Thread.sleep(2000);
+//		@Parameters({"environment", "paymentgateway"})
+//		@Test(priority=3, enabled = true)
+//		public void testProductSetup2WorkflowInConsoleAdmin(String environment, String paymentgateway) 
+//				throws InterruptedException, IOException{
+//		
+//				//Test Step 1: Process the productsetup2 workflow in console admin
+//				caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName_01 + "." + strTld_01);
+//				caworkflowadminpage.processProductSetup2();
+//				//caworkflowadminpage.processSkipDelegation();
+//						
+//				//Test Step 2: Verify if productsetup2 workflow is approved
+//				caworkflowadminpage = caheaderpage.searchWorkflow(strDomainName_01 + "." + strTld_01);
+//				Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "approved", 
+//						caworkflowadminpage.getWorkflowStatus("productsetup2"));
+//				
+//				TestUtil.takeScreenshotAtEndOfTest(paymentgateway + strVirtualization + "PGTest03");
+//				driver.close();
+//		}
+//		
+//		
+//		@Parameters({ "environment", "paymentgateway" })
+//		@Test(priority = 4, enabled = true)
+//		public void testPaySingleInvoiceInConsoleAdmin(String environment, String paymentgateway)
+//				throws InterruptedException, IOException {
+//			
+//				String strCardOwner = null;
+//				String strCardNumber = null;
+//				String strCardExpiryMonth = null;			
+//				String strCardExpiryYear = null;
+//			
+//				// Test Step 1: Login to console admin and pay an existing invoice using a new card
+//				if ((environment.equals("uat1"))&&(paymentgateway.equals("quest"))) {
+//					strAccountReference = "MEL-6021";
+//					strCardOwner = "Test Master";
+//					strCardNumber = "5454545454545454";
+//					strCardExpiryMonth = "02";
+//					strCardExpiryYear = "20";
 //	
-//				String strOutstanding = driver
-//						.findElement(By.xpath("/html/body/table/tbody/tr[2]/td/table/tbody/tr/td/table[4]/tbody/tr[2]/td[7]")).getText();
-//				String strOutstandingAmount = strOutstanding.trim();
-//				System.out.println(strOutstandingAmount);
+//				}
+//				else if ((environment.equals("uat1"))&&(paymentgateway.equals("braintree"))) {
+//					strAccountReference = "DOM-1305";
+//					strCardOwner = "Test Master";
+//					strCardNumber = "5454545454545454";
+//					strCardExpiryMonth = "02";
+//					strCardExpiryYear = "20";
 //	
-//				Assert.assertEquals(strOutstandingAmount, "NZ$0.00");
+//				}
+//				
+//				initialization(environment, "consoleadmin");
+//				caloginpage = new CALoginPage();
+//				caheaderpage = caloginpage.login("erwin.sukarna", "comein22");			
+//				caaccountreferencepage = caheaderpage.searchAccountReference(strAccountReference);
+//				cainvoicespage = caaccountreferencepage.clickPayOutstandingInvoices();
+//				strInvoiceNumber = cainvoicespage.getInvoiceNumber();
+//				cataxinvoicepage = cainvoicespage.selectInvoiceNumber(strInvoiceNumber);
+//				cataxinvoicepage.setCreditCardDetails(strCardOwner, strCardNumber, strCardExpiryMonth, strCardExpiryYear);
+//				cataxinvoicepage.payInvoice();
+//				
+//				// Test Step 2: Verify if the payment for invoice is successful.
+//				Assert.assertEquals(cataxinvoicepage.getInvoicePaymentConfirmation(), "The payment of NZ$65.84 for invoice "+strInvoiceNumber+" has been accepted");
+//				
+//				TestUtil.takeScreenshotAtEndOfTest(paymentgateway + strVirtualization + "PGTest04");
+//				// Test Step 3: Verify if there is no outstanding amount for the invoice
+////				cainvoicespage = cataxinvoicepage.clickInvoicesLink();
+////				driver.findElement(By.linkText("Invoices")).click();
+////				Thread.sleep(2000);
+////	
+////				String strOutstanding = driver
+////						.findElement(By.xpath("/html/body/table/tbody/tr[2]/td/table/tbody/tr/td/table[4]/tbody/tr[2]/td[7]")).getText();
+////				String strOutstandingAmount = strOutstanding.trim();
+////				System.out.println(strOutstandingAmount);
+////	
+////				Assert.assertEquals(strOutstandingAmount, "NZ$0.00");
+////	
+//				driver.close();
+//
+//		}
+//		
+//		@Parameters({ "environment", "paymentgateway" })
+//		@Test(priority = 5, enabled = true)
+//		public void testRefundPaymentFromSalesDB(String environment, String paymentgateway)
+//				throws InterruptedException, AWTException, IOException {
+//			
+//				// Initialization (Test Data Creation and Assignment)
+//				if ((environment.equals("uat1"))&&(paymentgateway.equals("quest"))) {
+//					strAccountReference = "MEL-6021";
+//					strAmount = "65.84";
+//					strTransactionType= "REFUND";
+//		
+//				}
+//				else if ((environment.equals("uat1"))&&(paymentgateway.equals("braintree"))) {
+//					strAccountReference = "DOM-1305";
+//					strAmount = "65.84";
+//					strTransactionType= "REFUND";
+//				}
 //	
-				driver.close();
-
-		}
-		
-		@Parameters({ "environment", "paymentgateway" })
-		@Test(priority = 5, enabled = true)
-		public void testRefundPaymentFromSalesDB(String environment, String paymentgateway)
-				throws InterruptedException, AWTException, IOException {
-			
-				// Initialization (Test Data Creation and Assignment)
-				if ((environment.equals("uat1"))&&(paymentgateway.equals("quest"))) {
-					strAccountReference = "MEL-6021";
-					strAmount = "65.84";
-					strTransactionType= "REFUND";
-		
-				}
-				else if ((environment.equals("uat1"))&&(paymentgateway.equals("braintree"))) {
-					strAccountReference = "DOM-1305";
-					strAmount = "65.84";
-					strTransactionType= "REFUND";
-				}
-	
-				//Test Step 1: Login to Sales DB page, then refund an invoice
-				initialization(environment, "salesdburl");
-				csloginpage = new CSLoginPage();
-				csloginpage.setDefaultLoginDetails("uat");
-				csnrcrmpage = csloginpage.clickLoginButton();
-				
-				csaccountpage = new CSAccountPage();
-				csaccountpage.clickAccountTab();
-				
-				csprocesstransactionpage = new CSProcessTransactionPage();
-				csprocesstransactionpage.setProcessTransactionDetails(strAccountReference, strInvoiceNumber, strTransactionType,  strAmount, strPaymentMethod);
-				
-				//Test Step 2: Verify if refund transaction is processed successfully.
-				Assert.assertEquals(csprocesstransactionpage.getConfirmationMessage(), "Item Successfully Added", "Domain refunded sucessfully");
-				
-				TestUtil.takeScreenshotAtEndOfTest(paymentgateway + strVirtualization + "PGTest05");
-				driver.close();
-			
-		}
-		
-		@Parameters({ "environment", "paymentgateway" })
-		@Test(priority = 6, enabled = true)
-		public void testPayInvoiceUsingExistingCardFromSalesDB(String environment, String paymentgateway)
-				throws InterruptedException, AWTException, IOException {
-
-			
-				// Initialization (Test Data Creation and Assignment)
-				if ((environment.equals("uat1"))&&(paymentgateway.equals("quest"))) {
-					strAccountReference = "MEL-6021";
-					strAmount = "65.84";
-					strTransactionType= "PAYMENT";
-					strPaymentMethod = "Visa: 4111xxxxxxxx1111";
-				}
-				else if ((environment.equals("uat1"))&&(paymentgateway.equals("braintree"))) {
-					strAccountReference = "DOM-1305";
-					strAmount = "65.84";
-					strTransactionType= "PAYMENT";
-					strPaymentMethod = "MasterCard: 545454******5454";
-					
-				}
-			
-				//Test Step 1: Login to Sales DB page, then pay for an existing invoice for domain and product via existing credit card
-				initialization(environment, "salesdburl");
-				csloginpage = new CSLoginPage();
-				csloginpage.setDefaultLoginDetails("uat");
-				csnrcrmpage = csloginpage.clickLoginButton();
-				
-				csaccountpage = new CSAccountPage();
-				csaccountpage.clickAccountTab();
-				csprocesstransactionpage = new CSProcessTransactionPage();
-				csprocesstransactionpage.setProcessTransactionDetails(strAccountReference, strInvoiceNumber, strTransactionType,  strAmount, strPaymentMethod);
-				
-				//Test Step 2: Verify if payment transaction is processed successfully.
-				Assert.assertEquals(csprocesstransactionpage.getConfirmationMessage(), "Item Successfully Added", "Domain paid sucessfully");
-		
-				TestUtil.takeScreenshotAtEndOfTest(paymentgateway + strVirtualization + "PGTest06");
-				driver.close();
-		
-		}	
+//				//Test Step 1: Login to Sales DB page, then refund an invoice
+//				initialization(environment, "salesdburl");
+//				csloginpage = new CSLoginPage();
+//				csloginpage.setDefaultLoginDetails("uat");
+//				csnrcrmpage = csloginpage.clickLoginButton();
+//				
+//				csaccountpage = new CSAccountPage();
+//				csaccountpage.clickAccountTab();
+//				
+//				csprocesstransactionpage = new CSProcessTransactionPage();
+//				csprocesstransactionpage.setProcessTransactionDetails(strAccountReference, strInvoiceNumber, strTransactionType,  strAmount, strPaymentMethod);
+//				
+//				//Test Step 2: Verify if refund transaction is processed successfully.
+//				Assert.assertEquals(csprocesstransactionpage.getConfirmationMessage(), "Item Successfully Added", "Domain refunded sucessfully");
+//				
+//				TestUtil.takeScreenshotAtEndOfTest(paymentgateway + strVirtualization + "PGTest05");
+//				driver.close();
+//			
+//		}
+//		
+//		@Parameters({ "environment", "paymentgateway" })
+//		@Test(priority = 6, enabled = true)
+//		public void testPayInvoiceUsingExistingCardFromSalesDB(String environment, String paymentgateway)
+//				throws InterruptedException, AWTException, IOException {
+//
+//			
+//				// Initialization (Test Data Creation and Assignment)
+//				if ((environment.equals("uat1"))&&(paymentgateway.equals("quest"))) {
+//					strAccountReference = "MEL-6021";
+//					strAmount = "65.84";
+//					strTransactionType= "PAYMENT";
+//					strPaymentMethod = "Visa: 4111xxxxxxxx1111";
+//				}
+//				else if ((environment.equals("uat1"))&&(paymentgateway.equals("braintree"))) {
+//					strAccountReference = "DOM-1305";
+//					strAmount = "65.84";
+//					strTransactionType= "PAYMENT";
+//					strPaymentMethod = "MasterCard: 545454******5454";
+//					
+//				}
+//			
+//				//Test Step 1: Login to Sales DB page, then pay for an existing invoice for domain and product via existing credit card
+//				initialization(environment, "salesdburl");
+//				csloginpage = new CSLoginPage();
+//				csloginpage.setDefaultLoginDetails("uat");
+//				csnrcrmpage = csloginpage.clickLoginButton();
+//				
+//				csaccountpage = new CSAccountPage();
+//				csaccountpage.clickAccountTab();
+//				csprocesstransactionpage = new CSProcessTransactionPage();
+//				csprocesstransactionpage.setProcessTransactionDetails(strAccountReference, strInvoiceNumber, strTransactionType,  strAmount, strPaymentMethod);
+//				
+//				//Test Step 2: Verify if payment transaction is processed successfully.
+//				Assert.assertEquals(csprocesstransactionpage.getConfirmationMessage(), "Item Successfully Added", "Domain paid sucessfully");
+//		
+//				TestUtil.takeScreenshotAtEndOfTest(paymentgateway + strVirtualization + "PGTest06");
+//				driver.close();
+//		
+//		}	
 }

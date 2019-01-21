@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -77,9 +78,10 @@ public class CustomerPortalJourneyTest extends TestBase{
 		nrgbillingpage = nrgregistrantcontactpage.clickContinueButton();
 		
 		//Test Step 2: Input credit card details and submit the order 
-        nrgbillingpage.setQuestFormCreditCardDetails("Test Console Regression", "Visa", "4111111111111111", "11", "2019", "123");
+		nrgbillingpage.setBTFormCreditCardDetails("Test Console Regression", "4111111111111111", "11", "2019", "123");
         nrgbillingpage.tickTermsAndConditions();
         nrgordercompletepage = nrgbillingpage.clickContinueButton();
+        
         driver.close();
 	}
 	
@@ -89,6 +91,7 @@ public class CustomerPortalJourneyTest extends TestBase{
 	
 		// Initialization (Test Data Creation and Assignment)
 		String strDomainName = null;
+		String strAccountReference = null;
 		String strTld = null;
 		String strWorkflowId = null;
 		
@@ -119,6 +122,13 @@ public class CustomerPortalJourneyTest extends TestBase{
 		nrgbillingpage.selectExistingCreditCard("Prepaid credit: Current Balance: AU$19222.10 Available Balance: AU$19222.10");
 		nrgbillingpage.tickTermsAndConditions();
 		nrgordercompletepage = nrgbillingpage.clickContinueButton();
+		
+		Assert.assertTrue(nrgordercompletepage.isOrderComplete(), "Order is not completed");
+		strWorkflowId = nrgordercompletepage.getSingleReferenceID();
+		strAccountReference = nrgordercompletepage.getAccountReferenceID();
+		System.out.println("Account Reference:" + strAccountReference);	
+		System.out.println("Reference ID[0]:" + strWorkflowId);	
+		
 		driver.close();
 	}
 	

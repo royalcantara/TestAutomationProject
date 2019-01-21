@@ -7,11 +7,11 @@
   </listeners>
   <test thread-count="5" name="Regression Test Cases(failed)">
     <classes>
-      <class name="com.consoleregression.testcases.CustomerPortalJourneyTest">
+      <class name="com.consoleregression.testcases.SalesDBJourneyTest">
         <methods>
-          <include name="verifyDomainRegistrationOrderForNewCustomerInCustomerPortal" invocation-numbers="0"/>
+          <include name="verify_ComDomain_and_Office365_Order_InSalesDB" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.consoleregression.testcases.CustomerPortalJourneyTest -->
+      </class> <!-- com.consoleregression.testcases.SalesDBJourneyTest -->
     </classes>
   </test> <!-- Regression Test Cases(failed) -->
 </suite> <!-- Failed suite [Console Regression Test Automation - UAT Test Suite] -->

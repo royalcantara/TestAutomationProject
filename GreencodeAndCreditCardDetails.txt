@@ -1,9 +1,1 @@
 green_code,card_digits,card_owner,card_expire_month,card_expire_year
-PAY-725,2223000048400011,"Domainz Test New Customer",11,2020
-PAY-725,4005519200000004,"Domainz Test Returning Customer - Default Credit Card",05,2019
-PAY-726,5454545454545454,"Domainz Test New Customer",01,2022
-PAY-726,4012000077777777,"Domainz Test Returning Customer - Default Credit Card",05,2024
-PAY-727,4009348888881881,"Domainz Test New Customer",05,2026
-PAY-727,2223520043560014,"Domainz Test Returning Customer - Default Credit Card",05,2021
-PAY-728,4111111111111111,"Domainz Test New Customer",10,2019
-PAY-728,5555555555554444,"Domainz Test Returning Customer - Default Credit Card",05,2022
