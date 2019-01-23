@@ -1,5 +1,6 @@
 package com.consoleadmin.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,8 +17,14 @@ public class CAHeaderPage extends TestBase{
     @FindBy(how=How.ID, using = "domainInput")
     WebElement domainInput;
 
-    @FindBy(how=How.XPATH, using = "html/body/table/tbody/tr[1]/td/table/tbody/tr[1]/td[2]/form/input[2]")
-    WebElement domainSearchButton;
+    @FindBy(how=How.XPATH, using = "//table[@class='headerbar']/tbody/tr[1]/td[2]/form/input[@class='cp'][2]")
+    WebElement searchButton;
+    
+    @FindBy(how=How.XPATH, using = "/html/body/table/tbody/tr[1]/td/table[@class='headerbar']/tbody/tr[1]/td[3]/form/input[2]")
+    WebElement submitButton;
+    
+    @FindBy(how=How.XPATH, using = "//table[@class='headerbar']/tbody/tr[1]/td[4]/form/input[@class='cp'][2]")
+    WebElement getButton;
     
     @FindBy(how=How.NAME, using = "greencode")
     WebElement accountReferenceInput;
@@ -31,21 +38,34 @@ public class CAHeaderPage extends TestBase{
     }
 	
     //Methods
-    public CADomainLevelPage searchDomain(String strdomainname){
+    public CADomainLevelPage searchDomain(String strdomainname) throws InterruptedException{
+    	Thread.sleep(8000);
     	domainInput.sendKeys(strdomainname);
-    	domainSearchButton.click();
+    	Thread.sleep(8000);
+    	searchButton.click();
+    	Thread.sleep(8000);
     	return new CADomainLevelPage();
     }
     
-    public CAAccountReferencePage searchAccountReference(String straccountreference){
+    public CAAccountReferencePage searchAccountReference(String straccountreference) throws InterruptedException{
+    	Thread.sleep(8000);
     	accountReferenceInput.sendKeys(straccountreference);
-    	accountReferenceInput.sendKeys(Keys.ENTER);
+    	Thread.sleep(15000);
+    	
+    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", submitButton);
+    	submitButton.click();
+    	Thread.sleep(5000);
+    	
     	return new CAAccountReferencePage();
     }
     
-    public CAWorkflowAdminPage searchWorkflow(String strworkflow){
+    public CAWorkflowAdminPage searchWorkflow(String strworkflow) throws InterruptedException{
+    	Thread.sleep(8000);
     	workflowInput.sendKeys(strworkflow);
-    	workflowInput.sendKeys(Keys.ENTER);
+    	Thread.sleep(8000);
+    	getButton.click();
+    	Thread.sleep(8000);
+    	
     	return new CAWorkflowAdminPage();
     }	
     
@@ -54,6 +74,6 @@ public class CAHeaderPage extends TestBase{
     }
     
     public boolean verifyDomainSearchButtonExists(){
-    	return domainSearchButton.isDisplayed();
+    	return searchButton.isDisplayed();
     }
 }

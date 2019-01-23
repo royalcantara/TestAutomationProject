@@ -19,7 +19,7 @@ public class CALoginPage extends TestBase{
 	static String uatUserName = "erwin.sukarna";
 	static String uatPassword = "comein22";
 	static String prodUserName = "roy.alcantara";
-	static String prodPassword = "Stocks006";
+	static String prodPassword = "Stocks007";
 	
 	//Objects
     @FindBy(how=How.NAME, using = "login")

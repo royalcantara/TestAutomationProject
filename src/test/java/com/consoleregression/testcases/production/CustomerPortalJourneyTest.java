@@ -77,7 +77,7 @@ public class CustomerPortalJourneyTest extends TestBase{
 		nrgbillingpage = nrgregistrantcontactpage.clickContinueButton();
 		
 		//Test Step 2: Input credit card details and submit the order 
-		nrgbillingpage.setQuestFormCreditCardDetails("Test Console Regression", "Visa", "4715276659101053", "08", "2020", "390");
+		nrgbillingpage.setBTFormCreditCardDetails("Test Console Regression", "4715276659101053", "08", "2020", "390");
 		nrgbillingpage.tickTermsAndConditions();
         nrgordercompletepage = nrgbillingpage.clickContinueButton();
        // driver.close();

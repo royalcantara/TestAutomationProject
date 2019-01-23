@@ -83,7 +83,7 @@ public class RegressionSalesDB extends TestBase{
 
 
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=1, enabled = true)
+		@Test
 		public void testCreateDomainAndMajorProductOrderInSalesDB(String environment, String paymentgateway) 
 				throws InterruptedException, IOException{
 
@@ -156,7 +156,7 @@ public class RegressionSalesDB extends TestBase{
 		
 		
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=2, enabled = true)
+		@Test
 		public void testDomainRegistration2WorkflowInConsoleAdmin(String environment, String paymentgateway)
 				throws InterruptedException, IOException{
 
@@ -177,7 +177,7 @@ public class RegressionSalesDB extends TestBase{
 		
 		
 		@Parameters({"environment", "paymentgateway"})
-		@Test(priority=3, enabled = true)
+		@Test
 		public void testProductSetup2WorkflowInConsoleAdmin(String environment, String paymentgateway) 
 				throws InterruptedException, IOException{
 		

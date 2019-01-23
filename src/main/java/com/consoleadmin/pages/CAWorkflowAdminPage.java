@@ -29,15 +29,15 @@ public class CAWorkflowAdminPage extends TestBase{
     public void processDomainRegistrationWF(String strworkflowid) throws InterruptedException {
 
     	driver.findElement(By.linkText(strworkflowid)).click();			
-    	Thread.sleep(3000);
+    	Thread.sleep(8000);
     		
     	//Click Execute for Check ASIC
     	driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'check asic')]/parent::tr/td[3]/a[text()='Execute']")).click();
-    	Thread.sleep(3000);
+    	Thread.sleep(8000);
     		
     	//Click Execute Action
     	executeActionButton.click();
-    	Thread.sleep(6000);
+    	Thread.sleep(8000);
 
     }
     
@@ -83,11 +83,11 @@ public class CAWorkflowAdminPage extends TestBase{
     	
     	//Click Ok for Fraud Check
     	driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'ok')]/parent::tr/td[3]/a[text()='Execute']")).click();
-    	Thread.sleep(3000);
+    	Thread.sleep(10000);
     	
     	//Click Execute Action
     	executeActionButton.click();
-    	Thread.sleep(6000);
+    	Thread.sleep(10000);
     		
     }
     
@@ -149,15 +149,15 @@ public class CAWorkflowAdminPage extends TestBase{
     		
     	//Click workflowid
     	driver.findElement(By.xpath("//table/tbody/tr/td/table[3]/tbody/tr[3]/td[1]/a")).click();
-    	Thread.sleep(3000);
+    	Thread.sleep(8000);
     		
     	//Click Execute for Run Setup
     	driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'run setup')]/parent::tr/td[3]/a[text()='Execute']")).click();
-    	Thread.sleep(3000);
+    	Thread.sleep(8000);
     		
     	//Click Execute Action
     	executeActionButton.click();
-    	Thread.sleep(3000);
+    	Thread.sleep(8000);
     			
     }
     	
@@ -165,15 +165,15 @@ public class CAWorkflowAdminPage extends TestBase{
     		
     	//Click ProductSetup2 by Workflow ID
     	driver.findElement(By.linkText(strworkflowid)).click();			
-    	Thread.sleep(3000);
+    	Thread.sleep(8000);
     		
     	//Click Execute for Run Setup
     	driver.findElement(By.xpath("//tbody/tr[3]/td[contains(text(),'run setup')]/parent::tr/td[3]/a[text()='Execute']")).click();
-    	Thread.sleep(3000);
+    	Thread.sleep(8000);
     		
     	//Click Execute Action
     	executeActionButton.click();
-    	Thread.sleep(3000);
+    	Thread.sleep(8000);
     			
     }
     	

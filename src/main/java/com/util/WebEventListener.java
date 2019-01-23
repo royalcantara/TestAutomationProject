@@ -3,6 +3,7 @@ package com.util;
 import java.io.IOException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
@@ -116,6 +117,17 @@ public class WebEventListener extends TestBase implements WebDriverEventListener
 	}
 
 	public void beforeSwitchToWindow(String arg0, WebDriver arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public <X> void afterGetScreenshotAs(OutputType<X> arg0, X arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	public <X> void beforeGetScreenshotAs(OutputType<X> arg0) {
 		// TODO Auto-generated method stub
 		
 	}

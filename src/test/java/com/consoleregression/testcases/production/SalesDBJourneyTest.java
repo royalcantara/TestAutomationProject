@@ -78,7 +78,7 @@ public class SalesDBJourneyTest extends TestBase{
 		String strGreenCode = null;
 		String strPaymentMethod = null;
 		String strRegistrantDetails = null;
-		String strWorkflowId = "13605420";
+		String strWorkflowId = "13836460";
 		String strTransactionid = null;
 		String strRegistrantType = null;
 		String strRegistrantNumber = null;
@@ -121,7 +121,7 @@ public class SalesDBJourneyTest extends TestBase{
 		//Test Step 2: Verify if domain registration workflow is completed
 		initialization(environment, "consoleadmin");
 		caloginpage = new CALoginPage();
-		caheaderpage = caloginpage.login("roy.alcantara", "Stocks006");
+		caheaderpage = caloginpage.login("roy.alcantara", "Stocks007");
 		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
 		driver.close();
@@ -143,7 +143,7 @@ public class SalesDBJourneyTest extends TestBase{
 		String strGreenCode = null;
 		String strPaymentMethod = null;
 		String strRegistrantDetails = null;
-		String strWorkflowId = "13605423";
+		String strWorkflowId = "13836466";
 		String strTransactionid = null;
 		
 		DateFormat df = new SimpleDateFormat("ddMMYYYYhhmmss");
@@ -182,12 +182,12 @@ public class SalesDBJourneyTest extends TestBase{
 		//Test Step 2: Verify if domain registration workflow is completed
 		initialization(environment, "consoleadmin");
 		caloginpage = new CALoginPage();
-		caheaderpage = caloginpage.login("roy.alcantara", "Stocks006");		
+		caheaderpage = caloginpage.login("roy.alcantara", "Stocks007");		
 		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
 				
 		//Test Step 3: Verify if productsetup2 workflow is approved
-		caworkflowadminpage = caheaderpage.searchWorkflow("testconsoleautomation30112018014050.net");
+		caworkflowadminpage = caheaderpage.searchWorkflow("testconsoleautomation22012019092846.net");
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "approved", caworkflowadminpage.getWorkflowStatus("productsetup2"));
 		driver.close();
 		
@@ -208,7 +208,7 @@ public class SalesDBJourneyTest extends TestBase{
 		String strGreenCode = null;
 		String strPaymentMethod = null;
 		String strRegistrantDetails = null;
-		String strWorkflowId = "13605459";
+		String strWorkflowId = "13836468";
 		String strTransactionid = null;
 		String strOffice365Product = null;
 		
@@ -261,17 +261,17 @@ public class SalesDBJourneyTest extends TestBase{
 		//Test Step 2: Verify if domain registration workflow status is completed
 		initialization(environment, "consoleadmin");
 		caloginpage = new CALoginPage();
-		caheaderpage = caloginpage.login("roy.alcantara", "Stocks006");
+		caheaderpage = caloginpage.login("roy.alcantara", "Stocks007");
 		caworkflowadminpage = caheaderpage.searchWorkflow(strWorkflowId);
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("domainregistration2"), "domain registration completed", caworkflowadminpage.getWorkflowStatus("domainregistration2"));
 		
 		//Test Step 3: Verify if productsetup2 workflow status is approved
-		caworkflowadminpage = caheaderpage.searchWorkflow("testoffice365paymentgatewayrelease.com");
+		caworkflowadminpage = caheaderpage.searchWorkflow("testconsoleautomation22012019092955.com");
 		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetup2"), "approved", caworkflowadminpage.getWorkflowStatus("productsetup2"));
 		
 		//Test Step 4: Verify if o365provisioning workflow status is automatically completed
-		caworkflowadminpage = caheaderpage.searchWorkflow("testoffice365paymentgatewayrelease.com");
-		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("o365Provisioning"), "automatically completed", caworkflowadminpage.getWorkflowStatus("o365Provisioning"));
+		caworkflowadminpage = caheaderpage.searchWorkflow("testconsoleautomation22012019092955.com");
+		Assert.assertEquals(caworkflowadminpage.getWorkflowStatus("productSetupOffice365"), "Office365 order completed", caworkflowadminpage.getWorkflowStatus("o365Provisioning"));
 		driver.close();
 	
 		System.out.println("End Test: verify_ComDomain_and_Office365_Order_InSalesDB");

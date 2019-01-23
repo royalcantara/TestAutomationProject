@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Payment Gateway Project Test Data Creation Suite]">
-  <parameter name="environment" value="stagingdev-5"/>
+<suite thread-count="10" guice-stage="DEVELOPMENT" name="Failed suite [Payment Gateway UAT Quest Regression Test Suite]" parallel="tests">
+  <parameter name="environment" value="uat1"/>
+  <parameter name="paymentgateway" value="quest"/>
   <listeners>
     <listener class-name="com.reports.extentreportslistener.ExtentReportListener"/>
   </listeners>
-  <test thread-count="5" name="Payment Gateway Data Creation Test Cases(failed)">
+  <test thread-count="10" name="Regression Test Cases(failed)">
     <classes>
-      <class name="com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest">
+      <class name="com.paymentgateway.uat.netregistry.testcases.RegressionSalesDB">
         <methods>
-          <include name="generateCustomerDataWithDomainRegistrationAndEnableAutoRenew" invocation-numbers="0"/>
+          <include name="testPayInvoiceUsingExistingCardFromSalesDB" invocation-numbers="0"/>
+          <include name="testRefundPaymentFromSalesDB" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest -->
+      </class> <!-- com.paymentgateway.uat.netregistry.testcases.RegressionSalesDB -->
     </classes>
-  </test> <!-- Payment Gateway Data Creation Test Cases(failed) -->
-</suite> <!-- Failed suite [Payment Gateway Project Test Data Creation Suite] -->
+  </test> <!-- Regression Test Cases(failed) -->
+</suite> <!-- Failed suite [Payment Gateway UAT Quest Regression Test Suite] -->
