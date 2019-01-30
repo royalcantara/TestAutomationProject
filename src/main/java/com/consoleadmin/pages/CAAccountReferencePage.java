@@ -40,6 +40,7 @@ public class CAAccountReferencePage extends TestBase{
     public void updatePassword(String strnewpassword) throws InterruptedException, AWTException {
     	
     	//Enter New Password
+    	Thread.sleep(3000);
     	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", enterNewPasswordTextField);
     	enterNewPasswordTextField.sendKeys(strnewpassword);
     	Thread.sleep(3000);
@@ -50,13 +51,13 @@ public class CAAccountReferencePage extends TestBase{
     	Thread.sleep(5000);
     		
 //    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", updatePasswordButton);
-//    	System.out.println ("Update Password button found");
+    	System.out.println ("Searching for password button");
     	
-    	Robot robot = new Robot();
-		robot.keyPress(KeyEvent.VK_ENTER);
+//    	Robot robot = new Robot();
+//		robot.keyPress(KeyEvent.VK_ENTER);
 //    	Thread.sleep(5000);
-//    	updatePasswordButton.click();
-//    	System.out.println ("Update Password button clicked");
+    	updatePasswordButton.click();
+    	System.out.println ("Update Password button clicked");
     	
     	//Click update password 
         Thread.sleep(8000);

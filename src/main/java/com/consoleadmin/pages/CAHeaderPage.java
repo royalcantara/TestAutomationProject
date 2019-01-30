@@ -55,12 +55,12 @@ public class CAHeaderPage extends TestBase{
     	accountReferenceInput.sendKeys(straccountreference);
     	Thread.sleep(3000);
      	
-    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", submitButton);
-    	System.out.println ("Submit button found");
+    	//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", submitButton);
+    	System.out.println ("Searching for submit button");
     	
 //		Robot robot = new Robot();
 //		robot.keyPress(KeyEvent.VK_ENTER);
-    	Thread.sleep(2000);
+    	Thread.sleep(3000);
     	submitButton.click();
     	System.out.println ("Submit button clicked");
 		
