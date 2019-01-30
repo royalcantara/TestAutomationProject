@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Payment Gateway Migration - Quest Data Creation Suite" thread-count="10" parallel="tests">
+	<parameter name="environment"  value="stagingdev-5"/>
+
+	<listeners>
+		<listener class-name="com.reports.extentreportslistener.ExtentReportListener" />
+	</listeners>
+	
+	<test name="Payment Gateway Migration - Braintree Post Validation Test Cases" parallel = "none" preserve-order="true">
+	
+		<classes>
+		<!-- Domainz Virtualization -->
+	
+			<class name="com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest">
+			    <methods>
+                    <include name="generateCustomerDataWithDomainRegistrationAndEnableAutoRenew" />
+<!--                     <include name="generateCustomerDataWithMonthlyBillingProduct" /> -->
+<!--                     <include name="generateCustomerDataWithYearlyBillingProduct" /> -->
+<!--                     <include name="generateCustomerDataWithOutstandingInvoice" /> -->
+<!--                     <include name="generateCustomerDataWithDefaultCreditCard" /> -->
+                </methods>
+			</class>
+			
+			
+		</classes>
+	</test>  
+</suite>
+
+

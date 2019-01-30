@@ -21,7 +21,7 @@ public class BTMainTabPage extends TestBase{
     //Methods    
     public BTTransactionsSearchPage clickTransactionsLink() throws InterruptedException {
     	
-    	Thread.sleep(3000);
+    	Thread.sleep(5000);
     	transactionsLink.click();
     	return new BTTransactionsSearchPage();	
     }

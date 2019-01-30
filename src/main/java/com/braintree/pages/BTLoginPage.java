@@ -11,7 +11,7 @@ public class BTLoginPage extends TestBase{
 
 	
 	static String stageUserName = "makeyanvesh";
-	static String stagePassword = "Me!bourne1t";
+	static String stagePassword = "ArqPayments505^";
 
 	//Objects 
     @FindBy(how=How.ID, using = "login")

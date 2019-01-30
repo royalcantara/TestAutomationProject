@@ -4,6 +4,7 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.aeonbits.owner.ConfigFactory;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -36,8 +37,25 @@ public class TestBase{
 		if(browserName.equals("chrome")){
 //			ChromeOptions options = new ChromeOptions(); 
 //			options.setBinary("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"); 
-			System.setProperty("webdriver.chrome.driver", "seleniumwebdriver/chromedriver/chromedriver.exe");	
-			driver = new ChromeDriver(); 
+			
+//			System.setProperty("webdriver.chrome.driver", "seleniumwebdriver/chromedriver/chromedriver.exe");
+//			ChromeOptions options = new ChromeOptions();
+//			options.setPageLoadStrategy(PageLoadStrategy.NONE);
+//			// Instantiate the chrome driver
+//			driver = new ChromeDriver(options);
+				
+//			System.setProperty("webdriver.chrome.driver", "seleniumwebdriver/chromedriver/chromedriver.exe");	
+//			driver = new ChromeDriver(); 
+			
+			System.setProperty("webdriver.chrome.driver", "seleniumwebdriver/chromedriver/chromedriver.exe");
+
+	           ChromeOptions options = new ChromeOptions();
+	            options.addArguments("--disable-gpu");
+	            options.addArguments("--disable-browser-side-navigation");
+	            driver = new ChromeDriver(options);
+			
+			
+			
 		}
 		else if(browserName.equals("firefox")){
 			System.setProperty("webdriver.gecko.driver", "seleniumwebdriver/firefoxdriver/geckodriver.exe");	

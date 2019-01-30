@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="10" guice-stage="DEVELOPMENT" name="Failed suite [Payment Gateway Migration - Braintree Post Validation Suite]" parallel="tests">
+  <parameter name="environment" value="stagingdev-5"/>
+  <test thread-count="10" name="Payment Gateway Migration - Braintree Post Validation Test Cases(failed)">
+    <classes>
+      <class name="com.paymentgateway.migration.braintreepostvalidation.testcases.DomainzBTPostValidationTest">
+        <methods>
+          <include name="testMigratedCustomerWithOutstandingInvoice" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.paymentgateway.migration.braintreepostvalidation.testcases.DomainzBTPostValidationTest -->
+    </classes>
+  </test> <!-- Payment Gateway Migration - Braintree Post Validation Test Cases(failed) -->
+</suite> <!-- Failed suite [Payment Gateway Migration - Braintree Post Validation Suite] -->

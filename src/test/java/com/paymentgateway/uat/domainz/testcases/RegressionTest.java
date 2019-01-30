@@ -199,7 +199,7 @@ public class RegressionTest extends TestBase{
 		@Parameters({ "environment", "paymentgateway" })
 		@Test(priority = 4, enabled = true)
 		public void testPaySingleInvoiceInConsoleAdmin(String environment, String paymentgateway)
-				throws InterruptedException, IOException {
+				throws InterruptedException, IOException, AWTException {
 			
 				String strCardOwner = null;
 				String strCardNumber = null;

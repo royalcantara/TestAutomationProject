@@ -121,14 +121,14 @@ public class CSProcessTransactionPage extends TestBase {
 			driver.findElement(By.xpath("//*[contains(text(),'CC refund of existing transaction')]")).click();
 			Thread.sleep(2000);
 			Amount.sendKeys(stramount);
-			Thread.sleep(5000);
-			//driver.findElement(By.name("txnRef")).click();
-			driver.findElement(By.xpath("//*[@name='txnRef']")).click();
+			Thread.sleep(5000);			
+			driver.findElement(By.xpath("//input[@name='txnRef']/parent::div/img")).click();
+			Thread.sleep(2000);
 			robot.keyPress(KeyEvent.VK_DOWN);
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 			robot.keyPress(KeyEvent.VK_ENTER);
-			Thread.sleep(3000);
-
+			Thread.sleep(2000);
+			
 		}
 		
 		CreateTransactionButton.click();

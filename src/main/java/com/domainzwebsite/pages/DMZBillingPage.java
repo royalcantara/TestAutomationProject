@@ -186,4 +186,98 @@ public class DMZBillingPage extends TestBase{
        	System.out.println("select new credit card option");
        	driver.findElement(By.xpath("//div[@class='orderBox']/div[2]/input")).click();
     }
+    
+    public void selectExistingCreditCardOption(String carddetails){
+       	System.out.println("select existing credit card option");
+       	
+       	WebElement visacard = driver.findElement(By.xpath("//div[@class='orderBox']/div[1]/select[@class='existingAccounts']/option[text() = '"+carddetails+"']"));
+       	WebElement mastercard = driver.findElement(By.xpath("//div[@class='orderBox']/div[1]/select[@class='existingAccounts']/option[text() = '"+carddetails+"']"));
+       	
+       	if (visacard.isDisplayed()) {
+       		visacard.click();
+       		System.out.println("Existing Visa credit card was clicked");
+       	}
+       	else if (mastercard.isDisplayed()) {
+       		mastercard.click();
+       		System.out.println("Existing MasterCard credit card was clicked");
+       	}
+       	else {
+       		System.out.println("No credit card found");
+       	}
+    }
+    
+    
+    public String[] getExistingCardDetails(String cardtype) {
+    	
+    	String visacarddetails;
+    	String mastercarddetails;
+    	String[] arrcarddetails = new String [6];
+    	
+       	WebElement visacard = driver.findElement(By.xpath("//div[@class='orderBox']/div[1]/select[@class='existingAccounts']/option[contains(text(),'Visa credit card')]"));
+       	WebElement mastercard = driver.findElement(By.xpath("//div[@class='orderBox']/div[1]/select[@class='existingAccounts']/option[contains(text(),'MasterCard credit card')]"));
+       
+       	
+     	if ((cardtype =="Visa") & (visacard.isDisplayed())){
+     		
+     		visacarddetails = visacard.getText();
+		
+     		//Full Existing Card Details;
+     		arrcarddetails [0] = visacarddetails;
+     		// Card Type
+     		arrcarddetails [1] = visacarddetails.substring(0, 4); 
+     		//Card Owner Name
+     		arrcarddetails [2] = visacarddetails.substring((visacarddetails.indexOf("Owner:")+7), (visacarddetails.indexOf("Number:")-1));
+     		//Masked Card Number
+     		arrcarddetails [3] = visacarddetails.substring((visacarddetails.indexOf("Number:")+8), (visacarddetails.indexOf("Number:")+24));
+     		//Card Expiry Month
+     		arrcarddetails [4] = visacarddetails.substring((visacarddetails.indexOf("Expiry:")+8), (visacarddetails.indexOf("Expiry:")+10));
+     		//Card Expiry Year
+     		arrcarddetails [5] = visacarddetails.substring((visacarddetails.indexOf("Expiry:")+11), (visacarddetails.indexOf("Expiry:")+15));
+     		
+     		System.out.println("Array: " + arrcarddetails [0]);
+     		System.out.println("Array: " + arrcarddetails [1]);
+     		System.out.println("Array: " + arrcarddetails [2]);
+     		System.out.println("Array: " + arrcarddetails [3]);
+     		System.out.println("Array: " + arrcarddetails [4]);
+     		System.out.println("Array: " + arrcarddetails [5]);
+    		
+       	}
+       	else if ((cardtype =="MasterCard") & (mastercard.isDisplayed())){
+       		
+       		mastercarddetails = mastercard.getText();
+ 		
+     		//Full Existing Card Details;
+     		arrcarddetails [0] = mastercarddetails;
+     		// Card Type
+     		arrcarddetails [1] = mastercarddetails.substring(0, 10); 
+     		//Card Owner Name
+     		arrcarddetails [2] = mastercarddetails.substring((mastercarddetails.indexOf("Owner:")+7), (mastercarddetails.indexOf("Number:")-1));
+     		//Masked Card Number
+     		arrcarddetails [3] = mastercarddetails.substring((mastercarddetails.indexOf("Number:")+8), (mastercarddetails.indexOf("Number:")+24));
+     		//Card Expiry Month
+     		arrcarddetails [4] = mastercarddetails.substring((mastercarddetails.indexOf("Expiry:")+8), (mastercarddetails.indexOf("Expiry:")+10));
+     		//Card Expiry Year
+     		arrcarddetails [5] = mastercarddetails.substring((mastercarddetails.indexOf("Expiry:")+11), (mastercarddetails.indexOf("Expiry:")+15));
+     		
+     		
+     		System.out.println("Array: " + arrcarddetails [0]);
+     		System.out.println("Array: " + arrcarddetails [1]);
+     		System.out.println("Array: " + arrcarddetails [2]);
+     		System.out.println("Array: " + arrcarddetails [3]);
+     		System.out.println("Array: " + arrcarddetails [4]);
+     		System.out.println("Array: " + arrcarddetails [5]);
+    		
+    		
+       	}
+       	else {
+       		System.out.println("No credit card found");
+       	}
+     	
+     	return arrcarddetails;
+    	
+
+    }
+    
+    
+    
 }

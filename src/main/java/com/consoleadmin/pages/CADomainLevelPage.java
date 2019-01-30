@@ -35,8 +35,12 @@ public class CADomainLevelPage extends TestBase{
     	PageFactory.initElements(driver, this);
     }
     
-    public CAAccountReferencePage clickAccountInterfaceLink(){
+    public CAAccountReferencePage clickAccountInterfaceLink() throws InterruptedException{
+    	
+    	Thread.sleep(3000);
     	accountInterfaceLink.click();
+    	Thread.sleep(3000);
+    	
     	return new CAAccountReferencePage();
     }
     

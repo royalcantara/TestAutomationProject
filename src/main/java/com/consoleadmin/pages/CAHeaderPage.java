@@ -1,7 +1,10 @@
 package com.consoleadmin.pages;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -20,7 +23,7 @@ public class CAHeaderPage extends TestBase{
     @FindBy(how=How.XPATH, using = "//table[@class='headerbar']/tbody/tr[1]/td[2]/form/input[@class='cp'][2]")
     WebElement searchButton;
     
-    @FindBy(how=How.XPATH, using = "/html/body/table/tbody/tr[1]/td/table[@class='headerbar']/tbody/tr[1]/td[3]/form/input[2]")
+    @FindBy(how=How.XPATH, using = "//table[@class='headerbar']/tbody/tr[1]/td[3]/form/input[2]")
     WebElement submitButton;
     
     @FindBy(how=How.XPATH, using = "//table[@class='headerbar']/tbody/tr[1]/td[4]/form/input[@class='cp'][2]")
@@ -39,32 +42,39 @@ public class CAHeaderPage extends TestBase{
 	
     //Methods
     public CADomainLevelPage searchDomain(String strdomainname) throws InterruptedException{
-    	Thread.sleep(8000);
+    	Thread.sleep(3000);
     	domainInput.sendKeys(strdomainname);
-    	Thread.sleep(8000);
+    	Thread.sleep(3000);
     	searchButton.click();
-    	Thread.sleep(8000);
+    	Thread.sleep(5000);
     	return new CADomainLevelPage();
     }
     
-    public CAAccountReferencePage searchAccountReference(String straccountreference) throws InterruptedException{
-    	Thread.sleep(8000);
-    	accountReferenceInput.sendKeys(straccountreference);
-    	Thread.sleep(15000);
-    	
-    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", submitButton);
-    	submitButton.click();
+    public CAAccountReferencePage searchAccountReference(String straccountreference) throws InterruptedException, AWTException{
     	Thread.sleep(5000);
+    	accountReferenceInput.sendKeys(straccountreference);
+    	Thread.sleep(3000);
+     	
+    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", submitButton);
+    	System.out.println ("Submit button found");
+    	
+//		Robot robot = new Robot();
+//		robot.keyPress(KeyEvent.VK_ENTER);
+    	Thread.sleep(2000);
+    	submitButton.click();
+    	System.out.println ("Submit button clicked");
+		
+    	Thread.sleep(8000);
     	
     	return new CAAccountReferencePage();
     }
     
     public CAWorkflowAdminPage searchWorkflow(String strworkflow) throws InterruptedException{
-    	Thread.sleep(8000);
+    	Thread.sleep(3000);
     	workflowInput.sendKeys(strworkflow);
-    	Thread.sleep(8000);
+    	Thread.sleep(3000);
     	getButton.click();
-    	Thread.sleep(8000);
+    	Thread.sleep(5000);
     	
     	return new CAWorkflowAdminPage();
     }	

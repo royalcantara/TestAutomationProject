@@ -1,5 +1,6 @@
 package com.paymentgateway.uat.domainz.testcases;
 
+import java.awt.AWTException;
 import java.io.IOException;
 
 import org.openqa.selenium.By;
@@ -45,7 +46,7 @@ public class RegressionConsoleAdmin extends TestBase {
 		
 		@Parameters({"environment", "paymentgateway"})
 		@Test(priority=7, enabled = true)
-		public void testViewBillingInConsoleAdmin(String environment, String paymentgateway) throws InterruptedException, IOException{
+		public void testViewBillingInConsoleAdmin(String environment, String paymentgateway) throws InterruptedException, IOException, AWTException{
 		
 			if ((environment.equals("uat1"))&&(paymentgateway.equals("quest"))) {
 				strAccountReference = "MEL-6021"; 
@@ -97,7 +98,7 @@ public class RegressionConsoleAdmin extends TestBase {
 	
 		@Parameters({ "environment", "paymentgateway" })
 		@Test(priority = 9, enabled = true)
-		public void RechargePrepaidInConsoleAdminUsingExistingCard(String environment, String paymentgateway) throws InterruptedException {
+		public void RechargePrepaidInConsoleAdminUsingExistingCard(String environment, String paymentgateway) throws InterruptedException, AWTException {
 			
 			String straccountreference = "DOM-1218";
 			initialization(environment, "consoleadmin");

@@ -1,5 +1,6 @@
 package com.paymentgateway.testdatacreation.testcases;
 
+import java.awt.AWTException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -114,8 +115,8 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=1, enabled = false)
-	public void generateCustomerDataWithDomainRegistrationAndEnableAutoRenew(String environment) throws InterruptedException{
+	@Test
+	public void generateCustomerDataWithDomainRegistrationAndEnableAutoRenew(String environment) throws InterruptedException, AWTException{
 	
 		// Initialization (Test Data Creation and Assignment)
 		String strDomainName_01 = null;
@@ -316,8 +317,8 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=2, enabled = true)
-	public void generateCustomerDataWithMonthlyBillingProduct(String environment) throws InterruptedException{
+	@Test
+	public void generateCustomerDataWithMonthlyBillingProduct(String environment) throws InterruptedException, AWTException{
 	
 		// Initialization (Test Data Creation and Assignment)
 		String strDomainName_01 = null;
@@ -526,8 +527,8 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=3, enabled = false)
-	public void generateCustomerDataWithYearlyBillingProduct(String environment) throws InterruptedException{
+	@Test
+	public void generateCustomerDataWithYearlyBillingProduct(String environment) throws InterruptedException, AWTException{
 	
 		// Initialization (Test Data Creation and Assignment)
 		String strDomainName_01 = null;
@@ -738,8 +739,8 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=4, enabled = false)
-	public void generateCustomerDataWithOutstandingInvoice(String environment) throws InterruptedException{
+	@Test
+	public void generateCustomerDataWithOutstandingInvoice(String environment) throws InterruptedException, AWTException{
 	
 		// Initialization (Test Data Creation and Assignment)
 		String strDomainName_01 = null;
@@ -915,8 +916,8 @@ public class DomainzDataCreationTest extends TestBase{
 	}
 	
 	@Parameters({"environment"})
-	@Test(priority=5, enabled = false)
-	public void generateCustomerDataWithDefaultCreditCard(String environment) throws InterruptedException{
+	@Test
+	public void generateCustomerDataWithDefaultCreditCard(String environment) throws InterruptedException, AWTException{
 	
 		// Initialization (Test Data Creation and Assignment)
 		String strDomainName_01 = null;

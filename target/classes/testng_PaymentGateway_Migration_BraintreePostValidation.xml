@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Payment Gateway Migration - Braintree Post Validation Suite"  thread-count="10" parallel="tests">
+	<parameter name="environment"  value="stagingdev-5"/>
+
+<!-- 	<listeners> -->
+<!-- 		<listener class-name="com.reports.extentreportslistener.ExtentReportListener" /> -->
+<!-- 	</listeners> -->
+	
+	<test name="Payment Gateway Migration - Braintree Post Validation Test Cases" parallel = "none" preserve-order="true">
+	
+		<classes>
+	
+	<!-- Domainz Virtualization -->
+			<class name="com.paymentgateway.migration.braintreepostvalidation.testcases.DomainzBTPostValidationTest">
+                <methods>
+                    <include name="testMigratedCustomerInDomainRegistrationAndEnableAutoRenew" />
+<!--                     <include name="testMigratedCustomerWithMonthlyBillingProduct" /> -->
+<!--                     <include name="testMigratedCustomerWithYearlyBillingProduct" /> -->
+<!--                     <include name="testMigratedCustomerWithOutstandingInvoice" /> -->
+<!--                     <include name="testMigratedCustomerWithDefaultCreditCard" /> -->
+                </methods>
+        	</class>
+        	
+		</classes>
+	</test>  
+</suite> 
