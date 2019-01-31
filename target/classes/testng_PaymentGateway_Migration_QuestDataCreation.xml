@@ -15,10 +15,10 @@
 			<class name="com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest">
 			    <methods>
                     <include name="generateCustomerDataWithDomainRegistrationAndEnableAutoRenew" />
-<!--                     <include name="generateCustomerDataWithMonthlyBillingProduct" /> -->
-<!--                     <include name="generateCustomerDataWithYearlyBillingProduct" /> -->
-<!--                     <include name="generateCustomerDataWithOutstandingInvoice" /> -->
-<!--                     <include name="generateCustomerDataWithDefaultCreditCard" /> -->
+                    <include name="generateCustomerDataWithMonthlyBillingProduct" />
+                    <include name="generateCustomerDataWithYearlyBillingProduct" />
+                    <include name="generateCustomerDataWithOutstandingInvoice" />
+                    <include name="generateCustomerDataWithDefaultCreditCard" />
                 </methods>
 			</class>
 			

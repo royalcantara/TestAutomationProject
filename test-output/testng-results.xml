@@ -1,24 +1,437 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="6" total="7" passed="1">
+<testng-results skipped="0" failed="0" ignored="1" total="27" passed="26">
   <reporter-output>
   </reporter-output>
-  <suite name="Payment Gateway Migration - Quest Data Creation Suite" duration-ms="1199543" started-at="2019-01-30T06:06:23Z" finished-at="2019-01-30T06:26:23Z">
+  <suite name="Payment Gateway UAT Quest Regression Test Suite" duration-ms="1565115" started-at="2019-01-31T01:47:11Z" finished-at="2019-01-31T02:13:16Z">
     <groups>
     </groups>
-    <test name="Payment Gateway Migration - Braintree Post Validation Test Cases" duration-ms="1199543" started-at="2019-01-30T06:06:23Z" finished-at="2019-01-30T06:26:23Z">
-      <class name="com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest">
-        <test-method status="PASS" signature="generateCustomerDataWithDomainRegistrationAndEnableAutoRenew(java.lang.String)[pri:0, instance:com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest@5442a311]" name="generateCustomerDataWithDomainRegistrationAndEnableAutoRenew" duration-ms="1199520" started-at="2019-01-30T06:06:23Z" finished-at="2019-01-30T06:26:23Z">
+    <test name="Regression Test Cases" duration-ms="1565115" started-at="2019-01-31T01:47:11Z" finished-at="2019-01-31T02:13:16Z">
+      <class name="com.paymentgateway.uat.melbourneit.testcases.RegressionSalesDB">
+        <test-method status="PASS" signature="testCreateDomainAndMajorProductOrderInSalesDB(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.melbourneit.testcases.RegressionSalesDB@146ba0ac]" name="testCreateDomainAndMajorProductOrderInSalesDB" duration-ms="77892" started-at="2019-01-31T01:58:59Z" finished-at="2019-01-31T02:00:17Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[stagingdev-5]]>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- generateCustomerDataWithDomainRegistrationAndEnableAutoRenew -->
-      </class> <!-- com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest -->
-    </test> <!-- Payment Gateway Migration - Braintree Post Validation Test Cases -->
-  </suite> <!-- Payment Gateway Migration - Quest Data Creation Suite -->
+        </test-method> <!-- testCreateDomainAndMajorProductOrderInSalesDB -->
+        <test-method status="PASS" signature="testDomainRegistration2WorkflowInConsoleAdmin(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.melbourneit.testcases.RegressionSalesDB@146ba0ac]" name="testDomainRegistration2WorkflowInConsoleAdmin" duration-ms="68859" started-at="2019-01-31T02:00:17Z" finished-at="2019-01-31T02:01:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDomainRegistration2WorkflowInConsoleAdmin -->
+        <test-method status="PASS" signature="testProductSetup2WorkflowInConsoleAdmin(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.melbourneit.testcases.RegressionSalesDB@146ba0ac]" name="testProductSetup2WorkflowInConsoleAdmin" duration-ms="64630" started-at="2019-01-31T02:01:26Z" finished-at="2019-01-31T02:02:31Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testProductSetup2WorkflowInConsoleAdmin -->
+      </class> <!-- com.paymentgateway.uat.melbourneit.testcases.RegressionSalesDB -->
+      <class name="com.paymentgateway.uat.webcentral.testcases.RegressionSalesDB">
+        <test-method status="PASS" signature="testCreateDomainAndMajorProductOrderInSalesDB(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.webcentral.testcases.RegressionSalesDB@6eebc39e]" name="testCreateDomainAndMajorProductOrderInSalesDB" duration-ms="73971" started-at="2019-01-31T02:08:10Z" finished-at="2019-01-31T02:09:24Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCreateDomainAndMajorProductOrderInSalesDB -->
+        <test-method status="PASS" signature="testDomainRegistration2WorkflowInConsoleAdmin(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.webcentral.testcases.RegressionSalesDB@6eebc39e]" name="testDomainRegistration2WorkflowInConsoleAdmin" duration-ms="75023" started-at="2019-01-31T02:09:24Z" finished-at="2019-01-31T02:10:39Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDomainRegistration2WorkflowInConsoleAdmin -->
+        <test-method status="PASS" signature="testProductSetup2WorkflowInConsoleAdmin(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.webcentral.testcases.RegressionSalesDB@6eebc39e]" name="testProductSetup2WorkflowInConsoleAdmin" duration-ms="62245" started-at="2019-01-31T02:10:39Z" finished-at="2019-01-31T02:11:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testProductSetup2WorkflowInConsoleAdmin -->
+        <test-method status="PASS" signature="testPaySingleInvoiceInConsoleAdmin(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.webcentral.testcases.RegressionSalesDB@6eebc39e]" name="testPaySingleInvoiceInConsoleAdmin" duration-ms="52475" started-at="2019-01-31T02:11:41Z" finished-at="2019-01-31T02:12:34Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPaySingleInvoiceInConsoleAdmin -->
+        <test-method status="PASS" signature="testRefundPaymentFromSalesDB(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.webcentral.testcases.RegressionSalesDB@6eebc39e]" name="testRefundPaymentFromSalesDB" duration-ms="41923" started-at="2019-01-31T02:12:34Z" finished-at="2019-01-31T02:13:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testRefundPaymentFromSalesDB -->
+      </class> <!-- com.paymentgateway.uat.webcentral.testcases.RegressionSalesDB -->
+      <class name="com.paymentgateway.uat.domainz.testcases.RegressionSalesDB">
+        <test-method status="PASS" signature="testCreateDomainAndMajorProductOrderInSalesDB(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.domainz.testcases.RegressionSalesDB@e25b2fe]" name="testCreateDomainAndMajorProductOrderInSalesDB" duration-ms="76671" started-at="2019-01-31T01:47:11Z" finished-at="2019-01-31T01:48:27Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCreateDomainAndMajorProductOrderInSalesDB -->
+        <test-method status="PASS" signature="testDomainRegistration2WorkflowInConsoleAdmin(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.domainz.testcases.RegressionSalesDB@e25b2fe]" name="testDomainRegistration2WorkflowInConsoleAdmin" duration-ms="60609" started-at="2019-01-31T01:48:27Z" finished-at="2019-01-31T01:49:28Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDomainRegistration2WorkflowInConsoleAdmin -->
+        <test-method status="PASS" signature="testProductSetup2WorkflowInConsoleAdmin(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.domainz.testcases.RegressionSalesDB@e25b2fe]" name="testProductSetup2WorkflowInConsoleAdmin" duration-ms="64652" started-at="2019-01-31T01:49:28Z" finished-at="2019-01-31T01:50:33Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testProductSetup2WorkflowInConsoleAdmin -->
+        <test-method status="PASS" signature="testPaySingleInvoiceInConsoleAdmin(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.domainz.testcases.RegressionSalesDB@e25b2fe]" name="testPaySingleInvoiceInConsoleAdmin" duration-ms="51726" started-at="2019-01-31T01:50:33Z" finished-at="2019-01-31T01:51:24Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPaySingleInvoiceInConsoleAdmin -->
+        <test-method status="PASS" signature="testRefundPaymentFromSalesDB(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.domainz.testcases.RegressionSalesDB@e25b2fe]" name="testRefundPaymentFromSalesDB" duration-ms="42296" started-at="2019-01-31T01:51:24Z" finished-at="2019-01-31T01:52:07Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testRefundPaymentFromSalesDB -->
+        <test-method status="PASS" signature="testPayInvoiceUsingExistingCardFromSalesDB(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.domainz.testcases.RegressionSalesDB@e25b2fe]" name="testPayInvoiceUsingExistingCardFromSalesDB" duration-ms="37867" started-at="2019-01-31T01:52:07Z" finished-at="2019-01-31T01:52:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPayInvoiceUsingExistingCardFromSalesDB -->
+      </class> <!-- com.paymentgateway.uat.domainz.testcases.RegressionSalesDB -->
+      <class name="com.paymentgateway.uat.tpp.testcases.RegressionSalesDB">
+        <test-method status="PASS" signature="testCreateDomainAndMajorProductOrderInSalesDB(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.tpp.testcases.RegressionSalesDB@4dfa3a9d]" name="testCreateDomainAndMajorProductOrderInSalesDB" duration-ms="74626" started-at="2019-01-31T02:02:31Z" finished-at="2019-01-31T02:03:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCreateDomainAndMajorProductOrderInSalesDB -->
+        <test-method status="PASS" signature="testDomainRegistration2WorkflowInConsoleAdmin(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.tpp.testcases.RegressionSalesDB@4dfa3a9d]" name="testDomainRegistration2WorkflowInConsoleAdmin" duration-ms="66081" started-at="2019-01-31T02:03:45Z" finished-at="2019-01-31T02:04:51Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDomainRegistration2WorkflowInConsoleAdmin -->
+        <test-method status="PASS" signature="testProductSetup2WorkflowInConsoleAdmin(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.tpp.testcases.RegressionSalesDB@4dfa3a9d]" name="testProductSetup2WorkflowInConsoleAdmin" duration-ms="65619" started-at="2019-01-31T02:04:51Z" finished-at="2019-01-31T02:05:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testProductSetup2WorkflowInConsoleAdmin -->
+        <test-method status="PASS" signature="testPaySingleInvoiceInConsoleAdmin(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.tpp.testcases.RegressionSalesDB@4dfa3a9d]" name="testPaySingleInvoiceInConsoleAdmin" duration-ms="54406" started-at="2019-01-31T02:05:57Z" finished-at="2019-01-31T02:06:51Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPaySingleInvoiceInConsoleAdmin -->
+        <test-method status="PASS" signature="testRefundPaymentFromSalesDB(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.tpp.testcases.RegressionSalesDB@4dfa3a9d]" name="testRefundPaymentFromSalesDB" duration-ms="41783" started-at="2019-01-31T02:06:51Z" finished-at="2019-01-31T02:07:33Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testRefundPaymentFromSalesDB -->
+        <test-method status="PASS" signature="testPayInvoiceUsingExistingCardFromSalesDB(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.tpp.testcases.RegressionSalesDB@4dfa3a9d]" name="testPayInvoiceUsingExistingCardFromSalesDB" duration-ms="37051" started-at="2019-01-31T02:07:33Z" finished-at="2019-01-31T02:08:10Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPayInvoiceUsingExistingCardFromSalesDB -->
+      </class> <!-- com.paymentgateway.uat.tpp.testcases.RegressionSalesDB -->
+      <class name="com.paymentgateway.uat.netregistry.testcases.RegressionSalesDB">
+        <test-method status="PASS" signature="testCreateDomainAndMajorProductOrderInSalesDB(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.netregistry.testcases.RegressionSalesDB@754ba872]" name="testCreateDomainAndMajorProductOrderInSalesDB" duration-ms="77008" started-at="2019-01-31T01:52:45Z" finished-at="2019-01-31T01:54:02Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCreateDomainAndMajorProductOrderInSalesDB -->
+        <test-method status="PASS" signature="testDomainRegistration2WorkflowInConsoleAdmin(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.netregistry.testcases.RegressionSalesDB@754ba872]" name="testDomainRegistration2WorkflowInConsoleAdmin" duration-ms="71189" started-at="2019-01-31T01:54:02Z" finished-at="2019-01-31T01:55:13Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDomainRegistration2WorkflowInConsoleAdmin -->
+        <test-method status="PASS" signature="testProductSetup2WorkflowInConsoleAdmin(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.netregistry.testcases.RegressionSalesDB@754ba872]" name="testProductSetup2WorkflowInConsoleAdmin" duration-ms="83926" started-at="2019-01-31T01:55:13Z" finished-at="2019-01-31T01:56:37Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testProductSetup2WorkflowInConsoleAdmin -->
+        <test-method status="PASS" signature="testPaySingleInvoiceInConsoleAdmin(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.netregistry.testcases.RegressionSalesDB@754ba872]" name="testPaySingleInvoiceInConsoleAdmin" duration-ms="57640" started-at="2019-01-31T01:56:37Z" finished-at="2019-01-31T01:57:34Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPaySingleInvoiceInConsoleAdmin -->
+        <test-method status="PASS" signature="testRefundPaymentFromSalesDB(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.netregistry.testcases.RegressionSalesDB@754ba872]" name="testRefundPaymentFromSalesDB" duration-ms="44830" started-at="2019-01-31T01:57:34Z" finished-at="2019-01-31T01:58:19Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testRefundPaymentFromSalesDB -->
+        <test-method status="PASS" signature="testPayInvoiceUsingExistingCardFromSalesDB(java.lang.String, java.lang.String)[pri:0, instance:com.paymentgateway.uat.netregistry.testcases.RegressionSalesDB@754ba872]" name="testPayInvoiceUsingExistingCardFromSalesDB" duration-ms="40033" started-at="2019-01-31T01:58:19Z" finished-at="2019-01-31T01:58:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[uat1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[quest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPayInvoiceUsingExistingCardFromSalesDB -->
+      </class> <!-- com.paymentgateway.uat.netregistry.testcases.RegressionSalesDB -->
+    </test> <!-- Regression Test Cases -->
+  </suite> <!-- Payment Gateway UAT Quest Regression Test Suite -->
 </testng-results>

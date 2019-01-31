@@ -53,9 +53,6 @@ public class CAAccountReferencePage extends TestBase{
 //    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", updatePasswordButton);
     	System.out.println ("Searching for password button");
     	
-//    	Robot robot = new Robot();
-//		robot.keyPress(KeyEvent.VK_ENTER);
-//    	Thread.sleep(5000);
     	updatePasswordButton.click();
     	System.out.println ("Update Password button clicked");
     	

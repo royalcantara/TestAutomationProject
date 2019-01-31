@@ -9,7 +9,10 @@
     <classes>
       <class name="com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest">
         <methods>
-          <include name="generateCustomerDataWithDomainRegistrationAndEnableAutoRenew" invocation-numbers="0"/>
+          <include name="generateCustomerDataWithYearlyBillingProduct" invocation-numbers="0"/>
+          <include name="generateCustomerDataWithMonthlyBillingProduct" invocation-numbers="0"/>
+          <include name="generateCustomerDataWithOutstandingInvoice" invocation-numbers="0"/>
+          <include name="generateCustomerDataWithDefaultCreditCard" invocation-numbers="0"/>
         </methods>
       </class> <!-- com.paymentgateway.testdatacreation.testcases.DomainzDataCreationTest -->
     </classes>

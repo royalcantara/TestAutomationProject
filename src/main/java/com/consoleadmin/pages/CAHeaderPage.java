@@ -23,7 +23,7 @@ public class CAHeaderPage extends TestBase{
     @FindBy(how=How.XPATH, using = "//table[@class='headerbar']/tbody/tr[1]/td[2]/form/input[@class='cp'][2]")
     WebElement searchButton;
     
-    @FindBy(how=How.XPATH, using = "//table[@class='headerbar']/tbody/tr[1]/td[3]/form/input[2]")
+    @FindBy(how=How.XPATH, using = "//table[@class='headerbar']/tbody/tr[1]/td[3]/form/input[@name='submit']")
     WebElement submitButton;
     
     @FindBy(how=How.XPATH, using = "//table[@class='headerbar']/tbody/tr[1]/td[4]/form/input[@class='cp'][2]")
@@ -42,24 +42,22 @@ public class CAHeaderPage extends TestBase{
 	
     //Methods
     public CADomainLevelPage searchDomain(String strdomainname) throws InterruptedException{
+    	
     	Thread.sleep(3000);
     	domainInput.sendKeys(strdomainname);
     	Thread.sleep(3000);
     	searchButton.click();
     	Thread.sleep(5000);
+    	
     	return new CADomainLevelPage();
     }
     
     public CAAccountReferencePage searchAccountReference(String straccountreference) throws InterruptedException, AWTException{
-    	Thread.sleep(5000);
+    	
+    	Thread.sleep(3000);
     	accountReferenceInput.sendKeys(straccountreference);
     	Thread.sleep(3000);
-     	
-    	//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", submitButton);
     	System.out.println ("Searching for submit button");
-    	
-//		Robot robot = new Robot();
-//		robot.keyPress(KeyEvent.VK_ENTER);
     	Thread.sleep(3000);
     	submitButton.click();
     	System.out.println ("Submit button clicked");
@@ -70,6 +68,7 @@ public class CAHeaderPage extends TestBase{
     }
     
     public CAWorkflowAdminPage searchWorkflow(String strworkflow) throws InterruptedException{
+    	
     	Thread.sleep(3000);
     	workflowInput.sendKeys(strworkflow);
     	Thread.sleep(3000);

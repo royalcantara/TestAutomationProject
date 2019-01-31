@@ -10,10 +10,7 @@
     <classes>
       <class name="com.paymentgateway.uat.webcentral.testcases.RegressionSalesDB">
         <methods>
-          <include name="testRefundPaymentFromSalesDB" invocation-numbers="0"/>
-          <include name="testProductSetup2WorkflowInConsoleAdmin" invocation-numbers="0"/>
           <include name="testPayInvoiceUsingExistingCardFromSalesDB" invocation-numbers="0"/>
-          <include name="testDomainRegistration2WorkflowInConsoleAdmin" invocation-numbers="0"/>
         </methods>
       </class> <!-- com.paymentgateway.uat.webcentral.testcases.RegressionSalesDB -->
     </classes>
